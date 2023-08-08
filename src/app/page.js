@@ -9,6 +9,9 @@ export default function Home() {
           <code className="font-mono font-bold">src/app/page.js</code>
         </p>
         <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
+          <h2>I am sabbir</h2>
+          <p>Hello</p>
+          <h2> this is new thing </h2>
           <p>Hello</p>
           <h2> this is new thing </h2>
           <h1>This is 2nd thing</h1>
@@ -108,8 +111,10 @@ export default function Home() {
             </span>
           </h2>
           <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
+            Instantly deploy your Next.js site to a shareable URL with Verce
+            This is from Nizam
           </p>
+          <h1>Hello everybody! How are you?</h1>
         </a>
       </div>
     </main>
