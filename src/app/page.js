@@ -9,12 +9,9 @@ export default function Home() {
           <code className="font-mono font-bold">src/app/page.js</code>
         </p>
         <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-<<<<<<< HEAD
           <h2>I am sabbir</h2>
-=======
           <p>Hello</p>
           <h2> this is new thing </h2>
->>>>>>> e2eda62f5b2845045e9a987a77b49d90bb84697b
           <a
             className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
             href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
@@ -114,6 +111,7 @@ export default function Home() {
             Instantly deploy your Next.js site to a shareable URL with Verce
             This is from Nizam
           </p>
+          <h1>Hello everybody! How are you?</h1>
         </a>
       </div>
     </main>
