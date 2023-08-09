@@ -1,3 +1,4 @@
+import Navbar from "./Components/Navbar";
 import "./globals.css";
 import { Inter } from "next/font/google";
 
@@ -10,9 +11,11 @@ export const metadata = {
 
  const RootLayout = ({ children }) => {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <div>
+      <Navbar/>
+      <main>{children}</main>
+    </div>
+    
   );
 }
 export default RootLayout;
