@@ -1,4 +1,5 @@
 
+import Footer from "./Components/Footer";
 import Navbar from "./Components/Navbar";
 import "./globals.css";
 import { Inter } from "next/font/google";
@@ -15,6 +16,7 @@ export const metadata = {
     <div>
       <Navbar/>
       <main>{children}</main>
+      <Footer/>
     </div>
     
   );
