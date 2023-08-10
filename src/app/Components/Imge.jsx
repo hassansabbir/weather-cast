@@ -19,6 +19,7 @@ const Imge = () => {
             <Image src={image5} alt="Image 5" width={150} height={150} />
             <Image className='animate-pulse' src={image6} alt="Image 5" width={150} height={150} />
             <Image src={image7} alt="Image 5" width={150} height={150} />
+            <Image src={image3} alt="Image 3" width={150} height={150} />
 
         </Marquee>
     );
