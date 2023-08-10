@@ -54,7 +54,7 @@ const Footer = () => {
       </div>
       <div>
         <p className="font-semibold text-lg text-blue-500">
-          Copyright © 2023 - All right reserved by DREAM Industries Ltd
+          Copyright © 2023 - All right reserved by Team web Wizard
         </p>
       </div>
     </footer>

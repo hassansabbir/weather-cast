@@ -52,7 +52,7 @@ const Navbar = () => {
               ))}
             </ul>
           </div>
-          <a className=" normal-case text-3xl text-blue-800 font-bold ">
+          <a className=" normal-case text-3xl text-blue-800 font-bold " >
             weatherCast
           </a>
         </div>
