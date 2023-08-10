@@ -8,10 +8,19 @@ const Intelligence = () => {
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center -space-x-16">
-        <div>
+        <div
+          data-aos="fade-right"
+          data-aos-offset="300"
+          data-aos-easing="ease-in-sine"
+        >
           <Lottie animationData={earth}></Lottie>
         </div>
-        <div className="p-10">
+        <div
+          className="p-10"
+          data-aos="fade-left"
+          data-aos-offset="300"
+          data-aos-easing="ease-in-sine"
+        >
           <h1 className="text-5xl font-semibold ">
             A New Era of Real-time <br />
             <span className="animate-pulse bg-gradient-to-r from-blue-800 via-blue-650 to-blue-500 bg-clip-text text-transparent font-black">
