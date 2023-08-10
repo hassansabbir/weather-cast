@@ -1,4 +1,3 @@
-
 import Footer from "./Components/Footer";
 import Navbar from "./Components/Navbar";
 import "./globals.css";
@@ -11,14 +10,13 @@ export const metadata = {
   description: "Weather Cast",
 };
 
- const RootLayout = ({ children }) => {
+const RootLayout = ({ children }) => {
   return (
     <div>
-      <Navbar/>
-      <main>{children}</main>
-      <Footer/>
+      <Navbar />
+      <main className="min-h-[calc(100vh-100px)]">{children}</main>
+      <Footer />
     </div>
-    
   );
-}
+};
 export default RootLayout;
