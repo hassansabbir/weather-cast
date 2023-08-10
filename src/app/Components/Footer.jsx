@@ -10,7 +10,7 @@ const Footer = () => {
         <div>
           <p className="text-blue-600 text-md font-semibold">
             Book your dream college admission through Dream Academy. <br /> May
-            your journey be successful, all the best!
+            your journey be successful, all the best!!
           </p>
         </div>
       </div>
