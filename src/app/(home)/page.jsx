@@ -1,7 +1,9 @@
+import ProductSection from "./ProductSection";
+
 const HomePage = () => {
   return (
     <div>
-      <h1>Home Page</h1>
+      <ProductSection />
     </div>
   );
 };
