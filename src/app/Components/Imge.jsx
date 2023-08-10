@@ -19,8 +19,11 @@ const Imge = () => {
         width={150}
         height={150}
       />
+      &emsp;
       <Image src={image2} alt="Image 2" width={150} height={150} />
+      &emsp;&emsp;&emsp;
       <Image src={image3} alt="Image 3" width={150} height={150} />
+      &emsp;&emsp;&emsp;
       <Image
         className="animate-pulse"
         src={image4}
@@ -28,7 +31,9 @@ const Imge = () => {
         width={150}
         height={150}
       />
+      &emsp;&emsp;&emsp;
       <Image src={image5} alt="Image 5" width={150} height={150} />
+      &emsp;&emsp;&emsp;
       <Image
         className="animate-pulse"
         src={image6}
@@ -36,7 +41,9 @@ const Imge = () => {
         width={150}
         height={150}
       />
+      &emsp;&emsp;&emsp;
       <Image src={image7} alt="Image 5" width={150} height={150} />
+      &emsp;&emsp;&emsp;
       <Image src={image3} alt="Image 3" width={150} height={150} />
     </Marquee>
   );
