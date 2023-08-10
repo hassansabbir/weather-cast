@@ -12,13 +12,13 @@ import Image from 'next/image';
 const Imge = () => {
     return (
         <Marquee>
-            <Image className='animate-pulse' src={image1} alt="Image 1" width={150} height={150} />
-            <Image src={image2} alt="Image 2" width={150} height={150} />
-            <Image src={image3} alt="Image 3" width={150} height={150} />
-            <Image className='animate-pulse' src={image4} alt="Image 4" width={150} height={150} />
-            <Image src={image5} alt="Image 5" width={150} height={150} />
-            <Image className='animate-pulse' src={image6} alt="Image 5" width={150} height={150} />
-            <Image src={image7} alt="Image 5" width={150} height={150} />
+            <Image className='animate-pulse' src={image1} alt="Image 1" width={150} height={150} />&emsp;
+            <Image src={image2} alt="Image 2" width={150} height={150} />&emsp;&emsp;&emsp;
+            <Image src={image3} alt="Image 3" width={150} height={150} />&emsp;&emsp;&emsp;
+            <Image className='animate-pulse' src={image4} alt="Image 4" width={150} height={150} />&emsp;&emsp;&emsp;
+            <Image src={image5} alt="Image 5" width={150} height={150} />&emsp;&emsp;&emsp;
+            <Image className='animate-pulse' src={image6} alt="Image 5" width={150} height={150} />&emsp;&emsp;&emsp;
+            <Image src={image7} alt="Image 5" width={150} height={150} />&emsp;&emsp;&emsp;
             <Image src={image3} alt="Image 3" width={150} height={150} />
 
         </Marquee>
