@@ -1,5 +1,6 @@
 import Intelligence from "./Intelligence";
 import Marq from "./Marq";
+import NewsLetter from "./NewsLetter";
 import ProductSection from "./ProductSection";
 
 const HomePage = () => {
@@ -8,6 +9,7 @@ const HomePage = () => {
       <Intelligence></Intelligence>
       <Marq />
       <ProductSection />
+      <NewsLetter></NewsLetter>
     </div>
   );
 };
