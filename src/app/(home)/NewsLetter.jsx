@@ -31,7 +31,7 @@ const NewsLetter = () => {
             <h1 className="text-4xl font-semibold leading-9 text-white text-center">
               Stay Ahead with WeatherCast Newsletter!🌦️📩
             </h1>
-            <p className="text-base leading-normal text-center text-white mt-6 px-20">
+            <p className="text-base leading-normal text-center text-white mt-6 lg:px-20">
               Get real-time weather updates in your inbox with our WeatherCast
               newsletter. Sign up and receive personalized insights, forecasts,
               and tips for your outdoor activities and travel decisions.Stay
