@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
       <div className=" ">
         <a className=" normal-case text-3xl text-blue-800 font-bold ">
-          weatherCast
+          weatherCastt
         </a>
         <div>
           <p className="text-blue-600 text-md font-semibold">

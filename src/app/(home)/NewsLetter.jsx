@@ -5,7 +5,7 @@ const NewsLetter = () => {
   return (
     <div>
       <div className="2xl:mx-auto 2xl:container mx-4 py-16">
-        <div className="w-full relative flex items-center justify-center">
+        <div className="w-full relative flex items-center justify-center z-[-1]">
           <Image
             width={7979}
             height={2632}
