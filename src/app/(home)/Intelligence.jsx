@@ -6,7 +6,7 @@ import earth from "../../assets/animation_ll4ssoaf.json";
 
 const Intelligence = () => {
   return (
-    <div>
+    <div className="max-w-[1460px] mx-auto my-28">
       <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center -space-x-16">
         <div
           data-aos="fade-right"
@@ -15,12 +15,7 @@ const Intelligence = () => {
         >
           <Lottie animationData={earth}></Lottie>
         </div>
-        <div
-          className="p-10"
-          data-aos="fade-left"
-          data-aos-offset="300"
-          data-aos-easing="ease-in-sine"
-        >
+        <div className="p-10 pl-24">
           <h1 className="text-5xl font-semibold ">
             A New Era of Real-time <br />
             <span className="animate-pulse bg-gradient-to-r from-blue-800 via-blue-650 to-blue-500 bg-clip-text text-transparent font-black">
