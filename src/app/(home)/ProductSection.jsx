@@ -4,8 +4,8 @@ import React from "react";
 const ProductSection = () => {
   return (
     <div className="my-20 max-w-[1460px] mx-auto">
-      <h2 className="text-5xl font-bold text-center my-10">
-        Our <span className="text-blue-800">New</span> Products
+      <h2 className="text-4xl lg:text-5xl font-bold text-center my-10">
+        Our <span className="text-blue-800">New</span> features
       </h2>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-28">
         <div className="flex flex-col rounded-3xl bg-base-200 px-8 py-14 relative ">

@@ -3,6 +3,7 @@ import Intelligence from "./Intelligence";
 import Marq from "./Marq";
 import NewsLetter from "./NewsLetter";
 import ProductSection from "./ProductSection";
+import WeatherNews from "./WeatherNews/WeatherNews";
 import WeatherUpdates from "./WeatherUodates/WeatherUpdates";
 
 const HomePage = () => {
@@ -11,6 +12,7 @@ const HomePage = () => {
       <Banner />
       <WeatherUpdates />
       <Intelligence />
+      <WeatherNews />
       <ProductSection />
       <Marq />
       <NewsLetter />
