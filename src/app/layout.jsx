@@ -15,7 +15,7 @@ const RootLayout = ({ children }) => {
     <html lang="en" data-theme="light">
       <body className={inter.className}>
         <Navbar />
-        <div className="min-h-[calc(100vh-100px)]"> {children}</div>
+        <div> {children}</div>
         <Footer />
       </body>
     </html>
