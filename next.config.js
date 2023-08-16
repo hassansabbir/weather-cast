@@ -11,6 +11,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "cdn.weatherapi.com",
       },
+      {
+        protocol: "https",
+        hostname: "i.ibb.co",
+      },
     ],
   },
 };

@@ -8,7 +8,7 @@ const ProductSection = () => {
         Our <span className="text-blue-800">New</span> features
       </h2>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-28">
-        <div className="flex flex-col rounded-3xl bg-base-200 px-8 py-14 relative ">
+        <div className="flex flex-col shadow-xl hover:shadow-2xl rounded-3xl bg-base-200 px-8 py-14 relative ">
           <Image
             className="mx-auto border-8 border-white w-36 h-36 rounded-full absolute -top-16 left-1/2 transform -translate-x-1/2"
             src="https://img.freepik.com/free-vector/astronomy-isometric-composition-with-image-radar-with-satellite-dish-vector-illustration_1284-66738.jpg?w=826&t=st=1691645622~exp=1691646222~hmac=c33aee1cda2e7567fb8cf901e4ce3361f3c8c2f2c24182058e96c8336f4b7a08"
@@ -32,7 +32,7 @@ const ProductSection = () => {
             Learn More
           </button>
         </div>
-        <div className="flex flex-col rounded-3xl bg-base-200 px-8 py-14 relative ">
+        <div className="flex flex-col shadow-xl hover:shadow-2xl rounded-3xl bg-base-200 px-8 py-14 relative ">
           <Image
             className="mx-auto  border-8 border-white w-36 h-36 rounded-full absolute -top-16 left-1/2 transform -translate-x-1/2"
             src="https://img.freepik.com/free-photo/automatic-electronic-switch-control-water-pump-pressure-controller_627829-7491.jpg?w=740&t=st=1691645401~exp=1691646001~hmac=6dce9ff55f219d451db8cd2f4d36f5dd154f4020f63aae15ca1d2f70b0921fcb"
@@ -57,7 +57,7 @@ const ProductSection = () => {
             Learn More
           </button>
         </div>
-        <div className="flex flex-col rounded-3xl bg-base-200 px-8 py-14 relative ">
+        <div className="flex flex-col shadow-xl hover:shadow-2xl rounded-3xl bg-base-200 px-8 py-14 relative ">
           <Image
             className="mx-auto  border-8 border-white w-36 h-36 rounded-full absolute -top-16 left-1/2 transform -translate-x-1/2"
             src="https://img.freepik.com/free-vector/seismograph-machine-with-graph-seismic-earthquake-activity-instrument-seismometer-technology-graph-vector-illustration_1284-46225.jpg?w=740&t=st=1691645445~exp=1691646045~hmac=308a709020f625d5f7590398d65275342234799ffa5ca50c35cf97833b15c5b2"
