@@ -70,7 +70,7 @@ const WeatherUpdates = () => {
             </div>
             <div>
               <Image
-                src={`https:${weather?.current?.condition?.icon}`}
+                // src={`https:${weather?.current?.condition?.icon}`}
                 alt="logo"
                 width={100}
                 height={100}
