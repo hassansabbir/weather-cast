@@ -20,7 +20,7 @@ const ProductSection = () => {
             <h2 className="text-2xl font-bold text-blue-800 mt-10 text-center">
               Weather Stations
             </h2>
-            <p className="mt-6 text-xl text-center">
+            <p className="mt-6 text-justify">
               A comprehensive weather monitoring system that combines a range of
               sensors to provide real-time data on temperature, humidity,
               atmospheric pressure, wind speed, and wind direction. This data is
@@ -44,7 +44,7 @@ const ProductSection = () => {
             <h2 className="text-2xl font-bold text-blue-800 mt-10 text-center">
               Lightning Detector
             </h2>
-            <p className="mt-6 text-xl text-center">
+            <p className="mt-6 text-justify">
               Lightning detectors identify and alert users to nearby lightning
               activity. They offer valuable safety information for outdoor
               enthusiasts, athletes, and professionals working in open areas.
@@ -69,7 +69,7 @@ const ProductSection = () => {
             <h2 className="text-2xl font-bold text-blue-800 mt-10 text-center">
               Weather Radio
             </h2>
-            <p className="mt-6 text-xl text-center">
+            <p className="mt-6 text-justify">
               Weather radios receive emergency alerts and weather forecasts from
               official sources. They are essential during severe weather events,
               natural disasters, and emergencies. Weather radios ensure that

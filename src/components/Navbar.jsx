@@ -1,5 +1,7 @@
 import Link from "next/link";
 import React from "react";
+import Lottie from "lottie-react";
+import sunny from "../assets/animation_llf76880.json";
 
 const Navbar = () => {
   const navbar = [
@@ -52,9 +54,14 @@ const Navbar = () => {
               ))}
             </ul>
           </div>
-          <a className=" normal-case text-3xl text-blue-800 font-bold ">
-            weatherCast
-          </a>
+          <div className="flex justify-center items-center">
+            <div>
+              <Lottie animationData={sunny} className="w-24 h-24"></Lottie>
+            </div>
+            <a className=" normal-case text-3xl text-blue-800 font-bold ">
+              weatherCast
+            </a>
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
