@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import "./WeatherUpdates.css";
-import { FaLocationDot, FaWind } from "react-icons/fa6";
+import { FaLocationDot, FaWind } from "react-icons/fa6"; 
 import { FaTachometerAlt } from "react-icons/fa";
 import moment from "moment";
 import Image from "next/image";

@@ -13,7 +13,11 @@ const nextConfig = {
       },
       {
         protocol: "https",
+<<<<<<< HEAD
         hostname: "tile.openweathermap.org", 
+=======
+        hostname: "i.ibb.co",
+>>>>>>> aab609ba918745c3236636e9f7f42f516abfe4ff
       },
     ],
   },
