@@ -3,8 +3,8 @@
 import React, { useContext } from "react";
 import "./login.css";
 import Link from "next/link";
-import { AuthContext } from "@/providers/AuthProvider";
 import SocialLogin from "../Components/SocialLogin";
+import { AuthContext } from "@/Providers/AuthProvider";
 
 const LogInPage = () => {
   const { signIn } = useContext(AuthContext);

@@ -3,8 +3,8 @@
 import Link from "next/link";
 import React, { useContext } from "react";
 import "./signUp.css";
-import { AuthContext } from "@/providers/AuthProvider";
 import SocialLogin from "../Components/SocialLogin";
+import { AuthContext } from "@/Providers/AuthProvider";
 
 const SignUpPage = () => {
   const { createUser } = useContext(AuthContext);
