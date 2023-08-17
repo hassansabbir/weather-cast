@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import React from "react";
 import Lottie from "lottie-react";
@@ -54,6 +55,7 @@ const Navbar = () => {
               ))}
             </ul>
           </div>
+<<<<<<< HEAD:src/components/Navbar.jsx
           <div className="flex justify-center items-center">
             <div>
               <Lottie animationData={sunny} className="w-24 h-24"></Lottie>
@@ -62,6 +64,11 @@ const Navbar = () => {
               weatherCast
             </a>
           </div>
+=======
+          <a className=" normal-case text-3xl text-blue-800 font-bold " >
+            weatherCast
+          </a>
+>>>>>>> d750a9fbfc27648537f1e0e329c7a4649fba239e:src/app/Components/Navbar.jsx
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -73,11 +80,9 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link href="/logIn">
-            <button className="btn btn-active bg-blue-800 text-white">
-              Login
-            </button>
-          </Link>
+          <button className="btn btn-active bg-blue-800 text-white">
+            Login
+          </button>
         </div>
       </div>
     </div>

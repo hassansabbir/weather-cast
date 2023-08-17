@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import "./WeatherUpdates.css";
-import { FaLocationDot, FaWind } from "react-icons/fa6";
+import { FaLocationDot, FaWind } from "react-icons/fa6"; 
 import { FaTachometerAlt } from "react-icons/fa";
 import moment from "moment";
 import Image from "next/image";
@@ -69,6 +69,7 @@ const WeatherUpdates = () => {
               </h2>
             </div>
             <div>
+<<<<<<< HEAD
               <Image
                 // src={`https:${weather?.current?.condition?.icon}`}
                 alt="logo"
@@ -83,6 +84,14 @@ const WeatherUpdates = () => {
                   height={100}
                 />
               )}
+=======
+              {/* <Image
+                src={`https:${weather?.current?.condition?.icon}`}
+                alt="logo"
+                width={100}
+                height={100}
+              /> */}
+>>>>>>> d750a9fbfc27648537f1e0e329c7a4649fba239e
               <h2 className="text-xl lg:text-2xl  font-bold text-white">
                 {weather?.current?.condition?.text}
               </h2>
