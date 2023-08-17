@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import React from "react";
 
@@ -53,7 +52,7 @@ const Navbar = () => {
               ))}
             </ul>
           </div>
-          <a className=" normal-case text-3xl text-blue-800 font-bold " >
+          <a className=" normal-case text-3xl text-blue-800 font-bold ">
             weatherCast
           </a>
         </div>
@@ -67,9 +66,11 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <button className="btn btn-active bg-blue-800 text-white">
-            Login
-          </button>
+          <Link href="/logIn">
+            <button className="btn btn-active bg-blue-800 text-white">
+              Login
+            </button>
+          </Link>
         </div>
       </div>
     </div>

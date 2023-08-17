@@ -103,7 +103,7 @@ const Contact = () => {
               </div>
               <div className="mx-auto max-w-[700px]">
                 <form>
-                  <div className="relative mb-6 " data-te-input-wrapper-init>
+                  <div className="relative mb-6" data-te-input-wrapper-init>
                     <input
                       type="text"
                       className="peer block min-h-[auto] w-full rounded bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"

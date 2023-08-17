@@ -6,7 +6,8 @@ import Marq from "./Marq";
 import NewsLetter from "./NewsLetter";
 import ProductSection from "./ProductSection";
 import WeatherDetails from "./WeatherDetails/WeatherDetails";
-import WeatherNews from "./WeatherNews";
+import WeatherNews from "./WeatherNews/WeatherNews";
+
 import WeatherUpdates from "./WeatherUodates/WeatherUpdates";
 
 const HomePage = () => {
@@ -14,7 +15,7 @@ const HomePage = () => {
     <div>
       <Banner />
       <WeatherUpdates />
-      <WeatherDetails/>
+      <WeatherDetails />
       <Intelligence />
       <WeatherNews />
       <ProductSection />
