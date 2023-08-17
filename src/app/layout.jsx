@@ -1,7 +1,12 @@
+"use client";
+
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Footer from "@/components/Footer";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,11 +16,17 @@ export const metadata = {
 };
 
 const RootLayout = ({ children }) => {
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: false,
+    });
+  }, []);
   return (
     <html lang="en" data-theme="light">
       <body className={inter.className}>
         <Navbar />
-        <div className="min-h-[calc(100vh-100px)]"> {children}</div>
+        <div> {children}</div>
         <Footer />
       </body>
     </html>

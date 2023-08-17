@@ -15,7 +15,12 @@ const Intelligence = () => {
         >
           <Lottie animationData={earth}></Lottie>
         </div>
-        <div className="p-10 pl-24">
+        <div
+          data-aos="fade-left"
+          data-aos-offset="300"
+          data-aos-easing="ease-in-sine"
+          className="p-10 pl-24"
+        >
           <h1 className="text-5xl font-semibold ">
             A New Era of Real-time <br />
             <span className="animate-pulse bg-gradient-to-r from-blue-800 via-blue-650 to-blue-500 bg-clip-text text-transparent font-black">

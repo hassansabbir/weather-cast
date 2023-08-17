@@ -7,7 +7,10 @@ const WeatherNews = () => {
         Weather <span className="text-blue-800">News</span> Update
       </h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 my-10 gap-10">
-        <div className="bg-base-200 p-10 rounded-3xl shadow-2xl">
+        <div
+          data-aos="flip-left"
+          className="bg-base-200 p-10 rounded-3xl shadow-2xl"
+        >
           <h2 className="text-3xl font-bold mb-5">
             Record-Breaking Heatwave Sweeps Across the Nation
           </h2>
@@ -20,7 +23,10 @@ const WeatherNews = () => {
             precautions to stay safe in the blistering conditions.
           </p>
         </div>
-        <div className="bg-base-200 p-10 rounded-3xl shadow-2xl">
+        <div
+          data-aos="flip-right"
+          className="bg-base-200 p-10 rounded-3xl shadow-2xl"
+        >
           <h2 className="text-3xl font-bold mb-5">
             Coastal Areas Brace for Intense Storm Surge and Flooding
           </h2>
@@ -33,7 +39,10 @@ const WeatherNews = () => {
             storm makes its way towards the coastline.
           </p>
         </div>
-        <div className="bg-base-200 p-10 rounded-3xl shadow-2xl">
+        <div
+          data-aos="flip-left"
+          className="bg-base-200 p-10 rounded-3xl shadow-2xl"
+        >
           <h2 className="text-3xl font-bold mb-5">
             Unseasonable Cold Front Brings Early Snowfall to Mountain Regions
           </h2>
@@ -45,7 +54,10 @@ const WeatherNews = () => {
             roads as icy conditions may pose challenges for travelers.
           </p>
         </div>
-        <div className="bg-base-200 p-10 rounded-3xl shadow-2xl">
+        <div
+          data-aos="flip-right"
+          className="bg-base-200 p-10 rounded-3xl shadow-2xl"
+        >
           <h2 className="text-3xl font-bold mb-5">
             Drought Persists as Water Reserves Reach Critical Levels
           </h2>
