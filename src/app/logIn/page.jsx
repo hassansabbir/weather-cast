@@ -1,9 +1,29 @@
+"use client"
 import SocialLogin from "@/components/SocialLogin";
-import React from "react";
+import React, { useContext } from "react";
 import "./login.css";
 import Link from "next/link";
+import { AuthContext } from "@/providers/AuthProvider";
 
 const logInPage = () => {
+     const {signIn} = useContext(AuthContext);
+
+       const handleLogin= event =>{
+        event.preventDefault();
+        const form =event.target;
+        const email=form.email.value;
+        const password=form.password.value;
+        console.log(email,password);
+
+        signIn(email,password)
+        .then(result=>{
+          const loggedUser=result.user;
+          console.log(loggedUser)
+        })
+        .catch(error=>{
+          console.log(error);
+        })
+       }
   return (
     <div className="login-page">
       <div className="hero ">
@@ -22,7 +42,7 @@ const logInPage = () => {
             </p>
           </div>
           <div className="card flex-shrink-0 w-full mb-20 max-w-xl shadow-2xl ">
-            <form className="card-body bg-white bg-opacity-70 rounded-3xl">
+            <form onSubmit={handleLogin} className="card-body bg-white bg-opacity-70 rounded-3xl">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text text-xl font-bold">Email</span>
@@ -31,6 +51,7 @@ const logInPage = () => {
                   type="text"
                   placeholder="email"
                   className="input input-bordered"
+                  name="email"
                 />
               </div>
               <div className="form-control">
@@ -38,9 +59,10 @@ const logInPage = () => {
                   <span className="label-text text-xl font-bold">Password</span>
                 </label>
                 <input
-                  type="text"
+                  type="password"
                   placeholder="password"
                   className="input input-bordered"
+                  name="password"
                 />
 
                 <label className="label">
