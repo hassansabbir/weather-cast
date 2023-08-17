@@ -11,6 +11,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "cdn.weatherapi.com",
       },
+      {
+        protocol: "https",
+        hostname: "tile.openweathermap.org", 
+      },
     ],
   },
 };
