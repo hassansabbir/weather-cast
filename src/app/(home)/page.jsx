@@ -1,3 +1,5 @@
+"use client";
+
 import Banner from "./Banner";
 import Intelligence from "./Intelligence";
 import Marq from "./Marq";
