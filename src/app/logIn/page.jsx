@@ -5,9 +5,12 @@ import "./login.css";
 import Link from "next/link";
 import SocialLogin from "../Components/SocialLogin";
 import { AuthContext } from "@/Providers/AuthProvider";
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 const LogInPage = () => {
   const { signIn } = useContext(AuthContext);
+  const router = useRouter();
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -20,6 +23,16 @@ const LogInPage = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        Swal.fire({
+          title: "Login Successfully.",
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        });
+        router.push("/");
       })
       .catch((error) => {
         console.log(error);
