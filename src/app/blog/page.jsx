@@ -74,7 +74,7 @@ const posts = [
   },
 ];
 
-const HomePage = () => {
+const BlogPage = () => {
   const [selectedPost, setSelectedPost] = useState(null);
 
   const handlePostClick = (index) => {
@@ -179,4 +179,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default BlogPage;
