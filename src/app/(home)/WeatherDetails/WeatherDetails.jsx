@@ -22,7 +22,7 @@ const weatherFetch = async(City , setWeather)=>{
 
   try {
     const apiKey = '41a5c84ae7ccfff1bc9491b25aa4dbde'
-    const URL = `http://api.openweathermap.org/data/2.5/forecast?q=${City}&appid=${apiKey}`
+    const URL = `https://api.openweathermap.org/data/2.5/forecast?q=${City}&appid=${apiKey}`
     const response = await fetch(URL);
     const data = await response.json();
     setWeather(data);
