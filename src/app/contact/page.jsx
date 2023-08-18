@@ -8,13 +8,13 @@ const Contact = () => {
       <div className="hero min-h-[500px] bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <Image
-            className="w-[600px] h-[600px] rounded-full shadow-2xl"
+            className="w-[500px] h-[500px] rounded-full shadow-2xl"
             src={contactImg}
             alt="contact"
           />
-          <div>
-            <h1 className="text-5xl font-bold mb-5">Contact Us</h1>
-            <p className="font-bold">
+          <div className="shadow-md rounded-lg bg-[#F2F2F2]">
+            <h1 className="text-7xl font-bold mb-5"><span className="text-[#1E40AF]">Contact</span> Us</h1>
+            <p className="font-bold text-3xl mx-2">
               Get in touch with us for any inquiries or feedback about our
               weather forecast web app. We are here to assist you
             </p>
@@ -103,16 +103,16 @@ const Contact = () => {
               </div>
               <div className="mx-auto max-w-[700px]">
                 <form>
-                  <div className="relative mb-6 " data-te-input-wrapper-init>
+                  <div className="relative mb-6" data-te-input-wrapper-init>
                     <input
                       type="text"
                       className="peer block min-h-[auto] w-full rounded bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                       id="exampleInput90"
-                      placeholder="Name"
+                      placeholder=" "
                     />
                     <label
                       className="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-                      for="exampleInput90"
+                      htmlFor="exampleInput90"
                     >
                       Name
                     </label>
