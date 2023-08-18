@@ -3,11 +3,11 @@
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import "leaflet/dist/leaflet.css";
-import L from "leaflet";
+
 import axios from "axios";
 import { Marker, Popup, TileLayer } from "react-leaflet";
 import { CircleMarker, Polyline } from "react-leaflet";
-import useClient from "@/hooks/useClient";
+// import useClient from "@/hooks/useClient";
 
 const MapContainer = dynamic(
   () => import("react-leaflet").then((mod) => mod.MapContainer),
@@ -16,43 +16,10 @@ const MapContainer = dynamic(
   }
 );
 
-const clearIcon = new L.Icon({
-  iconUrl: "/path-to-clear-icon.png",
-  iconSize: [32, 32],
-  iconAnchor: [16, 32],
-  popupAnchor: [0, -32],
-});
 
-const hazeIcon = new L.Icon({
-  iconUrl: "/path-to-haze-icon.png",
-  iconSize: [32, 32],
-  iconAnchor: [16, 32],
-  popupAnchor: [0, -32],
-});
 
-const rainIcon = new L.Icon({
-  iconUrl: "/path-to-rain-icon.png",
-  iconSize: [32, 32],
-  iconAnchor: [16, 32],
-  popupAnchor: [0, -32],
-});
-
-const cloudsIcon = new L.Icon({
-  iconUrl: "/path-to-clouds-icon.png",
-  iconSize: [32, 32],
-  iconAnchor: [16, 32],
-  popupAnchor: [0, -32],
-});
-
-const weatherIcons = {
-  Clear: clearIcon,
-  Haze: hazeIcon,
-  Rain: rainIcon,
-  Clouds: cloudsIcon,
-};
-
-function WeatherMap() {
-  const client = useClient();
+function WeatherMap({city}) {
+//   const client = useClient();
   const [weatherData, setWeatherData] = useState(null);
 
   const handleMapClick = (event) => {
@@ -64,8 +31,8 @@ function WeatherMap() {
   };
 
   useEffect(() => {
-    const apiKey = "e791ec3c3cbfbc171c44902e5b35f1fd";
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Dhaka&appid=${apiKey}`;
+    const apiKey = "41a5c84ae7ccfff1bc9491b25aa4dbde";
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
     const windSpeedApiUrl =
       "https://openweathermap.org/weathermap?basemap=map&cities=false&layer=radar&lat=30&lon=-20&zoom=3";
 
@@ -86,7 +53,7 @@ function WeatherMap() {
       .catch((error) => {
         console.error("Error fetching wind speed data:", error);
       });
-  }, []);
+  }, [city]);
 
   return (
     <div
@@ -97,7 +64,7 @@ function WeatherMap() {
         height: "100vh",
       }}
     >
-      {client && (
+      {typeof window !== 'undefined' && (
         <MapContainer
           center={[23.8103, 90.4125]}
           zoom={10}
@@ -116,7 +83,7 @@ function WeatherMap() {
             >
               Weather: {weatherData.weather[0].main}
               <br />
-              Temperature: {weatherData.main.temp} K
+              Temperature: {(weatherData.main.temp - 273.15).toFixed(2)}°C
             </Popup>
           )}
 
