@@ -5,9 +5,13 @@ import React, { useContext } from "react";
 import "./signUp.css";
 import SocialLogin from "../Components/SocialLogin";
 import { AuthContext } from "@/Providers/AuthProvider";
+import { updateProfile } from "firebase/auth";
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 const SignUpPage = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, logOut } = useContext(AuthContext);
+  const router = useRouter();
 
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -22,8 +26,38 @@ const SignUpPage = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        updateUserDetails(user, name, photo);
+        Swal.fire({
+          title: "User created successfully. Please login now.",
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        });
+        logOut()
+          .then(() => {
+            router.push("/logIn");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const updateUserDetails = (user, name, photo) => {
+    updateProfile(user, {
+      displayName: name,
+      photoURL: photo,
+    })
+      .then(() => {})
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
