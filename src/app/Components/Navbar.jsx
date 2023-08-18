@@ -1,7 +1,12 @@
+"use client";
+
+import { AuthContext } from "@/Providers/AuthProvider";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
   const navbar = [
     {
       path: "/",
@@ -20,6 +25,12 @@ const Navbar = () => {
       title: "Blog",
     },
   ];
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
   return (
     <div className="ms-5 me-6 sticky top-0 z-10 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200">
       <div className="navbar bg-base-100">
@@ -65,12 +76,32 @@ const Navbar = () => {
             ))}
           </ul>
         </div>
-        <div className="navbar-end">
-          <Link href="/logIn">
-            <button className="btn btn-active bg-blue-800 text-white">
-              Login
-            </button>
-          </Link>
+        <div className="navbar-end space-x-3">
+          <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
+            {user && (
+              <div className="avatar">
+                <div className="w-10 rounded-full ">
+                  <img src={user?.photoURL} />
+                </div>
+              </div>
+            )}
+          </div>
+          {user?.email ? (
+            <>
+              <button
+                onClick={handleLogOut}
+                className="btn btn-active btn-ghost"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link href="/logIn">Login</Link>
+              </li>
+            </>
+          )}
         </div>
       </div>
     </div>

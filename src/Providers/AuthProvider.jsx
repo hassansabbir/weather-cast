@@ -1,3 +1,5 @@
+"use client";
+
 import app from "@/Firebase/Firebase.config";
 // import { googleProvider } from "@/Firebase/firebase.auth";
 import {
@@ -28,18 +30,12 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const profileUpdate = async (updateUser = {}) => {
-    setLoading(true);
-    await updateProfile(auth.currentUser, updateUser);
-    setUser((preUser) => ({ ...preUser, ...updateUser }));
-  };
-
   const googleLogin = () => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
 
-  const logout = () => {
+  const logOut = () => {
     setLoading(true);
     return signOut(auth);
   };
@@ -60,9 +56,8 @@ const AuthProvider = ({ children }) => {
     loading,
     createUser,
     signIn,
-    profileUpdate,
     googleLogin,
-    logout,
+    logOut,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
