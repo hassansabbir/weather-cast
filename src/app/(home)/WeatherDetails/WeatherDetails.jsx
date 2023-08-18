@@ -1,9 +1,16 @@
 "use client";
 
 import moment from 'moment';
-import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
-import { FaCalendar, FaCloud, FaEye, FaLocationDot, FaMoon, FaTemperatureHalf } from 'react-icons/fa6';
+import {  FaCloud  } from 'react-icons/fa6';
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import {
+  FaCalendar,
+  FaEye,
+  FaLocationDot,
+  FaMoon,
+  FaTemperatureHalf,
+} from "react-icons/fa6";
 import { MdAir, MdSunny } from "react-icons/md";
 import {  WiDayCloudy, WiDayHail, WiDayRainMix, WiDaySleetStorm, WiDaySunny, WiDaySunnyOvercast, WiHumidity, WiSandstorm } from "react-icons/wi";
 
@@ -74,14 +81,17 @@ const WeatherDetails = () => {
     const currentWeather2 = weather.list[2];   
     const currentTemperatureKelvin2 = currentWeather2.main.temp;
     const currentTemperatureCelsius2 = (currentTemperatureKelvin2 - 273.15);
+ 
 
     const currentWeather3 = weather.list[3];
     const currentTemperatureKelvin3 = currentWeather3.main.temp;
     const currentTemperatureCelsius3 = (currentTemperatureKelvin3 - 273.15);
 
+
     const currentWeather4 = weather.list[4];
     const currentTemperatureKelvin4 = currentWeather4.main.temp;
     const currentTemperatureCelsius4 = (currentTemperatureKelvin4 - 273.15);
+ 
 
     const currentWeather5 = weather.list[5];
     const currentTemperatureKelvin5 = currentWeather5.main.temp;
@@ -116,11 +126,19 @@ const WeatherDetails = () => {
     const currentDate16 = new Date(currentWeather16.dt_txt);
     const currentTemperatureKelvin16 = currentWeather16.main.temp;
     const currentTemperatureCelsius16 = (currentTemperatureKelvin16 - 273.15);
+  const currentWeather12 = weather.list[12];
+  const currentDate12 = new Date(currentWeather12.dt_txt);
+  const currentTemperatureKelvin12 = currentWeather12.main.temp;
+  const currentTemperatureCelsius12 = currentTemperatureKelvin12 - 273.15;
 
     const currentWeather24 = weather.list[24];
     const currentDate24 = new Date(currentWeather24.dt_txt);
     const currentTemperatureKelvin24 = currentWeather24.main.temp;
     const currentTemperatureCelsius24 = (currentTemperatureKelvin24 - 273.15);
+  const currentWeather20 = weather.list[20];
+  const currentDate20 = new Date(currentWeather20.dt_txt);
+  const currentTemperatureKelvin20 = currentWeather20.main.temp;
+  const currentTemperatureCelsius20 = currentTemperatureKelvin20 - 273.15;
 
      const currentWeather32 = weather.list[32];
     const currentDate32 = new Date(currentWeather32.dt_txt);
@@ -128,6 +146,10 @@ const WeatherDetails = () => {
     const currentTemperatureCelsius32 = (currentTemperatureKelvin32 - 273.15);
 
      
+  const currentWeather28 = weather.list[28];
+  const currentDate28 = new Date(currentWeather28.dt_txt);
+  const currentTemperatureKelvin28 = currentWeather28.main.temp;
+  const currentTemperatureCelsius28 = currentTemperatureKelvin28 - 273.15;
 
     return (
         <div >
@@ -199,6 +221,16 @@ const WeatherDetails = () => {
 <h2 className=' text-xl'> {currentTemperatureCelsius24.toFixed(2)}  </h2>
 <h2 className=" ">  {currentDate24.toDateString()}</h2>
    </div>
+              <div className="flex gap-4">
+                <p>
+                  <WiDaySunny className="text-3xl" />
+                </p>
+                <h2 className=" text-xl">
+                  {" "}
+                  {currentTemperatureCelsius20.toFixed(2)}{" "}
+                </h2>
+                <h2 className=" "> {currentDate20.toDateString()}</h2>
+              </div>
 
    <div className='flex gap-4'>
 <p><WiDaySunnyOvercast className='text-3xl'/></p>
