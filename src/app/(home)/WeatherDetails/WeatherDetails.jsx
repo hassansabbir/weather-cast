@@ -5,6 +5,10 @@ import React, { useEffect, useState } from 'react';
 import { FaCalendar, FaEye, FaLocationDot, FaMoon, FaTemperatureHalf } from 'react-icons/fa6';
 import { MdAir, MdSunny } from "react-icons/md";
 import {  WiDayCloudy, WiDayHail, WiDayRainMix, WiDaySleetStorm, WiDaySunny, WiDaySunnyOvercast, WiHumidity, WiSandstorm } from "react-icons/wi";
+import WeatherMap from '../SimpleWeatherMap';
+import WeatherAlert from './WeatherAlert';
+
+
 
 const weatherFetch = async(City , setWeather)=>{
 
@@ -277,10 +281,20 @@ const WeatherDetails = () => {
   </div>
 </div>
 
+
 </div>
+<div className='card h-80 bg-base-100 shadow-xl mt-2 ' style={{ overflow: 'hidden' , zIndex: 5  }}>
+  <WeatherMap city={City} />
+</div>
+<div className='card h-20 bg-base-100 shadow-xl mt-2 '>
+<WeatherAlert weather={currentWeather} />
+</div>
+
+
 
  </div>
            </div>
+           
 
 
         </div>
