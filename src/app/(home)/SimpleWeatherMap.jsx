@@ -7,6 +7,7 @@ import L from "leaflet";
 import axios from "axios";
 import { Marker, Popup, TileLayer } from "react-leaflet";
 import { CircleMarker, Polyline } from "react-leaflet";
+import useClient from "@/hooks/useClient";
 
 const MapContainer = dynamic(
   () => import("react-leaflet").then((mod) => mod.MapContainer),
@@ -50,7 +51,8 @@ const weatherIcons = {
   Clouds: cloudsIcon,
 };
 
-function WeatherMap({ city }) {
+function WeatherMap({city}) {
+  const client = useClient();
   const [weatherData, setWeatherData] = useState(null);
 
   const handleMapClick = (event) => {
@@ -93,10 +95,9 @@ function WeatherMap({ city }) {
         justifyContent: "center",
         alignItems: "center",
         height: "100vh",
-        
       }}
     >
-      {typeof window !== "undefined" && (
+      {client && (
         <MapContainer
           center={[23.8103, 90.4125]}
           zoom={10}

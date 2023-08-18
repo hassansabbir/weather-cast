@@ -26,7 +26,6 @@ const AboutPage = () => {
             and weather advisories, ensuring you're always a step ahead of
             changing weather patterns.
           </p>
-          <p> this is weather app </p>
           <p className="text-xl my-5">
             Plan your days confidently with multi-day forecasts that empower you
             to make informed decisions, whether it's scheduling outdoor

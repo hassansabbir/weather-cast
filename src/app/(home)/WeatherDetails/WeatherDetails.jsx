@@ -1,8 +1,16 @@
 "use client";
 
-import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
-import { FaCalendar, FaEye, FaLocationDot, FaMoon, FaTemperatureHalf } from 'react-icons/fa6';
+import moment from 'moment';
+import {  FaCloud  } from 'react-icons/fa6';
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import {
+  FaCalendar,
+  FaEye,
+  FaLocationDot,
+  FaMoon,
+  FaTemperatureHalf,
+} from "react-icons/fa6";
 import { MdAir, MdSunny } from "react-icons/md";
 import {  WiDayCloudy, WiDayHail, WiDayRainMix, WiDaySleetStorm, WiDaySunny, WiDaySunnyOvercast, WiHumidity, WiSandstorm } from "react-icons/wi";
 import WeatherMap from '../SimpleWeatherMap';
@@ -70,42 +78,82 @@ const WeatherDetails = () => {
   const options = { hour: 'numeric', minute: 'numeric', hour12: true };
 
     // for 7 days 
-    // const currentWeather1 = weather.list[1];
-    // const currentDate1 = new Date(currentWeather1.dt_txt);
-    // const currentTemperatureKelvin1 = currentWeather1.main.temp;
-    // const currentTemperatureCelsius1 = (currentTemperatureKelvin1 - 273.15);
+    const currentWeather1 = weather.list[1];
+    const currentTemperatureKelvin1 = currentWeather1.main.temp;
+    const currentTemperatureCelsius1 = (currentTemperatureKelvin1 - 273.15);
 
-    // const currentWeather2 = weather.list[2];
-    // const currentDate2 = new Date(currentWeather2.dt_txt);
-    // const currentTemperatureKelvin2 = currentWeather2.main.temp;
-    // const currentTemperatureCelsius2 = (currentTemperatureKelvin2 - 273.15);
+    const currentWeather2 = weather.list[2];   
+    const currentTemperatureKelvin2 = currentWeather2.main.temp;
+    const currentTemperatureCelsius2 = (currentTemperatureKelvin2 - 273.15);
+ 
 
-    // const currentWeather3 = weather.list[3];
-    // const currentDate3 = new Date(currentWeather3.dt_txt);
-    // const currentTemperatureKelvin3 = currentWeather3.main.temp;
-    // const currentTemperatureCelsius3 = (currentTemperatureKelvin3 - 273.15);
+    const currentWeather3 = weather.list[3];
+    const currentTemperatureKelvin3 = currentWeather3.main.temp;
+    const currentTemperatureCelsius3 = (currentTemperatureKelvin3 - 273.15);
+
 
     const currentWeather4 = weather.list[4];
-    const currentDate4 = new Date(currentWeather4.dt_txt);
     const currentTemperatureKelvin4 = currentWeather4.main.temp;
     const currentTemperatureCelsius4 = (currentTemperatureKelvin4 - 273.15);
+ 
 
-    const currentWeather12 = weather.list[12];
-    const currentDate12 = new Date(currentWeather12.dt_txt);
-    const currentTemperatureKelvin12 = currentWeather12.main.temp;
-    const currentTemperatureCelsius12 = (currentTemperatureKelvin12 - 273.15);
+    const currentWeather5 = weather.list[5];
+    const currentTemperatureKelvin5 = currentWeather5.main.temp;
+    const currentTemperatureCelsius5 = (currentTemperatureKelvin5 - 273.15);
 
-    const currentWeather20 = weather.list[20];
-    const currentDate20 = new Date(currentWeather20.dt_txt);
-    const currentTemperatureKelvin20 = currentWeather20.main.temp;
-    const currentTemperatureCelsius20 = (currentTemperatureKelvin20 - 273.15);
+    const currentWeather6 = weather.list[6];
+    const currentTemperatureKelvin6 = currentWeather6.main.temp;
+    const currentTemperatureCelsius6 = (currentTemperatureKelvin6 - 273.15);
 
-     const currentWeather28 = weather.list[28];
-    const currentDate28 = new Date(currentWeather28.dt_txt);
-    const currentTemperatureKelvin28 = currentWeather28.main.temp;
-    const currentTemperatureCelsius28 = (currentTemperatureKelvin28 - 273.15);
+    const currentWeather7 = weather.list[7];
+    const currentTemperatureKelvin7 = currentWeather7.main.temp;
+    const currentTemperatureCelsius7 = (currentTemperatureKelvin7 - 273.15);
+
+    const currentWeather8 = weather.list[8];
+    const currentDate8 = new Date(currentWeather8.dt_txt);
+    const currentTemperatureKelvin8 = currentWeather8.main.temp;
+    const currentTemperatureCelsius8 = (currentTemperatureKelvin8 - 273.15);
+
+    const currentWeather9 = weather.list[9];
+    const currentTemperatureKelvin9 = currentWeather9.main.temp;
+    const currentTemperatureCelsius9 = (currentTemperatureKelvin9 - 273.15);
+
+    const currentWeather10 = weather.list[10];
+    const currentTemperatureKelvin10 = currentWeather10.main.temp;
+    const currentTemperatureCelsius10 = (currentTemperatureKelvin10 - 273.15);
+
+    const currentWeather11 = weather.list[11];
+    const currentTemperatureKelvin11 = currentWeather11.main.temp;
+    const currentTemperatureCelsius11 = (currentTemperatureKelvin11 - 273.15);
+
+    const currentWeather16 = weather.list[16];
+    const currentDate16 = new Date(currentWeather16.dt_txt);
+    const currentTemperatureKelvin16 = currentWeather16.main.temp;
+    const currentTemperatureCelsius16 = (currentTemperatureKelvin16 - 273.15);
+  const currentWeather12 = weather.list[12];
+  const currentDate12 = new Date(currentWeather12.dt_txt);
+  const currentTemperatureKelvin12 = currentWeather12.main.temp;
+  const currentTemperatureCelsius12 = currentTemperatureKelvin12 - 273.15;
+
+    const currentWeather24 = weather.list[24];
+    const currentDate24 = new Date(currentWeather24.dt_txt);
+    const currentTemperatureKelvin24 = currentWeather24.main.temp;
+    const currentTemperatureCelsius24 = (currentTemperatureKelvin24 - 273.15);
+  const currentWeather20 = weather.list[20];
+  const currentDate20 = new Date(currentWeather20.dt_txt);
+  const currentTemperatureKelvin20 = currentWeather20.main.temp;
+  const currentTemperatureCelsius20 = currentTemperatureKelvin20 - 273.15;
+
+     const currentWeather32 = weather.list[32];
+    const currentDate32 = new Date(currentWeather32.dt_txt);
+    const currentTemperatureKelvin32 = currentWeather32.main.temp;
+    const currentTemperatureCelsius32 = (currentTemperatureKelvin32 - 273.15);
 
      
+  const currentWeather28 = weather.list[28];
+  const currentDate28 = new Date(currentWeather28.dt_txt);
+  const currentTemperatureKelvin28 = currentWeather28.main.temp;
+  const currentTemperatureCelsius28 = currentTemperatureKelvin28 - 273.15;
 
     return (
         <div >
@@ -162,26 +210,36 @@ const WeatherDetails = () => {
 
    <div className='flex gap-5 justify-around'>
 <p><WiDaySleetStorm className='text-3xl'/></p>
-<h2 className=' text-xl'> {currentTemperatureCelsius4.toFixed(2)}  </h2>
-<h2 className=" ">  {currentDate4.toDateString()}</h2>
+<h2 className=' text-xl'> {currentTemperatureCelsius8.toFixed(2)}  </h2>
+<h2 className=" ">  {currentDate8.toDateString()}</h2>
    </div>
 
    <div className='flex gap-4'>
 <p><WiDayRainMix className='text-3xl'/></p>
-<h2 className=' text-xl'> {currentTemperatureCelsius12.toFixed(2)}  </h2>
-<h2 className=" ">  {currentDate12.toDateString()}</h2>
+<h2 className=' text-xl'> {currentTemperatureCelsius16.toFixed(2)}  </h2>
+<h2 className=" ">  {currentDate16.toDateString()}</h2>
    </div>
 
    <div className='flex gap-4'>
 <p><WiDaySunny className='text-3xl'/></p>
-<h2 className=' text-xl'> {currentTemperatureCelsius20.toFixed(2)}  </h2>
-<h2 className=" ">  {currentDate20.toDateString()}</h2>
+<h2 className=' text-xl'> {currentTemperatureCelsius24.toFixed(2)}  </h2>
+<h2 className=" ">  {currentDate24.toDateString()}</h2>
    </div>
+              <div className="flex gap-4">
+                <p>
+                  <WiDaySunny className="text-3xl" />
+                </p>
+                <h2 className=" text-xl">
+                  {" "}
+                  {currentTemperatureCelsius20.toFixed(2)}{" "}
+                </h2>
+                <h2 className=" "> {currentDate20.toDateString()}</h2>
+              </div>
 
    <div className='flex gap-4'>
 <p><WiDaySunnyOvercast className='text-3xl'/></p>
-<h2 className=' text-xl'> {currentTemperatureCelsius28.toFixed(2)}  </h2>
-<h2 className="">  {currentDate28.toDateString()}</h2>
+<h2 className=' text-xl'> {currentTemperatureCelsius32.toFixed(2)}  </h2>
+<h2 className="">  {currentDate32.toDateString()}</h2>
    </div>
 
   
@@ -193,7 +251,7 @@ const WeatherDetails = () => {
  {/* highlights  */}
  <div className='col-span-2 '>
 
-<h3>Today Highlights</h3>
+<h3 className='font-bold text-2xl mt-6 ms-3'>Today Highlights</h3>
 <div className='grid sm:grid-cols-1 lg:grid-cols-2 gap-4'>
 <div className="card  bg-base-100 shadow-xl">
   <div className="card-body">
@@ -211,10 +269,10 @@ const WeatherDetails = () => {
 
   </div>
 </div>
-<div className="card  bg-base-100 shadow-xl">
+<div className="card  bg-base-100 shadow-xl sm:mb-8">
   <div className="card-body">
     <h2 className="font-semibold">Sunrise & Sunset</h2>
-  <div className='flex gap-2' >
+  <div className='flex gap-12' >
    
     <div className='flex gap-2'>
     <p><MdSunny className='text-3xl mt-5'/> </p>
@@ -228,14 +286,11 @@ const WeatherDetails = () => {
     
     </div>
     
-   
-    
-
   </div>
 </div>
 </div>
 
-<div className='grid sm:grid-cols-2 lg:grid-cols-4 lg:mt-7 gap-5'>
+<div className='grid sm:grid-cols-2 lg:grid-cols-4 mt-7 gap-5'>
 
 <div className="card  bg-base-100 shadow-xl">
   <div className="card-body">
@@ -292,6 +347,120 @@ const WeatherDetails = () => {
 
 
 
+<h3 className='font-bold text-2xl mt-6 ms-3'>Today at</h3>
+
+<div className='grid sm:grid-cols-3 lg:grid-cols-6 lg:mt-5 gap-2' >
+
+<div className="card  bg-base-100 shadow-xl">
+  <div className="card-body text-center">
+   <p className='text-center font-semibold text-xl'>{moment(weather?.list[0]?.dt_txt).format('h A')}</p> 
+    <p className=''><FaCloud className='text-4xl mx-auto'/></p>
+    <h2 className=' text-xl'> {currentTemperatureCelsius.toFixed(2)} <small>°C</small> </h2>
+    <p className=" ">{currentWeather?.weather[0]?.description}</p>
+ </div>
+</div>
+
+<div className="card  bg-base-100 shadow-xl">
+  <div className="card-body text-center">
+   <p className='text-center font-semibold text-xl'>{moment(weather?.list[1]?.dt_txt).format('h A')}</p> 
+    <p className=''><FaCloud className='text-4xl mx-auto'/></p>
+    <h2 className=' text-xl'> {currentTemperatureCelsius1.toFixed(2)} <small>°C</small> </h2>
+    <p className=" ">{weather.list[1]?.weather[0]?.description}</p>
+ </div>
+</div>
+
+<div className="card  bg-base-100 shadow-xl">
+  <div className="card-body text-center">
+   <p className='text-center font-semibold text-xl'>{moment(weather?.list[2]?.dt_txt).format('h A')}</p> 
+    <p className=''><FaCloud className='text-4xl mx-auto'/></p>
+    <h2 className=' text-xl'> {currentTemperatureCelsius2.toFixed(2)} <small>°C</small> </h2>
+    <p className=" ">{weather.list[2]?.weather[0]?.description}</p>
+ </div>
+</div>
+
+<div className="card  bg-base-100 shadow-xl">
+  <div className="card-body text-center">
+   <p className='text-center font-semibold text-xl'>{moment(weather?.list[3]?.dt_txt).format('h A')}</p> 
+    <p className=''><FaCloud className='text-4xl mx-auto'/></p>
+    <h2 className=' text-xl'> {currentTemperatureCelsius3.toFixed(2)} <small>°C</small> </h2>
+    <p className=" ">{weather.list[3]?.weather[0]?.description}</p>
+ </div>
+</div>
+
+<div className="card  bg-base-100 shadow-xl">
+  <div className="card-body text-center">
+   <p className='text-center font-semibold text-xl'>{moment(weather?.list[4]?.dt_txt).format('h A')}</p> 
+    <p className=''><FaCloud className='text-4xl mx-auto'/></p>
+    <h2 className=' text-xl'> {currentTemperatureCelsius4.toFixed(2)} <small>°C</small> </h2>
+    <p className=" ">{weather.list[4]?.weather[0]?.description}</p>
+ </div>
+</div>
+
+<div className="card  bg-base-100 shadow-xl">
+  <div className="card-body text-center">
+   <p className='text-center font-semibold text-xl'>{moment(weather?.list[5]?.dt_txt).format(' h A')}</p> 
+    <p className=''><FaCloud className='text-4xl mx-auto'/></p>
+    <h2 className=' text-xl'> {currentTemperatureCelsius5.toFixed(2)} <small>°C</small> </h2>
+    <p className=" ">{weather.list[5]?.weather[0]?.description}</p>
+ </div>
+</div>
+
+<div className="card  bg-base-100 shadow-xl">
+  <div className="card-body text-center">
+   <p className='text-center font-semibold text-xl'>{moment(weather?.list[6]?.dt_txt).format('h A')}</p> 
+    <p className=''><FaCloud className='text-4xl mx-auto'/></p>
+    <h2 className=' text-xl'> {currentTemperatureCelsius6.toFixed(2)} <small>°C</small> </h2>
+    <p className=" ">{weather.list[6]?.weather[0]?.description}</p>
+ </div>
+</div>
+
+<div className="card  bg-base-100 shadow-xl">
+  <div className="card-body text-center">
+   <p className='text-center font-semibold text-xl'>{moment(weather?.list[7]?.dt_txt).format(' h A')}</p> 
+    <p className=''><FaCloud className='text-4xl mx-auto'/></p>
+    <h2 className=' text-xl'> {currentTemperatureCelsius7.toFixed(2)} <small>°C</small> </h2>
+    <p className=" ">{weather.list[7]?.weather[0]?.description}</p>
+ </div>
+</div>
+
+<div className="card  bg-base-100 shadow-xl">
+  <div className="card-body text-center">
+   <p className='text-center font-semibold text-xl'>{moment(weather?.list[8]?.dt_txt).format(' h A')}</p> 
+    <p className=''><FaCloud className='text-4xl mx-auto'/></p>
+    <h2 className=' text-xl'> {currentTemperatureCelsius8.toFixed(2)} <small>°C</small> </h2>
+    <p className=" ">{weather.list[8]?.weather[0]?.description}</p>
+ </div>
+</div>
+
+<div className="card  bg-base-100 shadow-xl">
+  <div className="card-body text-center">
+   <p className='text-center font-semibold text-xl'>{moment(weather?.list[9]?.dt_txt).format(' h A')}</p> 
+    <p className=''><FaCloud className='text-4xl mx-auto'/></p>
+    <h2 className=' text-xl'> {currentTemperatureCelsius9.toFixed(2)} <small>°C</small> </h2>
+    <p className=" ">{weather.list[9]?.weather[0]?.description}</p>
+ </div>
+</div>
+
+<div className="card  bg-base-100 shadow-xl">
+  <div className="card-body text-center">
+   <p className='text-center font-semibold text-xl'>{moment(weather?.list[10]?.dt_txt).format(' h A')}</p> 
+    <p className=''><FaCloud className='text-4xl mx-auto'/></p>
+    <h2 className=' text-xl'> {currentTemperatureCelsius10.toFixed(2)} <small>°C</small> </h2>
+    <p className=" ">{weather.list[10]?.weather[0]?.description}</p>
+ </div>
+</div>
+
+<div className="card  bg-base-100 shadow-xl">
+  <div className="card-body text-center">
+   <p className='text-center font-semibold text-xl'>{moment(weather?.list[11]?.dt_txt).format(' h A')}</p> 
+    <p className=''><FaCloud className='text-4xl mx-auto'/></p>
+    <h2 className=' text-xl'> {currentTemperatureCelsius11.toFixed(2)} <small>°C</small> </h2>
+    <p className=" ">{weather.list[11]?.weather[0]?.description}</p>
+ </div>
+</div>
+
+
+</div>
  </div>
            </div>
            

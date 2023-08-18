@@ -21,6 +21,7 @@ const HomePage = () => {
       <WeatherDetails/>
       <ToastContainer />
       
+      
       <Intelligence />
       <WeatherNews />
       <ProductSection />
