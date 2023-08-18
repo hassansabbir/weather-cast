@@ -51,7 +51,7 @@ const weatherIcons = {
   Clouds: cloudsIcon,
 };
 
-function WeatherMap() {
+function WeatherMap({city}) {
   const client = useClient();
   const [weatherData, setWeatherData] = useState(null);
 
@@ -64,8 +64,8 @@ function WeatherMap() {
   };
 
   useEffect(() => {
-    const apiKey = "e791ec3c3cbfbc171c44902e5b35f1fd";
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Dhaka&appid=${apiKey}`;
+    const apiKey = "41a5c84ae7ccfff1bc9491b25aa4dbde";
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
     const windSpeedApiUrl =
       "https://openweathermap.org/weathermap?basemap=map&cities=false&layer=radar&lat=30&lon=-20&zoom=3";
 
@@ -86,7 +86,7 @@ function WeatherMap() {
       .catch((error) => {
         console.error("Error fetching wind speed data:", error);
       });
-  }, []);
+  }, [city]);
 
   return (
     <div
@@ -116,7 +116,7 @@ function WeatherMap() {
             >
               Weather: {weatherData.weather[0].main}
               <br />
-              Temperature: {weatherData.main.temp} K
+              Temperature: {(weatherData.main.temp - 273.15).toFixed(2)}°C
             </Popup>
           )}
 
