@@ -47,7 +47,7 @@ const LogInPage = () => {
               Welcome to WeatherCast
             </h1>
             <h1 className="text-5xl font-bold font-description">Login Now!</h1>
-            <p className="py-6 text-2xl w-9/12 mx-auto  font-description">
+            <p className="py-6 text-2xl lg:w-9/12 mx-auto  font-description">
               Welcome to our weather forecast web application! Log in to access
               personalized weather updates, and real-time alerts. Stay informed
               about weather conditions in your area and explore historical data.

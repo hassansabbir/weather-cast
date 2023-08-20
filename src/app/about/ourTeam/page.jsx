@@ -7,7 +7,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa6";
 
 const MeeTheTeam = () => {
   return (
-    <div className="bg-blue-50 py-20">
+    <div className="bg-blue-50 p-10 lg:py-20">
       <div className="max-w-[1460px] mx-auto">
         <h2 className="text-5xl font-bold text-center my-10">
           Meet Team Web Wizards

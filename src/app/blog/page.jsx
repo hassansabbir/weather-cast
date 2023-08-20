@@ -107,10 +107,14 @@ const BlogPage = () => {
                 width={500}
                 height={300}
               />
-              <h2 className="text-5xl font-semibold mt-1 mb-1">{selectedPost.name}</h2>
+              <h2 className="text-5xl font-semibold mt-1 mb-1">
+                {selectedPost.name}
+              </h2>
               <p>{selectedPost.introduction}</p>
-              <h2 className="text-xl font-semibold mt-1 mb-1">Stay Safe During {selectedPost.name}</h2>
-              
+              <h2 className="text-xl font-semibold mt-1 mb-1">
+                Stay Safe During {selectedPost.name}
+              </h2>
+
               <p>{selectedPost.steps}</p>
               <h2>Protect Yourself</h2>
               <div className="image-container">
@@ -127,11 +131,10 @@ const BlogPage = () => {
               </div>
             </div>
           ) : (
-           
             <div className="flex justify-center  items-center">
               <div>
-              <p className="text-5xl font-semibold mb-1">we care about you</p>
-              <p>Please select a disaster type to view details.</p>
+                <p className="text-5xl font-semibold mb-1">we care about you</p>
+                <p>Please select a disaster type to view details.</p>
               </div>
             </div>
           )}
