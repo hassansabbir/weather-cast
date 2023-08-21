@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Rating from "react-rating";
 import { FaQuoteLeft, FaRegStar, FaStar } from "react-icons/fa";
+import Reviews from "./Reviews";
 
 const ShowReviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -78,6 +79,7 @@ const ShowReviews = () => {
           ))}
         </div>
       </Swiper>
+      <Reviews setReviews={setReviews} />
     </div>
   );
 };

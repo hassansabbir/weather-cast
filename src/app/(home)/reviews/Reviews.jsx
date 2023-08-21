@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { FaStar } from "react-icons/fa";
 import Swal from "sweetalert2";
 
-const Reviews = () => {
+const Reviews = ({ setReviews }) => {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(null);
   const { user } = useContext(AuthContext);
@@ -33,6 +33,7 @@ const Reviews = () => {
       .then((data) => {
         console.log(data);
         if (data.insertedId) {
+          setReviews((prevReviews) => [...prevReviews, addAReview]);
           Swal.fire({
             title: "Success",
             text: `Successfully review added.`,
