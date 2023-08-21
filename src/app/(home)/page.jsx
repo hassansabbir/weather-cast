@@ -26,7 +26,6 @@ const HomePage = () => {
       <WeatherNews />
       <ProductSection />
       <ShowReviews />
-      <Reviews />
       <Marq />
       <NewsLetter />
     </div>
