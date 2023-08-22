@@ -19,12 +19,11 @@ const posts = [
     happens: "Staying Safe During a Tornado:",
     steps: [
       "Stay away from windows, doors, and outside walls.",
-      "Do not go under an overpass or bridge. You’re safer in a low, flat location.",
+      "Do not go under an overpass or bridge. You are safer in a low, flat location.",
       "Watch out for flying debris that can cause injury or death.",
-      "If you can’t stay at home, make plans to go to a public shelter.",
+      "If you can not stay at home, make plans to go to a public shelter.",
     ],
   },
-
   {
     photo: hurricane,
     name: "Hurricanes",
@@ -35,7 +34,7 @@ const posts = [
     happens: "Stay Safe During a Hurricane",
     steps: [
       "Take refuge in a designated storm shelter or an interior room for high winds.",
-      "Do not walk, swim or drive through flood waters. Turn Around. Don’t Drown! Just six inches of fast-moving water can knock you down, and one foot of moving water can sweep your vehicle away.",
+      "Do not walk, swim or drive through flood waters. Turn Around. Do not Drown! Just six inches of fast-moving water can knock you down, and one foot of moving water can sweep your vehicle away.",
       "Go to the highest level of the building if you are trapped by flooding. Do not climb into a closed attic. You may become trapped by rising flood water.",
       "If you live in a mandatory evacuation zone and local officials tell you to evacuate, do so immediately.",
     ],
@@ -49,7 +48,7 @@ const posts = [
       "Flooding is a temporary overflow of water onto land that is normally dry. Failing to evacuate flooded areas or entering flood waters can lead to injury or death. Floods may,Result from rain, snow, coastal storms, storm surges and overflows of dams and other water systems. Develop slowly or quickly. Flash floods can come with no warning. Cause outages, disrupt transportation, damage buildings and create landslides.",
     happens: "Staying Safe During a Flood",
     steps: [
-      "Do not walk, swim or drive through flood waters. Turn Around. Don’t Drown!",
+      "Do not walk, swim or drive through flood waters. Turn Around. Do not Drown!",
       "Stay inside your car if it is trapped in rapidly moving water. Get on the roof if water is rising inside the car.",
       "Get to the highest level if trapped in a building. Only get on the roof if necessary and once there signal for help. Do not climb into a closed attic to avoid getting trapped by rising floodwater.",
       "Evacuate immediately, if told to evacuate. Never drive around barricades. Local responders use them to safely direct traffic out of flooded areas.",
