@@ -100,7 +100,11 @@ const Navbar = () => {
             ) : (
               <>
                 <li>
-                  <Link href="/logIn">Login</Link>
+                  <Link href="/logIn">
+                    <button className="btn bg-blue-800 text-white">
+                      Login
+                    </button>
+                  </Link>
                 </li>
               </>
             )}
