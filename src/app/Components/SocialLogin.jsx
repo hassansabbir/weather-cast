@@ -3,16 +3,19 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import app from "@/Firebase/Firebase.config";
+import { useRouter } from "next/navigation";
 
 const SocialLogin = () => {
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
+  const router = useRouter();
 
   const handleGoogleSignIn = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         const user = result.user;
         console.log(user);
+        router.push("/");
       })
       .catch((error) => {
         console.log(error);
