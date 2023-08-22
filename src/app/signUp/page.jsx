@@ -71,7 +71,7 @@ const SignUpPage = () => {
             <h1 className="text-5xl font-bold font-description">
               Sign up Now!
             </h1>
-            <p className="py-6 text-2xl w-9/12 mx-auto font-description">
+            <p className="py-6 text-2xl lg:w-9/12 mx-auto font-description">
               Join our weather forecast community! Sign up to enjoy personalized
               weather insights, and instant alerts. Be part of a platform where
               learning and exploring web development meet the excitement of

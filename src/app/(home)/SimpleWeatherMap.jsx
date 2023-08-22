@@ -16,10 +16,8 @@ const MapContainer = dynamic(
   }
 );
 
-
-
-function WeatherMap({city}) {
-//   const client = useClient();
+function WeatherMap({ city }) {
+  //   const client = useClient();
   const [weatherData, setWeatherData] = useState(null);
 
   const handleMapClick = (event) => {
@@ -64,7 +62,7 @@ function WeatherMap({city}) {
         height: "100vh",
       }}
     >
-      {typeof window !== 'undefined' && (
+      {typeof window !== "undefined" && (
         <MapContainer
           center={[23.8103, 90.4125]}
           zoom={10}

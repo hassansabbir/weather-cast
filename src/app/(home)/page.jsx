@@ -10,21 +10,22 @@ import WeatherDetails from "./WeatherDetails/WeatherDetails";
 import WeatherNews from "./WeatherNews/WeatherNews";
 
 import WeatherUpdates from "./WeatherUodates/WeatherUpdates";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Reviews from "./reviews/Reviews";
+import ShowReviews from "./reviews/ShowReviews";
 
 const HomePage = () => {
   return (
     <div>
       <Banner />
       <WeatherUpdates />
-      <WeatherDetails/>
+      <WeatherDetails />
       <ToastContainer />
-      
-      
       <Intelligence />
       <WeatherNews />
       <ProductSection />
+      <ShowReviews />
       <Marq />
       <NewsLetter />
     </div>

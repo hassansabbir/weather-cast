@@ -11,7 +11,7 @@ import Link from "next/link";
 
 const AboutPage = () => {
   return (
-    <div className="py-10 about-us-page bg-fixed">
+    <div className=" p-10 about-us-page bg-fixed">
       <div className="max-w-[1460px] mx-auto my-10">
         <div>
           <h2 className="text-5xl font-bold">About Us</h2>
