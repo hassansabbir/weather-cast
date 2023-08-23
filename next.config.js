@@ -15,6 +15,30 @@ const nextConfig = {
         protocol: "https",
         hostname: "i.ibb.co",
       },
+      {
+        protocol: "https",
+        hostname: "www.thenation.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.messynessychic.com",
+      },
+      {
+        protocol: "https",
+        hostname: "ia802304.us.archive.org",
+      },
+      {
+        protocol: "https",
+        hostname: "go.newspapers.com",
+      },
+      {
+        protocol: "https",
+        hostname: "i.ytimg.com",
+      },
+      {
+        protocol: "https",
+        hostname: "wallpapers.com",
+      },
     ],
   },
 };
