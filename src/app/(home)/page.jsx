@@ -6,7 +6,7 @@ import Marq from "./Marq";
 import NewsLetter from "./NewsLetter";
 import ProductSection from "./ProductSection";
 
-import WeatherDetails from "./WeatherDetails/WeatherDetails";
+// import WeatherDetails from "./WeatherDetails/WeatherDetails"; 
 import WeatherNews from "./WeatherNews/WeatherNews";
 import WeatherUpdates from "./WeatherUodates/WeatherUpdates";
 import { ToastContainer } from "react-toastify";
@@ -19,7 +19,7 @@ const HomePage = () => {
     <div>
       <Banner />
       <WeatherUpdates />
-      <WeatherDetails />
+      {/* <WeatherDetails />  */}
       <ToastContainer />
       <Intelligence />
       <WeatherNews />

@@ -22,8 +22,7 @@ import {
   WiHumidity,
   WiSandstorm,
 } from "react-icons/wi";
-import WeatherMap from "../SimpleWeatherMap";
-import WeatherAlert from "./WeatherAlert";
+import { getWeatherIcon } from "@/utils/getWeatherIcon";
 
 const weatherFetch = async (City, setWeather) => {
   try {
@@ -54,6 +53,10 @@ const WeatherDetails = () => {
   }
 
   const currentWeather = weather.list[0];
+  const weatherMain = currentWeather.weather[0].main;
+  const weatherIcon = getWeatherIcon(weatherMain);
+
+
   const currentTemperatureKelvin = currentWeather.main.temp;
   const feelsLikeTemperatureKelvin = currentWeather.main.feels_like;
   const currentTemperatureCelsius = currentTemperatureKelvin - 273.15;
@@ -78,77 +81,94 @@ const WeatherDetails = () => {
 
   // for 7 days
   const currentWeather1 = weather.list[1];
+  const weatherMain1 = currentWeather1.weather[0].main;
+  const weatherIcon1 = getWeatherIcon(weatherMain1);
   const currentTemperatureKelvin1 = currentWeather1.main.temp;
-  const currentTemperatureCelsius1 = currentTemperatureKelvin1 - 273.15;
+  const currentTemperatureCelsius1 = Math.round(currentTemperatureKelvin1 - 273.15) ;
 
   const currentWeather2 = weather.list[2];
+  const weatherMain2 = currentWeather2.weather[0].main;
+  const weatherIcon2 = getWeatherIcon(weatherMain2);
   const currentTemperatureKelvin2 = currentWeather2.main.temp;
   const currentTemperatureCelsius2 = currentTemperatureKelvin2 - 273.15;
 
   const currentWeather3 = weather.list[3];
+  const weatherMain3 = currentWeather3.weather[0].main;
+  const weatherIcon3 = getWeatherIcon(weatherMain3);
   const currentTemperatureKelvin3 = currentWeather3.main.temp;
   const currentTemperatureCelsius3 = currentTemperatureKelvin3 - 273.15;
 
   const currentWeather4 = weather.list[4];
+  const weatherMain4 = currentWeather4.weather[0].main;
+  const weatherIcon4 = getWeatherIcon(weatherMain4);
   const currentTemperatureKelvin4 = currentWeather4.main.temp;
   const currentTemperatureCelsius4 = currentTemperatureKelvin4 - 273.15;
 
   const currentWeather5 = weather.list[5];
+  const weatherMain5 = currentWeather5.weather[0].main;
+  const weatherIcon5 = getWeatherIcon(weatherMain5);
   const currentTemperatureKelvin5 = currentWeather5.main.temp;
   const currentTemperatureCelsius5 = currentTemperatureKelvin5 - 273.15;
 
   const currentWeather6 = weather.list[6];
+  const weatherMain6 = currentWeather6.weather[0].main;
+  const weatherIcon6 = getWeatherIcon(weatherMain6);
   const currentTemperatureKelvin6 = currentWeather6.main.temp;
   const currentTemperatureCelsius6 = currentTemperatureKelvin6 - 273.15;
 
   const currentWeather7 = weather.list[7];
+  const weatherMain7 = currentWeather7.weather[0].main;
+  const weatherIcon7 = getWeatherIcon(weatherMain7);
   const currentTemperatureKelvin7 = currentWeather7.main.temp;
   const currentTemperatureCelsius7 = currentTemperatureKelvin7 - 273.15;
 
   const currentWeather8 = weather.list[8];
+  const weatherMain8 = currentWeather8.weather[0].main;
+  const weatherIcon8 = getWeatherIcon(weatherMain8);
   const currentDate8 = new Date(currentWeather8.dt_txt);
   const currentTemperatureKelvin8 = currentWeather8.main.temp;
   const currentTemperatureCelsius8 = currentTemperatureKelvin8 - 273.15;
 
   const currentWeather9 = weather.list[9];
+  const weatherMain9 = currentWeather9.weather[0].main;
+  const weatherIcon9 = getWeatherIcon(weatherMain9);
   const currentTemperatureKelvin9 = currentWeather9.main.temp;
   const currentTemperatureCelsius9 = currentTemperatureKelvin9 - 273.15;
 
   const currentWeather10 = weather.list[10];
+  const weatherMain10 = currentWeather10.weather[0].main;
+  const weatherIcon10 = getWeatherIcon(weatherMain10);
   const currentTemperatureKelvin10 = currentWeather10.main.temp;
   const currentTemperatureCelsius10 = currentTemperatureKelvin10 - 273.15;
 
   const currentWeather11 = weather.list[11];
+  const weatherMain11 = currentWeather11.weather[0].main;
+  const weatherIcon11 = getWeatherIcon(weatherMain11);
   const currentTemperatureKelvin11 = currentWeather11.main.temp;
   const currentTemperatureCelsius11 = currentTemperatureKelvin11 - 273.15;
 
   const currentWeather16 = weather.list[16];
+  const weatherMain16 = currentWeather16.weather[0].main;
+  const weatherIcon16 = getWeatherIcon(weatherMain16);
   const currentDate16 = new Date(currentWeather16.dt_txt);
   const currentTemperatureKelvin16 = currentWeather16.main.temp;
   const currentTemperatureCelsius16 = currentTemperatureKelvin16 - 273.15;
-  const currentWeather12 = weather.list[12];
-  const currentDate12 = new Date(currentWeather12.dt_txt);
-  const currentTemperatureKelvin12 = currentWeather12.main.temp;
-  const currentTemperatureCelsius12 = currentTemperatureKelvin12 - 273.15;
 
   const currentWeather24 = weather.list[24];
+  const weatherMain24 = currentWeather24.weather[0].main;
+  const weatherIcon24 = getWeatherIcon(weatherMain24);
   const currentDate24 = new Date(currentWeather24.dt_txt);
   const currentTemperatureKelvin24 = currentWeather24.main.temp;
   const currentTemperatureCelsius24 = currentTemperatureKelvin24 - 273.15;
-  const currentWeather20 = weather.list[20];
-  const currentDate20 = new Date(currentWeather20.dt_txt);
-  const currentTemperatureKelvin20 = currentWeather20.main.temp;
-  const currentTemperatureCelsius20 = currentTemperatureKelvin20 - 273.15;
+  
 
   const currentWeather32 = weather.list[32];
+  const weatherMain32 = currentWeather32.weather[0].main;
+  const weatherIcon32 = getWeatherIcon(weatherMain32);
   const currentDate32 = new Date(currentWeather32.dt_txt);
   const currentTemperatureKelvin32 = currentWeather32.main.temp;
   const currentTemperatureCelsius32 = currentTemperatureKelvin32 - 273.15;
 
-  const currentWeather28 = weather.list[28];
-  const currentDate28 = new Date(currentWeather28.dt_txt);
-  const currentTemperatureKelvin28 = currentWeather28.main.temp;
-  const currentTemperatureCelsius28 = currentTemperatureKelvin28 - 273.15;
 
   return (
     <div className="max-w-[1460px] mx-auto">
@@ -181,14 +201,15 @@ const WeatherDetails = () => {
                   {" "}
                   {currentTemperatureCelsius.toFixed(2)} <small>°C</small>{" "}
                 </h2>
-                <Image
+                {/* <Image
                   src="https://img.freepik.com/free-icon/cloudy-day_318-100797.jpg?t=st=1692237303~exp=1692237903~hmac=49fbe5f7d37297a6c640bfda22f2fd8eaab2f24e42fd5eba2f2e0cd49be105c3"
                   width={45}
                   height={35}
                   alt=""
-                />
+                /> */}
+                <Image  src={weatherIcon} height={100} width={120} alt={weatherMain} />
               </div>
-              <p className="border-b-2 pb-2">
+              <p className="border-b-2 pb-2 text-2xl font-semibold">
                 {currentWeather?.weather[0]?.description}
               </p>
               <h2 className=" flex gap-1">
@@ -207,9 +228,11 @@ const WeatherDetails = () => {
 
           <div className="card md:w-5/6 bg-base-100 shadow-xl">
             <div className="card-body">
-              <div className="flex gap-4 justify-around">
+              {/* 1st day  */}
+              <div className="flex gap-4 ">
                 <p>
-                  <WiDayCloudy className="text-3xl" />
+                <Image  src={weatherIcon} height={50} width={50} alt={weatherMain} />
+                
                 </p>
                 <h2 className="  text-xl">
                   {" "}
@@ -218,9 +241,10 @@ const WeatherDetails = () => {
                 <h2 className=" "> {currentDate.toDateString()}</h2>
               </div>
 
-              <div className="flex gap-5 justify-around">
+          {/* 2nd day */}
+              <div className="flex gap-4">
                 <p>
-                  <WiDaySleetStorm className="text-3xl" />
+                <Image  src={weatherIcon8} height={50} width={50} alt={weatherMain8} />
                 </p>
                 <h2 className=" text-xl">
                   {" "}
@@ -228,10 +252,10 @@ const WeatherDetails = () => {
                 </h2>
                 <h2 className=" "> {currentDate8.toDateString()}</h2>
               </div>
-
+              {/* 3rd day  */}
               <div className="flex gap-4">
                 <p>
-                  <WiDayRainMix className="text-3xl" />
+                <Image  src={weatherIcon16} height={50} width={50} alt={weatherMain16} />
                 </p>
                 <h2 className=" text-xl">
                   {" "}
@@ -239,10 +263,10 @@ const WeatherDetails = () => {
                 </h2>
                 <h2 className=" "> {currentDate16.toDateString()}</h2>
               </div>
-
+                {/* 4th day  */}
               <div className="flex gap-4">
                 <p>
-                  <WiDaySunny className="text-3xl" />
+                <Image  src={weatherIcon24} height={50} width={50} alt={weatherMain24} />
                 </p>
                 <h2 className=" text-xl">
                   {" "}
@@ -250,20 +274,10 @@ const WeatherDetails = () => {
                 </h2>
                 <h2 className=" "> {currentDate24.toDateString()}</h2>
               </div>
-              <div className="flex gap-4">
+                {/* 5th day  */}
+               <div className="flex gap-4">
                 <p>
-                  <WiDaySunny className="text-3xl" />
-                </p>
-                <h2 className=" text-xl">
-                  {" "}
-                  {currentTemperatureCelsius20.toFixed(2)} &#8451;{" "}
-                </h2>
-                <h2 className=" "> {currentDate20.toDateString()}</h2>
-              </div>
-
-              <div className="flex gap-4">
-                <p>
-                  <WiDaySunnyOvercast className="text-3xl" />
+                <Image  src={weatherIcon32} height={50} width={50} alt={weatherMain32} />
                 </p>
                 <h2 className=" text-xl">
                   {" "}
@@ -391,14 +405,14 @@ const WeatherDetails = () => {
 
           <h3 className="font-bold text-2xl mt-6 ms-3">Today at</h3>
 
-          <div className="grid sm:grid-cols-3 lg:grid-cols-6 lg:mt-5 gap-2">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 lg:mt-5 gap-2">
             <div className="card  bg-base-100 shadow-xl">
               <div className="card-body text-center">
                 <p className="text-center font-semibold text-xl">
                   {moment(weather?.list[0]?.dt_txt).format("h A")}
                 </p>
-                <p className="">
-                  <FaCloud className="text-4xl mx-auto" />
+                <p className="mx-auto">
+                 <Image  src={weatherIcon} height={50} width={70} alt={weatherMain} />
                 </p>
                 <h2 className=" text-xl">
                   {" "}
@@ -413,8 +427,8 @@ const WeatherDetails = () => {
                 <p className="text-center font-semibold text-xl">
                   {moment(weather?.list[1]?.dt_txt).format("h A")}
                 </p>
-                <p className="">
-                  <FaCloud className="text-4xl mx-auto" />
+                <p className="mx-auto">
+                 <Image  src={weatherIcon1} height={50} width={70} alt={weatherMain1} />
                 </p>
                 <h2 className=" text-xl">
                   {" "}
@@ -429,8 +443,8 @@ const WeatherDetails = () => {
                 <p className="text-center font-semibold text-xl">
                   {moment(weather?.list[2]?.dt_txt).format("h A")}
                 </p>
-                <p className="">
-                  <FaCloud className="text-4xl mx-auto" />
+                <p className="mx-auto">
+                 <Image  src={weatherIcon2} height={50} width={70} alt={weatherMain2} />
                 </p>
                 <h2 className=" text-xl">
                   {" "}
@@ -445,8 +459,8 @@ const WeatherDetails = () => {
                 <p className="text-center font-semibold text-xl">
                   {moment(weather?.list[3]?.dt_txt).format("h A")}
                 </p>
-                <p className="">
-                  <FaCloud className="text-4xl mx-auto" />
+                <p className="mx-auto">
+                 <Image  src={weatherIcon3} height={50} width={70} alt={weatherMain3} />
                 </p>
                 <h2 className=" text-xl">
                   {" "}
@@ -461,8 +475,8 @@ const WeatherDetails = () => {
                 <p className="text-center font-semibold text-xl">
                   {moment(weather?.list[4]?.dt_txt).format("h A")}
                 </p>
-                <p className="">
-                  <FaCloud className="text-4xl mx-auto" />
+                <p className="mx-auto">
+                 <Image  src={weatherIcon4} height={50} width={70} alt={weatherMain4} />
                 </p>
                 <h2 className=" text-xl">
                   {" "}
@@ -477,8 +491,8 @@ const WeatherDetails = () => {
                 <p className="text-center font-semibold text-xl">
                   {moment(weather?.list[5]?.dt_txt).format(" h A")}
                 </p>
-                <p className="">
-                  <FaCloud className="text-4xl mx-auto" />
+                <p className="mx-auto">
+                 <Image  src={weatherIcon5} height={50} width={70} alt={weatherMain5} />
                 </p>
                 <h2 className=" text-xl">
                   {" "}
@@ -493,8 +507,8 @@ const WeatherDetails = () => {
                 <p className="text-center font-semibold text-xl">
                   {moment(weather?.list[6]?.dt_txt).format("h A")}
                 </p>
-                <p className="">
-                  <FaCloud className="text-4xl mx-auto" />
+                <p className="mx-auto">
+                 <Image  src={weatherIcon6} height={50} width={70} alt={weatherMain6} />
                 </p>
                 <h2 className=" text-xl">
                   {" "}
@@ -509,8 +523,8 @@ const WeatherDetails = () => {
                 <p className="text-center font-semibold text-xl">
                   {moment(weather?.list[7]?.dt_txt).format(" h A")}
                 </p>
-                <p className="">
-                  <FaCloud className="text-4xl mx-auto" />
+                <p className="mx-auto">
+                 <Image  src={weatherIcon7} height={50} width={70} alt={weatherMain7} />
                 </p>
                 <h2 className=" text-xl">
                   {" "}
@@ -520,83 +534,10 @@ const WeatherDetails = () => {
               </div>
             </div>
 
-            <div className="card  bg-base-100 shadow-xl">
-              <div className="card-body text-center">
-                <p className="text-center font-semibold text-xl">
-                  {moment(weather?.list[8]?.dt_txt).format(" h A")}
-                </p>
-                <p className="">
-                  <FaCloud className="text-4xl mx-auto" />
-                </p>
-                <h2 className=" text-xl">
-                  {" "}
-                  {currentTemperatureCelsius8.toFixed(2)} <small>°C</small>{" "}
-                </h2>
-                <p className=" ">{weather.list[8]?.weather[0]?.description}</p>
-              </div>
-            </div>
-
-            <div className="card  bg-base-100 shadow-xl">
-              <div className="card-body text-center">
-                <p className="text-center font-semibold text-xl">
-                  {moment(weather?.list[9]?.dt_txt).format(" h A")}
-                </p>
-                <p className="">
-                  <FaCloud className="text-4xl mx-auto" />
-                </p>
-                <h2 className=" text-xl">
-                  {" "}
-                  {currentTemperatureCelsius9.toFixed(2)} <small>°C</small>{" "}
-                </h2>
-                <p className=" ">{weather.list[9]?.weather[0]?.description}</p>
-              </div>
-            </div>
-
-            <div className="card  bg-base-100 shadow-xl">
-              <div className="card-body text-center">
-                <p className="text-center font-semibold text-xl">
-                  {moment(weather?.list[10]?.dt_txt).format(" h A")}
-                </p>
-                <p className="">
-                  <FaCloud className="text-4xl mx-auto" />
-                </p>
-                <h2 className=" text-xl">
-                  {" "}
-                  {currentTemperatureCelsius10.toFixed(2)} <small>°C</small>{" "}
-                </h2>
-                <p className=" ">{weather.list[10]?.weather[0]?.description}</p>
-              </div>
-            </div>
-
-            <div className="card  bg-base-100 shadow-xl">
-              <div className="card-body text-center">
-                <p className="text-center font-semibold text-xl">
-                  {moment(weather?.list[11]?.dt_txt).format(" h A")}
-                </p>
-                <p className="">
-                  <FaCloud className="text-4xl mx-auto" />
-                </p>
-                <h2 className=" text-xl">
-                  {" "}
-                  {currentTemperatureCelsius11.toFixed(2)} <small>°C</small>{" "}
-                </h2>
-                <p className=" ">{weather.list[11]?.weather[0]?.description}</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
-      <div>
-        <div
-          className="card h-80 bg-base-100 shadow-xl mt-2 "
-          style={{ overflow: "hidden", zIndex: 5 }}
-        >
-          <WeatherMap city={City} />
-        </div>
-        <div className="card h-20 lg:w-7/12 bg-base-100 shadow-xl mt-2 text-center flex justify-center mx-auto">
-          <WeatherAlert weather={currentWeather} />
-        </div>
-      </div>
+      
     </div>
   );
 };
