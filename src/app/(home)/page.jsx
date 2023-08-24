@@ -8,12 +8,11 @@ import ProductSection from "./ProductSection";
 
 // import WeatherDetails from "./WeatherDetails/WeatherDetails"; 
 import WeatherNews from "./WeatherNews/WeatherNews";
-
 import WeatherUpdates from "./WeatherUodates/WeatherUpdates";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Reviews from "./reviews/Reviews";
 import ShowReviews from "./reviews/ShowReviews";
+import Articles from "./Articles";
 
 const HomePage = () => {
   return (
@@ -25,6 +24,7 @@ const HomePage = () => {
       <Intelligence />
       <WeatherNews />
       <ProductSection />
+      <Articles />
       <ShowReviews />
       <Marq />
       <NewsLetter />
