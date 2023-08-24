@@ -3,10 +3,12 @@
 import React from "react";
 import Lottie from "lottie-react";
 import earth from "../../assets/animation_ll4ssoaf.json";
+import AOSInitializer from "@/AOS/AOSInitializer";
 
 const Intelligence = () => {
   return (
     <div className="max-w-[1460px] mx-auto my-28">
+      <AOSInitializer></AOSInitializer>;
       <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center -space-x-16">
         <div
           data-aos="fade-right"
