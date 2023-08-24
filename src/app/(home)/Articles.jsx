@@ -1,3 +1,4 @@
+import AOSInitializer from "@/AOS/AOSInitializer";
 import axios from "axios";
 import moment from "moment";
 import Image from "next/image";
@@ -16,10 +17,15 @@ const Articles = () => {
 
   return (
     <div className="max-w-[1460px] mx-auto">
+      <AOSInitializer></AOSInitializer>;
       <h2 className="text-5xl my-16 font-bold text-center">
         Our Top Historical Weather Events
       </h2>
-      <div className="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div
+        className="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+        data-aos="fade-up"
+        data-aos-duration="3000"
+      >
         {articles.map((article) => (
           <div
             key={article?._id}

@@ -1,11 +1,6 @@
-"use client";
-
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Footer from "@/components/Footer";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { useEffect } from "react";
 import Navbar from "./Components/Navbar";
 import Providers from "@/Providers";
 
@@ -17,12 +12,6 @@ export const metadata = {
 };
 
 const RootLayout = ({ children }) => {
-  useEffect(() => {
-    AOS.init({
-      duration: 800,
-      once: false,
-    });
-  }, []);
   return (
     <html lang="en" data-theme="light">
       <body className={inter.className}>

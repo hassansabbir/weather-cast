@@ -1,3 +1,4 @@
+import AOSInitializer from "@/AOS/AOSInitializer";
 import axios from "axios";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
@@ -12,10 +13,15 @@ const ProductSection = () => {
 
   return (
     <div className="my-20 max-w-[1460px] mx-auto">
+      <AOSInitializer></AOSInitializer>;
       <h2 className="text-4xl lg:text-5xl font-bold text-center my-10">
         Our <span className="text-blue-800">New</span> features
       </h2>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-28">
+      <div
+        data-aos="fade-up"
+        data-aos-duration="3000"
+        className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-28"
+      >
         {products.map((product) => (
           <div
             key={product._id}
