@@ -1,42 +1,46 @@
-"use client";
-
-import React, { useEffect, useState } from 'react';
-import './WeatherNews.css';
+import React, { useState, useRef, useEffect } from "react";
 
 function WeatherNews() {
-  const [newsData, setNewsData] = useState([]);
-  const [error, setError] = useState(null);
+  const [weatherNews, setWeatherNews] = useState([
+    {
+      title: "Major Earthquake Strikes Indonesia",
+      description:
+        "A powerful earthquake with a magnitude of 7.5 struck off the coast of Indonesia, triggering a tsunami warning and causing widespread panic.",
+    },
+    {
+      title: "Severe Flooding in Bangladesh",
+      description:
+        "Heavy monsoon rains have caused severe flooding in multiple regions of Bangladesh, displacing thousands of people and damaging homes and infrastructure.",
+    },
+    {
+      title: "Wildfires Rage in California",
+      description:
+        "Wildfires continue to spread across California, prompting evacuations and threatening homes. Firefighters are battling the blazes amid challenging weather conditions.",
+    },
+    {
+      title: "Typhoon Hits Philippines",
+      description:
+        "A powerful typhoon made landfall in the Philippines, causing widespread destruction and flooding. Thousands have been evacuated as authorities work to provide assistance.",
+    },
+    {
+      title: "Heatwave Grips Europe",
+      description:
+        "A heatwave has swept across Europe, with record-breaking temperatures in several countries. Authorities are advising people to stay hydrated and take precautions against heat-related illnesses.",
+    },
+  ]);
+
+  const newsContainerRef = useRef(null);
 
   useEffect(() => {
-    const apiKey = '3d448ccac0344a0f88551354c27ab7b8';
-    const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`;
-
-    fetch(apiUrl)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Failed to fetch news data');
-        }
-        return response.json();
-      })
-      .then(data => {
-        if (data.articles) {
-          setNewsData(data.articles);
-        }
-      })
-      .catch(error => {
-        console.error(error);
-        setError(error);
-      });
-  }, []);
-
-  useEffect(() => {
-   
     const scrollInterval = setInterval(() => {
-      const newsContainer = document.getElementById('news-container');
-      if (newsContainer) {
+      if (newsContainerRef.current) {
+        const newsContainer = newsContainerRef.current;
         newsContainer.scrollTop += 1;
-        if (newsContainer.scrollTop >= newsContainer.scrollHeight - newsContainer.clientHeight) {
-          newsContainer.scrollTop = 0; 
+        if (
+          newsContainer.scrollTop >=
+          newsContainer.scrollHeight - newsContainer.clientHeight
+        ) {
+          newsContainer.scrollTop = 0;
         }
       }
     }, 50);
@@ -46,32 +50,26 @@ function WeatherNews() {
     };
   }, []);
 
-  if (error) {
-    return <div>Error fetching news data</div>;
-  }
-
   return (
-    <>
-    <h2 className="text-5xl font-bold my-10 text-center">
-        Live News
-      </h2>
-    <div className='news-container mx-auto' id='news-container'>
-      <div className='news-card'>
-        <h2>Weather News</h2>
-        <ul>
-          {newsData.map((article, index) => (
-            <li key={index}>
-              <h3 className='bg-red-300'>{article.title}</h3>
-              <p>{article.description}</p>
-            </li>
-          ))}
-        </ul>
+    <div className="flex flex-col items-center justify-center">
+      <h2 className="text-5xl font-bold my-10 text-center">Weather News</h2>
+      <div
+        ref={newsContainerRef}
+        className="news-container overflow-y-hidden max-h-80 w-full p-4 border rounded-md shadow-md bg-white"
+      >
+        {weatherNews.map((article, index) => (
+          <div key={index} className="news-card mb-4 p-4 border rounded-md">
+            <h3 className="text-xl font-semibold animate-pulse bg-gradient-to-r from-red-800 via-blue-650 to-red-500 bg-clip-text text-transparent text-center">
+              {article.title}
+            </h3>
+            <p className="mt-2 text-gray-600 text-center">
+              {article.description}
+            </p>
+          </div>
+        ))}
       </div>
-    </div></>
+    </div>
   );
 }
 
 export default WeatherNews;
-
-
-

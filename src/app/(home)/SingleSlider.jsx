@@ -1,13 +1,13 @@
 "use client";
 import React from "react";
 
-const SingleSlider = ({ slider = {} }) => {
+const SingleSlider = ({ slider }) => {
   const { img, title, description } = slider;
-  // console.log(img); 
+  // console.log(img);
   return (
     <div
       className="hero min-h-screen image-layer"
-      style= {{ backgroundImage: `url(${img})` }}
+      style={{ backgroundImage: `url(${img})` }}
     >
       <div className="hero-overlay bg-opacity-60"></div>
       <div className="hero-content text-center text-neutral-content">

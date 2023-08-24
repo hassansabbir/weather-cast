@@ -11,7 +11,7 @@ import Link from "next/link";
 
 const AboutPage = () => {
   return (
-    <div className="py-10 about-us-page bg-fixed">
+    <div className=" p-10 about-us-page bg-fixed">
       <div className="max-w-[1460px] mx-auto my-10">
         <div>
           <h2 className="text-5xl font-bold">About Us</h2>
@@ -26,7 +26,6 @@ const AboutPage = () => {
             and weather advisories, ensuring you're always a step ahead of
             changing weather patterns.
           </p>
-          <p> this is weather app </p>
           <p className="text-xl my-5">
             Plan your days confidently with multi-day forecasts that empower you
             to make informed decisions, whether it's scheduling outdoor

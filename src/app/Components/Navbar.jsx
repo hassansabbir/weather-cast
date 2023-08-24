@@ -1,9 +1,12 @@
 "use client";
 
+import { AuthContext } from "@/Providers/AuthProvider";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
   const navbar = [
     {
       path: "/",
@@ -22,8 +25,14 @@ const Navbar = () => {
       title: "Blog",
     },
   ];
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
   return (
-    <div className="ms-5 me-6 sticky top-0 z-10 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200">
+    <div className="fixed w-full top-0 z-10 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200">
       <div className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
@@ -54,8 +63,7 @@ const Navbar = () => {
               ))}
             </ul>
           </div>
-
-          <a className=" normal-case text-3xl text-blue-800 font-bold ">
+          <a className=" normal-case text-xl md:text-3xl text-blue-800 font-bold ">
             weatherCast
           </a>
         </div>
@@ -68,10 +76,39 @@ const Navbar = () => {
             ))}
           </ul>
         </div>
-        <div className="navbar-end">
-          <button className="btn btn-active bg-blue-800 text-white">
-            Login
-          </button>
+        <div className="navbar-end space-x-3">
+          {user && (
+            <div className="flex gap-3 items-center border-4 rounded-full ps-5 p-1">
+              <h2>{user?.displayName}</h2>
+              <div className="avatar">
+                <div className="w-10 rounded-full ">
+                  <img src={user?.photoURL} />
+                </div>
+              </div>
+            </div>
+          )}
+          <div className="hidden md:block">
+            {user?.email ? (
+              <>
+                <button
+                  onClick={handleLogOut}
+                  className="btn btn-active btn-ghost"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link href="/logIn">
+                    <button className="btn bg-blue-800 text-white">
+                      Login
+                    </button>
+                  </Link>
+                </li>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </div>
