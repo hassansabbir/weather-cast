@@ -5,26 +5,21 @@ import Intelligence from "./Intelligence";
 import Marq from "./Marq";
 import NewsLetter from "./NewsLetter";
 import ProductSection from "./ProductSection";
-
-import WeatherDetails from "./WeatherDetails/WeatherDetails";
-
-
 import WeatherUpdates from "./WeatherUodates/WeatherUpdates";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Reviews from "./reviews/Reviews";
 import ShowReviews from "./reviews/ShowReviews";
+import Articles from "./Articles";
 
 const HomePage = () => {
   return (
     <div>
       <Banner />
       <WeatherUpdates />
-      <WeatherDetails />
       <ToastContainer />
       <Intelligence />
-      
       <ProductSection />
+      <Articles />
       <ShowReviews />
       <Marq />
       <NewsLetter />
