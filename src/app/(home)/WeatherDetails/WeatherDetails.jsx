@@ -13,54 +13,59 @@ import {
 } from "react-icons/fa6";
 import { MdAir, MdSunny } from "react-icons/md";
 import {
-  WiDayCloudy,
-  WiDayHail,
-  WiDayRainMix,
-  WiDaySleetStorm,
-  WiDaySunny,
-  WiDaySunnyOvercast,
+ 
   WiHumidity,
   WiSandstorm,
 } from "react-icons/wi";
 import { getWeatherIcon } from "@/utils/getWeatherIcon";
 
-const weatherFetch = async (City, setWeather) => {
+const weatherFetch = async (City,unit, setWeather) => {
   try {
     const apiKey = "41a5c84ae7ccfff1bc9491b25aa4dbde";
-    const URL = `https://api.openweathermap.org/data/2.5/forecast?q=${City}&appid=${apiKey}`;
+    const URL = `https://api.openweathermap.org/data/2.5/forecast?q=${City}&&units=${unit}&appid=${apiKey}`;
     const response = await fetch(URL);
     const data = await response.json();
     setWeather(data);
   } catch (error) {
-    console.error("Error fetching weather data:", error);
+    console.error("Im sorry we couldn't get you weather data", error);
   }
 };
 
 const WeatherDetails = () => {
   const [City, setCity] = useState("");
   const [weather, setWeather] = useState(null);
+  const [unit, setUnit] = useState('metric');
+ 
 
   useEffect(() => {
-    weatherFetch("Dhaka", setWeather);
-  }, []);
+    weatherFetch("Dhaka",unit, setWeather);
+  }, [unit ]);
 
   const handleSearch = () => {
-    weatherFetch(City, setWeather);
+    weatherFetch(City,unit , setWeather);
+  };
+
+  const handleUnitChange = (selectedUnit) => {
+    setUnit(selectedUnit);
+    console.log(selectedUnit);
+    if (City) {
+      weatherFetch(City, selectedUnit, setWeather);
+      console.log(City);
+    }
   };
 
   if (!weather) {
     return <div>Loading...</div>;
   }
 
+
   const currentWeather = weather.list[0];
   const weatherMain = currentWeather.weather[0].main;
   const weatherIcon = getWeatherIcon(weatherMain);
 
 
-  const currentTemperatureKelvin = currentWeather.main.temp;
-  const feelsLikeTemperatureKelvin = currentWeather.main.feels_like;
-  const currentTemperatureCelsius = currentTemperatureKelvin - 273.15;
-  const feelsLikeTemperatureCelsius = feelsLikeTemperatureKelvin - 273.15;
+  const currentTemperature = currentWeather.main.temp;
+  const feelsLikeTemperature = currentWeather.main.feels_like;
   const currentDate = new Date(currentWeather.dt_txt);
   const location = weather.city.name;
 
@@ -83,102 +88,75 @@ const WeatherDetails = () => {
   const currentWeather1 = weather.list[1];
   const weatherMain1 = currentWeather1.weather[0].main;
   const weatherIcon1 = getWeatherIcon(weatherMain1);
-  const currentTemperatureKelvin1 = currentWeather1.main.temp;
-  const currentTemperatureCelsius1 = Math.round(currentTemperatureKelvin1 - 273.15) ;
+  const currentTemperature1 = currentWeather1.main.temp;
 
   const currentWeather2 = weather.list[2];
   const weatherMain2 = currentWeather2.weather[0].main;
   const weatherIcon2 = getWeatherIcon(weatherMain2);
-  const currentTemperatureKelvin2 = currentWeather2.main.temp;
-  const currentTemperatureCelsius2 = currentTemperatureKelvin2 - 273.15;
+  const currentTemperature2 = currentWeather2.main.temp;
 
   const currentWeather3 = weather.list[3];
   const weatherMain3 = currentWeather3.weather[0].main;
   const weatherIcon3 = getWeatherIcon(weatherMain3);
-  const currentTemperatureKelvin3 = currentWeather3.main.temp;
-  const currentTemperatureCelsius3 = currentTemperatureKelvin3 - 273.15;
+  const currentTemperature3 = currentWeather3.main.temp;
 
   const currentWeather4 = weather.list[4];
   const weatherMain4 = currentWeather4.weather[0].main;
   const weatherIcon4 = getWeatherIcon(weatherMain4);
-  const currentTemperatureKelvin4 = currentWeather4.main.temp;
-  const currentTemperatureCelsius4 = currentTemperatureKelvin4 - 273.15;
+  const currentTemperature4 = currentWeather4.main.temp;
+
 
   const currentWeather5 = weather.list[5];
   const weatherMain5 = currentWeather5.weather[0].main;
   const weatherIcon5 = getWeatherIcon(weatherMain5);
-  const currentTemperatureKelvin5 = currentWeather5.main.temp;
-  const currentTemperatureCelsius5 = currentTemperatureKelvin5 - 273.15;
+  const currentTemperature5 = currentWeather5.main.temp;
 
   const currentWeather6 = weather.list[6];
   const weatherMain6 = currentWeather6.weather[0].main;
   const weatherIcon6 = getWeatherIcon(weatherMain6);
-  const currentTemperatureKelvin6 = currentWeather6.main.temp;
-  const currentTemperatureCelsius6 = currentTemperatureKelvin6 - 273.15;
+  const currentTemperature6 = currentWeather6.main.temp;
 
   const currentWeather7 = weather.list[7];
   const weatherMain7 = currentWeather7.weather[0].main;
   const weatherIcon7 = getWeatherIcon(weatherMain7);
-  const currentTemperatureKelvin7 = currentWeather7.main.temp;
-  const currentTemperatureCelsius7 = currentTemperatureKelvin7 - 273.15;
+  const currentTemperature7 = currentWeather7.main.temp;
 
   const currentWeather8 = weather.list[8];
   const weatherMain8 = currentWeather8.weather[0].main;
   const weatherIcon8 = getWeatherIcon(weatherMain8);
   const currentDate8 = new Date(currentWeather8.dt_txt);
-  const currentTemperatureKelvin8 = currentWeather8.main.temp;
-  const currentTemperatureCelsius8 = currentTemperatureKelvin8 - 273.15;
-
-  const currentWeather9 = weather.list[9];
-  const weatherMain9 = currentWeather9.weather[0].main;
-  const weatherIcon9 = getWeatherIcon(weatherMain9);
-  const currentTemperatureKelvin9 = currentWeather9.main.temp;
-  const currentTemperatureCelsius9 = currentTemperatureKelvin9 - 273.15;
-
-  const currentWeather10 = weather.list[10];
-  const weatherMain10 = currentWeather10.weather[0].main;
-  const weatherIcon10 = getWeatherIcon(weatherMain10);
-  const currentTemperatureKelvin10 = currentWeather10.main.temp;
-  const currentTemperatureCelsius10 = currentTemperatureKelvin10 - 273.15;
-
-  const currentWeather11 = weather.list[11];
-  const weatherMain11 = currentWeather11.weather[0].main;
-  const weatherIcon11 = getWeatherIcon(weatherMain11);
-  const currentTemperatureKelvin11 = currentWeather11.main.temp;
-  const currentTemperatureCelsius11 = currentTemperatureKelvin11 - 273.15;
+  const currentTemperature8 = currentWeather8.main.temp;
 
   const currentWeather16 = weather.list[16];
   const weatherMain16 = currentWeather16.weather[0].main;
   const weatherIcon16 = getWeatherIcon(weatherMain16);
   const currentDate16 = new Date(currentWeather16.dt_txt);
-  const currentTemperatureKelvin16 = currentWeather16.main.temp;
-  const currentTemperatureCelsius16 = currentTemperatureKelvin16 - 273.15;
+  const currentTemperature16 = currentWeather16.main.temp;
 
   const currentWeather24 = weather.list[24];
   const weatherMain24 = currentWeather24.weather[0].main;
   const weatherIcon24 = getWeatherIcon(weatherMain24);
   const currentDate24 = new Date(currentWeather24.dt_txt);
-  const currentTemperatureKelvin24 = currentWeather24.main.temp;
-  const currentTemperatureCelsius24 = currentTemperatureKelvin24 - 273.15;
-  
+  const currentTemperature24 = currentWeather24.main.temp; 
 
   const currentWeather32 = weather.list[32];
   const weatherMain32 = currentWeather32.weather[0].main;
   const weatherIcon32 = getWeatherIcon(weatherMain32);
   const currentDate32 = new Date(currentWeather32.dt_txt);
-  const currentTemperatureKelvin32 = currentWeather32.main.temp;
-  const currentTemperatureCelsius32 = currentTemperatureKelvin32 - 273.15;
+  const currentTemperature32 = currentWeather32.main.temp;
 
 
   return (
     <div className="max-w-[1460px] mx-auto">
+    
+      
       {/* searchbar  */}
-      <div className="w-3/4 mx-auto text-center">
+      <div className=" w-full mx-auto text-center">
         <input
           value={City}
           onChange={(e) => setCity(e.target.value)}
           placeholder="Enter city name"
-          className="border py-4 pl-5 rounded-2xl w-1/4 "
+          className="border w-1/3 py-4 pl-5 rounded-2xl  "
           type="search"
           name=""
           id=""
@@ -190,6 +168,13 @@ const WeatherDetails = () => {
           Search
         </button>
       </div>
+
+      <div className="mx-auto text-center">
+      <button className="btn btn-circle btn-outline font-bold m-8" onClick={()=>handleUnitChange("metric")}>°C</button>
+      <button className="btn btn-circle btn-outline font-bold" onClick={()=>handleUnitChange("imperial")}>°F</button>
+
+      </div>
+    
       <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 m-10">
         <div className="col-span-1 me-7">
           <div className="card md:w-5/6 bg-base-100 shadow-xl">
@@ -199,14 +184,8 @@ const WeatherDetails = () => {
               <div className="flex gap-3">
                 <h2 className="card-title text-5xl">
                   {" "}
-                  {currentTemperatureCelsius.toFixed(2)} <small>°C</small>{" "}
+                  {Math.round(currentTemperature)} <small>{unit==="metric"?'°C':'°F'}</small>{" "}
                 </h2>
-                {/* <Image
-                  src="https://img.freepik.com/free-icon/cloudy-day_318-100797.jpg?t=st=1692237303~exp=1692237903~hmac=49fbe5f7d37297a6c640bfda22f2fd8eaab2f24e42fd5eba2f2e0cd49be105c3"
-                  width={45}
-                  height={35}
-                  alt=""
-                /> */}
                 <Image  src={weatherIcon} height={100} width={120} alt={weatherMain} />
               </div>
               <p className="border-b-2 pb-2 text-2xl font-semibold">
@@ -236,7 +215,7 @@ const WeatherDetails = () => {
                 </p>
                 <h2 className="  text-xl">
                   {" "}
-                  {currentTemperatureCelsius.toFixed(2)} &#8451;{" "}
+                  {Math.round(currentTemperature)}<small>{unit==="metric"?'°C':'°F'}</small>{" "}
                 </h2>
                 <h2 className=" "> {currentDate.toDateString()}</h2>
               </div>
@@ -248,7 +227,7 @@ const WeatherDetails = () => {
                 </p>
                 <h2 className=" text-xl">
                   {" "}
-                  {currentTemperatureCelsius8.toFixed(2)} &#8451;{" "}
+                  {Math.round(currentTemperature8)} <small>{unit==="metric"?'°C':'°F'}</small>{" "}
                 </h2>
                 <h2 className=" "> {currentDate8.toDateString()}</h2>
               </div>
@@ -259,7 +238,7 @@ const WeatherDetails = () => {
                 </p>
                 <h2 className=" text-xl">
                   {" "}
-                  {currentTemperatureCelsius16.toFixed(2)} &#8451;{" "}
+                  {Math.round(currentTemperature16)} <small>{unit==="metric"?'°C':'°F'}</small>{" "}
                 </h2>
                 <h2 className=" "> {currentDate16.toDateString()}</h2>
               </div>
@@ -270,7 +249,7 @@ const WeatherDetails = () => {
                 </p>
                 <h2 className=" text-xl">
                   {" "}
-                  {currentTemperatureCelsius24.toFixed(2)} &#8451;{" "}
+                  {Math.round(currentTemperature24)}<small>{unit==="metric"?'°C':'°F'}</small>{" "}
                 </h2>
                 <h2 className=" "> {currentDate24.toDateString()}</h2>
               </div>
@@ -281,7 +260,7 @@ const WeatherDetails = () => {
                 </p>
                 <h2 className=" text-xl">
                   {" "}
-                  {currentTemperatureCelsius32.toFixed(2)} &#8451;{" "}
+                  {Math.round(currentTemperature32)} <small>{unit==="metric"?'°C':'°F'}</small>{" "}
                 </h2>
                 <h2 className=""> {currentDate32.toDateString()}</h2>
               </div>
@@ -396,7 +375,7 @@ const WeatherDetails = () => {
                     <FaTemperatureHalf className="text-3xl" />
                   </p>
                   <p className="text-2xl">
-                    {feelsLikeTemperatureCelsius.toFixed(2)} <small>°C</small>
+                    {Math.round(feelsLikeTemperature)} <small>{unit==="metric"?'°C':'°F'}</small>
                   </p>
                 </div>
               </div>
@@ -416,7 +395,7 @@ const WeatherDetails = () => {
                 </p>
                 <h2 className=" text-xl">
                   {" "}
-                  {currentTemperatureCelsius.toFixed(2)} <small>°C</small>{" "}
+                  {Math.round(currentTemperature)} <small>{unit==="metric"?'°C':'°F'}</small>{" "}
                 </h2>
                 <p className=" ">{currentWeather?.weather[0]?.description}</p>
               </div>
@@ -432,7 +411,7 @@ const WeatherDetails = () => {
                 </p>
                 <h2 className=" text-xl">
                   {" "}
-                  {currentTemperatureCelsius1.toFixed(2)} <small>°C</small>{" "}
+                  {Math.round(currentTemperature1)} <small>{unit==="metric"?'°C':'°F'}</small>{" "}
                 </h2>
                 <p className=" ">{weather.list[1]?.weather[0]?.description}</p>
               </div>
@@ -448,7 +427,7 @@ const WeatherDetails = () => {
                 </p>
                 <h2 className=" text-xl">
                   {" "}
-                  {currentTemperatureCelsius2.toFixed(2)} <small>°C</small>{" "}
+                  {Math.round(currentTemperature2)} <small>{unit==="metric"?'°C':'°F'}</small>{" "}
                 </h2>
                 <p className=" ">{weather.list[2]?.weather[0]?.description}</p>
               </div>
@@ -464,7 +443,7 @@ const WeatherDetails = () => {
                 </p>
                 <h2 className=" text-xl">
                   {" "}
-                  {currentTemperatureCelsius3.toFixed(2)} <small>°C</small>{" "}
+                  {Math.round(currentTemperature3)} <small>{unit==="metric"?'°C':'°F'}</small>{" "}
                 </h2>
                 <p className=" ">{weather.list[3]?.weather[0]?.description}</p>
               </div>
@@ -480,7 +459,7 @@ const WeatherDetails = () => {
                 </p>
                 <h2 className=" text-xl">
                   {" "}
-                  {currentTemperatureCelsius4.toFixed(2)} <small>°C</small>{" "}
+                  {Math.round(currentTemperature4)} <small>{unit==="metric"?'°C':'°F'}</small>{" "}
                 </h2>
                 <p className=" ">{weather.list[4]?.weather[0]?.description}</p>
               </div>
@@ -496,7 +475,7 @@ const WeatherDetails = () => {
                 </p>
                 <h2 className=" text-xl">
                   {" "}
-                  {currentTemperatureCelsius5.toFixed(2)} <small>°C</small>{" "}
+                  {Math.round(currentTemperature5)} <small>{unit==="metric"?'°C':'°F'}</small>{" "}
                 </h2>
                 <p className=" ">{weather.list[5]?.weather[0]?.description}</p>
               </div>
@@ -512,7 +491,7 @@ const WeatherDetails = () => {
                 </p>
                 <h2 className=" text-xl">
                   {" "}
-                  {currentTemperatureCelsius6.toFixed(2)} <small>°C</small>{" "}
+                  {Math.round(currentTemperature6)} <small>{unit==="metric"?'°C':'°F'}</small>{" "}
                 </h2>
                 <p className=" ">{weather.list[6]?.weather[0]?.description}</p>
               </div>
@@ -528,7 +507,7 @@ const WeatherDetails = () => {
                 </p>
                 <h2 className=" text-xl">
                   {" "}
-                  {currentTemperatureCelsius7.toFixed(2)} <small>°C</small>{" "}
+                  {Math.round(currentTemperature7)}<small>{unit==="metric"?'°C':'°F'}</small>{" "}
                 </h2>
                 <p className=" ">{weather.list[7]?.weather[0]?.description}</p>
               </div>
