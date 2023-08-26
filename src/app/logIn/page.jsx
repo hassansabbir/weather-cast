@@ -1,43 +1,42 @@
 "use client";
 
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./login.css";
 import Link from "next/link";
 import SocialLogin from "../Components/SocialLogin";
 import { AuthContext } from "@/Providers/AuthProvider";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
 
 const LogInPage = () => {
   const { signIn } = useContext(AuthContext);
   const router = useRouter();
 
-  const handleLogin = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    console.log(email, password);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
 
-    signIn(email, password)
-      .then((result) => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
-        Swal.fire({
-          title: "Login Successfully.",
-          showClass: {
-            popup: "animate__animated animate__fadeInDown",
-          },
-          hideClass: {
-            popup: "animate__animated animate__fadeOutUp",
-          },
-        });
-        router.push("/");
-      })
-      .catch((error) => {
-        console.log(error);
+  const onSubmit = (data) => {
+    console.log(data);
+    signIn(data.email, data.password).then((res) => {
+      const user = res.user;
+      console.log(user);
+      reset();
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Login successful",
+        showConfirmButton: false,
+        timer: 1500,
       });
+      router.push("/");
+    });
   };
+
   return (
     <div className="login-page">
       <div className="hero ">
@@ -57,7 +56,7 @@ const LogInPage = () => {
           </div>
           <div className="card flex-shrink-0 w-full mb-20 max-w-xl shadow-2xl ">
             <form
-              onSubmit={handleLogin}
+              onSubmit={handleSubmit(onSubmit)}
               className="card-body bg-white bg-opacity-70 rounded-3xl"
             >
               <div className="form-control">
@@ -65,22 +64,30 @@ const LogInPage = () => {
                   <span className="label-text text-xl font-bold">Email</span>
                 </label>
                 <input
+                  {...register("email", { required: true })}
                   type="text"
                   placeholder="email"
                   className="input input-bordered"
                   name="email"
                 />
+                {errors.email && (
+                  <span className="text-red-600">email is required</span>
+                )}
               </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text text-xl font-bold">Password</span>
                 </label>
                 <input
+                  {...register("password", { required: true })}
                   type="password"
                   placeholder="password"
                   className="input input-bordered"
                   name="password"
                 />
+                {errors.password && (
+                  <span className="text-red-600">Password is required</span>
+                )}
 
                 <label className="label">
                   <a href="#" className="label-text-alt link link-hover">
