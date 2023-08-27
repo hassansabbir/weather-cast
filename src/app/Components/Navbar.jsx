@@ -13,20 +13,20 @@ const Navbar = () => {
       title: "Home",
     },
     {
-      path: "/about",
-      title: "About",
+      path: "/news",
+      title: "News",
     },
     {
       path: "/contact",
       title: "Contact",
     },
     {
-      path: "/blog",
-      title: "Blog",
+      path: "/about",
+      title: "About",
     },
     {
-      path: "/news",
-      title: "News",
+      path: "/blog",
+      title: "Blog",
     },
   ];
 

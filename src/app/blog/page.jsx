@@ -7,7 +7,6 @@ import tornado from "./../../assets/Tornado_Damage.jpg";
 import earthquake from "./../../assets/earthquake.jpg";
 import hurricane from "./../../assets/hurricane.jpg";
 import flood from "./../../assets/flood.jpg";
-import PrivetRoute from "@/routes/PrivetRoute";
 
 const posts = [
   {
@@ -82,126 +81,122 @@ const BlogPage = () => {
   };
 
   return (
-    <PrivetRoute>
-      <div className="container">
-        <main className="main">
-          <div className="sidebar">
-            <h2>Disaster Types</h2>
-            {posts.map((post, index) => (
-              <div
-                key={index}
-                className="post-card"
-                onClick={() => handlePostClick(index)}
-              >
-                <h2 className="text-blue-800">{post.title}</h2>
+    <div className="container">
+      <main className="main">
+        <div className="sidebar">
+          <h2>Disaster Types</h2>
+          {posts.map((post, index) => (
+            <div
+              key={index}
+              className="post-card"
+              onClick={() => handlePostClick(index)}
+            >
+              <h2 className="text-blue-800">{post.title}</h2>
 
-                <p>{post.content}</p>
-              </div>
-            ))}
-          </div>
-          <div className="content">
-            {selectedPost ? (
-              <div className="post-details gap-1">
-                <Image
-                  src={selectedPost.photo}
-                  alt="Protect Yourself"
-                  width={500}
-                  height={300}
-                />
-                <h2 className="text-5xl font-semibold mt-1 mb-1">
-                  {selectedPost.name}
-                </h2>
-                <p>{selectedPost.introduction}</p>
-                <h2 className="text-xl font-semibold mt-1 mb-1">
-                  Stay Safe During {selectedPost.name}
-                </h2>
+              <p>{post.content}</p>
+            </div>
+          ))}
+        </div>
+        <div className="content">
+          {selectedPost ? (
+            <div className="post-details gap-1">
+              <Image
+                src={selectedPost.photo}
+                alt="Protect Yourself"
+                width={500}
+                height={300}
+              />
+              <h2 className="text-5xl font-semibold mt-1 mb-1">
+                {selectedPost.name}
+              </h2>
+              <p>{selectedPost.introduction}</p>
+              <h2 className="text-xl font-semibold mt-1 mb-1">
+                Stay Safe During {selectedPost.name}
+              </h2>
 
-                <p>{selectedPost.steps}</p>
-                <h2>Protect Yourself</h2>
-                <div className="image-container">
-                  {selectedPost.image ? (
-                    <Image
-                      src={selectedPost.image}
-                      alt="Protect Yourself"
-                      width={500}
-                      height={300}
-                    />
-                  ) : (
-                    ""
-                  )}
-                </div>
+              <p>{selectedPost.steps}</p>
+              <h2>Protect Yourself</h2>
+              <div className="image-container">
+                {selectedPost.image ? (
+                  <Image
+                    src={selectedPost.image}
+                    alt="Protect Yourself"
+                    width={500}
+                    height={300}
+                  />
+                ) : (
+                  ""
+                )}
               </div>
-            ) : (
-              <div className="flex justify-center  items-center">
-                <div>
-                  <p className="text-5xl font-semibold mb-1">
-                    we care about you
-                  </p>
-                  <p>Please select a disaster type to view details.</p>
-                </div>
+            </div>
+          ) : (
+            <div className="flex justify-center  items-center">
+              <div>
+                <p className="text-5xl font-semibold mb-1">we care about you</p>
+                <p>Please select a disaster type to view details.</p>
               </div>
-            )}
-          </div>
-        </main>
+            </div>
+          )}
+        </div>
+      </main>
 
-        <style jsx>{`
+      <style jsx>{`
+        .container {
+          display: flex;
+          min-height: 100vh;
+          flex-direction: column;
+        }
+
+        .main {
+          display: flex;
+          flex: 1;
+          padding: 1rem;
+          flex-direction: column;
+        }
+
+        .sidebar {
+          flex: 1;
+          padding-right: 0;
+          border-right: none;
+        }
+
+        .content {
+          flex: 2;
+          padding-left: 0;
+        }
+
+        .post-card {
+          cursor: pointer;
+          background-color: #f4f4f4;
+          border-radius: 5px;
+          padding: 1rem;
+          margin: 1rem 0;
+        }
+
+        .post-details {
+          background-color: #f4f4f4;
+          border-radius: 5px;
+          padding: 1rem;
+        }
+
+        @media (min-width: 768px) {
+          .main {
+            padding: 2rem;
+          }
+        }
+
+        @media (min-width: 1024px) {
           .container {
-            display: flex;
-            min-height: 100vh;
-            flex-direction: column;
+            flex-direction: row;
           }
 
           .main {
-            display: flex;
-            flex: 1;
-            padding: 1rem;
-            flex-direction: column;
+            padding: 2rem;
+            flex-direction: row;
           }
-
-          .sidebar {
-            flex: 1;
-            padding-right: 0;
-            border-right: none;
-          }
-
-          .content {
-            flex: 2;
-            padding-left: 0;
-          }
-
-          .post-card {
-            cursor: pointer;
-            background-color: #f4f4f4;
-            border-radius: 5px;
-            padding: 1rem;
-            margin: 1rem 0;
-          }
-
-          .post-details {
-            background-color: #f4f4f4;
-            border-radius: 5px;
-            padding: 1rem;
-          }
-
-          @media (min-width: 768px) {
-            .main {
-              padding: 2rem;
-            }
-          }
-
-          @media (min-width: 1024px) {
-            .container {
-              flex-direction: row;
-            }
-
-            .main {
-              padding: 2rem;
-              flex-direction: row;
-            }
-          }
-        `}</style>
-      </div>
-    </PrivetRoute>
+        }
+      `}</style>
+    </div>
   );
 };
 
