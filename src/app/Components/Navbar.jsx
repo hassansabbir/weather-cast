@@ -3,6 +3,7 @@
 import { AuthContext } from "@/Providers/AuthProvider";
 import Link from "next/link";
 import React, { useContext } from "react";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -91,27 +92,35 @@ const Navbar = () => {
               </div>
             </div>
           )}
-          <div className="hidden md:block">
-            {user?.email ? (
-              <>
-                <button
-                  onClick={handleLogOut}
-                  className="btn btn-active btn-ghost"
-                >
-                  Logout
-                </button>
-              </>
-            ) : (
-              <>
-                <li>
-                  <Link href="/logIn">
-                    <button className="btn bg-blue-800 text-white">
-                      Login
-                    </button>
-                  </Link>
-                </li>
-              </>
-            )}
+          <div className="dropdown dropdown-bottom dropdown-end">
+            <label tabIndex={0} className="btn m-1">
+              <GiHamburgerMenu className="w-7 h-7" />
+            </label>
+            <ul
+              tabIndex={0}
+              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <>
+                  {user?.email ? (
+                    <>
+                      <h2 onClick={handleLogOut}>Logout</h2>
+                    </>
+                  ) : (
+                    <>
+                      <li>
+                        <Link className="w-full" href="/logIn">
+                          <h2 className="w-full">Login</h2>
+                        </Link>
+                      </li>
+                    </>
+                  )}
+                </>
+              </li>
+              <li>
+                <Link href="profile">Profile</Link>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
