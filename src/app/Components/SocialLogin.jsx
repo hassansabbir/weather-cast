@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
@@ -13,13 +13,25 @@ const SocialLogin = () => {
   const handleGoogleSignIn = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
-        const user = result.user;
-        console.log(user);
-        router.push("/");
+        const loggedInUser = result.user;
+        console.log(loggedInUser);
+        const saveUserInfo = {
+          name: loggedInUser.displayName,
+          email: loggedInUser.email,
+          image: loggedInUser.photoURL,
+          role: "visitor",
+        };
+        fetch(`https://weather-cast-server.vercel.app/users`, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(saveUserInfo),
+        })
+          .then((res) => res.json())
+          .then(() => {
+            router.push("/", { replace: true });
+          });
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((err) => console.log(err.message));
   };
 
   return (

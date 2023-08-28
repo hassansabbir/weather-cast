@@ -11,14 +11,14 @@ const Intelligence = () => {
       <AOSInitializer></AOSInitializer>;
       <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center -space-x-16">
         <div
-          data-aos="fade-right"
+          data-aos="fade-up"
           data-aos-offset="300"
           data-aos-easing="ease-in-sine"
         >
           <Lottie animationData={earth}></Lottie>
         </div>
         <div
-          data-aos="fade-left"
+          data-aos="fade-down"
           data-aos-offset="300"
           data-aos-easing="ease-in-sine"
           className="p-10 pl-24"

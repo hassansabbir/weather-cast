@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import "./WeatherUpdates.css";
 import { FaEye, FaLocationDot, FaWind } from "react-icons/fa6";
 import moment from "moment";
-import { BsClouds} from "react-icons/bs";
 import { WiHumidity, WiRefreshAlt } from "react-icons/wi";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,7 +11,7 @@ import WeatherMap from "../SimpleWeatherMap";
 import WeatherAlert from "./WeatherAlert";
 import { getWeatherIcon } from "@/utils/getWeatherIcon";
 
-const fetchWeather = async (query , setWeather) => {
+const fetchWeather = async (query, setWeather) => {
   const apiKey = "41a5c84ae7ccfff1bc9491b25aa4dbde";
   let weather = await fetch(
     `https://api.openweathermap.org/data/2.5/forecast?q=${query}&appid=${apiKey}`
@@ -22,15 +21,12 @@ const fetchWeather = async (query , setWeather) => {
   setWeather(response);
 };
 
-
 const WeatherUpdates = () => {
   const [query, setQuery] = useState("");
   const [weather, setWeather] = useState(null);
 
- 
-
   useEffect(() => {
-    fetchWeather("Dhaka" , setWeather);
+    fetchWeather("Dhaka", setWeather);
   }, []);
 
   if (!weather) {
@@ -44,7 +40,7 @@ const WeatherUpdates = () => {
     fetchWeather(query, setWeather);
   };
 
-//  temperature , location , current date , feels like 
+  //  temperature , location , current date , feels like
   const currentWeather = weather.list[0];
   const weatherMain = currentWeather.weather[0].main;
   const weatherIcon = getWeatherIcon(weatherMain);
@@ -80,19 +76,22 @@ const WeatherUpdates = () => {
           <div className="lg:flex gap-20 mt-5 lg:mt-14">
             <div className="">
               <h2 className="text-4xl lg:text-7xl mb-5 text-white font-bold font-white">
-              {currentTemperatureCelsius.toFixed(2)} &#8451;
+                {currentTemperatureCelsius.toFixed(2)} &#8451;
               </h2>
               <h2 className="text-2xl lg:text-3xl text-white font-bold flex items-center gap-2 ">
                 <FaLocationDot className="w-7 h-7" /> {location}
-               </h2>
+              </h2>
             </div>
             <div>
-            
-            <Image  src={weatherIcon} height={100} width={120} alt={weatherMain} />
-          
-              
+              <Image
+                src={weatherIcon}
+                height={100}
+                width={120}
+                alt={weatherMain}
+              />
+
               <h2 className="text-xl lg:text-2xl  font-bold text-white">
-              {currentWeather?.weather[0]?.description}
+                {currentWeather?.weather[0]?.description}
               </h2>
             </div>
           </div>
@@ -108,34 +107,59 @@ const WeatherUpdates = () => {
             </p>
           </div>
           <p className=" text-white text-xl font-bold relative mt-32">
-          <Link href="/details" className=" absolute bottom-0  right-0 " > More Details..</Link>
+            <Link href="/details" className=" absolute bottom-0  right-0 ">
+              {" "}
+              More Details..
+            </Link>
           </p>
-          
         </div>
         <div className=" weather-related-card w-full lg:w-4/12 rounded-3xl p-10 h-[600px]">
           <div className="flex flex-col gap-10 mt-10 ">
             <h2 className="text-3xl text-white ">
-            <p className="flex"> <FaWind  className="text-3xl " /> Wind Speed</p>  
-            <p className="ps-8 pt-1">  {currentWeather.wind.speed} <small>m/s</small></p>
-          </h2>
+              <p className="flex">
+                {" "}
+                <FaWind className="text-3xl " /> Wind Speed
+              </p>
+              <p className="ps-8 pt-1">
+                {" "}
+                {currentWeather.wind.speed} <small>m/s</small>
+              </p>
+            </h2>
 
             {/* Humidity */}
             <h2 className="text-3xl text-white ">
-            <p className="flex"> <WiHumidity className="text-3xl " />  Humidity</p>  
-            <p className="ps-8 pt-1">  {currentWeather.main.humidity} <small>%</small></p>
-              </h2>
+              <p className="flex">
+                {" "}
+                <WiHumidity className="text-3xl " /> Humidity
+              </p>
+              <p className="ps-8 pt-1">
+                {" "}
+                {currentWeather.main.humidity} <small>%</small>
+              </p>
+            </h2>
 
             {/* visibility */}
             <h2 className="text-3xl text-white ">
-            <p className="flex"> <FaEye className="text-3xl me-2" />  Visibility</p>  
-            <p className="ps-8 pt-1">  {currentWeather.visibility / 1000} <small>Km</small></p>
+              <p className="flex">
+                {" "}
+                <FaEye className="text-3xl me-2" /> Visibility
+              </p>
+              <p className="ps-8 pt-1">
+                {" "}
+                {currentWeather.visibility / 1000} <small>Km</small>
+              </p>
             </h2>
 
             {/* pressure */}
             <h2 className="text-3xl text-white  ">
-            <p className="flex"> <WiRefreshAlt className="text-5xl " /> Pressure In</p>  
-            <p className="ps-8 pt-1">  {currentWeather.main.pressure} <small>hPa</small></p>
-             
+              <p className="flex">
+                {" "}
+                <WiRefreshAlt className="text-5xl " /> Pressure In
+              </p>
+              <p className="ps-8 pt-1">
+                {" "}
+                {currentWeather.main.pressure} <small>hPa</small>
+              </p>
             </h2>
           </div>
         </div>

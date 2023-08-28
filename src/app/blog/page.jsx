@@ -144,23 +144,25 @@ const BlogPage = () => {
         .container {
           display: flex;
           min-height: 100vh;
+          flex-direction: column;
         }
 
         .main {
           display: flex;
           flex: 1;
-          padding: 2rem;
+          padding: 1rem;
+          flex-direction: column;
         }
 
         .sidebar {
           flex: 1;
-          padding-right: 2rem;
-          border-right: 1px solid #ccc;
+          padding-right: 0;
+          border-right: none;
         }
 
         .content {
           flex: 2;
-          padding-left: 2rem;
+          padding-left: 0;
         }
 
         .post-card {
@@ -175,6 +177,23 @@ const BlogPage = () => {
           background-color: #f4f4f4;
           border-radius: 5px;
           padding: 1rem;
+        }
+
+        @media (min-width: 768px) {
+          .main {
+            padding: 2rem;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .container {
+            flex-direction: row;
+          }
+
+          .main {
+            padding: 2rem;
+            flex-direction: row;
+          }
         }
       `}</style>
     </div>
