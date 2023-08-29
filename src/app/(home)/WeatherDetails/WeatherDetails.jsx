@@ -15,6 +15,7 @@ import { MdAir, MdSunny } from "react-icons/md";
 import { WiHumidity, WiSandstorm } from "react-icons/wi";
 import { getWeatherIcon } from "@/utils/getWeatherIcon";
 import PrivateRoute from "@/routes/PrivetRoute";
+import WeatherLocation from "../WeatherLocation/WeatherLocation";
 
 const weatherFetch = async (City, unit, setWeather) => {
   try {
@@ -32,6 +33,7 @@ const WeatherDetails = () => {
   const [City, setCity] = useState("");
   const [weather, setWeather] = useState(null);
   const [unit, setUnit] = useState("metric");
+  // const [showWeatherDetails, setShowWeatherDetails] = useState(true);
 
   useEffect(() => {
     weatherFetch("Dhaka", unit, setWeather);
@@ -173,6 +175,7 @@ const WeatherDetails = () => {
           >
             °F
           </button>
+          <WeatherLocation></WeatherLocation>
         </div>
 
         <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 m-10">
