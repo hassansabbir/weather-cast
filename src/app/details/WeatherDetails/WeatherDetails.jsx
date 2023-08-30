@@ -16,10 +16,13 @@ import { getWeatherIcon } from "@/utils/getWeatherIcon";
 import PrivateRoute from "@/routes/PrivetRoute";
 import Swal from "sweetalert2";
 import WeatherCharts from "../weatherCharts/WeatherCharts";
+import WeatherLocation from "@/app/(home)/WeatherLocation/WeatherLocation";
+// import WeatherLocation from "../WeatherLocation/WeatherLocation"; 
+
 const weatherFetch = async (City, unit, setWeather) => {
   try {
     const apiKey = "41a5c84ae7ccfff1bc9491b25aa4dbde";
-    const URL = `https://api.openweathermap.org/data/2.5/forecast?q=${City}&units=${unit}&appid=${apiKey}`;
+    const URL = `https://api.openweathermap.org/data/2.5/forecast?q=${City}&&units=${unit}&appid=${apiKey}`;
     const response = await fetch(URL);
     if (!response.ok) {
       Swal.fire({
@@ -45,6 +48,7 @@ const WeatherDetails = () => {
   const [City, setCity] = useState("");
   const [weather, setWeather] = useState(null);
   const [unit, setUnit] = useState("metric");
+  // const [showWeatherDetails, setShowWeatherDetails] = useState(true);
 
   useEffect(() => {
     weatherFetch("Dhaka", unit, setWeather);
@@ -205,6 +209,7 @@ const WeatherDetails = () => {
           >
            °F
           </button>
+          <WeatherLocation></WeatherLocation>
         </div>
 
         <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 m-10">
