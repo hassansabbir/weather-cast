@@ -1,21 +1,7 @@
 import moment from 'moment';
 import React from 'react';
-import {
-    ResponsiveContainer,
-    ComposedChart,
-    Line,
-    Area,
-    Bar,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-    Legend,
-    AreaChart,
-  } from 'recharts';
-const WeatherCharts = ({weather , currentWeather ,currentWeather1,currentWeather2,currentWeather3,currentWeather4, currentWeather5,currentWeather6 ,currentWeather7 }) => {
-
-    // time 
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+const HumidityChart = ({weather , currentWeather ,currentWeather1,currentWeather2,currentWeather3,currentWeather4, currentWeather5,currentWeather6 ,currentWeather7 }) => {
     let time = moment(currentWeather.dt_txt).format("h A")
     let temp = Math.round(currentWeather.main.temp)
     let Humidity=currentWeather.main.humidity
@@ -112,27 +98,28 @@ const WeatherCharts = ({weather , currentWeather ,currentWeather1,currentWeather
     return (
         <div className='' style={{ width: '100%', height: 350 }}>
         <ResponsiveContainer>
-        <AreaChart
+        <LineChart
+          width={500}
+          height={300}
           data={data}
           margin={{
-            top: 10,
+            top: 5,
             right: 30,
-            left: 0,
-            bottom: 0,
+            left: 20,
+            bottom: 5,
           }}
         >
-            <CartesianGrid  strokeDasharray="3 3" />
-            <XAxis dataKey="time" scale="band" />
-            <YAxis  />
-            <Tooltip />           
-            <Area type="monotone" dataKey="temperature" tickFormatter={(value) => `${value}°C`}  fill="#D4ADFC" stroke="#8884d8" />
-            {/* <Area type="monotone" dataKey="Pressure" stackId="1" stroke="#82ca9d" fill="#82ca9d" />  */}
-            {/* <Area type="monotone" dataKey="Humidity" stackId="1" stroke="#ffc658" fill="#ffc658"  />  */}
-          </AreaChart>
+            <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="time" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+         
+          <Line type="monotone" dataKey="Humidity" stackId="1" stroke="#ffc658"  activeDot={{ r: 8 }} /> 
+        </LineChart>
         </ResponsiveContainer>
       </div>
-
     );
 };
 
-export default WeatherCharts;
+export default HumidityChart;
