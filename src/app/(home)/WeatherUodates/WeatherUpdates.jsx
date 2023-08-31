@@ -30,7 +30,12 @@ const WeatherUpdates = () => {
   }, []);
 
   if (!weather) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center mt-20">
+        <span className="loading loading-bars loading-lg"></span>
+        <span className="loading loading-bars loading-lg"></span>
+      </div>
+    );
   }
 
   const handleChange = (e) => {
@@ -56,7 +61,7 @@ const WeatherUpdates = () => {
       <h2 className="text-5xl font-bold my-10 text-center">
         Live Weather Updates
       </h2>
-      <div className="max-w-[1460px] lg:flex space-y-5 lg:space-y-0 gap-5 mx-auto my-10">
+      <div className="max-w-[1460px] px-7 lg:flex space-y-5 lg:space-y-0 gap-5 mx-auto my-10">
         <div className="weather-card space-x-5 w-full lg:w-8/12 rounded-3xl p-10 h-[600px] border">
           <input
             value={query}
@@ -106,16 +111,19 @@ const WeatherUpdates = () => {
               {moment(weather?.location?.localtime).format("MMMM Do YYYY")}
             </p>
           </div>
-          <p className=" text-white text-xl font-bold relative mt-32">
-            <Link href="/details" className=" absolute bottom-0  right-0 ">
+          <p className=" text-white text-xl font-bold relative mt-10">
+            <Link
+              href="/details"
+              className="absolute bottom-0 right-0 underline cursor-pointer"
+            >
               {" "}
-              More Details..
+              View Full Weather Details
             </Link>
           </p>
         </div>
         <div className=" weather-related-card w-full lg:w-4/12 rounded-3xl p-10 h-[600px]">
           <div className="flex flex-col gap-10 mt-10 ">
-            <h2 className="text-3xl text-white ">
+            <div className="text-3xl text-white ">
               <p className="flex">
                 {" "}
                 <FaWind className="text-3xl " /> Wind Speed
@@ -124,10 +132,10 @@ const WeatherUpdates = () => {
                 {" "}
                 {currentWeather.wind.speed} <small>m/s</small>
               </p>
-            </h2>
+            </div>
 
             {/* Humidity */}
-            <h2 className="text-3xl text-white ">
+            <div className="text-3xl text-white ">
               <p className="flex">
                 {" "}
                 <WiHumidity className="text-3xl " /> Humidity
@@ -136,10 +144,10 @@ const WeatherUpdates = () => {
                 {" "}
                 {currentWeather.main.humidity} <small>%</small>
               </p>
-            </h2>
+            </div>
 
             {/* visibility */}
-            <h2 className="text-3xl text-white ">
+            <div className="text-3xl text-white ">
               <p className="flex">
                 {" "}
                 <FaEye className="text-3xl me-2" /> Visibility
@@ -148,10 +156,10 @@ const WeatherUpdates = () => {
                 {" "}
                 {currentWeather.visibility / 1000} <small>Km</small>
               </p>
-            </h2>
+            </div>
 
             {/* pressure */}
-            <h2 className="text-3xl text-white  ">
+            <div className="text-3xl text-white  ">
               <p className="flex">
                 {" "}
                 <WiRefreshAlt className="text-5xl " /> Pressure In
@@ -160,7 +168,7 @@ const WeatherUpdates = () => {
                 {" "}
                 {currentWeather.main.pressure} <small>hPa</small>
               </p>
-            </h2>
+            </div>
           </div>
         </div>
       </div>

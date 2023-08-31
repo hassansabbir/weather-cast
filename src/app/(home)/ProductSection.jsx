@@ -12,7 +12,7 @@ const ProductSection = () => {
   }, []);
 
   return (
-    <div className="my-20 max-w-[1460px] mx-auto">
+    <div className="my-20 px-7 lg:px-0 max-w-[1460px] mx-auto">
       <AOSInitializer></AOSInitializer>;
       <h2 className="text-4xl lg:text-5xl font-bold text-center my-10">
         Our <span className="text-blue-800">New</span> features

@@ -15,7 +15,7 @@ const posts = [
     title: "Preparing for Tornadoes",
     content: "Tornadoes are powerful tropical storms...",
     introduction:
-      "Tornadoes are powerful tropical storms. Tornadoes are violently rotating columns of air that extend from a thunderstorm to the ground. Tornadoes can destroy buildings, flip cars, and create deadly flying debris.",
+      "Tornadoes are powerful tropical storms. Tornadoes are violently rotating columns of air that extend from a thunderstorm to the ground. Tornadoes can break buildings, flip cars, and create deadly flying debris.",
     happens: "Staying Safe During a Tornado:",
     steps: [
       "Stay away from windows, doors, and outside walls.",
