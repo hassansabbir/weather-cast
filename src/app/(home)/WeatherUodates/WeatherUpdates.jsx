@@ -11,22 +11,40 @@ import WeatherMap from "../SimpleWeatherMap";
 import WeatherAlert from "./WeatherAlert";
 import { getWeatherIcon } from "@/utils/getWeatherIcon";
 
-const fetchWeather = async (query, setWeather) => {
+
+const fetchWeather = async (latitude, longitude ,setWeather) => {
   const apiKey = "41a5c84ae7ccfff1bc9491b25aa4dbde";
-  let weather = await fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?q=${query}&appid=${apiKey}`
+
+  // fetch current weather api
+  const CurrentWeatherResponse = await fetch(
+    `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`
   );
-  let response = await weather.json();
-  console.log(response);
-  setWeather(response);
+  const currentWeatherData = await CurrentWeatherResponse.json();
+ setWeather(currentWeatherData);
 };
 
+
 const WeatherUpdates = () => {
-  const [query, setQuery] = useState("");
-  const [weather, setWeather] = useState(null);
+ 
+
+ const [weather, setWeather] = useState(null);
 
   useEffect(() => {
-    fetchWeather("Dhaka", setWeather);
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+          fetchWeather(latitude, longitude , setWeather);
+        },
+        (error) => {
+          console.error("Error getting user location:", error);
+        }
+      );
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
+   
   }, []);
 
   if (!weather) {
@@ -38,23 +56,18 @@ const WeatherUpdates = () => {
     );
   }
 
-  const handleChange = (e) => {
-    setQuery(e.target.value);
-  };
-  const handleClick = () => {
-    fetchWeather(query, setWeather);
-  };
+ 
 
   //  temperature , location , current date , feels like
-  const currentWeather = weather.list[0];
-  const weatherMain = currentWeather.weather[0].main;
-  const weatherIcon = getWeatherIcon(weatherMain);
-  const currentTemperatureKelvin = currentWeather.main.temp;
-  const feelsLikeTemperatureKelvin = currentWeather.main.feels_like;
-  const currentTemperatureCelsius = currentTemperatureKelvin - 273.15;
-  const feelsLikeTemperatureCelsius = feelsLikeTemperatureKelvin - 273.15;
-  const location = weather.city.name;
-
+  const weatherMain = weather.weather[0].main;
+const weatherIcon = getWeatherIcon(weatherMain);
+const currentTemperatureKelvin = weather.main.temp;
+const feelsLikeTemperatureKelvin = weather.main.feels_like;
+const currentTemperatureCelsius = Math.round(currentTemperatureKelvin - 273.15);
+const feelsLikeTemperatureCelsius = Math.round(feelsLikeTemperatureKelvin - 273.15);
+const location = weather.name;
+const weatherDescription = weather.weather[0].description;
+const windSpeed = weather.wind.speed;
   return (
     <>
       <h2 className="text-5xl font-bold my-10 text-center">
@@ -62,25 +75,11 @@ const WeatherUpdates = () => {
       </h2>
       <div className="max-w-[1460px] px-7 lg:flex space-y-5 lg:space-y-0 gap-5 mx-auto my-10">
         <div className="weather-card space-x-5 w-full lg:w-8/12 rounded-3xl p-10 h-[600px] border">
-          <input
-            value={query}
-            onChange={handleChange}
-            className="border py-4 pl-5 rounded-2xl w-10/12"
-            type="search"
-            placeholder="search"
-            name=""
-            id=""
-          />
-          <button
-            onClick={handleClick}
-            className="btn btn-neutral text-white bg-blue-800"
-          >
-            Search
-          </button>
+        
           <div className="lg:flex gap-20 mt-5 lg:mt-14">
             <div className="">
               <h2 className="text-4xl lg:text-7xl mb-5 text-white font-bold font-white">
-                {currentTemperatureCelsius.toFixed(2)} &#8451;
+                {currentTemperatureCelsius} &#8451;
               </h2>
               <h2 className="text-2xl lg:text-3xl text-white font-bold flex items-center gap-2 ">
                 <FaLocationDot className="w-7 h-7" /> {location}
@@ -95,13 +94,13 @@ const WeatherUpdates = () => {
               />
 
               <h2 className="text-xl lg:text-2xl  font-bold text-white">
-                {currentWeather?.weather[0]?.description}
+                {weatherDescription}
               </h2>
             </div>
           </div>
           <div>
             <p className="text-xl lg:text-2xl mt-10 text-white">
-              Feels like {feelsLikeTemperatureCelsius.toFixed(2)} &#8451;
+              Feels like {feelsLikeTemperatureCelsius} &#8451;
             </p>
             <p className="text-xl lg:text-2xl text-white p-3">
               {moment(weather?.location?.localtime).format("LT")}
@@ -129,7 +128,7 @@ const WeatherUpdates = () => {
               </p>
               <p className="ps-8 pt-1">
                 {" "}
-                {currentWeather.wind.speed} <small>m/s</small>
+                {windSpeed} <small>m/s</small>
               </p>
             </div>
 
@@ -141,7 +140,7 @@ const WeatherUpdates = () => {
               </p>
               <p className="ps-8 pt-1">
                 {" "}
-                {currentWeather.main.humidity} <small>%</small>
+                {weather.main.humidity} <small>%</small>
               </p>
             </div>
 
@@ -153,7 +152,7 @@ const WeatherUpdates = () => {
               </p>
               <p className="ps-8 pt-1">
                 {" "}
-                {currentWeather.visibility / 1000} <small>Km</small>
+                {weather.visibility / 1000} <small>Km</small>
               </p>
             </div>
 
@@ -165,23 +164,13 @@ const WeatherUpdates = () => {
               </p>
               <p className="ps-8 pt-1">
                 {" "}
-                {currentWeather.main.pressure} <small>hPa</small>
+                {weather.main.pressure} <small>hPa</small>
               </p>
             </div>
           </div>
         </div>
       </div>
-      <div>
-        <div
-          className="card h-80 bg-base-100 shadow-xl mt-2 "
-          style={{ overflow: "hidden", zIndex: 5 }}
-        >
-          <WeatherMap city={query} />
-        </div>
-        <div className="card h-20 lg:w-7/12 bg-base-100 shadow-xl mt-2 text-center flex justify-center mx-auto">
-          <WeatherAlert weather={currentWeather} />
-        </div>
-      </div>
+    
     </>
   );
 };

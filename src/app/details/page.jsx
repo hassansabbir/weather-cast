@@ -3,6 +3,7 @@ import WeatherDetails from './WeatherDetails/WeatherDetails';
 
 
 const page = () => {
+  
     return (
         <div>
           <WeatherDetails/>

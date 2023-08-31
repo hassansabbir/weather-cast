@@ -1,5 +1,6 @@
 "use client";
-
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 import moment from "moment";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
@@ -17,7 +18,14 @@ import PrivateRoute from "@/routes/PrivetRoute";
 import Swal from "sweetalert2";
 import WeatherCharts from "../weatherCharts/WeatherCharts";
 import WeatherLocation from "@/app/(home)/WeatherLocation/WeatherLocation";
-// import WeatherLocation from "../WeatherLocation/WeatherLocation";
+import ThreeHourWeather from "../ThreeHourWeather/ThreeHourWeather";
+import WeatherMap from '@/app/(home)/SimpleWeatherMap';
+import WeatherAlert from '@/app/(home)/WeatherUodates/WeatherAlert';
+import HumidityChart from '../HumidityChart';
+import PressureChart from '../PressureChart';
+
+import WindChart from '../WindChart';
+// import WeatherLocation from "../WeatherLocation/WeatherLocation"; 
 
 const weatherFetch = async (City, unit, setWeather) => {
   try {
@@ -26,18 +34,17 @@ const weatherFetch = async (City, unit, setWeather) => {
     const response = await fetch(URL);
     if (!response.ok) {
       Swal.fire({
-        title: "City not found. Please enter a valid city name.",
+        title: 'City not found. Please enter a valid city name.',
         showClass: {
-          popup: "animate__animated animate__fadeInDown",
+          popup: 'animate__animated animate__fadeInDown'
         },
         hideClass: {
-          popup: "animate__animated animate__fadeOutUp",
-        },
+          popup: 'animate__animated animate__fadeOutUp'
+        }
       });
       return;
     }
-
-    const data = await response.json();
+  const data = await response.json();
     setWeather(data);
   } catch (error) {
     console.error("Im sorry we couldn't get you weather data", error);
@@ -48,35 +55,33 @@ const WeatherDetails = () => {
   const [City, setCity] = useState("");
   const [weather, setWeather] = useState(null);
   const [unit, setUnit] = useState("metric");
-  // const [showWeatherDetails, setShowWeatherDetails] = useState(true);
 
   useEffect(() => {
     weatherFetch("Dhaka", unit, setWeather);
-  }, [City, unit]);
+  }, [unit]);
 
   const handleSearch = () => {
-    if (City.trim() === "") {
+  if (City.trim() === "") {
       Swal.fire({
-        title: "Please enter a city name.",
+        title: 'Please enter a city name.',
         showClass: {
-          popup: "animate__animated animate__fadeInDown",
+          popup: 'animate__animated animate__fadeInDown'
         },
         hideClass: {
-          popup: "animate__animated animate__fadeOutUp",
-        },
-      });
-      return;
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      })
+    return ;
     }
-
-    weatherFetch(City, unit, setWeather);
+  weatherFetch(City, unit, setWeather);
   };
 
   const handleUnitChange = (selectedUnit) => {
-    setUnit(selectedUnit);
-    if (City) {
-      weatherFetch(City, selectedUnit, setWeather);
-      //  return ;
-    }
+     setUnit(selectedUnit);
+     if (City) {
+     weatherFetch(City, selectedUnit , setWeather);
+  }
+    
   };
 
   if (!weather) {
@@ -89,10 +94,8 @@ const WeatherDetails = () => {
   }
 
   const currentWeather = weather.list[0];
-
   const weatherMain = currentWeather.weather[0].main;
   const weatherIcon = getWeatherIcon(weatherMain);
-
   const currentTemperature = currentWeather.main.temp;
   const feelsLikeTemperature = currentWeather.main.feels_like;
   const currentDate = new Date(currentWeather.dt_txt);
@@ -104,13 +107,11 @@ const WeatherDetails = () => {
     const index = Math.round(degrees / 45) % 8;
     return directions[index];
   };
-
   const windDirection = getWindDirection(currentWeather.wind.deg);
 
   // sunrise and sunset time
   const sunriseTime = new Date(weather.city.sunrise * 1000);
   const sunsetTime = new Date(weather.city.sunset * 1000);
-
   const options = { hour: "numeric", minute: "numeric", hour12: true };
 
   // for 5 days
@@ -187,7 +188,7 @@ const WeatherDetails = () => {
             name=""
             id=""
           />
-
+        
           <button
             onClick={handleSearch}
             className="btn btn-neutral text-white bg-blue-800 ms-4"
@@ -198,22 +199,18 @@ const WeatherDetails = () => {
 
         <div className="mx-auto text-center">
           <button
-            className={`btn btn-circle btn-outline font-bold m-8 ${
-              unit === "metric" ? "active" : ""
-            }`}
+           className={`btn btn-circle btn-outline font-bold m-8 ${unit === 'metric' ? 'active' : ''}`}
             onClick={() => handleUnitChange("metric")}
           >
-            °C
+          °C
           </button>
           <button
-            className={`btn btn-circle btn-outline font-bold ${
-              unit === "imperial" ? "active" : ""
-            }`}
+            className={`btn btn-circle btn-outline font-bold ${unit === 'imperial' ? 'active' : ''}`}
             onClick={() => handleUnitChange("imperial")}
           >
-            °F
+           °F
           </button>
-          <WeatherLocation></WeatherLocation>
+          {/* <WeatherLocation></WeatherLocation>  */}
         </div>
 
         <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 m-10">
@@ -461,215 +458,61 @@ const WeatherDetails = () => {
 
             <h3 className="font-bold text-2xl mt-6 ms-3">Today at</h3>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 lg:mt-5 gap-2">
-              <div className="card  bg-base-100 shadow-xl">
-                <div className="card-body text-center">
-                  <p className="text-center font-semibold text-xl">
-                    {moment(weather?.list[0]?.dt_txt).format("h A")}
-                  </p>
-                  <p className="mx-auto">
-                    <Image
-                      src={weatherIcon}
-                      height={50}
-                      width={70}
-                      alt={weatherMain}
-                    />
-                  </p>
-                  <h2 className=" text-xl">
-                    {" "}
-                    {Math.round(currentTemperature)}{" "}
-                    <small>{unit === "metric" ? "°C" : "°F"}</small>{" "}
-                  </h2>
-                  <p className=" ">{currentWeather?.weather[0]?.description}</p>
-                </div>
-              </div>
+            <Tabs>
+    <TabList>
+      <Tab>Temperature</Tab>
+      <Tab>Humidity</Tab>
+      <Tab>pressure</Tab>
+      <Tab>Wind</Tab>     
+      <Tab>Hourly</Tab>
+    </TabList>
 
-              <div className="card  bg-base-100 shadow-xl">
-                <div className="card-body text-center">
-                  <p className="text-center font-semibold text-xl">
-                    {moment(weather?.list[1]?.dt_txt).format("h A")}
-                  </p>
-                  <p className="mx-auto">
-                    <Image
-                      src={weatherIcon1}
-                      height={50}
-                      width={70}
-                      alt={weatherMain1}
-                    />
-                  </p>
-                  <h2 className=" text-xl">
-                    {" "}
-                    {Math.round(currentTemperature1)}{" "}
-                    <small>{unit === "metric" ? "°C" : "°F"}</small>{" "}
-                  </h2>
-                  <p className=" ">
-                    {weather.list[1]?.weather[0]?.description}
-                  </p>
-                </div>
-              </div>
-
-              <div className="card  bg-base-100 shadow-xl">
-                <div className="card-body text-center">
-                  <p className="text-center font-semibold text-xl">
-                    {moment(weather?.list[2]?.dt_txt).format("h A")}
-                  </p>
-                  <p className="mx-auto">
-                    <Image
-                      src={weatherIcon2}
-                      height={50}
-                      width={70}
-                      alt={weatherMain2}
-                    />
-                  </p>
-                  <h2 className=" text-xl">
-                    {" "}
-                    {Math.round(currentTemperature2)}{" "}
-                    <small>{unit === "metric" ? "°C" : "°F"}</small>{" "}
-                  </h2>
-                  <p className=" ">
-                    {weather.list[2]?.weather[0]?.description}
-                  </p>
-                </div>
-              </div>
-
-              <div className="card  bg-base-100 shadow-xl">
-                <div className="card-body text-center">
-                  <p className="text-center font-semibold text-xl">
-                    {moment(weather?.list[3]?.dt_txt).format("h A")}
-                  </p>
-                  <p className="mx-auto">
-                    <Image
-                      src={weatherIcon3}
-                      height={50}
-                      width={70}
-                      alt={weatherMain3}
-                    />
-                  </p>
-                  <h2 className=" text-xl">
-                    {" "}
-                    {Math.round(currentTemperature3)}{" "}
-                    <small>{unit === "metric" ? "°C" : "°F"}</small>{" "}
-                  </h2>
-                  <p className=" ">
-                    {weather.list[3]?.weather[0]?.description}
-                  </p>
-                </div>
-              </div>
-
-              <div className="card  bg-base-100 shadow-xl">
-                <div className="card-body text-center">
-                  <p className="text-center font-semibold text-xl">
-                    {moment(weather?.list[4]?.dt_txt).format("h A")}
-                  </p>
-                  <p className="mx-auto">
-                    <Image
-                      src={weatherIcon4}
-                      height={50}
-                      width={70}
-                      alt={weatherMain4}
-                    />
-                  </p>
-                  <h2 className=" text-xl">
-                    {" "}
-                    {Math.round(currentTemperature4)}{" "}
-                    <small>{unit === "metric" ? "°C" : "°F"}</small>{" "}
-                  </h2>
-                  <p className=" ">
-                    {weather.list[4]?.weather[0]?.description}
-                  </p>
-                </div>
-              </div>
-
-              <div className="card  bg-base-100 shadow-xl">
-                <div className="card-body text-center">
-                  <p className="text-center font-semibold text-xl">
-                    {moment(weather?.list[5]?.dt_txt).format(" h A")}
-                  </p>
-                  <p className="mx-auto">
-                    <Image
-                      src={weatherIcon5}
-                      height={50}
-                      width={70}
-                      alt={weatherMain5}
-                    />
-                  </p>
-                  <h2 className=" text-xl">
-                    {" "}
-                    {Math.round(currentTemperature5)}{" "}
-                    <small>{unit === "metric" ? "°C" : "°F"}</small>{" "}
-                  </h2>
-                  <p className=" ">
-                    {weather.list[5]?.weather[0]?.description}
-                  </p>
-                </div>
-              </div>
-
-              <div className="card  bg-base-100 shadow-xl">
-                <div className="card-body text-center">
-                  <p className="text-center font-semibold text-xl">
-                    {moment(weather?.list[6]?.dt_txt).format("h A")}
-                  </p>
-                  <p className="mx-auto">
-                    <Image
-                      src={weatherIcon6}
-                      height={50}
-                      width={70}
-                      alt={weatherMain6}
-                    />
-                  </p>
-                  <h2 className=" text-xl">
-                    {" "}
-                    {Math.round(currentTemperature6)}{" "}
-                    <small>{unit === "metric" ? "°C" : "°F"}</small>{" "}
-                  </h2>
-                  <p className=" ">
-                    {weather.list[6]?.weather[0]?.description}
-                  </p>
-                </div>
-              </div>
-
-              <div className="card  bg-base-100 shadow-xl">
-                <div className="card-body text-center">
-                  <p className="text-center font-semibold text-xl">
-                    {moment(weather?.list[7]?.dt_txt).format(" h A")}
-                  </p>
-                  <p className="mx-auto">
-                    <Image
-                      src={weatherIcon7}
-                      height={50}
-                      width={70}
-                      alt={weatherMain7}
-                    />
-                  </p>
-                  <h2 className=" text-xl">
-                    {" "}
-                    {Math.round(currentTemperature7)}
-                    <small>{unit === "metric" ? "°C" : "°F"}</small>{" "}
-                  </h2>
-                  <p className=" ">
-                    {weather.list[7]?.weather[0]?.description}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+    <TabPanel>
+    <div>
+       <WeatherCharts weather={weather} currentWeather={currentWeather} currentWeather1={currentWeather1} currentWeather2={currentWeather2} currentWeather3={currentWeather3} currentWeather4={currentWeather4} currentWeather5={currentWeather5} currentWeather6={currentWeather6} currentWeather7={currentWeather7} currentTemperature1={currentTemperature1}/>
         </div>
-        <div>
-          <WeatherCharts
-            weather={weather}
-            currentWeather={currentWeather}
-            currentWeather1={currentWeather1}
-            currentWeather2={currentWeather2}
-            currentWeather3={currentWeather3}
-            currentWeather4={currentWeather4}
-            currentWeather5={currentWeather5}
-            currentWeather6={currentWeather6}
-            currentWeather7={currentWeather7}
-            currentTemperature1={currentTemperature1}
-          />
+    </TabPanel>
+
+    <TabPanel>
+    <div>
+       <HumidityChart weather={weather} currentWeather={currentWeather} currentWeather1={currentWeather1} currentWeather2={currentWeather2} currentWeather3={currentWeather3} currentWeather4={currentWeather4} currentWeather5={currentWeather5} currentWeather6={currentWeather6} currentWeather7={currentWeather7} currentTemperature1={currentTemperature1}/>
+        </div>
+    </TabPanel>
+
+    <TabPanel>
+    <div>
+       <PressureChart weather={weather} currentWeather={currentWeather} currentWeather1={currentWeather1} currentWeather2={currentWeather2} currentWeather3={currentWeather3} currentWeather4={currentWeather4} currentWeather5={currentWeather5} currentWeather6={currentWeather6} currentWeather7={currentWeather7} currentTemperature1={currentTemperature1}/>
+        </div>
+    </TabPanel>
+
+    <TabPanel>
+    <div>
+       <WindChart weather={weather} currentWeather={currentWeather} currentWeather1={currentWeather1} currentWeather2={currentWeather2} currentWeather3={currentWeather3} currentWeather4={currentWeather4} currentWeather5={currentWeather5} currentWeather6={currentWeather6} currentWeather7={currentWeather7} currentTemperature1={currentTemperature1}/>
+        </div>
+    </TabPanel>
+
+    <TabPanel>
+    <div className="grid sm:grid-cols-2 lg:grid-cols-4 lg:mt-5 gap-2">
+              <ThreeHourWeather weather={weather} unit={unit} />
+       
+            </div>
+    </TabPanel>
+  </Tabs>
+  </div>
+   </div>
+     <div>
+        <div
+          className="card h-80 bg-base-100 shadow-xl mt-2 "
+          style={{ overflow: "hidden", zIndex: 5 }}
+        >
+          <WeatherMap city={City} />
+        </div>
+        <div className="card h-20 lg:w-7/12 bg-base-100 shadow-xl mt-2 text-center flex justify-center mx-auto">
+          <WeatherAlert weather={currentWeather} />
         </div>
       </div>
-    </PrivateRoute>
+  </div>
+ </PrivateRoute>
   );
 };
 
