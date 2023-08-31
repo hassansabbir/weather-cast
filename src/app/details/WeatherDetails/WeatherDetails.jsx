@@ -1,7 +1,6 @@
 "use client";
 
 import moment from "moment";
-import { FaCloud } from "react-icons/fa6";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import {
@@ -15,12 +14,29 @@ import { MdAir, MdSunny } from "react-icons/md";
 import { WiHumidity, WiSandstorm } from "react-icons/wi";
 import { getWeatherIcon } from "@/utils/getWeatherIcon";
 import PrivateRoute from "@/routes/PrivetRoute";
+import Swal from "sweetalert2";
+import WeatherCharts from "../weatherCharts/WeatherCharts";
+import WeatherLocation from "@/app/(home)/WeatherLocation/WeatherLocation";
+// import WeatherLocation from "../WeatherLocation/WeatherLocation"; 
 
 const weatherFetch = async (City, unit, setWeather) => {
   try {
     const apiKey = "41a5c84ae7ccfff1bc9491b25aa4dbde";
     const URL = `https://api.openweathermap.org/data/2.5/forecast?q=${City}&&units=${unit}&appid=${apiKey}`;
     const response = await fetch(URL);
+    if (!response.ok) {
+      Swal.fire({
+        title: 'City not found. Please enter a valid city name.',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      });
+      return;
+    }
+
     const data = await response.json();
     setWeather(data);
   } catch (error) {
@@ -32,22 +48,44 @@ const WeatherDetails = () => {
   const [City, setCity] = useState("");
   const [weather, setWeather] = useState(null);
   const [unit, setUnit] = useState("metric");
+  // const [showWeatherDetails, setShowWeatherDetails] = useState(true);
 
   useEffect(() => {
     weatherFetch("Dhaka", unit, setWeather);
+<<<<<<< HEAD:src/app/(home)/WeatherDetails/WeatherDetails.jsx
   }, []);
+=======
+  }, [City ,unit]);
+>>>>>>> 55b3a8023ed80184abeb41bf7ba53fd4a6996947:src/app/details/WeatherDetails/WeatherDetails.jsx
 
   const handleSearch = () => {
+   
+    if (City.trim() === "") {
+      Swal.fire({
+        title: 'Please enter a city name.',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      })
+    return ;
+    }
+    
     weatherFetch(City, unit, setWeather);
+
+    
   };
 
   const handleUnitChange = (selectedUnit) => {
-    setUnit(selectedUnit);
-    console.log(selectedUnit);
-    if (City) {
-      weatherFetch(City, selectedUnit, setWeather);
-      console.log(City);
-    }
+    
+  setUnit(selectedUnit);
+     if (City) {
+     weatherFetch(City, selectedUnit , setWeather);
+  //  return ; 
+  }
+    
   };
 
   if (!weather) {
@@ -60,6 +98,7 @@ const WeatherDetails = () => {
   }
 
   const currentWeather = weather.list[0];
+
   const weatherMain = currentWeather.weather[0].main;
   const weatherIcon = getWeatherIcon(weatherMain);
 
@@ -83,7 +122,7 @@ const WeatherDetails = () => {
 
   const options = { hour: "numeric", minute: "numeric", hour12: true };
 
-  // for 7 days
+  // for 5 days
   const currentWeather1 = weather.list[1];
   const weatherMain1 = currentWeather1.weather[0].main;
   const weatherIcon1 = getWeatherIcon(weatherMain1);
@@ -157,6 +196,7 @@ const WeatherDetails = () => {
             name=""
             id=""
           />
+        
           <button
             onClick={handleSearch}
             className="btn btn-neutral text-white bg-blue-800 ms-4"
@@ -167,17 +207,18 @@ const WeatherDetails = () => {
 
         <div className="mx-auto text-center">
           <button
-            className="btn btn-circle btn-outline font-bold m-8"
+           className={`btn btn-circle btn-outline font-bold m-8 ${unit === 'metric' ? 'active' : ''}`}
             onClick={() => handleUnitChange("metric")}
           >
-            °C
+          °C
           </button>
           <button
-            className="btn btn-circle btn-outline font-bold"
+            className={`btn btn-circle btn-outline font-bold ${unit === 'imperial' ? 'active' : ''}`}
             onClick={() => handleUnitChange("imperial")}
           >
-            °F
+           °F
           </button>
+          <WeatherLocation></WeatherLocation>
         </div>
 
         <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 m-10">
@@ -618,7 +659,12 @@ const WeatherDetails = () => {
             </div>
           </div>
         </div>
+        <div>
+       <WeatherCharts weather={weather} currentWeather={currentWeather} currentWeather1={currentWeather1} currentWeather2={currentWeather2} currentWeather3={currentWeather3} currentWeather4={currentWeather4} currentWeather5={currentWeather5} currentWeather6={currentWeather6} currentWeather7={currentWeather7} currentTemperature1={currentTemperature1}/>
+        </div>
+       
       </div>
+     
     </PrivateRoute>
   );
 };

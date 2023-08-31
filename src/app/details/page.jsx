@@ -1,11 +1,11 @@
 import React from 'react';
-import WeatherDetails from '../(home)/WeatherDetails/WeatherDetails';
+import WeatherDetails from './WeatherDetails/WeatherDetails';
+
 
 const page = () => {
     return (
         <div>
-          
-            <WeatherDetails/>
+          <WeatherDetails/>
         </div>
     );
 };

@@ -19,7 +19,7 @@ const Navbar = () => {
     },
     {
       path: "/news",
-      title: "News",
+      title: "News"
     },
     {
       path: "/contact",

@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect } from "react";
-import AOS from "aos";
 import "aos/dist/aos.css";
+import Aos from "aos";
 
 const AOSInitializer = () => {
   useEffect(() => {
-    AOS.init({
+    Aos.init({
       duration: 800,
       once: false,
     });

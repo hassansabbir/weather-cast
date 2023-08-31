@@ -53,7 +53,6 @@ const WeatherUpdates = () => {
   const feelsLikeTemperatureKelvin = currentWeather.main.feels_like;
   const currentTemperatureCelsius = currentTemperatureKelvin - 273.15;
   const feelsLikeTemperatureCelsius = feelsLikeTemperatureKelvin - 273.15;
-  const currentDate = new Date(currentWeather.dt_txt);
   const location = weather.city.name;
 
   return (
