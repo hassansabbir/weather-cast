@@ -17,7 +17,7 @@ import PrivateRoute from "@/routes/PrivetRoute";
 import Swal from "sweetalert2";
 import WeatherCharts from "../weatherCharts/WeatherCharts";
 import WeatherLocation from "@/app/(home)/WeatherLocation/WeatherLocation";
-// import WeatherLocation from "../WeatherLocation/WeatherLocation"; 
+// import WeatherLocation from "../WeatherLocation/WeatherLocation";
 
 const weatherFetch = async (City, unit, setWeather) => {
   try {
@@ -26,13 +26,13 @@ const weatherFetch = async (City, unit, setWeather) => {
     const response = await fetch(URL);
     if (!response.ok) {
       Swal.fire({
-        title: 'City not found. Please enter a valid city name.',
+        title: "City not found. Please enter a valid city name.",
         showClass: {
-          popup: 'animate__animated animate__fadeInDown'
+          popup: "animate__animated animate__fadeInDown",
         },
         hideClass: {
-          popup: 'animate__animated animate__fadeOutUp'
-        }
+          popup: "animate__animated animate__fadeOutUp",
+        },
       });
       return;
     }
@@ -52,40 +52,31 @@ const WeatherDetails = () => {
 
   useEffect(() => {
     weatherFetch("Dhaka", unit, setWeather);
-<<<<<<< HEAD:src/app/(home)/WeatherDetails/WeatherDetails.jsx
-  }, []);
-=======
-  }, [City ,unit]);
->>>>>>> 55b3a8023ed80184abeb41bf7ba53fd4a6996947:src/app/details/WeatherDetails/WeatherDetails.jsx
+  }, [City, unit]);
 
   const handleSearch = () => {
-   
     if (City.trim() === "") {
       Swal.fire({
-        title: 'Please enter a city name.',
+        title: "Please enter a city name.",
         showClass: {
-          popup: 'animate__animated animate__fadeInDown'
+          popup: "animate__animated animate__fadeInDown",
         },
         hideClass: {
-          popup: 'animate__animated animate__fadeOutUp'
-        }
-      })
-    return ;
+          popup: "animate__animated animate__fadeOutUp",
+        },
+      });
+      return;
     }
-    
-    weatherFetch(City, unit, setWeather);
 
-    
+    weatherFetch(City, unit, setWeather);
   };
 
   const handleUnitChange = (selectedUnit) => {
-    
-  setUnit(selectedUnit);
-     if (City) {
-     weatherFetch(City, selectedUnit , setWeather);
-  //  return ; 
-  }
-    
+    setUnit(selectedUnit);
+    if (City) {
+      weatherFetch(City, selectedUnit, setWeather);
+      //  return ;
+    }
   };
 
   if (!weather) {
@@ -196,7 +187,7 @@ const WeatherDetails = () => {
             name=""
             id=""
           />
-        
+
           <button
             onClick={handleSearch}
             className="btn btn-neutral text-white bg-blue-800 ms-4"
@@ -207,16 +198,20 @@ const WeatherDetails = () => {
 
         <div className="mx-auto text-center">
           <button
-           className={`btn btn-circle btn-outline font-bold m-8 ${unit === 'metric' ? 'active' : ''}`}
+            className={`btn btn-circle btn-outline font-bold m-8 ${
+              unit === "metric" ? "active" : ""
+            }`}
             onClick={() => handleUnitChange("metric")}
           >
-          °C
+            °C
           </button>
           <button
-            className={`btn btn-circle btn-outline font-bold ${unit === 'imperial' ? 'active' : ''}`}
+            className={`btn btn-circle btn-outline font-bold ${
+              unit === "imperial" ? "active" : ""
+            }`}
             onClick={() => handleUnitChange("imperial")}
           >
-           °F
+            °F
           </button>
           <WeatherLocation></WeatherLocation>
         </div>
@@ -660,11 +655,20 @@ const WeatherDetails = () => {
           </div>
         </div>
         <div>
-       <WeatherCharts weather={weather} currentWeather={currentWeather} currentWeather1={currentWeather1} currentWeather2={currentWeather2} currentWeather3={currentWeather3} currentWeather4={currentWeather4} currentWeather5={currentWeather5} currentWeather6={currentWeather6} currentWeather7={currentWeather7} currentTemperature1={currentTemperature1}/>
+          <WeatherCharts
+            weather={weather}
+            currentWeather={currentWeather}
+            currentWeather1={currentWeather1}
+            currentWeather2={currentWeather2}
+            currentWeather3={currentWeather3}
+            currentWeather4={currentWeather4}
+            currentWeather5={currentWeather5}
+            currentWeather6={currentWeather6}
+            currentWeather7={currentWeather7}
+            currentTemperature1={currentTemperature1}
+          />
         </div>
-       
       </div>
-     
     </PrivateRoute>
   );
 };
