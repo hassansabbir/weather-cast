@@ -19,21 +19,21 @@ const Footer = () => {
           </div>
         </div>
         <div className="text-blue-500">
-          <span className="footer-title">Services</span>
+          <p className="text-lg font-bold">Services</p>
           <a className="link link-hover">Branding</a>
           <a className="link link-hover">Design</a>
           <a className="link link-hover">Marketing</a>
           <a className="link link-hover">Advertisement</a>
         </div>
         <div className="text-blue-500">
-          <span className="footer-title">Company</span>
+          <p className="text-lg font-bold">Company</p>
           <a className="link link-hover">About us</a>
           <a className="link link-hover">Contact</a>
           <a className="link link-hover">Jobs</a>
           <a className="link link-hover">Press kit</a>
         </div>
         <div className="text-blue-500">
-          <span className="footer-title">Legal</span>
+          <p className="text-lg font-bold">Legal</p>
           <a className="link link-hover">Terms of use</a>
           <a className="link link-hover">Privacy policy</a>
           <a className="link link-hover">Cookie policy</a>

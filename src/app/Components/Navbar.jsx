@@ -14,6 +14,10 @@ const Navbar = () => {
       title: "Home",
     },
     {
+      path: "/articles",
+      title: "Articles",
+    },
+    {
       path: "/news",
       title: "News"
     },
@@ -79,12 +83,17 @@ const Navbar = () => {
                 <Link href={path}>{title}</Link>
               </li>
             ))}
+            {user && (
+              <li className="font-semibold text-blue-800 text-lg ">
+                <Link href="/dashboard">Dashboard</Link>
+              </li>
+            )}
           </ul>
         </div>
         <div className="navbar-end space-x-3">
           {user && (
             <div className="flex gap-3 items-center border-4 rounded-full ps-5 p-1">
-              <h2>{user?.displayName}</h2>
+              <h2 className="hidden md:block ">{user?.displayName}</h2>
               <div className="avatar">
                 <div className="w-10 rounded-full ">
                   <img src={user?.photoURL} />
@@ -100,25 +109,24 @@ const Navbar = () => {
               tabIndex={0}
               className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
             >
+              <>
+                {user?.email ? (
+                  <li>
+                    <h2 onClick={handleLogOut}>Logout</h2>
+                  </li>
+                ) : (
+                  <>
+                    <li>
+                      <Link className="w-full" href="/logIn">
+                        <h2 className="w-full">Login</h2>
+                      </Link>
+                    </li>
+                  </>
+                )}
+              </>
+
               <li>
-                <>
-                  {user?.email ? (
-                    <>
-                      <h2 onClick={handleLogOut}>Logout</h2>
-                    </>
-                  ) : (
-                    <>
-                      <li>
-                        <Link className="w-full" href="/logIn">
-                          <h2 className="w-full">Login</h2>
-                        </Link>
-                      </li>
-                    </>
-                  )}
-                </>
-              </li>
-              <li>
-                <Link href="profile">Profile</Link>
+                <Link href="/profile">Profile</Link>
               </li>
             </ul>
           </div>

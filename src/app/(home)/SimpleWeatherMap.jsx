@@ -1,6 +1,5 @@
 "use client";
 
-
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import "leaflet/dist/leaflet.css";
@@ -56,6 +55,7 @@ function WeatherMap({ city }) {
 
   return (
     <div
+      className="px-7 lg:px-0"
       style={{
         display: "flex",
         justifyContent: "center",
