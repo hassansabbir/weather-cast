@@ -7,7 +7,7 @@ const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
   const router = useRouter();
 
-  useEffect(() => {
+  const privetRoutAction = () => {
     if (loading) {
       return (
         <div className="text-center mt-72">
@@ -15,7 +15,6 @@ const PrivateRoute = ({ children }) => {
         </div>
       );
     }
-
     if (!user) {
       Swal.fire({
         title: "Please Login",
@@ -33,7 +32,11 @@ const PrivateRoute = ({ children }) => {
         }
       });
     }
-  }, [user, loading, router]);
+  };
+
+  useEffect(() => {
+    privetRoutAction();
+  }, []);
 
   return user ? children : null;
 };

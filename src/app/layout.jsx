@@ -9,6 +9,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Weather Cast",
   description: "Weather Cast",
+  icons: {
+    icon: "https://cdn-icons-png.flaticon.com/512/252/252035.png",
+  },
 };
 
 const RootLayout = ({ children }) => {
@@ -17,7 +20,7 @@ const RootLayout = ({ children }) => {
       <body className={inter.className}>
         <Providers>
           <Navbar />
-          <div className="pt-24"> {children}</div>
+          <div className="pt-20"> {children}</div>
           <Footer />
         </Providers>
       </body>

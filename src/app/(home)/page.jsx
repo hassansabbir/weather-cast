@@ -9,7 +9,7 @@ import WeatherUpdates from "./WeatherUodates/WeatherUpdates";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ShowReviews from "./reviews/ShowReviews";
-import Articles from "./Articles";
+// import Articles from "./Articles";
 
 const HomePage = () => {
   return (
@@ -19,7 +19,7 @@ const HomePage = () => {
       <ToastContainer />
       <Intelligence />
       <ProductSection />
-      <Articles />
+      {/* <Articles /> */}
       <ShowReviews />
       <Marq />
       <NewsLetter />

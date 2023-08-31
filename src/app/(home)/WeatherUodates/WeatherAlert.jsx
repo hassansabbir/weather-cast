@@ -1,12 +1,16 @@
-import React from 'react';
+import React from "react";
 
 const WeatherAlert = ({ weather }) => {
-  const isHeavyRain = weather.weather[0].main === 'Rain' && weather.rain && weather.rain['3h'] >= 30;
-  const isFlood = weather.weather[0].main === 'Rain' && weather.main.humidity >= 80;
-  const isStorm = weather.weather[0].main === 'Thunderstorm';
+  const isHeavyRain =
+    weather.weather[0].main === "Rain" &&
+    weather.rain &&
+    weather.rain["3h"] >= 30;
+  const isFlood =
+    weather.weather[0].main === "Rain" && weather.main.humidity >= 80;
+  const isStorm = weather.weather[0].main === "Thunderstorm";
 
   return (
-    <div>
+    <div className="px-7">
       {isHeavyRain || isFlood || isStorm ? (
         <div className="card bg-red-600 text-white p-4">
           <h3>Severe Weather Alert</h3>

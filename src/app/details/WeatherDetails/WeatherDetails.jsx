@@ -52,7 +52,11 @@ const WeatherDetails = () => {
 
   useEffect(() => {
     weatherFetch("Dhaka", unit, setWeather);
+<<<<<<< HEAD:src/app/(home)/WeatherDetails/WeatherDetails.jsx
+  }, []);
+=======
   }, [City ,unit]);
+>>>>>>> 55b3a8023ed80184abeb41bf7ba53fd4a6996947:src/app/details/WeatherDetails/WeatherDetails.jsx
 
   const handleSearch = () => {
    
@@ -85,7 +89,12 @@ const WeatherDetails = () => {
   };
 
   if (!weather) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center mt-20">
+        <span className="loading loading-bars loading-lg"></span>
+        <span className="loading loading-bars loading-lg"></span>
+      </div>
+    );
   }
 
   const currentWeather = weather.list[0];
@@ -175,7 +184,7 @@ const WeatherDetails = () => {
 
   return (
     <PrivateRoute>
-      <div className="max-w-[1460px] mx-auto">
+      <div className="max-w-[1460px] pt-10 mx-auto">
         {/* searchbar  */}
         <div className=" w-full mx-auto text-center">
           <input
