@@ -9,6 +9,7 @@ import WeatherUpdates from "./WeatherUodates/WeatherUpdates";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ShowReviews from "./reviews/ShowReviews";
+
 // import Articles from "./Articles";
 
 const HomePage = () => {
@@ -23,6 +24,7 @@ const HomePage = () => {
       <ShowReviews />
       <Marq />
       <NewsLetter />
+   
     </div>
   );
 };

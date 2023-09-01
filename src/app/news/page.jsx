@@ -73,7 +73,7 @@ const WeatherVideoComponent = () => {
       <WeatherNews></WeatherNews>
       <div style={containerStyle}>
         <h2 className="text-5xl font-bold my-10 text-center">
-          Recent Weather-related Videos
+          Recent Updates
         </h2>
         <div style={gridStyle}>
           {videoIds.map((videoId) => (
