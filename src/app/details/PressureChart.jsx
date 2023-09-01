@@ -111,7 +111,7 @@ const PressureChart = ({weather , currentWeather ,currentWeather1,currentWeather
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="time" />
-          <YAxis />
+          <YAxis tickFormatter={(value) => `${value}hPa`}/>
           <Tooltip />
           <Legend />
           <Bar dataKey="Pressure" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
