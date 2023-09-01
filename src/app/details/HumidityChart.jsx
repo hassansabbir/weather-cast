@@ -111,7 +111,7 @@ const HumidityChart = ({weather , currentWeather ,currentWeather1,currentWeather
         >
             <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="time" />
-          <YAxis />
+          <YAxis tickFormatter={(value) => `${value}%`} />
           <Tooltip />
           <Legend />
          
