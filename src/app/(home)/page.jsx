@@ -15,7 +15,7 @@ const HomePage = () => {
   return (
     <div>
       <Banner />
-      <WeatherUpdates />
+      <WeatherUpdates /> 
       <ToastContainer />
       <Intelligence />
       <ProductSection />

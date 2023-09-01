@@ -9,11 +9,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { getWeatherIcon } from "@/utils/getWeatherIcon";
 import { TileLayer } from 'react-leaflet/TileLayer'
-import { useMap } from 'react-leaflet/hooks'
-import { MapContainer } from 'react-leaflet/MapContainer'
+import dynamic from "next/dynamic";
+// import { MapContainer } from 'react-leaflet/MapContainer' 
 import { Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import L from "leaflet";
+// import L from "leaflet"; 
 
 
 const fetchWeather = async (latitude, longitude ,setWeather) => {
@@ -64,11 +64,18 @@ useEffect(() => {
     );
   }
 
+  const MapContainer = dynamic(
+    () => import("react-leaflet").then((mod) => mod.MapContainer),
+    {
+      ssr: false,
+    }
+  );
+
   const customIcon = new L.Icon({
     iconUrl: "https://toppng.com/uploads/preview/map-marker-icon-600x-map-marker-11562939743ayfahlvygl.png", // Replace with your custom icon URL
-    iconSize: [32, 32], // Adjust the size as needed
-    iconAnchor: [16, 32], // The point of the icon that corresponds to the marker's location
-    popupAnchor: [0, -32], // The point from which the popup should open relative to the iconAnchor
+    iconSize: [32, 32], 
+    // iconAnchor: [16, 32], // The point of the icon that corresponds to the marker's location
+    // popupAnchor: [0, -32], // The point from which the popup should open relative to the iconAnchor
   })
 
   //  temperature , location , current date , feels like
@@ -196,17 +203,20 @@ const windSpeed = weather.wind.speed;
 
         <div className=" weather-related-card grid-cols-4 rounded-3xl   " style={{ overflow: "hidden", zIndex: 5 }}>
 <div>
-<MapContainer center={positions} zoom={13} scrollWheelZoom={false} style={{height:'500px' ,  width:"400px"} }>
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <Marker position={positions} icon={customIcon}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker>
-      </MapContainer>
+{typeof window !== "undefined" && (
+  <MapContainer center={positions} zoom={13} scrollWheelZoom={false} style={{height:'500px' ,  width:"400px"} }>
+  <TileLayer
+    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+  />
+  <Marker position={positions} icon={customIcon}>
+    <Popup>
+      A pretty CSS3 popup. <br /> Easily customizable.
+    </Popup>
+  </Marker>
+</MapContainer>
+)}
+
 </div>
        
         </div>
