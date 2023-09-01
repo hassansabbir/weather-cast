@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import contactImg from "../../assets/Contact.jpg";
+import contactUs from "../../assets/contactus.gif";
 
 const Contact = () => {
   return (
@@ -8,8 +8,8 @@ const Contact = () => {
       <div className="hero min-h-[500px] bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <Image
-            className="w-[500px] h-[500px] rounded-full shadow-2xl"
-            src={contactImg}
+            className="w-[500px] h-[500px] rounded-full"
+            src={contactUs}
             alt="contact"
           />
           <div className="shadow-md rounded-lg bg-[#F2F2F2]">
