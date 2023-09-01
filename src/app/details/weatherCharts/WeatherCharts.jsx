@@ -13,7 +13,7 @@ import {
     Legend,
     AreaChart,
   } from 'recharts';
-const WeatherCharts = ({weather , currentWeather ,currentWeather1,currentWeather2,currentWeather3,currentWeather4, currentWeather5,currentWeather6 ,currentWeather7 }) => {
+const WeatherCharts = ({weather , currentWeather ,currentWeather1,currentWeather2,currentWeather3,currentWeather4, currentWeather5,currentWeather6 ,currentWeather7 , unit}) => {
 
     // time 
     let time = moment(currentWeather.dt_txt).format("h A")
@@ -113,19 +113,21 @@ const WeatherCharts = ({weather , currentWeather ,currentWeather1,currentWeather
         <div className='' style={{ width: '100%', height: 350 }}>
         <ResponsiveContainer>
         <AreaChart
+        width={500}
+        height={300}
           data={data}
           margin={{
-            top: 10,
+            top: 0,
             right: 30,
             left: 0,
-            bottom: 0,
+            bottom: 5,
           }}
         >
             <CartesianGrid  strokeDasharray="3 3" />
-            <XAxis dataKey="time" scale="band" />
-            <YAxis  />
+            <XAxis dataKey="time"  />
+            <YAxis tickFormatter={(value) => `${value}${unit === "metric" ? "°C" : "°F"}`} />
             <Tooltip />           
-            <Area type="monotone" dataKey="temperature" tickFormatter={(value) => `${value}°C`}  fill="#D4ADFC" stroke="#8884d8" />
+            <Area type="monotone" dataKey="temperature"   fill="#D4ADFC" stroke="#8884d8" />
             {/* <Area type="monotone" dataKey="Pressure" stackId="1" stroke="#82ca9d" fill="#82ca9d" />  */}
             {/* <Area type="monotone" dataKey="Humidity" stackId="1" stroke="#ffc658" fill="#ffc658"  />  */}
           </AreaChart>

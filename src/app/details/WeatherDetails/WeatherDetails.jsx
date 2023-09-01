@@ -9,6 +9,7 @@ import {
   FaEye,
   FaLocationDot,
   FaMoon,
+  FaTemperatureFull,
   FaTemperatureHalf,
 } from "react-icons/fa6";
 import { MdAir, MdSunny } from "react-icons/md";
@@ -25,6 +26,7 @@ import HumidityChart from '../HumidityChart';
 import PressureChart from '../PressureChart';
 
 import WindChart from '../WindChart';
+import { FaClock, FaRegClock } from 'react-icons/fa';
 // import WeatherLocation from "../WeatherLocation/WeatherLocation"; 
 
 const weatherFetch = async (City, unit, setWeather) => {
@@ -247,7 +249,7 @@ const WeatherDetails = () => {
               </div>
             </div>
 
-            <p className="m-10 text-xl font-semibold">5 Days Forecast</p>
+            <p className="m-10 ms-3 text-2xl font-semibold text-blue-700 ">5 Days Forecast</p>
 
             <div className="card md:w-5/6 bg-base-100 shadow-xl">
               <div className="card-body">
@@ -342,7 +344,7 @@ const WeatherDetails = () => {
           </div>
           {/* highlights  */}
           <div className="col-span-2 ">
-            <h3 className="font-bold text-2xl mt-6 ms-3">Today Highlights</h3>
+            <h3 className="font-bold text-2xl m-9 ms-3 text-blue-700">Today Highlights</h3>
             <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-4">
               <div className="card  bg-base-100 shadow-xl">
                 <div className="card-body">
@@ -456,20 +458,20 @@ const WeatherDetails = () => {
               </div>
             </div>
 
-            <h3 className="font-bold text-2xl mt-6 ms-3">Today at</h3>
+            <h3 className="font-bold text-2xl m-10 ms-3 text-blue-700">Today at</h3>
 
             <Tabs>
     <TabList>
-      <Tab>Temperature</Tab>
-      <Tab>Humidity</Tab>
-      <Tab>pressure</Tab>
-      <Tab>Wind</Tab>     
-      <Tab>Hourly</Tab>
+      <Tab> <li className='flex'><FaTemperatureFull className='text-3xl p-1'/> Temperature</li> </Tab>
+      <Tab><li className='flex'><WiHumidity className='text-3xl p-1'/> Humidity</li></Tab>
+      <Tab><li className='flex'><WiSandstorm className='text-3xl'/>Pressure</li></Tab>
+      <Tab><li className='flex'><MdAir className='text-3xl p-1'/>Wind</li></Tab>     
+      <Tab><li className='flex'><FaRegClock className='text-3xl p-1'/> Hourly</li></Tab>
     </TabList>
 
     <TabPanel>
     <div>
-       <WeatherCharts weather={weather} currentWeather={currentWeather} currentWeather1={currentWeather1} currentWeather2={currentWeather2} currentWeather3={currentWeather3} currentWeather4={currentWeather4} currentWeather5={currentWeather5} currentWeather6={currentWeather6} currentWeather7={currentWeather7} currentTemperature1={currentTemperature1}/>
+       <WeatherCharts weather={weather} currentWeather={currentWeather} currentWeather1={currentWeather1} currentWeather2={currentWeather2} currentWeather3={currentWeather3} currentWeather4={currentWeather4} currentWeather5={currentWeather5} currentWeather6={currentWeather6} currentWeather7={currentWeather7} currentTemperature1={currentTemperature1} unit={unit}/>
         </div>
     </TabPanel>
 
@@ -505,7 +507,7 @@ const WeatherDetails = () => {
           className="card h-80 bg-base-100 shadow-xl mt-2 "
           style={{ overflow: "hidden", zIndex: 5 }}
         >
-          <WeatherMap city={City} />
+          <WeatherMap city={City} /> 
         </div>
         <div className="card h-20 lg:w-7/12 bg-base-100 shadow-xl mt-2 text-center flex justify-center mx-auto">
           <WeatherAlert weather={currentWeather} />

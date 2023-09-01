@@ -103,7 +103,7 @@ const WindChart = ({weather , currentWeather ,currentWeather1,currentWeather2,cu
         >
             <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="time" />
-          <YAxis />
+          <YAxis tickFormatter={(value) => `${value}m/s`}/>
           <Tooltip />
           <Legend />
          
