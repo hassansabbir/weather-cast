@@ -507,7 +507,7 @@ const WeatherDetails = () => {
           className="card h-80 bg-base-100 shadow-xl mt-2 "
           style={{ overflow: "hidden", zIndex: 5 }}
         >
-          <WeatherMap city={City} />
+          <WeatherMap city={City} /> 
         </div>
         <div className="card h-20 lg:w-7/12 bg-base-100 shadow-xl mt-2 text-center flex justify-center mx-auto">
           <WeatherAlert weather={currentWeather} />
