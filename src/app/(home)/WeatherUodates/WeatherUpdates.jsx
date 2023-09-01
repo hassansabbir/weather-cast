@@ -2,14 +2,18 @@
 
 import React, { useEffect, useState } from "react";
 import "./WeatherUpdates.css";
-import { FaEye, FaLocationDot, FaWind } from "react-icons/fa6";
+import { FaEye, FaLocationDot, FaMessage, FaWind } from "react-icons/fa6";
 import moment from "moment";
 import { WiHumidity, WiRefreshAlt } from "react-icons/wi";
 import Image from "next/image";
 import Link from "next/link";
-import WeatherMap from "../SimpleWeatherMap";
-import WeatherAlert from "./WeatherAlert";
 import { getWeatherIcon } from "@/utils/getWeatherIcon";
+import { TileLayer } from 'react-leaflet/TileLayer'
+import { useMap } from 'react-leaflet/hooks'
+import { MapContainer } from 'react-leaflet/MapContainer'
+import { Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
 
 
 const fetchWeather = async (latitude, longitude ,setWeather) => {
@@ -28,24 +32,28 @@ const WeatherUpdates = () => {
  
 
  const [weather, setWeather] = useState(null);
+ const [positions, setPositions] = useState([0, 0]);
 
-  useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const latitude = position.coords.latitude;
-          const longitude = position.coords.longitude;
-          fetchWeather(latitude, longitude , setWeather);
-        },
-        (error) => {
-          console.error("Error getting user location:", error);
-        }
-      );
-    } else {
-      console.error("Geolocation is not supported by this browser.");
-    }
-   
-  }, []);
+useEffect(() => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        // Define 'positions' array here
+       setPositions([latitude, longitude]);
+
+        fetchWeather(latitude, longitude, setWeather);
+      },
+      (error) => {
+        console.error("Error getting user location:", error);
+      }
+    );
+  } else {
+    console.error("Geolocation is not supported by this browser.");
+  }
+}, []);
 
   if (!weather) {
     return (
@@ -56,7 +64,12 @@ const WeatherUpdates = () => {
     );
   }
 
- 
+  const customIcon = new L.Icon({
+    iconUrl: "https://toppng.com/uploads/preview/map-marker-icon-600x-map-marker-11562939743ayfahlvygl.png", // Replace with your custom icon URL
+    iconSize: [32, 32], // Adjust the size as needed
+    iconAnchor: [16, 32], // The point of the icon that corresponds to the marker's location
+    popupAnchor: [0, -32], // The point from which the popup should open relative to the iconAnchor
+  })
 
   //  temperature , location , current date , feels like
   const weatherMain = weather.weather[0].main;
@@ -68,63 +81,72 @@ const feelsLikeTemperatureCelsius = Math.round(feelsLikeTemperatureKelvin - 273.
 const location = weather.name;
 const weatherDescription = weather.weather[0].description;
 const windSpeed = weather.wind.speed;
+
   return (
     <>
       <h2 className="text-5xl font-bold my-10 text-center">
         Live Weather Updates
       </h2>
-      <div className="max-w-[1460px] px-7 lg:flex space-y-5 lg:space-y-0 gap-5 mx-auto my-10">
-        <div className="weather-card space-x-5 w-full lg:w-8/12 rounded-3xl p-10 h-[600px] border">
+     
+     
+      <div className=" grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1  gap-10 m-16  ">
+        <div className="weather-card grid-cols-8   rounded-3xl p-10 border h-[500px] w-[700px]">
         
-          <div className="lg:flex gap-20 mt-5 lg:mt-14">
-            <div className="">
-              <h2 className="text-4xl lg:text-7xl mb-5 text-white font-bold font-white">
-                {currentTemperatureCelsius} &#8451;
-              </h2>
-              <h2 className="text-2xl lg:text-3xl text-white font-bold flex items-center gap-2 ">
-                <FaLocationDot className="w-7 h-7" /> {location}
-              </h2>
-            </div>
+       <div className="">
+              <div className="grid grid-cols-2 justify-between">
+                <div>
+          <p className="font-semibold text-lg">Current Weather</p>
+                <p className="text-lg ps-0  pb-3">
+              {moment(weather?.location?.localtime).format("LT")}
+            </p>
+                </div>
+                
             <div>
+              <button className="btn "> <Link
+              href="/details"
+              className=" flex cursor-pointer"
+            >
+              {" "}
+             <FaMessage className="text-2xl"/> <span className="ps-2">View Full Weather Details ?</span> 
+            </Link></button>
+            </div>
+              </div>
+              <div className="flex  items-center ">
+              <div>
               <Image
                 src={weatherIcon}
                 height={100}
-                width={120}
+                width={110}
                 alt={weatherMain}
               />
 
-              <h2 className="text-xl lg:text-2xl  font-bold text-white">
+             
+            </div>
+            <h2 className="text-4xl lg:text-6xl  ps-3 pe-5 font-bold ">
+                {currentTemperatureCelsius} <small>℃</small>
+              </h2>
+              <div className="ms-3">
+              <h2 className="text-xl   font-semibold uppercase ">
                 {weatherDescription}
               </h2>
-            </div>
-          </div>
-          <div>
-            <p className="text-xl lg:text-2xl mt-10 text-white">
+              <p className="text-lg  ">
               Feels like {feelsLikeTemperatureCelsius} &#8451;
             </p>
-            <p className="text-xl lg:text-2xl text-white p-3">
-              {moment(weather?.location?.localtime).format("LT")}
-            </p>
-            <p className="text-xl lg:text-2xl text-white">
+              </div>
+              </div>
+              
+              <h2 className="text-2xl mt-8  font-bold flex items-center gap-2 ">
+                <FaLocationDot className="w-5 h-5" /> {location}
+              </h2>
+              <p className="text-xl lg:text-2xl ">
               {moment(weather?.location?.localtime).format("MMMM Do YYYY")}
             </p>
-          </div>
-          <p className=" text-white text-xl font-bold relative mt-10">
-            <Link
-              href="/details"
-              className="absolute bottom-0 right-0 underline cursor-pointer"
-            >
-              {" "}
-              View Full Weather Details
-            </Link>
-          </p>
-        </div>
-        <div className=" weather-related-card w-full lg:w-4/12 rounded-3xl p-10 h-[600px]">
-          <div className="flex flex-col gap-10 mt-10 ">
-            <div className="text-3xl text-white ">
+              <div className="grid grid-cols-4 justify-between mt-16">
+  {/* wind speed  */}
+  <div className="text-xl  ">
               <p className="flex">
                 {" "}
-                <FaWind className="text-3xl " /> Wind Speed
+                <FaWind className="text-2xl " /> Wind Speed
               </p>
               <p className="ps-8 pt-1">
                 {" "}
@@ -133,7 +155,7 @@ const windSpeed = weather.wind.speed;
             </div>
 
             {/* Humidity */}
-            <div className="text-3xl text-white ">
+            <div className="text-xl  ">
               <p className="flex">
                 {" "}
                 <WiHumidity className="text-3xl " /> Humidity
@@ -145,7 +167,7 @@ const windSpeed = weather.wind.speed;
             </div>
 
             {/* visibility */}
-            <div className="text-3xl text-white ">
+            <div className="text-xl  ">
               <p className="flex">
                 {" "}
                 <FaEye className="text-3xl me-2" /> Visibility
@@ -157,17 +179,36 @@ const windSpeed = weather.wind.speed;
             </div>
 
             {/* pressure */}
-            <div className="text-3xl text-white  ">
+            <div className="text-xl   ">
               <p className="flex">
                 {" "}
-                <WiRefreshAlt className="text-5xl " /> Pressure In
+                <WiRefreshAlt className="text-7xl " /> Pressure In
               </p>
               <p className="ps-8 pt-1">
                 {" "}
                 {weather.main.pressure} <small>hPa</small>
               </p>
             </div>
-          </div>
+              </div>
+         </div>
+        </div>
+
+
+        <div className=" weather-related-card grid-cols-4 rounded-3xl   " style={{ overflow: "hidden", zIndex: 5 }}>
+<div>
+<MapContainer center={positions} zoom={13} scrollWheelZoom={false} style={{height:'500px' ,  width:"400px"} }>
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={positions} icon={customIcon}>
+          <Popup>
+            A pretty CSS3 popup. <br /> Easily customizable.
+          </Popup>
+        </Marker>
+      </MapContainer>
+</div>
+       
         </div>
       </div>
     
