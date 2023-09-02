@@ -6,7 +6,7 @@ import PrivateRoute from "@/routes/PrivetRoute";
 import axios from "axios";
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
-import { BsFillPatchCheckFill } from "react-icons/bs";
+import { BsFileEarmarkPost, BsFillPatchCheckFill } from "react-icons/bs";
 import { FaHome, FaStar, FaUsers } from "react-icons/fa";
 
 const Sidebar = () => {
@@ -63,12 +63,21 @@ const Sidebar = () => {
 
         <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
           {getUser?.role === "admin" ? (
-            <li className="text-2xl">
-              <Link href="/dashboard/manage-user">
-                {" "}
-                <FaUsers /> Manage User
-              </Link>
-            </li>
+            <>
+              <li className="text-2xl border-b-2 ">
+                <Link href="/dashboard/manage-user">
+                  {" "}
+                  <FaUsers /> Manage User
+                </Link>
+              </li>
+              <li className="text-2xl">
+                <Link href="/dashboard/manage-articles">
+                  {" "}
+                  <BsFileEarmarkPost /> Manage Articles
+                </Link>
+              </li>
+              <div className="divider"></div>{" "}
+            </>
           ) : (
             <li className="text-2xl">
               <Link href="/dashboard/favorite-location">
