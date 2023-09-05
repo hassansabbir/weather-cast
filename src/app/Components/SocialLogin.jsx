@@ -1,17 +1,41 @@
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import app from "@/Firebase/Firebase.config";
 import { useRouter } from "next/navigation";
 
 const SocialLogin = () => {
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
   const router = useRouter();
 
   const handleGoogleSignIn = () => {
     signInWithPopup(auth, provider)
+      .then((result) => {
+        const loggedInUser = result.user;
+        console.log(loggedInUser);
+        const saveUserInfo = {
+          name: loggedInUser.displayName,
+          email: loggedInUser.email,
+          image: loggedInUser.photoURL,
+          role: "visitor",
+        };
+        fetch(`https://weather-cast-server.vercel.app/users`, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(saveUserInfo),
+        })
+          .then((res) => res.json())
+          .then(() => {
+            router.push("/", { replace: true });
+          });
+      })
+      .catch((err) => console.log(err.message));
+  };
+  const handleGithubSignIn = () => {
+    signInWithPopup(auth, githubProvider)
       .then((result) => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
@@ -45,7 +69,7 @@ const SocialLogin = () => {
         >
           <FcGoogle className="h-7 w-7" /> Login With Google
         </button>
-        <button className="btn btn-outline w-full text-xl">
+        <button className="btn btn-outline w-full text-xl" onClick={handleGithubSignIn}>
           <FaGithub className="h-7 w-7" /> Login With GitHub
         </button>
       </div>
