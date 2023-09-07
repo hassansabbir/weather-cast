@@ -120,7 +120,7 @@ const WeatherDetails = () => {
 
       // Check if the city is already a favorite
       const favoriteLoc ={location: City , email:user?.email}
-      const response = await fetch('http://localhost:5000/checkFavorite', {
+      const response = await fetch('https://weather-cast-server.vercel.app/checkFavorite', {
         method: "POST",
         headers: {
           'Content-type': "application/json"
@@ -143,7 +143,7 @@ const WeatherDetails = () => {
        
       } else {
         // City is not a favorite, allow the user to mark it as a favorite
-        const addFavoriteResponse = await fetch('http://localhost:5000/favLoc', {
+        const addFavoriteResponse = await fetch('https://weather-cast-server.vercel.app/favLoc', {
           method: "POST",
           headers: {
             'Content-type': "application/json"
