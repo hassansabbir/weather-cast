@@ -35,7 +35,7 @@ const myArticlesPage = () => {
         {myArticles.map((article) => (
           <div
             className="p-5 rounded-3xl shadow-xl bg-blue-100"
-            key={myArticles?._id}
+            key={article?._id}
           >
             <img
               className="w-96 rounded-2xl h-60"
