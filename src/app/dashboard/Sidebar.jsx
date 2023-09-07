@@ -6,8 +6,10 @@ import PrivateRoute from "@/routes/PrivetRoute";
 import axios from "axios";
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
-import { BsFillPatchCheckFill } from "react-icons/bs";
+import { BsFileEarmarkPost } from "react-icons/bs";
 import { FaHome, FaStar, FaUsers } from "react-icons/fa";
+import { GiReturnArrow } from "react-icons/gi";
+import { RxAvatar } from "react-icons/rx";
 
 const Sidebar = () => {
   const { user } = useContext(AuthContext);
@@ -43,43 +45,55 @@ const Sidebar = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-        <div className="flex flex-col py-24  bg-base-200 text-base-content items-center">
-          <img
-            src={user?.photoURL}
-            alt="adminImg"
-            className="w-[150px] h-[150px] rounded-full"
-          />
-          <h2 className="text-2xl mt-5 font-bold">{user?.displayName}</h2>
-          <p className="text-md font-bold underline cursor-pointer">
-            {user?.email}
-          </p>
-          {getUser?.role === "admin" && (
-            <p className="font-bold text-2xl flex items-center gap-1 my-3">
-              ADMIN
-              <BsFillPatchCheckFill className="text-blue-600" />
-            </p>
-          )}
-        </div>
 
         <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
           {getUser?.role === "admin" ? (
-            <li className="text-2xl">
-              <Link href="/dashboard/manage-user">
-                {" "}
-                <FaUsers /> Manage User
-              </Link>
-            </li>
+            <>
+              <li className="text-2xl border-b-2 ">
+                <Link href="/dashboard/user-home">
+                  {" "}
+                  <RxAvatar /> Profile
+                </Link>
+              </li>
+              <li className="text-2xl border-b-2 ">
+                <Link href="/dashboard/manage-user">
+                  {" "}
+                  <FaUsers /> Manage User
+                </Link>
+              </li>
+              <li className="text-2xl border-b-2">
+                <Link href="/dashboard/manage-articles">
+                  {" "}
+                  <BsFileEarmarkPost /> Manage Articles
+                </Link>
+              </li>
+              <div className="divider"></div>{" "}
+            </>
           ) : (
-            <li className="text-2xl">
-              <Link href="/dashboard/favorite-location">
-                <FaStar /> Favorite Location
-              </Link>
-            </li>
+            <>
+              <li className="text-2xl border-b-2 ">
+                <Link href="/dashboard/user-home">
+                  {" "}
+                  <RxAvatar /> Profile
+                </Link>
+              </li>
+              <li className="text-2xl border-b-2">
+                <Link href="/dashboard/favorite-location">
+                  <FaStar /> Favorite Location
+                </Link>
+              </li>
+              <li className="text-2xl border-b-2">
+                <Link href="/dashboard/my-articles">
+                  <BsFileEarmarkPost /> My Articles
+                </Link>
+              </li>
+              <div className="divider"></div>{" "}
+            </>
           )}
           <li className="text-2xl">
             <Link href="/">
               {" "}
-              <FaHome /> Go to Home
+              <GiReturnArrow /> Go to Home
             </Link>
           </li>
         </ul>

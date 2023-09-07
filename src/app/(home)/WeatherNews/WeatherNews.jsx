@@ -3,19 +3,19 @@ import React, { useState, useRef, useEffect } from "react";
 function WeatherNews() {
   const [weatherNews, setWeatherNews] = useState([
     {
-      title: "Major Earthquake Strikes Indonesia",
+      title: "Idalia turns deadly, wreaks havoc from Florida to the Carolinas",
       description:
-        "A powerful earthquake with a magnitude of 7.5 struck off the coast of Indonesia, triggering a tsunami warning and causing widespread panic.",
+        "Two men were killed in weather-related crashes, which may be linked to Idalia, as nearly half of a million power outages resulted from the storm. Fierce storm surge engulfed homes and caused destruction along Florida’s Gulf Coast.",
     },
     {
-      title: "Severe Flooding in Bangladesh",
+      title: "Northeast's hottest weather of summer may come in early September",
       description:
-        "Heavy monsoon rains have caused severe flooding in multiple regions of Bangladesh, displacing thousands of people and damaging homes and infrastructure.",
+        "The first day of September marks the start of meteorological autumn, but AccuWeather forecasters say a heat wave will get underway across the region next week.",
     },
     {
-      title: "Wildfires Rage in California",
+      title: "Rare 'super blue moon' glows in August sky",
       description:
-        "Wildfires continue to spread across California, prompting evacuations and threatening homes. Firefighters are battling the blazes amid challenging weather conditions.",
+        "A viral lunar phenomenon illuminated the sky on Wednesday night in an event that will not happen again until 2037.",
     },
     {
       title: "Typhoon Hits Philippines",
@@ -52,7 +52,7 @@ function WeatherNews() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <h2 className="text-5xl font-bold my-10 text-center">Weather News</h2>
+      <h2 className="text-5xl font-bold my-10 text-center">Headlines</h2>
       <div
         ref={newsContainerRef}
         className="news-container overflow-y-hidden max-h-80 w-full p-4 border rounded-md shadow-md bg-white"
