@@ -6,7 +6,7 @@ import moment from "moment";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { FaRegCalendarAlt } from "react-icons/fa";
+import { FaPlus, FaRegCalendarAlt } from "react-icons/fa";
 import { ImLocation } from "react-icons/im";
 
 const articlesPage = () => {
@@ -22,6 +22,14 @@ const articlesPage = () => {
     <div className="max-w-[1460px] mx-auto mb-20">
       <AOSInitializer></AOSInitializer>;
       <h2 className="text-5xl font-bold text-center">Weather Articles</h2>
+      <div className="text-center my-10">
+        <h2 className="text-2xl font-bold">Wanna Publish Your Own Articles?</h2>
+        <Link href="/articles/add-articles">
+          <button className="h-14 text-xl mx-auto flex gap-2 items-center justify-center w-28 border border-gray-300">
+            <FaPlus /> Publish
+          </button>
+        </Link>
+      </div>
       <p className="text-xl text-center my-10">
         Welcome to WeatherCast's Articles Section! Explore our collection of
         informative and engaging articles that cover a wide range of topics
@@ -41,7 +49,7 @@ const articlesPage = () => {
             key={article?._id}
             className="bg-blue-50 p-5 rounded-2xl shadow-lg"
           >
-            <Image
+            <img
               className="h-[200px] rounded-xl"
               src={article?.image_url}
               alt="image"

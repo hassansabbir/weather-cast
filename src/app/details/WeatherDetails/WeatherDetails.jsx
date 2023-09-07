@@ -3,7 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import moment from "moment";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   FaCalendar,
   FaEye,
@@ -26,7 +26,8 @@ import HumidityChart from '../HumidityChart';
 import PressureChart from '../PressureChart';
 
 import WindChart from '../WindChart';
-import { FaClock, FaRegClock } from 'react-icons/fa';
+import {  FaRegClock, FaRegStar, FaStar } from 'react-icons/fa';
+import { AuthContext } from '@/Providers/AuthProvider';
 // import WeatherLocation from "../WeatherLocation/WeatherLocation"; 
 
 const weatherFetch = async (City, unit, setWeather) => {
@@ -54,9 +55,12 @@ const weatherFetch = async (City, unit, setWeather) => {
 };
 
 const WeatherDetails = () => {
+  const {user} = useContext(AuthContext)
   const [City, setCity] = useState("");
   const [weather, setWeather] = useState(null);
   const [unit, setUnit] = useState("metric");
+  const [favbtn , setFavbtn] = useState(false);
+  const [isCitySearched , setIsCitySearched] = useState(false)
 
   useEffect(() => {
     weatherFetch("Dhaka", unit, setWeather);
@@ -75,6 +79,8 @@ const WeatherDetails = () => {
       })
     return ;
     }
+    setFavbtn(false);
+    setIsCitySearched(true);
   weatherFetch(City, unit, setWeather);
   };
 
@@ -95,6 +101,76 @@ const WeatherDetails = () => {
     );
   }
 
+  const handleFavBtn = async () => {
+    try {
+      if (!isCitySearched) {
+        // If the user hasn't searched for a city, don't allow marking as favorite
+        Swal.fire({
+          title: 'Please search for a city first.',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        });
+        return;
+      }
+  
+
+      // Check if the city is already a favorite
+      const favoriteLoc ={location: City , email:user?.email}
+      const response = await fetch('https://weather-cast-server.vercel.app/checkFavorite', {
+        method: "POST",
+        headers: {
+          'Content-type': "application/json"
+        },
+        body: JSON.stringify(favoriteLoc)
+      });
+  
+      if (response.ok) {
+        setFavbtn(true);
+        Swal.fire({
+          title: 'City is already a favorite',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        });
+        // City is already a favorite, disable the button
+       
+      } else {
+        // City is not a favorite, allow the user to mark it as a favorite
+        const addFavoriteResponse = await fetch('https://weather-cast-server.vercel.app/favLoc', {
+          method: "POST",
+          headers: {
+            'Content-type': "application/json"
+          },
+          body: JSON.stringify({ favoriteLoc , setFavbtn: true })
+        });
+  
+        if (addFavoriteResponse.ok) {
+          Swal.fire({
+            title: 'Location marked as favorite',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          });
+          console.log("Location marked as favorite");
+          setFavbtn(true); // Disable the button after marking as favorite
+        } else {
+          console.log("Failed to mark location as favorite");
+        }
+      }
+    } catch (error) {
+      console.error("Error:", error)
+    }
+  };
   const currentWeather = weather.list[0];
   const weatherMain = currentWeather.weather[0].main;
   const weatherIcon = getWeatherIcon(weatherMain);
@@ -241,10 +317,20 @@ const WeatherDetails = () => {
                   {" "}
                   <FaCalendar /> {currentDate.toDateString()}
                 </h2>
+                <div className='flex justify-between'>
                 <p className=" flex gap-1">
                   {" "}
                   <FaLocationDot /> {location}
                 </p>
+                
+               <button onClick={handleFavBtn} className='text-yellow-600'>
+                {
+                  favbtn? <FaStar className='text-2xl' />  : <FaRegStar className='text-2xl'/>
+                }
+                
+               </button>
+                </div>
+               
                 <p></p>
               </div>
             </div>
