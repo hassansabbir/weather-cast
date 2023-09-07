@@ -28,6 +28,7 @@ const fetchWeather = async (latitude, longitude, setWeather) => {
 
 const WeatherUpdates = () => {
   const [weather, setWeather] = useState(null);
+  console.log(weather);
   const [positions, setPositions] = useState([0, 0]);
 
   useEffect(() => {

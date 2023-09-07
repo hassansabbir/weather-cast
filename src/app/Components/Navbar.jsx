@@ -19,7 +19,7 @@ const Navbar = () => {
     },
     {
       path: "/news",
-      title: "News"
+      title: "News",
     },
     {
       path: "/contact",
@@ -70,6 +70,11 @@ const Navbar = () => {
                   <Link href={path}>{title}</Link>
                 </li>
               ))}
+              {user && (
+                <li className="font-semibold text-blue-800 text-lg ">
+                  <Link href="/dashboard/user-home">Dashboard</Link>
+                </li>
+              )}
             </ul>
           </div>
           <a className=" normal-case text-xl md:text-3xl text-blue-800 font-bold ">
@@ -85,7 +90,7 @@ const Navbar = () => {
             ))}
             {user && (
               <li className="font-semibold text-blue-800 text-lg ">
-                <Link href="/dashboard">Dashboard</Link>
+                <Link href="/dashboard/user-home">Dashboard</Link>
               </li>
             )}
           </ul>

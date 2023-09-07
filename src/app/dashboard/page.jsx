@@ -6,7 +6,7 @@ import React from "react";
 const dashboardPage = () => {
   return (
     <PrivateRoute>
-      <div>
+      <div className="">
         <h2 className="text-5xl mt-20">
           Welcome to WeatherCast user dashboard.
         </h2>
