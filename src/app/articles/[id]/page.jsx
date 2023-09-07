@@ -12,7 +12,7 @@ const singleArticle = ({ params }) => {
   const [selectedArticle, setSelectedArticle] = useState([]);
   useEffect(() => {
     axios
-      .get(`https://weather-cast-server.vercel.app/articles/${params.id}`)
+      .get(`https://weather-cast-server.vercel.app/allArticles/${params.id}`)
       .then((data) => {
         setSelectedArticle(data.data);
       });

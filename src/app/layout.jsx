@@ -9,9 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Weather Cast",
   description: "Weather Cast",
-  icons: {
-    icon: "https://cdn-icons-png.flaticon.com/512/252/252035.png",
-  },
+
 };
 
 const RootLayout = ({ children }) => {
