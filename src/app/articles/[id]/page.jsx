@@ -40,6 +40,19 @@ const singleArticle = ({ params }) => {
           {moment(selectedArticle?.date).format("LL")}
         </p>
       </div>
+      <div className="flex items-center justify-center mt-20 gap-5">
+        <img
+          className="w-16 h-16 rounded-full"
+          src={selectedArticle?.authorImage}
+          alt={selectedArticle?.authorName}
+        />
+        <div>
+          <h1 className="text-3xl font-bold">{selectedArticle?.authorName}</h1>
+          <p className="text-xl font-bold underline">
+            {selectedArticle?.authorEmail}
+          </p>
+        </div>
+      </div>
       <div className="text-center p-5 my-10">
         <h3 className="text-xl ">{selectedArticle?.description}</h3>
         <p className="text-xl my-5">{selectedArticle?.detailedDescription}</p>

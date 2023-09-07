@@ -22,6 +22,7 @@ const addAArticles = () => {
       image_url: data.image_url,
       authorName: data.authorName,
       authorEmail: data.authorEmail,
+      authorImage: user?.photoURL,
       location: data.location,
       date: data.date,
       description: data.description,
