@@ -49,6 +49,16 @@ const articlesPage = () => {
             key={article?._id}
             className="bg-blue-50 p-5 rounded-2xl shadow-lg"
           >
+            <div className="flex items-center my-5 justify-center gap-5">
+              <img
+                className="w-12 h-12 rounded-full"
+                src={article?.authorImage}
+                alt={article?.authorName}
+              />
+              <div>
+                <h1 className="text-2xl font-bold">{article?.authorName}</h1>
+              </div>
+            </div>
             <img
               className="h-[200px] rounded-xl"
               src={article?.image_url}
@@ -56,6 +66,7 @@ const articlesPage = () => {
               width={500}
               height={100}
             />
+
             <h2 className="text-2xl mt-3 font-bold">{article?.event}</h2>
             <div className="p-3">
               <p className="flex gap-1 font-bold text-lg">
@@ -67,6 +78,7 @@ const articlesPage = () => {
                 {moment(article?.date).format("LL")}
               </p>
             </div>
+
             <p className="text-md">{article?.description}</p>
             <div className="mt-5 flex justify-center">
               <Link href={`/articles/${article._id}`}>

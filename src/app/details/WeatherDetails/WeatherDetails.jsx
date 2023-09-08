@@ -26,6 +26,9 @@ import HumidityChart from '../HumidityChart';
 import PressureChart from '../PressureChart';
 
 import WindChart from '../WindChart';
+import HourlyForcast from '../HourlyForcast/HourlyForcast';
+
+
 import {  FaRegClock, FaRegStar, FaStar } from 'react-icons/fa';
 import { AuthContext } from '@/Providers/AuthProvider';
 // import WeatherLocation from "../WeatherLocation/WeatherLocation"; 
@@ -597,6 +600,10 @@ const WeatherDetails = () => {
         <div className="card h-20 lg:w-7/12 bg-base-100 shadow-xl mt-2 text-center flex justify-center mx-auto">
           <WeatherAlert weather={currentWeather} />
         </div>
+      </div>
+      <div>
+      <HourlyForcast weather={weather}></HourlyForcast>
+       {/* <HourlyForcast weather={weather}></HourlyForcast> */}
       </div>
   </div>
  </PrivateRoute>
