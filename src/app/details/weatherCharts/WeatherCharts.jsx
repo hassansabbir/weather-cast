@@ -57,7 +57,7 @@ const WeatherCharts = ({weather , currentWeather ,currentWeather1,currentWeather
     let Pressure7=currentWeather7.main.pressure
     // console.log(temp);
     const weatherList = weather.list
-    console.log(weatherList);
+    // console.log(weatherList); 
     const data = [
         {
           time:time,

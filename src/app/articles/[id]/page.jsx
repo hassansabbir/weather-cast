@@ -12,7 +12,7 @@ const singleArticle = ({ params }) => {
   const [selectedArticle, setSelectedArticle] = useState([]);
   useEffect(() => {
     axios
-      .get(`https://weather-cast-server.vercel.app/articles/${params.id}`)
+      .get(`https://weather-cast-server.vercel.app/allArticles/${params.id}`)
       .then((data) => {
         setSelectedArticle(data.data);
       });
@@ -39,6 +39,19 @@ const singleArticle = ({ params }) => {
           <FaRegCalendarAlt />
           {moment(selectedArticle?.date).format("LL")}
         </p>
+      </div>
+      <div className="flex items-center justify-center mt-20 gap-5">
+        <img
+          className="w-16 h-16 rounded-full"
+          src={selectedArticle?.authorImage}
+          alt={selectedArticle?.authorName}
+        />
+        <div>
+          <h1 className="text-3xl font-bold">{selectedArticle?.authorName}</h1>
+          <p className="text-xl font-bold underline">
+            {selectedArticle?.authorEmail}
+          </p>
+        </div>
       </div>
       <div className="text-center p-5 my-10">
         <h3 className="text-xl ">{selectedArticle?.description}</h3>
