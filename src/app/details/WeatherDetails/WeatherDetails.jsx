@@ -128,8 +128,7 @@ const WeatherDetails = () => {
         body: JSON.stringify(favoriteLoc)
       });
   
-      if (response.ok) {
-        setFavbtn(true);
+      if (response.ok) {      
         Swal.fire({
           title: 'City is already a favorite',
           showClass: {
@@ -323,7 +322,7 @@ const WeatherDetails = () => {
                   <FaLocationDot /> {location}
                 </p>
                 
-               <button onClick={handleFavBtn} className='text-yellow-600'>
+               <button onClick={handleFavBtn} className={`text-yellow-600 ${favbtn ? 'disabled' : ''}`} disabled={favbtn}>
                 {
                   favbtn? <FaStar className='text-2xl' />  : <FaRegStar className='text-2xl'/>
                 }
