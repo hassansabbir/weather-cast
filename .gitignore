@@ -36,3 +36,13 @@ next-env.d.ts
 
 package-lock.json
 yarn.lock
+
+#test
+
+/.babelrc
+/babel.config.js
+/cssTransform.js
+/jest.config.js
+/jest.setup.js
+/__mocks__/
+/src/app/(home)/WeatherUodates/WeatherUpdates.test.jsx
