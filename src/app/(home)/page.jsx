@@ -1,5 +1,6 @@
 "use client";
 
+
 import Banner from "./Banner";
 import Intelligence from "./Intelligence";
 import Marq from "./Marq";
@@ -10,9 +11,12 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ShowReviews from "./reviews/ShowReviews";
 
-// import Articles from "./Articles";
+import TawkComponent from './TawkComponent';
+
+
 
 const HomePage = () => {
+  
   return (
     <div>
       <Banner />
@@ -24,8 +28,12 @@ const HomePage = () => {
       <ShowReviews />
       <Marq />
       <NewsLetter />
-   
+      <TawkComponent></TawkComponent>
+    
+     
+      
     </div>
   );
 };
+
 export default HomePage;
