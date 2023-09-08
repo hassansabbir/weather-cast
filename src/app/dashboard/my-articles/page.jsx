@@ -49,12 +49,12 @@ const myArticlesPage = () => {
               <div>
                 <h1 className="text-2xl font-bold">{article?.authorName}</h1>
                 {article?.status === "denied" && (
-                  <button className="btn btn-sm bg-red-500-500 text-white">
+                  <button className="btn btn-sm bg-red-500 text-white">
                     {article?.status}
                   </button>
                 )}
                 {article?.status === "pending" && (
-                  <button className="btn btn-sm bg-orange-500-500 text-white">
+                  <button className="btn btn-sm bg-orange-500 text-white">
                     {article?.status}
                   </button>
                 )}
