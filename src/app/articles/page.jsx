@@ -17,6 +17,9 @@ const articlesPage = () => {
       .then((data) => setArticles(data.data));
   }, []);
   // console.log(articles);
+  const approvedArticles = articles.filter(
+    (article) => article?.status === "approved"
+  );
 
   return (
     <div className="max-w-[1460px] mx-auto mb-20">
@@ -44,7 +47,7 @@ const articlesPage = () => {
         data-aos="fade-up"
         data-aos-duration="3000"
       >
-        {articles.map((article) => (
+        {approvedArticles.map((article) => (
           <div
             key={article?._id}
             className="bg-blue-50 p-5 rounded-2xl shadow-lg"

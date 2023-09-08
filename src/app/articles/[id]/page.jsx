@@ -11,13 +11,17 @@ const singleArticle = ({ params }) => {
 
   const [selectedArticle, setSelectedArticle] = useState([]);
   useEffect(() => {
+    fetchData();
+  }, []);
+  console.log(selectedArticle);
+
+  const fetchData = () => {
     axios
       .get(`https://weather-cast-server.vercel.app/allArticles/${params.id}`)
       .then((data) => {
         setSelectedArticle(data.data);
       });
-  }, []);
-  console.log(selectedArticle);
+  };
 
   return (
     <div className="max-w-[1460px] mx-auto">
