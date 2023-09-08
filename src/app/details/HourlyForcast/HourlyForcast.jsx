@@ -58,7 +58,7 @@ const HourlyForcast = ({weather}) => {
                 <h3 className='text-2xl'>{w.main.temp} °C</h3>
                 </div>
                 <div className='my-2'>
-                    <div className='flex align-middle gap-2'>
+                    <div className='flex items-center gap-2'>
                     <p className='  text-2xl mt-2'><FaTemperatureHigh></FaTemperatureHigh></p>
                     <div>
 
@@ -75,19 +75,19 @@ const HourlyForcast = ({weather}) => {
         </td>
         <td>
            <div>
-            <div className='flex flex-row gap-2'>
+            <div className='flex flex-row items-center gap-2'>
             <p className='text-4xl'><BsSpeedometer></BsSpeedometer> </p>
             <div className='my-3'>
             <p className='text-xl'>Wind speed </p>
              <h3 className='text-2xl'>{w.wind.speed} m/s</h3>
             </div>
             </div>
-            <div className='my-3 flex flex-row gap-2'>
+            <div className='my-3 flex flex-row items-center gap-2'>
                 <p className='text-4xl'><WiCloudyGusts></WiCloudyGusts> </p>
                 <div>
 
                 <p className='text-xl'>Wind Gust</p>
-                <h3 className='text-2xl'>{w.wind.gust}</h3>
+                <h3 className='text-2xl'>{w.wind.gust} m/s</h3>
                 </div>
             </div>
            </div>
@@ -95,7 +95,7 @@ const HourlyForcast = ({weather}) => {
         </td>
         <th>
          <div>
-         <div className='flex flex-row'>
+         <div className='flex flex-row items-center gap-2'>
                 <div>
                     <p className='text-5xl'><WiHumidity></WiHumidity> </p>
                 </div>
@@ -104,7 +104,7 @@ const HourlyForcast = ({weather}) => {
                 <h3 className='my-2 text-2xl'>{w.main.humidity} %</h3>
                 </div>
                 </div>
-                <div className='flex flex-row'>
+                <div className='flex flex-row items-center gap-2'>
                     <p className='text-4xl'><MdOutlineVisibility></MdOutlineVisibility> </p>
                     <div>
                         <h3 className='text-xl'>Visibility</h3>
