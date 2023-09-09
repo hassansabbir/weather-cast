@@ -8,7 +8,8 @@ function WeatherNews() {
         "Two men were killed in weather-related crashes, which may be linked to Idalia, as nearly half of a million power outages resulted from the storm. Fierce storm surge engulfed homes and caused destruction along Florida’s Gulf Coast.",
     },
     {
-      title: "Northeast's hottest weather of summer may come in early September",
+      title:
+        "Northeast's hottest weather of summer may come in early September",
       description:
         "The first day of September marks the start of meteorological autumn, but AccuWeather forecasters say a heat wave will get underway across the region next week.",
     },
@@ -52,7 +53,9 @@ function WeatherNews() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <h2 className="text-5xl font-bold my-10 text-center">Headlines</h2>
+      <h2 className="text-3xl lg:text-5xl font-bold my-10 text-center">
+        Headlines
+      </h2>
       <div
         ref={newsContainerRef}
         className="news-container overflow-y-hidden max-h-80 w-full p-4 border rounded-md shadow-md bg-white"
