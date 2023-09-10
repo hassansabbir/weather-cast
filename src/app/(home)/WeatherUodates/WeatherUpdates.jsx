@@ -93,17 +93,17 @@ const WeatherUpdates = () => {
 
   return (
     <>
-      <h2 className="text-5xl font-bold my-10 text-center">
+      <h2 className="text-3xl lg:text-5xl font-bold my-10 text-center">
         Live Weather Updates
       </h2>
 
-      <div className=" max-w-[1460px] mx-auto lg:flex m-16">
-        <div className="weather-card grid-cols-8 mx-auto  rounded-3xl p-10 border h-[500px] w-[800px]">
+      <div className=" max-w-[1460px] mx-auto px-5 lg:flex m-16">
+        <div className="weather-card grid-cols-8 mx-auto  rounded-3xl p-10 border lg:h-[500px] lg:w-[800px]">
           <div className="">
             <div className="grid grid-cols-2 justify-between">
               <div>
                 <p className="font-semibold text-lg">Current Weather</p>
-                <p className="text-lg ps-0  pb-3">
+                <p className="text-lg ps-0 pb-3">
                   {moment(weather?.location?.localtime).format("LT")}
                 </p>
               </div>
@@ -119,7 +119,7 @@ const WeatherUpdates = () => {
                 </button>
               </div>
             </div>
-            <div className="flex  items-center ">
+            <div className="flex items-center ">
               <div>
                 <Image
                   src={weatherIcon}
@@ -128,10 +128,10 @@ const WeatherUpdates = () => {
                   alt={weatherMain}
                 />
               </div>
-              <h2 className="text-4xl lg:text-6xl  ps-3 pe-5 font-bold ">
+              <h2 className="text-3xl lg:text-6xl flex ps-3 pe-5 font-bold ">
                 {currentTemperatureCelsius} <small>℃</small>
               </h2>
-              <div className="ms-20">
+              <div className="lg:ms-20">
                 <h2 className="text-xl   font-semibold uppercase ">
                   {weatherDescription}
                 </h2>
@@ -147,7 +147,7 @@ const WeatherUpdates = () => {
             <p className="text-xl lg:text-2xl ">
               {moment(weather?.location?.localtime).format("MMMM Do YYYY")}
             </p>
-            <div className="grid grid-cols-4 justify-between mt-16">
+            <div className="grid grid-cols-2 gap-5 lg:grid-cols-4 justify-between mt-16">
               {/* wind speed  */}
               <div className="text-xl  ">
                 <p className="flex">
