@@ -4,6 +4,8 @@ import { AuthContext } from "@/Providers/AuthProvider";
 import Link from "next/link";
 import React, { useContext } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
+import Image from "next/image";
+import logo from '../../assets/weathercastlogo.png';
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -37,7 +39,7 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => { })
       .catch((error) => console.log(error));
   };
   return (
@@ -77,9 +79,10 @@ const Navbar = () => {
               )}
             </ul>
           </div>
-          <a className=" normal-case text-xl md:text-3xl text-blue-800 font-bold ">
+          {/* <a className=" normal-case text-xl md:text-3xl text-blue-800 font-bold ">
             weatherCast
-          </a>
+          </a> */}
+          <Image src={logo} />
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">

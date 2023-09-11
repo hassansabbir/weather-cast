@@ -16,7 +16,7 @@ const inter = Inter({ subsets: ["latin"] });
 const Contact = () => {
 
   const form = useRef(null);
-  const [client, setClient] = useState(false);
+  // const [client, setClient] = useState(false);
 
   const sendEmail = (event) => {
     event.preventDefault();
