@@ -1,4 +1,7 @@
+import Link from "next/link";
 import React from "react";
+import Image from "next/image";
+import logo from '../../assets/footerlogo.png';
 
 const Footer = () => {
   return (
@@ -6,10 +9,11 @@ const Footer = () => {
       <footer className="footer p-10 bg-base-200 text-base-content">
         <div>
           <div className=" ">
-            <a className=" normal-case text-3xl text-blue-800 font-bold italic mb-5">
+            {/* <a className=" normal-case text-3xl text-blue-800 font-bold italic mb-5">
               weatherCast
-            </a>
-            <div>
+            </a> */}
+            <Image src={logo} />
+            <div><br />
               <p className="text-blue-600 text-md font-semibold">
                 Amidst the gentle whispers of the wind, <br /> the sky unfolds
                 its story,painting a canvas of ever-changing hues, <br /> as the
@@ -27,8 +31,12 @@ const Footer = () => {
         </div>
         <div className="text-blue-500">
           <p className="text-lg font-bold">Company</p>
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Contact</a>
+          <Link  href="/about">
+          <h3 className="link link-hover">About us</h3>
+          </Link>
+          <Link href="/contact">
+          <h3 className="link link-hover">Contact</h3>
+          </Link>
           <a className="link link-hover">Jobs</a>
           <a className="link link-hover">Press kit</a>
         </div>
