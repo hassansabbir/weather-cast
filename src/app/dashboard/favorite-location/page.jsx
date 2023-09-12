@@ -26,6 +26,7 @@ const favoriteLocationPage = () => {
   return (
     <div>
       {/* <h2>This is favorite locations page</h2> */}
+      {/* vallageeeee nhhhhhhh  */}
       {
         favLocations&&<WeatherCard locationData={favLocations} />
       }
