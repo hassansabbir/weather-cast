@@ -10,7 +10,7 @@ const favoriteLocationPage = () => {
   
   useEffect(()=>{
     if (user?.email) {
-      fetch(`http://localhost:5000/favLoc/${user.email}`)
+      fetch(`https://weather-cast-server.vercel.app/favLoc/${user.email}`)
       .then(res =>res.json())
       .then(data=>{
         console.log(data);

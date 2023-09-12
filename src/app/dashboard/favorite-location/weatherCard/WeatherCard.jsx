@@ -39,7 +39,9 @@ const WeatherCard = ({locationData}) => {
     return (
         <div>
             {weatherData.map((data, index) => (
-                <div key={index} className='mx-auto'>       
+                <div key={index} className='mx-auto'> 
+                <div className="indicator">
+  <span className="indicator-item badge badge-primary">new</span> 
   <div className="weather-card grid-cols-8 mx-auto mb-8 shadow-xl  rounded-3xl p-10 border h-[500px] w-[800px] glass">
           <div className="">
             <div className="grid grid-cols-2 justify-between">
@@ -129,6 +131,8 @@ const WeatherCard = ({locationData}) => {
             </div>
           </div>
         </div>
+</div>      
+
        </div>
        
       ))} 
