@@ -167,6 +167,7 @@ const WeatherDetails = () => {
           });
           console.log("Location marked as favorite");
           setFavbtn(true); // Disable the button after marking as favorite
+          setFavoriteLocations((prevLocations) => [...prevLocations, City]);
         } else {
           console.log("Failed to mark location as favorite");
         }
