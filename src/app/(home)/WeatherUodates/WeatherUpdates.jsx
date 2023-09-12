@@ -77,28 +77,44 @@ const WeatherUpdates = () => {
   });
 
   //  temperature , location , current date , feels like
-  const weatherMain = weather.weather[0].main;
+  const weatherMain = weather?.weather[0]?.main;
   const weatherIcon = getWeatherIcon(weatherMain);
-  const currentTemperatureKelvin = weather.main.temp;
-  const feelsLikeTemperatureKelvin = weather.main.feels_like;
+  const currentTemperatureKelvin = weather?.main?.temp;
+  const feelsLikeTemperatureKelvin = weather?.main?.feels_like;
   const currentTemperatureCelsius = Math.round(
     currentTemperatureKelvin - 273.15
   );
   const feelsLikeTemperatureCelsius = Math.round(
     feelsLikeTemperatureKelvin - 273.15
   );
-  const location = weather.name;
-  const weatherDescription = weather.weather[0].description;
-  const windSpeed = weather.wind.speed;
+  const location = weather?.name;
+  const weatherDescription = weather?.weather[0]?.main;
+  const windSpeed = weather?.wind?.speed;
+
+  const getBackgroundClass = () => {
+    if (weatherDescription.toLowerCase() === "clear") {
+      return "bg-clear";
+    } else if (weatherDescription.toLowerCase() === "clouds") {
+      return "bg-cloud";
+    } else if (weatherDescription.toLowerCase() === "rain") {
+      return "bg-rain";
+    } else if (weatherDescription.toLowerCase() === "thunderstorm") {
+      return "bg-thunder";
+    } else if (weatherDescription.toLowerCase() === "drizzle") {
+      return "bg-drizzle";
+    } else {
+      return "bg-clear";
+    }
+  };
 
   return (
-    <>
+    <div className={`${getBackgroundClass()} py-36`}>
       <h2 className="text-3xl lg:text-5xl font-bold my-10 text-center">
         Live Weather Updates
       </h2>
 
       <div className=" max-w-[1460px] mx-auto px-5 lg:flex m-16">
-        <div className="weather-card grid-cols-8 mx-auto  rounded-3xl p-10 border lg:h-[500px] lg:w-[800px]">
+        <div className="weather-card bg-white bg-opacity-40 grid-cols-8 mx-auto  rounded-3xl p-10 border lg:h-[500px] lg:w-[800px]">
           <div className="">
             <div className="grid grid-cols-2 justify-between">
               <div>
@@ -224,7 +240,7 @@ const WeatherUpdates = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

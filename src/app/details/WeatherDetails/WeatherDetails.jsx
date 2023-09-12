@@ -1,6 +1,6 @@
 "use client";
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
 import moment from "moment";
 import Image from "next/image";
 import React, { useContext, useEffect, useState } from "react";
@@ -20,18 +20,17 @@ import Swal from "sweetalert2";
 import WeatherCharts from "../weatherCharts/WeatherCharts";
 import WeatherLocation from "@/app/(home)/WeatherLocation/WeatherLocation";
 import ThreeHourWeather from "../ThreeHourWeather/ThreeHourWeather";
-import WeatherMap from '@/app/(home)/SimpleWeatherMap';
-import WeatherAlert from '@/app/(home)/WeatherUodates/WeatherAlert';
-import HumidityChart from '../HumidityChart';
-import PressureChart from '../PressureChart';
+import WeatherMap from "@/app/(home)/SimpleWeatherMap";
+import WeatherAlert from "@/app/(home)/WeatherUodates/WeatherAlert";
+import HumidityChart from "../HumidityChart";
+import PressureChart from "../PressureChart";
 
-import WindChart from '../WindChart';
-import HourlyForcast from '../HourlyForcast/HourlyForcast';
+import WindChart from "../WindChart";
+import HourlyForcast from "../HourlyForcast/HourlyForcast";
 
-
-import {  FaRegClock, FaRegStar, FaStar } from 'react-icons/fa';
-import { AuthContext } from '@/Providers/AuthProvider';
-// import WeatherLocation from "../WeatherLocation/WeatherLocation"; 
+import { FaRegClock, FaRegStar, FaStar } from "react-icons/fa";
+import { AuthContext } from "@/Providers/AuthProvider";
+// import WeatherLocation from "../WeatherLocation/WeatherLocation";
 
 const weatherFetch = async (City, unit, setWeather) => {
   try {
@@ -39,25 +38,18 @@ const weatherFetch = async (City, unit, setWeather) => {
     const URL = `https://api.openweathermap.org/data/2.5/forecast?q=${City}&&units=${unit}&appid=${apiKey}`;
     const response = await fetch(URL);
     if (!response.ok) {
-      // Check if the response status indicates a "not found" error
-      if (response.status === 404) {
-        // Handle the case where the city is not found
-        Swal.fire({
-          title: 'City not found. Please enter a valid city name.',
-          showClass: {
-            popup: 'animate__animated animate__fadeInDown'
-          },
-          hideClass: {
-            popup: 'animate__animated animate__fadeOutUp'
-          }
-        });
-      } else {
-        // Handle other types of errors
-        console.error("Error fetching weather data:", response.status);
-      }
-      return null;
+      Swal.fire({
+        title: "City not found. Please enter a valid city name.",
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutUp",
+        },
+      });
+      return;
     }
-  const data = await response.json();
+    const data = await response.json();
     setWeather(data);
   } catch (error) {
     console.error("Im sorry we couldn't get you weather data", error);
@@ -65,45 +57,40 @@ const weatherFetch = async (City, unit, setWeather) => {
 };
 
 const WeatherDetails = () => {
-  const {user} = useContext(AuthContext)
-  const [City, setCity] = useState("");
+  const { user } = useContext(AuthContext);
+  const [City, setCity] = useState("dhaka");
   const [weather, setWeather] = useState(null);
   const [unit, setUnit] = useState("metric");
-  const [favbtn , setFavbtn] = useState(false);
-  const [isCitySearched , setIsCitySearched] = useState(false)
-  const [favoriteLocations, setFavoriteLocations] = useState([]);
+  const [favbtn, setFavbtn] = useState(false);
+  const [isCitySearched, setIsCitySearched] = useState(false);
 
   useEffect(() => {
-    
-      weatherFetch("Dhaka", unit, setWeather);
-   
-   
-  }, [City ,unit]);
+    weatherFetch(City, unit, setWeather);
+  }, [unit]);
 
   const handleSearch = () => {
-  if (City.trim() === "") {
+    if (City.trim() === "") {
       Swal.fire({
-        title: 'Please enter a city name.',
+        title: "Please enter a city name.",
         showClass: {
-          popup: 'animate__animated animate__fadeInDown'
+          popup: "animate__animated animate__fadeInDown",
         },
         hideClass: {
-          popup: 'animate__animated animate__fadeOutUp'
-        }
-      })
-    return ;
+          popup: "animate__animated animate__fadeOutUp",
+        },
+      });
+      return;
     }
     setFavbtn(false);
     setIsCitySearched(true);
-  weatherFetch(City, unit, setWeather);
+    weatherFetch(City, unit, setWeather);
   };
 
   const handleUnitChange = (selectedUnit) => {
-     setUnit(selectedUnit);
-     if (City) {
-     weatherFetch(City, selectedUnit , setWeather);
-  }
-    
+    setUnit(selectedUnit);
+    if (City) {
+      weatherFetch(City, selectedUnit, setWeather);
+    }
   };
 
   if (!weather) {
@@ -120,53 +107,63 @@ const WeatherDetails = () => {
       if (!isCitySearched) {
         // If the user hasn't searched for a city, don't allow marking as favorite
         Swal.fire({
-          title: 'Please search for a city first.',
+          title: "Please search for a city first.",
           showClass: {
-            popup: 'animate__animated animate__fadeInDown'
+            popup: "animate__animated animate__fadeInDown",
           },
           hideClass: {
-            popup: 'animate__animated animate__fadeOutUp'
-          }
+            popup: "animate__animated animate__fadeOutUp",
+          },
         });
         return;
       }
-  
- const isFavoriteLocation = favoriteLocations.some(
-        (location) => location === City
-      );
-      if (isFavoriteLocation) {
-        // City is already a favorite, show an alert
-        Swal.fire({
-          title: 'City is already a favorite',
-          showClass: {
-            popup: 'animate__animated animate__fadeInDown'
-          },
-          hideClass: {
-            popup: 'animate__animated animate__fadeOutUp'
-          }
-        });
-        return;
-      }
+
       // Check if the city is already a favorite
-      const favoriteLoc ={location: City , email:user?.email}
-        // City is not a favorite, allow the user to mark it as a favorite
-        const addFavoriteResponse = await fetch('https://weather-cast-server.vercel.app/favLoc', {
+      const favoriteLoc = { location: City, email: user?.email };
+      const response = await fetch(
+        "https://weather-cast-server.vercel.app/checkFavorite",
+        {
           method: "POST",
           headers: {
-            'Content-type': "application/json"
+            "Content-type": "application/json",
           },
-          body: JSON.stringify({ favoriteLoc , setFavbtn: true })
+          body: JSON.stringify(favoriteLoc),
+        }
+      );
+
+      if (response.ok) {
+        Swal.fire({
+          title: "City is already a favorite",
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
         });
-  
+        // City is already a favorite, disable the button
+      } else {
+        // City is not a favorite, allow the user to mark it as a favorite
+        const addFavoriteResponse = await fetch(
+          "https://weather-cast-server.vercel.app/favLoc",
+          {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify({ favoriteLoc, setFavbtn: true }),
+          }
+        );
+
         if (addFavoriteResponse.ok) {
           Swal.fire({
-            title: 'Location marked as favorite',
+            title: "Location marked as favorite",
             showClass: {
-              popup: 'animate__animated animate__fadeInDown'
+              popup: "animate__animated animate__fadeInDown",
             },
             hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
-            }
+              popup: "animate__animated animate__fadeOutUp",
+            },
           });
           console.log("Location marked as favorite");
           setFavbtn(true); // Disable the button after marking as favorite
@@ -175,8 +172,8 @@ const WeatherDetails = () => {
           console.log("Failed to mark location as favorite");
         }
       }
-     catch (error) {
-      console.error("Error:", error)
+    } catch (error) {
+      console.error("Error:", error);
     }
   };
   const currentWeather = weather.list[0];
@@ -274,7 +271,7 @@ const WeatherDetails = () => {
             name=""
             id=""
           />
-        
+
           <button
             onClick={handleSearch}
             className="btn btn-neutral text-white bg-blue-800 ms-4"
@@ -285,16 +282,20 @@ const WeatherDetails = () => {
 
         <div className="mx-auto text-center">
           <button
-           className={`btn btn-circle btn-outline font-bold m-8 ${unit === 'metric' ? 'active' : ''}`}
+            className={`btn btn-circle btn-outline font-bold m-8 ${
+              unit === "metric" ? "active" : ""
+            }`}
             onClick={() => handleUnitChange("metric")}
           >
-          °C
+            °C
           </button>
           <button
-            className={`btn btn-circle btn-outline font-bold ${unit === 'imperial' ? 'active' : ''}`}
+            className={`btn btn-circle btn-outline font-bold ${
+              unit === "imperial" ? "active" : ""
+            }`}
             onClick={() => handleUnitChange("imperial")}
           >
-           °F
+            °F
           </button>
           {/* <WeatherLocation></WeatherLocation>  */}
         </div>
@@ -325,25 +326,32 @@ const WeatherDetails = () => {
                   {" "}
                   <FaCalendar /> {currentDate.toDateString()}
                 </h2>
-                <div className='flex justify-between'>
-                <p className=" flex gap-1">
-                  {" "}
-                  <FaLocationDot /> {location}
-                </p>
-                
-               <button onClick={handleFavBtn} className={`text-yellow-600 ${favbtn ? 'disabled' : ''}`} disabled={favbtn}>
-                {
-                  favbtn? <FaStar className='text-2xl' />  : <FaRegStar className='text-2xl'/>
-                }
-                
-               </button>
+                <div className="flex justify-between">
+                  <p className=" flex gap-1">
+                    {" "}
+                    <FaLocationDot /> {location}
+                  </p>
+
+                  <button
+                    onClick={handleFavBtn}
+                    className={`text-yellow-600 ${favbtn ? "disabled" : ""}`}
+                    disabled={favbtn}
+                  >
+                    {favbtn ? (
+                      <FaStar className="text-2xl" />
+                    ) : (
+                      <FaRegStar className="text-2xl" />
+                    )}
+                  </button>
                 </div>
-               
+
                 <p></p>
               </div>
             </div>
 
-            <p className="m-10 ms-3 text-2xl font-semibold text-blue-700 ">5 Days Forecast</p>
+            <p className="m-10 ms-3 text-2xl font-semibold text-blue-700 ">
+              5 Days Forecast
+            </p>
 
             <div className="card md:w-5/6 bg-base-100 shadow-xl">
               <div className="card-body">
@@ -438,7 +446,9 @@ const WeatherDetails = () => {
           </div>
           {/* highlights  */}
           <div className="col-span-2 ">
-            <h3 className="font-bold text-2xl m-9 ms-3 text-blue-700">Today Highlights</h3>
+            <h3 className="font-bold text-2xl m-9 ms-3 text-blue-700">
+              Today Highlights
+            </h3>
             <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-4">
               <div className="card  bg-base-100 shadow-xl">
                 <div className="card-body">
@@ -552,67 +562,136 @@ const WeatherDetails = () => {
               </div>
             </div>
 
-            <h3 className="font-bold text-2xl m-10 ms-3 text-blue-700">Today at</h3>
+            <h3 className="font-bold text-2xl m-10 ms-3 text-blue-700">
+              Today at
+            </h3>
 
             <Tabs>
-    <TabList>
-      <Tab> <li className='flex'><FaTemperatureFull className='text-3xl p-1'/> Temperature</li> </Tab>
-      <Tab><li className='flex'><WiHumidity className='text-3xl p-1'/> Humidity</li></Tab>
-      <Tab><li className='flex'><WiSandstorm className='text-3xl'/>Pressure</li></Tab>
-      <Tab><li className='flex'><MdAir className='text-3xl p-1'/>Wind</li></Tab>     
-      <Tab><li className='flex'><FaRegClock className='text-3xl p-1'/> Hourly</li></Tab>
-    </TabList>
+              <TabList>
+                <Tab>
+                  {" "}
+                  <li className="flex">
+                    <FaTemperatureFull className="text-3xl p-1" /> Temperature
+                  </li>{" "}
+                </Tab>
+                <Tab>
+                  <li className="flex">
+                    <WiHumidity className="text-3xl p-1" /> Humidity
+                  </li>
+                </Tab>
+                <Tab>
+                  <li className="flex">
+                    <WiSandstorm className="text-3xl" />
+                    Pressure
+                  </li>
+                </Tab>
+                <Tab>
+                  <li className="flex">
+                    <MdAir className="text-3xl p-1" />
+                    Wind
+                  </li>
+                </Tab>
+                <Tab>
+                  <li className="flex">
+                    <FaRegClock className="text-3xl p-1" /> Hourly
+                  </li>
+                </Tab>
+              </TabList>
 
-    <TabPanel>
-    <div>
-       <WeatherCharts weather={weather} currentWeather={currentWeather} currentWeather1={currentWeather1} currentWeather2={currentWeather2} currentWeather3={currentWeather3} currentWeather4={currentWeather4} currentWeather5={currentWeather5} currentWeather6={currentWeather6} currentWeather7={currentWeather7} currentTemperature1={currentTemperature1} unit={unit}/>
-        </div>
-    </TabPanel>
+              <TabPanel>
+                <div>
+                  <WeatherCharts
+                    weather={weather}
+                    currentWeather={currentWeather}
+                    currentWeather1={currentWeather1}
+                    currentWeather2={currentWeather2}
+                    currentWeather3={currentWeather3}
+                    currentWeather4={currentWeather4}
+                    currentWeather5={currentWeather5}
+                    currentWeather6={currentWeather6}
+                    currentWeather7={currentWeather7}
+                    currentTemperature1={currentTemperature1}
+                    unit={unit}
+                  />
+                </div>
+              </TabPanel>
 
-    <TabPanel>
-    <div>
-       <HumidityChart weather={weather} currentWeather={currentWeather} currentWeather1={currentWeather1} currentWeather2={currentWeather2} currentWeather3={currentWeather3} currentWeather4={currentWeather4} currentWeather5={currentWeather5} currentWeather6={currentWeather6} currentWeather7={currentWeather7} currentTemperature1={currentTemperature1}/>
-        </div>
-    </TabPanel>
+              <TabPanel>
+                <div>
+                  <HumidityChart
+                    weather={weather}
+                    currentWeather={currentWeather}
+                    currentWeather1={currentWeather1}
+                    currentWeather2={currentWeather2}
+                    currentWeather3={currentWeather3}
+                    currentWeather4={currentWeather4}
+                    currentWeather5={currentWeather5}
+                    currentWeather6={currentWeather6}
+                    currentWeather7={currentWeather7}
+                    currentTemperature1={currentTemperature1}
+                  />
+                </div>
+              </TabPanel>
 
-    <TabPanel>
-    <div>
-       <PressureChart weather={weather} currentWeather={currentWeather} currentWeather1={currentWeather1} currentWeather2={currentWeather2} currentWeather3={currentWeather3} currentWeather4={currentWeather4} currentWeather5={currentWeather5} currentWeather6={currentWeather6} currentWeather7={currentWeather7} currentTemperature1={currentTemperature1}/>
-        </div>
-    </TabPanel>
+              <TabPanel>
+                <div>
+                  <PressureChart
+                    weather={weather}
+                    currentWeather={currentWeather}
+                    currentWeather1={currentWeather1}
+                    currentWeather2={currentWeather2}
+                    currentWeather3={currentWeather3}
+                    currentWeather4={currentWeather4}
+                    currentWeather5={currentWeather5}
+                    currentWeather6={currentWeather6}
+                    currentWeather7={currentWeather7}
+                    currentTemperature1={currentTemperature1}
+                  />
+                </div>
+              </TabPanel>
 
-    <TabPanel>
-    <div>
-       <WindChart weather={weather} currentWeather={currentWeather} currentWeather1={currentWeather1} currentWeather2={currentWeather2} currentWeather3={currentWeather3} currentWeather4={currentWeather4} currentWeather5={currentWeather5} currentWeather6={currentWeather6} currentWeather7={currentWeather7} currentTemperature1={currentTemperature1}/>
-        </div>
-    </TabPanel>
+              <TabPanel>
+                <div>
+                  <WindChart
+                    weather={weather}
+                    currentWeather={currentWeather}
+                    currentWeather1={currentWeather1}
+                    currentWeather2={currentWeather2}
+                    currentWeather3={currentWeather3}
+                    currentWeather4={currentWeather4}
+                    currentWeather5={currentWeather5}
+                    currentWeather6={currentWeather6}
+                    currentWeather7={currentWeather7}
+                    currentTemperature1={currentTemperature1}
+                  />
+                </div>
+              </TabPanel>
 
-    <TabPanel>
-    <div className="grid sm:grid-cols-2 lg:grid-cols-4 lg:mt-5 gap-2">
-              <ThreeHourWeather weather={weather} unit={unit} />
-       
-            </div>
-    </TabPanel>
-  </Tabs>
-  </div>
-   </div>
-     <div>
-        <div
-          className="card h-80 bg-base-100 shadow-xl mt-2 "
-          style={{ overflow: "hidden", zIndex: 5 }}
-        >
-          <WeatherMap city={City} /> 
+              <TabPanel>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-4 lg:mt-5 gap-2">
+                  <ThreeHourWeather weather={weather} unit={unit} />
+                </div>
+              </TabPanel>
+            </Tabs>
+          </div>
         </div>
-        <div className="card h-20 lg:w-7/12 bg-base-100 shadow-xl mt-2 text-center flex justify-center mx-auto">
-          <WeatherAlert weather={currentWeather} />
+        <div>
+          <div
+            className="card h-80 bg-base-100 shadow-xl mt-2 "
+            style={{ overflow: "hidden", zIndex: 5 }}
+          >
+            <WeatherMap city={City} />
+          </div>
+          <div className="card h-20 lg:w-7/12 bg-base-100 shadow-xl mt-2 text-center flex justify-center mx-auto">
+            <WeatherAlert weather={currentWeather} />
+          </div>
+        </div>
+        <div>
+          <HourlyForcast weather={weather}></HourlyForcast>
+          {/* <HourlyForcast weather={weather}></HourlyForcast> */}
         </div>
       </div>
-      <div>
-      <HourlyForcast weather={weather}></HourlyForcast>
-       {/* <HourlyForcast weather={weather}></HourlyForcast> */}
-      </div>
-  </div>
- </PrivateRoute>
+    </PrivateRoute>
   );
 };
 

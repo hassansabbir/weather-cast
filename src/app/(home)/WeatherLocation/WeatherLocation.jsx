@@ -2,7 +2,6 @@ import moment from "moment";
 import React, { useState } from "react";
 import HourlyChart from "../HourlyChart/HourlyChart";
 import FiveDayForecast from "../FiveDayForecast/FiveDayForecast";
-import { BiTargetLock } from "react-icons/bi";
 import TodayHighlights from "../TodayHighLights/TodayHighLights";
 import CurrentWeather from "../CurrentWeather/CurrentWeather";
 const WeatherLocation = () => {
