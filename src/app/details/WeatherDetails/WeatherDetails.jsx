@@ -39,16 +39,23 @@ const weatherFetch = async (City, unit, setWeather) => {
     const URL = `https://api.openweathermap.org/data/2.5/forecast?q=${City}&&units=${unit}&appid=${apiKey}`;
     const response = await fetch(URL);
     if (!response.ok) {
-      Swal.fire({
-        title: 'City not found. Please enter a valid city name.',
-        showClass: {
-          popup: 'animate__animated animate__fadeInDown'
-        },
-        hideClass: {
-          popup: 'animate__animated animate__fadeOutUp'
-        }
-      });
-      return;
+      // Check if the response status indicates a "not found" error
+      if (response.status === 404) {
+        // Handle the case where the city is not found
+        Swal.fire({
+          title: 'City not found. Please enter a valid city name.',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        });
+      } else {
+        // Handle other types of errors
+        console.error("Error fetching weather data:", response.status);
+      }
+      return null;
     }
   const data = await response.json();
     setWeather(data);
@@ -64,10 +71,14 @@ const WeatherDetails = () => {
   const [unit, setUnit] = useState("metric");
   const [favbtn , setFavbtn] = useState(false);
   const [isCitySearched , setIsCitySearched] = useState(false)
+  const [favoriteLocations, setFavoriteLocations] = useState([]);
 
   useEffect(() => {
-    weatherFetch("Dhaka", unit, setWeather);
-  }, [unit]);
+    
+      weatherFetch("Dhaka", unit, setWeather);
+   
+   
+  }, [City ,unit]);
 
   const handleSearch = () => {
   if (City.trim() === "") {
@@ -120,18 +131,11 @@ const WeatherDetails = () => {
         return;
       }
   
-
-      // Check if the city is already a favorite
-      const favoriteLoc ={location: City , email:user?.email}
-      const response = await fetch('https://weather-cast-server.vercel.app/checkFavorite', {
-        method: "POST",
-        headers: {
-          'Content-type': "application/json"
-        },
-        body: JSON.stringify(favoriteLoc)
-      });
-  
-      if (response.ok) {      
+ const isFavoriteLocation = favoriteLocations.some(
+        (location) => location === City
+      );
+      if (isFavoriteLocation) {
+        // City is already a favorite, show an alert
         Swal.fire({
           title: 'City is already a favorite',
           showClass: {
@@ -141,9 +145,10 @@ const WeatherDetails = () => {
             popup: 'animate__animated animate__fadeOutUp'
           }
         });
-        // City is already a favorite, disable the button
-       
-      } else {
+        return;
+      }
+      // Check if the city is already a favorite
+      const favoriteLoc ={location: City , email:user?.email}
         // City is not a favorite, allow the user to mark it as a favorite
         const addFavoriteResponse = await fetch('https://weather-cast-server.vercel.app/favLoc', {
           method: "POST",
@@ -165,11 +170,12 @@ const WeatherDetails = () => {
           });
           console.log("Location marked as favorite");
           setFavbtn(true); // Disable the button after marking as favorite
+          setFavoriteLocations((prevLocations) => [...prevLocations, City]);
         } else {
           console.log("Failed to mark location as favorite");
         }
       }
-    } catch (error) {
+     catch (error) {
       console.error("Error:", error)
     }
   };
