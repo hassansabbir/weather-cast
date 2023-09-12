@@ -11,6 +11,12 @@ import Head from "next/head";
 import { Inter } from "next/font/google";
 
 
+export const metadata = {
+  title: "Contact ~ Weather Cast",
+  description: "Contact ~ Weather Cast",
+
+};
+
 const inter = Inter({ subsets: ["latin"] });
 
 const Contact = () => {

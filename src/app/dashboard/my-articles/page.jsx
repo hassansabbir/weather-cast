@@ -8,6 +8,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { ImLocation } from "react-icons/im";
 
+export const metadata = {
+  title: "Dashboard | My Articles ~ Weather Cast",
+  description: "Dashboard | My Articles ~ Weather Cast",
+};
+
 const myArticlesPage = () => {
   const { user } = useContext(AuthContext);
 

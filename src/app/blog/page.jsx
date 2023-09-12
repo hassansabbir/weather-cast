@@ -8,6 +8,12 @@ import earthquake from "./../../assets/earthquake.jpg";
 import hurricane from "./../../assets/hurricane.jpg";
 import flood from "./../../assets/flood.jpg";
 
+export const metadata = {
+  title: "Blog ~ Weather Cast",
+  description: "Blog ~ Weather Cast",
+
+};
+
 const posts = [
   {
     photo: tornado,

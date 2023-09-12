@@ -9,6 +9,11 @@ import { AuthContext } from "@/Providers/AuthProvider";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
+export const metadata = {
+  title: "Sign Up ~ Weather Cast",
+  description: "Sign Up ~ Weather Cast",
+};
+
 const SignUpPage = () => {
   const { createUser, updateUserProfile, logOut } = useContext(AuthContext);
   const router = useRouter();

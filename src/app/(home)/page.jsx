@@ -13,14 +13,18 @@ import ShowReviews from "./reviews/ShowReviews";
 
 import TawkComponent from './TawkComponent';
 
+export const metadata = {
+  title: "Home ~ Weather Cast",
+  description: "Home ~ Weather Cast",
 
+};
 
 const HomePage = () => {
-  
+
   return (
     <div>
       <Banner />
-      <WeatherUpdates /> 
+      <WeatherUpdates />
       <ToastContainer />
       <Intelligence />
       <ProductSection />
@@ -29,9 +33,9 @@ const HomePage = () => {
       <Marq />
       <NewsLetter />
       <TawkComponent></TawkComponent>
-    
-     
-      
+
+
+
     </div>
   );
 };

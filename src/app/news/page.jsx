@@ -3,6 +3,11 @@
 import React, { useEffect, useState } from "react";
 import WeatherNews from "../(home)/WeatherNews/WeatherNews";
 
+export const metadata = {
+  title: "News ~ Weather Cast",
+  description: "News ~ Weather Cast",
+};
+
 const WeatherVideoComponent = () => {
   const [videoIds, setVideoIds] = useState([]);
   const [loading, setLoading] = useState(true);
