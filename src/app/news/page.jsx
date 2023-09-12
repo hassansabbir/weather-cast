@@ -72,7 +72,7 @@ const WeatherVideoComponent = () => {
     <div>
       <WeatherNews></WeatherNews>
       <div style={containerStyle}>
-        <h2 className="text-5xl font-bold my-10 text-center">
+        <h2 className="text-3xl lg:text-5xl font-bold my-10 text-center">
           Recent Updates
         </h2>
         <div style={gridStyle}>
