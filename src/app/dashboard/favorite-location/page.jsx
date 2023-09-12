@@ -9,13 +9,18 @@ const favoriteLocationPage = () => {
   // const apiKey = '41a5c84ae7ccfff1bc9491b25aa4dbde'; 
   
   useEffect(()=>{
-    fetch(`https://weather-cast-server.vercel.app/favLoc?email=${user?.email}`)
-    .then(res =>res.json())
-    .then(data=>{
-      console.log(data);
-      setFavLocations(data);
-    })
-// console.log(favLocation); 
+    if (user?.email) {
+      fetch(`http://localhost:5000/favLoc/${user.email}`)
+      .then(res =>res.json())
+      .then(data=>{
+        console.log(data);
+        setFavLocations(data);
+      }) 
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+    }
+    // console.log(favLocation); 
   } ,[user?.email])
 
   return (
