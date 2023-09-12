@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 import logo from '../../assets/footerlogo.png';
@@ -30,8 +31,12 @@ const Footer = () => {
         </div>
         <div className="text-blue-500">
           <p className="text-lg font-bold">Company</p>
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Contact</a>
+          <Link  href="/about">
+          <h3 className="link link-hover">About us</h3>
+          </Link>
+          <Link href="/contact">
+          <h3 className="link link-hover">Contact</h3>
+          </Link>
           <a className="link link-hover">Jobs</a>
           <a className="link link-hover">Press kit</a>
         </div>
