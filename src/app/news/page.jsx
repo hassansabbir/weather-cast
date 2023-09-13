@@ -1,12 +1,9 @@
 "use client";
-
+import Head from "next/head";
 import React, { useEffect, useState } from "react";
 import WeatherNews from "../(home)/WeatherNews/WeatherNews";
 
-export const metadata = {
-  title: "News ~ Weather Cast",
-  description: "News ~ Weather Cast",
-};
+
 
 const WeatherVideoComponent = () => {
   const [videoIds, setVideoIds] = useState([]);
@@ -75,6 +72,10 @@ const WeatherVideoComponent = () => {
 
   return (
     <div>
+      <Head>
+        <title>News ~ weatherCast</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <WeatherNews></WeatherNews>
       <div style={containerStyle}>
         <h2 className="text-3xl lg:text-5xl font-bold my-10 text-center">

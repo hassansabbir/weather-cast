@@ -5,10 +5,6 @@ import { AuthContext } from "@/Providers/AuthProvider";
 import { useRouter } from "next/navigation";
 import React, { useContext } from "react";
 
-export const metadata = {
-  title: "Profile ~ Weather Cast",
-  description: "Profile ~ Weather Cast",
-};
 
 const profilePage = () => {
   const { user, loading } = useContext(AuthContext);

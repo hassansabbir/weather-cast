@@ -9,11 +9,6 @@ import React, { useEffect, useState } from "react";
 import { FaPlus, FaRegCalendarAlt } from "react-icons/fa";
 import { ImLocation } from "react-icons/im";
 
-export const metadata = {
-  title: "Articles ~ Weather Cast",
-  description: "Articles ~ Weather Cast",
-
-};
 
 const articlesPage = () => {
   const [articles, setArticles] = useState([]);

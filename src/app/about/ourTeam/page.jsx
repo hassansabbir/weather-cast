@@ -7,11 +7,6 @@ import { FaGithub, FaLinkedin } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export const metadata = {
-  title: "About | Our Team ~ Weather Cast",
-  description: "About | Our Team ~ Weather Cast",
-
-};
 
 const MeeTheTeam = () => {
   const [theTeam, setTheTeam] = useState([]);

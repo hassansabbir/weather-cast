@@ -3,10 +3,6 @@ import { AuthContext } from "@/Providers/AuthProvider";
 import React, { useContext, useEffect, useState } from "react";
 import WeatherCard from "./weatherCard/WeatherCard";
 
-export const metadata = {
-  title: "Dashboard | Favorite Location ~ Weather Cast",
-  description: "Dashboard | Favorite Location ~ Weather Cast",
-};
 
 const favoriteLocationPage = () => {
   const { user } = useContext(AuthContext)

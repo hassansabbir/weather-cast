@@ -9,10 +9,6 @@ import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
-export const metadata = {
-  title: "Login ~ Weather Cast",
-  description: "Login ~ Weather Cast",
-};
 
 const LogInPage = () => {
   const { signIn } = useContext(AuthContext);

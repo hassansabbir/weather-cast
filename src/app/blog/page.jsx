@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState } from "react";
 import Image from "next/image";
 import earthquake_step from "./../../assets/earthquake_step.png";
@@ -7,12 +6,6 @@ import tornado from "./../../assets/Tornado_Damage.jpg";
 import earthquake from "./../../assets/earthquake.jpg";
 import hurricane from "./../../assets/hurricane.jpg";
 import flood from "./../../assets/flood.jpg";
-
-export const metadata = {
-  title: "Blog ~ Weather Cast",
-  description: "Blog ~ Weather Cast",
-
-};
 
 const posts = [
   {
@@ -88,6 +81,7 @@ const BlogPage = () => {
 
   return (
     <div className="container">
+
       <main className="main">
         <div className="sidebar">
           <h2>Disaster Types</h2>

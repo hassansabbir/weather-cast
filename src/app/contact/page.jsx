@@ -11,12 +11,6 @@ import Head from "next/head";
 import { Inter } from "next/font/google";
 
 
-export const metadata = {
-  title: "Contact ~ Weather Cast",
-  description: "Contact ~ Weather Cast",
-
-};
-
 const inter = Inter({ subsets: ["latin"] });
 
 const Contact = () => {
@@ -52,13 +46,7 @@ const Contact = () => {
   };
   return (
     <>
-      <Head>
-        <title>Contact Us</title>
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="description" content="Contact us to get in touch with us" />
-        <meta name="keywords" content="contact, email, message" />
-        <meta name="author" content="ali" />
-      </Head>
+
       {/* <div className={`${styles.main} ${inter.className}`}></div> */}
       <div>
         <div className="hero min-h-[500px] bg-base-200">

@@ -9,10 +9,7 @@ import { GiShieldDisabled } from "react-icons/gi";
 import Swal from "sweetalert2";
 import PrivateRoute from "@/routes/PrivetRoute";
 
-export const metadata = {
-  title: "Dashboard | Manage Users ~ Weather Cast",
-  description: "Dashboard ~ Weather Cast",
-};
+
 
 const ManageUsers = () => {
   const [users, setUsers] = useState([]);
