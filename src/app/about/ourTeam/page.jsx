@@ -7,6 +7,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+
 const MeeTheTeam = () => {
   const [theTeam, setTheTeam] = useState([]);
   useEffect(() => {
