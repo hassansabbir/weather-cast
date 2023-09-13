@@ -11,3 +11,34 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+.bg-clear{
+  background-image: url("../../../assets/sunnyWeather.gif");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.bg-cloud{
+  background-image: url("../../../assets/cloudWeather.gif");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.bg-rain{
+  background-image: url("../../../assets/rainWeather.gif");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.bg-thunder{
+  background-image: url("../../../assets/thunderstorm.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.bg-drizzle{
+  background-image: url("../../../assets/drizzleWeather.gif");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}

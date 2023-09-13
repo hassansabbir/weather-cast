@@ -10,7 +10,7 @@ import { WiCloudyGusts, WiHumidity } from "react-icons/wi";
 
 const HourlyForcast = ({ weather }) => {
   const weatherList = weather.list;
-  console.log(weatherList);
+  // console.log(weatherList); 
   return (
     <div>
       <p className="text-3xl font-bold text-center m-3">Weather Forecasting</p>
