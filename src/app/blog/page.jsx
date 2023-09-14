@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState } from "react";
 import Image from "next/image";
 import earthquake_step from "./../../assets/earthquake_step.png";
@@ -82,7 +81,6 @@ const BlogPage = () => {
 
   return (
     <div className="container">
-      
       <main className="main">
         <div className="sidebar">
           <h2>Disaster Types</h2>

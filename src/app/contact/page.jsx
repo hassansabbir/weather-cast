@@ -16,7 +16,7 @@ const inter = Inter({ subsets: ["latin"] });
 const Contact = () => {
 
   const form = useRef(null);
-  const [client, setClient] = useState(false);
+  // const [client, setClient] = useState(false);
 
   const sendEmail = (event) => {
     event.preventDefault();
@@ -46,13 +46,7 @@ const Contact = () => {
   };
   return (
     <>
-      <Head>
-        <title>Contact Us</title>
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="description" content="Contact us to get in touch with us" />
-        <meta name="keywords" content="contact, email, message" />
-        <meta name="author" content="ali" />
-      </Head>
+
       {/* <div className={`${styles.main} ${inter.className}`}></div> */}
       <div>
         <div className="hero min-h-[500px] bg-base-200">
@@ -116,31 +110,31 @@ const Contact = () => {
                 <div className="mx-auto max-w-[700px]">
                   <form ref={form} onSubmit={sendEmail} className="space-y-4">
                     <div>
-                      <label htmlFor="user_name" className="block text-sm font-medium text-gray-700">
+                      <label className="block text-sm font-medium text-gray-700">
                         Name
                       </label>
                       <input
                         type="text"
                         id="user_name"
-                        name="user_name"
+                        name="from_name"
                         required
                         className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:outline-none"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                      <label className="block text-sm font-medium text-gray-700">
                         Email
                       </label>
                       <input
                         type="email"
-                        id="email"
-                        name="email"
+                        id="from_email"
+                        name="from_email"
                         required
                         className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:outline-none"
                       />
                     </div>
                     <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+                      <label className="block text-sm font-medium text-gray-700">
                         Message
                       </label>
                       <textarea
@@ -152,7 +146,7 @@ const Contact = () => {
                       />
                     </div>
                     <button
-                      type="submit"
+                      type="submit" value='Send'
                       className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md transition duration-300 ease-in-out"
                     >
                       Send

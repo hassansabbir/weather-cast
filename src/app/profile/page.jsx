@@ -5,6 +5,7 @@ import { AuthContext } from "@/Providers/AuthProvider";
 import { useRouter } from "next/navigation";
 import React, { useContext } from "react";
 
+
 const profilePage = () => {
   const { user, loading } = useContext(AuthContext);
   const router = useRouter();

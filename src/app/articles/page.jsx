@@ -9,6 +9,7 @@ import React, { useEffect, useState } from "react";
 import { FaPlus, FaRegCalendarAlt } from "react-icons/fa";
 import { ImLocation } from "react-icons/im";
 
+
 const articlesPage = () => {
   const [articles, setArticles] = useState([]);
   useEffect(() => {
@@ -24,7 +25,9 @@ const articlesPage = () => {
   return (
     <div className="max-w-[1460px] mx-auto mb-20">
       <AOSInitializer></AOSInitializer>;
-      <h2 className="text-5xl font-bold text-center">Weather Articles</h2>
+      <h2 className="text-3xl lg:text-5xl font-bold text-center">
+        Weather Articles
+      </h2>
       <div className="text-center my-10">
         <h2 className="text-2xl font-bold">Wanna Publish Your Own Articles?</h2>
         <Link href="/articles/add-articles">
@@ -33,7 +36,7 @@ const articlesPage = () => {
           </button>
         </Link>
       </div>
-      <p className="text-xl text-center my-10">
+      <p className="text-xl px-5 text-center my-10">
         Welcome to WeatherCast's Articles Section! Explore our collection of
         informative and engaging articles that cover a wide range of topics
         related to weather forecasting, climate trends, natural phenomena, and
@@ -43,7 +46,7 @@ const articlesPage = () => {
         weather and its impact on our lives.
       </p>
       <div
-        className="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+        className="grid gap-10 px-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
         data-aos="fade-up"
         data-aos-duration="3000"
       >
