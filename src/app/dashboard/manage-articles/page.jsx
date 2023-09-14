@@ -235,12 +235,12 @@ const manageArticlesPage = () => {
                   <div>
                     {/* Open the modal using document.getElementById('ID').showModal() method */}
                     <button
-                      className="btn"
+                      className="btn w-full text-2xl text-blue-600 hover:bg-blue-600 hover:text-white hover:border-blue-600 btn-outline"
                       onClick={() =>
                         document.getElementById("my_modal_2").showModal()
                       }
                     >
-                      open modal
+                      <MdOutlineFeedback /> Feedback
                     </button>
                     <dialog id="my_modal_2" className="modal">
                       <form
@@ -248,17 +248,17 @@ const manageArticlesPage = () => {
                         method="dialog"
                         className="modal-box"
                       >
-                        <h3 className="font-bold text-lg">Hello!</h3>
+                        <h3 className="font-bold text-lg">Give Feedback</h3>
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text text-2xl font-bold">
-                              Contact:
+                              Feedback
                             </span>
                           </label>
                           <input
                             name="feedback"
                             type="text"
-                            placeholder="phone number"
+                            placeholder="type here"
                             className="input input-bordered"
                           />
                         </div>
