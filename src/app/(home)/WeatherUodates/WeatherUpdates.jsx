@@ -107,7 +107,7 @@ const WeatherUpdates = () => {
       return "bg-clear";
     }
   };
-
+  
   return (
     <div className={`${getBackgroundClass()} py-20`}>
       <div className=" max-w-[1460px] mx-auto px-5 lg:flex m-16">
