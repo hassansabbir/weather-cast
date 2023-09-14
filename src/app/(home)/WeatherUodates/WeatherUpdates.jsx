@@ -13,6 +13,7 @@ import dynamic from "next/dynamic";
 // import { MapContainer } from 'react-leaflet/MapContainer'
 import { Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import { FaExternalLinkAlt } from "react-icons/fa";
 // import L from "leaflet";
 
 const fetchWeather = async (latitude, longitude, setWeather) => {
@@ -55,8 +56,8 @@ const WeatherUpdates = () => {
   if (!weather) {
     return (
       <div className="flex justify-center mt-20">
-        <span className="loading loading-bars loading-lg"></span>
-        <span className="loading loading-bars loading-lg"></span>
+        <span className="loading text-blue-800 loading-bars loading-lg"></span>
+        <span className="loading text-blue-800 loading-bars loading-lg"></span>
       </div>
     );
   }
@@ -108,135 +109,136 @@ const WeatherUpdates = () => {
   };
 
   return (
-    <div className={`${getBackgroundClass()} py-36`}>
-      <h2 className="text-3xl lg:text-5xl font-bold my-10 text-center">
-        Live Weather Updates
-      </h2>
-
+    <div
+      id="currentLocationWeather"
+      className={`${getBackgroundClass()} py-20`}
+    >
       <div className=" max-w-[1460px] mx-auto px-5 lg:flex m-16">
-        <div className="weather-card bg-white bg-opacity-40 grid-cols-8 mx-auto  rounded-3xl p-10 border lg:h-[500px] lg:w-[800px]">
-          <div className="">
-            <div className="grid grid-cols-2 justify-between">
-              <div>
-                <p className="font-semibold text-lg">Current Weather</p>
-                <p className="text-lg ps-0 pb-3">
-                  {moment(weather?.location?.localtime).format("LT")}
-                </p>
+        <div className="weather-card bg-white bg-opacity-70 grid-cols-8 mx-auto  rounded-3xl p-5 lg:p-14 border">
+          <div className="lg:flex gap-5">
+            <div className="">
+              <div className="grid grid-cols-2 justify-between">
+                <div>
+                  <p className="font-semibold text-lg">Current Weather</p>
+                  <p className="text-lg ps-0 pb-3">
+                    {moment(weather?.location?.localtime).format("LT")}
+                  </p>
+                </div>
               </div>
-
-              <div>
-                <button className="btn ">
-                  {" "}
-                  <Link href="/details" className=" flex cursor-pointer">
-                    {" "}
-                    <FaMessage className="text-2xl" />{" "}
-                    <span className="ps-2">View Full Weather Details ?</span>
-                  </Link>
-                </button>
-              </div>
-            </div>
-            <div className="flex items-center ">
-              <div>
-                <Image
-                  src={weatherIcon}
-                  height={100}
-                  width={110}
-                  alt={weatherMain}
-                />
-              </div>
-              <h2 className="text-3xl lg:text-6xl flex ps-3 pe-5 font-bold ">
-                {currentTemperatureCelsius} <small>℃</small>
-              </h2>
-              <div className="lg:ms-20">
-                <h2 className="text-xl   font-semibold uppercase ">
-                  {weatherDescription}
+              <div className="flex items-center ">
+                <div>
+                  <Image
+                    src={weatherIcon}
+                    height={100}
+                    width={110}
+                    alt={weatherMain}
+                  />
+                </div>
+                <h2 className="text-3xl lg:text-6xl flex ps-3 pe-5 font-bold ">
+                  {currentTemperatureCelsius} <small>℃</small>
                 </h2>
-                <p className="text-lg  ">
-                  Feels like {feelsLikeTemperatureCelsius} &#8451;
+                <div className="">
+                  <h2 className="text-xl   font-semibold uppercase ">
+                    {weatherDescription}
+                  </h2>
+                  <p className="text-lg  ">
+                    Feels like {feelsLikeTemperatureCelsius} &#8451;
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <h2 className="text-2xl mt-8  font-bold flex items-center gap-2 ">
+                  <FaLocationDot className="w-5 h-5" /> {location}
+                </h2>
+                <p className="text-xl lg:text-2xl ">
+                  {moment(weather?.location?.localtime).format("MMMM Do YYYY")}
                 </p>
+                <div>
+                  <button className="btn btn-outline mt-5 text-lg text-blue-800 border-blue-800 hover:border-blue-800 hover:bg-blue-800 ">
+                    {" "}
+                    <Link href="/details" className=" flex cursor-pointer">
+                      {" "}
+                      <FaExternalLinkAlt />{" "}
+                      <span className="ps-2">Full Details ?</span>
+                    </Link>
+                  </button>
+                </div>
+                <div className="grid grid-cols-2 gap-16 lg:grid-cols-2 justify-between mt-16">
+                  {/* wind speed  */}
+                  <div className="text-xl  ">
+                    <p className="flex">
+                      {" "}
+                      <FaWind className="text-2xl " /> Wind Speed
+                    </p>
+                    <p className="ps-8 pt-1">
+                      {" "}
+                      {windSpeed} <small>m/s</small>
+                    </p>
+                  </div>
+
+                  {/* Humidity */}
+                  <div className="text-xl  ">
+                    <p className="flex">
+                      {" "}
+                      <WiHumidity className="text-3xl " /> Humidity
+                    </p>
+                    <p className="ps-8 pt-1">
+                      {" "}
+                      {weather.main.humidity} <small>%</small>
+                    </p>
+                  </div>
+
+                  {/* visibility */}
+                  <div className="text-xl  ">
+                    <p className="flex">
+                      {" "}
+                      <FaEye className="text-3xl me-2" /> Visibility
+                    </p>
+                    <p className="ps-8 pt-1">
+                      {" "}
+                      {weather.visibility / 1000} <small>Km</small>
+                    </p>
+                  </div>
+
+                  {/* pressure */}
+                  <div className="text-xl   ">
+                    <p className="flex">
+                      <WiRefreshAlt className="w-12 h-12" /> Pressure In
+                    </p>
+                    <p className="ps-8 pt-1">
+                      {" "}
+                      {weather.main.pressure} <small>hPa</small>
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
-
-            <h2 className="text-2xl mt-8  font-bold flex items-center gap-2 ">
-              <FaLocationDot className="w-5 h-5" /> {location}
-            </h2>
-            <p className="text-xl lg:text-2xl ">
-              {moment(weather?.location?.localtime).format("MMMM Do YYYY")}
-            </p>
-            <div className="grid grid-cols-2 gap-5 lg:grid-cols-4 justify-between mt-16">
-              {/* wind speed  */}
-              <div className="text-xl  ">
-                <p className="flex">
-                  {" "}
-                  <FaWind className="text-2xl " /> Wind Speed
-                </p>
-                <p className="ps-8 pt-1">
-                  {" "}
-                  {windSpeed} <small>m/s</small>
-                </p>
-              </div>
-
-              {/* Humidity */}
-              <div className="text-xl  ">
-                <p className="flex">
-                  {" "}
-                  <WiHumidity className="text-3xl " /> Humidity
-                </p>
-                <p className="ps-8 pt-1">
-                  {" "}
-                  {weather.main.humidity} <small>%</small>
-                </p>
-              </div>
-
-              {/* visibility */}
-              <div className="text-xl  ">
-                <p className="flex">
-                  {" "}
-                  <FaEye className="text-3xl me-2" /> Visibility
-                </p>
-                <p className="ps-8 pt-1">
-                  {" "}
-                  {weather.visibility / 1000} <small>Km</small>
-                </p>
-              </div>
-
-              {/* pressure */}
-              <div className="text-xl   ">
-                <p className="flex">
-                  <WiRefreshAlt className="w-12 h-12" /> Pressure In
-                </p>
-                <p className="ps-8 pt-1">
-                  {" "}
-                  {weather.main.pressure} <small>hPa</small>
-                </p>
+            <div
+              className=" weather-related-card grid-cols-4 rounded-3xl   "
+              style={{ overflow: "hidden", zIndex: 5 }}
+            >
+              <div>
+                {typeof window !== "undefined" && (
+                  <MapContainer
+                    center={positions}
+                    zoom={13}
+                    scrollWheelZoom={false}
+                    style={{ height: "620px", width: "500px" }}
+                  >
+                    <TileLayer
+                      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <Marker position={positions} icon={customIcon}>
+                      <Popup>
+                        A pretty CSS3 popup. <br /> Easily customizable.
+                      </Popup>
+                    </Marker>
+                  </MapContainer>
+                )}
               </div>
             </div>
-          </div>
-        </div>
-
-        <div
-          className=" weather-related-card grid-cols-4 rounded-3xl   "
-          style={{ overflow: "hidden", zIndex: 5 }}
-        >
-          <div>
-            {typeof window !== "undefined" && (
-              <MapContainer
-                center={positions}
-                zoom={13}
-                scrollWheelZoom={false}
-                style={{ height: "500px", width: "400px" }}
-              >
-                <TileLayer
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                <Marker position={positions} icon={customIcon}>
-                  <Popup>
-                    A pretty CSS3 popup. <br /> Easily customizable.
-                  </Popup>
-                </Marker>
-              </MapContainer>
-            )}
           </div>
         </div>
       </div>

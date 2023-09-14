@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState } from "react";
 import Image from "next/image";
 import earthquake_step from "./../../assets/earthquake_step.png";
