@@ -108,7 +108,7 @@ const WeatherUpdates = () => {
   };
 
   return (
-    <div className={`bg-rain py-20`}>
+    <div className={`${getBackgroundClass()} py-20`}>
       <div className=" max-w-[1460px] mx-auto px-5 lg:flex m-16">
         <div className="weather-card bg-white bg-opacity-70 grid-cols-8 mx-auto  rounded-3xl p-5 lg:p-20 border  ">
           <div className="">
