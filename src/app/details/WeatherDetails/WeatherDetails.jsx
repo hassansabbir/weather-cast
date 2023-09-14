@@ -33,8 +33,6 @@ import { AuthContext } from "@/Providers/AuthProvider";
 
 import GifBanner from "../GifBanner/GifBanner";
 
-// import WeatherLocation from "../WeatherLocation/WeatherLocation";
-
 const weatherFetch = async (City, unit, setWeather) => {
   try {
     const apiKey = "41a5c84ae7ccfff1bc9491b25aa4dbde";
@@ -61,14 +59,14 @@ const weatherFetch = async (City, unit, setWeather) => {
 
 const WeatherDetails = () => {
   const { user } = useContext(AuthContext);
-  const [City, setCity] = useState("");
+  const [City, setCity] = useState("dhaka");
   const [weather, setWeather] = useState(null);
   const [unit, setUnit] = useState("metric");
   const [favbtn, setFavbtn] = useState(false);
   const [isCitySearched, setIsCitySearched] = useState(false);
 
   useEffect(() => {
-    weatherFetch("Dhaka", unit, setWeather);
+    weatherFetch(City, unit, setWeather);
   }, [unit]);
 
   const handleSearch = () => {
@@ -170,6 +168,7 @@ const WeatherDetails = () => {
           });
           console.log("Location marked as favorite");
           setFavbtn(true); // Disable the button after marking as favorite
+          setFavoriteLocations((prevLocations) => [...prevLocations, City]);
         } else {
           console.log("Failed to mark location as favorite");
         }

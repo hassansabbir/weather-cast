@@ -1,6 +1,15 @@
 /** @type {import('next').NextConfig} */
+{
+  /* <reference types="vitest" />; */
+}
+
 const nextConfig = {
-  reactStrictMode: true,
+  test: {
+    global: true,
+    environment: "jsdom",
+    setupFiles: "./src/test/setup.js",
+    css: true,
+  },
   images: {
     remotePatterns: [
       {

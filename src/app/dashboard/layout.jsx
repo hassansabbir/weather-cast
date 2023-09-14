@@ -5,8 +5,8 @@ import Sidebar from "./Sidebar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Weather Cast",
-  description: "Weather Cast",
+  title: "Dashboard ~ Weather Cast",
+  description: "Dashboard ~ Weather Cast",
 };
 
 const DashboardLayout = ({ children }) => {
