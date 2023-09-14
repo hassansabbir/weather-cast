@@ -15,8 +15,8 @@ const WeatherCard = ({locationData}) => {
     // Map over the locationData and fetch weather data for each location
     const fetchWeatherData = async () => {
         const dataPromises = locationData.map((item) => {
-            if (item && item.favoriteLoc && item.favoriteLoc.location) {
-              const location = item.favoriteLoc.location;
+            if (item && item.location) {
+              const location = item.location;
               const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&&units=metric&appid=${apiKey}`;
               return fetch(apiUrl)
                 .then((res) => res.json())
@@ -35,13 +35,16 @@ const WeatherCard = ({locationData}) => {
     
         fetchWeatherData();
       }, [locationData]);
+      const handleDltbtn=()=>{
+        
+      }
      
     return (
         <div>
             {weatherData.map((data, index) => (
-                <div key={index} className='mx-auto'> 
+                <div key={index} className='mx-auto lg:mt-16'> 
                 <div className="indicator">
-  <span className="indicator-item badge badge-primary">new</span> 
+  <button onClick={handleDltbtn} className="indicator-item badge bg-red-600 text-white btn btn-circle"><svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg></button> 
   <div className="weather-card grid-cols-8 mx-auto mb-8 shadow-xl  rounded-3xl p-10 border h-[500px] w-[800px] glass">
           <div className="">
             <div className="grid grid-cols-2 justify-between">
@@ -76,7 +79,7 @@ const WeatherCard = ({locationData}) => {
             </div>
 
             <h2 className="text-3xl mt-8  font-bold flex items-center gap-2 ">
-              <FaLocationDot className="w-5 h-5" /> {locationData[index].favoriteLoc.location}
+              <FaLocationDot className="w-5 h-5" /> {locationData[index].location}
             </h2>
             <p className="text-xl lg:text-2xl ">
               {moment(data.list?.[0]?.location?.localtime).format("MMMM Do YYYY")}
