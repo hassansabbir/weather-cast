@@ -9,6 +9,12 @@ import trustedLogo3 from "../../assets/trusted3.png";
 import trustedLogo4 from "../../assets/trusted4.png";
 import Link from "next/link";
 
+export const metadata = {
+  title: "About ~ Weather Cast",
+  description: "About ~ Weather Cast",
+
+};
+
 const AboutPage = () => {
   return (
     <div className=" p-10 about-us-page bg-fixed">

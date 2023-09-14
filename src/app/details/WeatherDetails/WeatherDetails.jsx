@@ -18,7 +18,7 @@ import { getWeatherIcon } from "@/utils/getWeatherIcon";
 import PrivateRoute from "@/routes/PrivetRoute";
 import Swal from "sweetalert2";
 import WeatherCharts from "../weatherCharts/WeatherCharts";
-import WeatherLocation from "@/app/(home)/WeatherLocation/WeatherLocation";
+
 import ThreeHourWeather from "../ThreeHourWeather/ThreeHourWeather";
 import WeatherMap from "@/app/(home)/SimpleWeatherMap";
 import WeatherAlert from "@/app/(home)/WeatherUodates/WeatherAlert";
@@ -30,7 +30,8 @@ import HourlyForcast from "../HourlyForcast/HourlyForcast";
 
 import { FaRegClock, FaRegStar, FaStar } from "react-icons/fa";
 import { AuthContext } from "@/Providers/AuthProvider";
-// import WeatherLocation from "../WeatherLocation/WeatherLocation";
+
+import GifBanner from "../GifBanner/GifBanner";
 
 const weatherFetch = async (City, unit, setWeather) => {
   try {
@@ -252,9 +253,10 @@ const WeatherDetails = () => {
 
   return (
     <PrivateRoute>
+      <GifBanner></GifBanner>
       <div className="max-w-[1460px] pt-10 mx-auto">
         {/* searchbar  */}
-        <div className=" w-full mx-auto text-center">
+        <div className="w-full mx-auto text-center">
           <input
             value={City}
             onChange={(e) => setCity(e.target.value)}

@@ -9,6 +9,7 @@ import { AuthContext } from "@/Providers/AuthProvider";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
+
 const SignUpPage = () => {
   const { createUser, updateUserProfile, logOut } = useContext(AuthContext);
   const router = useRouter();

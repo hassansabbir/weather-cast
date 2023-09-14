@@ -35,6 +35,11 @@ const Navbar = () => {
       path: "/blog",
       title: "Blog",
     },
+    {
+      path: "/community",
+      title: "Community",
+    },
+   
   ];
 
   const handleLogOut = () => {
