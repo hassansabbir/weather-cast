@@ -13,6 +13,7 @@ import dynamic from "next/dynamic";
 // import { MapContainer } from 'react-leaflet/MapContainer'
 import { Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import { FaExternalLinkAlt } from "react-icons/fa";
 // import L from "leaflet";
 
 const fetchWeather = async (latitude, longitude, setWeather) => {
@@ -110,50 +111,39 @@ const WeatherUpdates = () => {
   return (
     <div className={`${getBackgroundClass()} py-20`}>
       <div className=" max-w-[1460px] mx-auto px-5 lg:flex m-16">
-        <div className="weather-card bg-white bg-opacity-70 grid-cols-8 mx-auto  rounded-3xl p-5 lg:p-20 border  ">
-          <div className="">
-            <div className="grid grid-cols-2 justify-between">
-              <div>
-                <p className="font-semibold text-lg">Current Weather</p>
-                <p className="text-lg ps-0 pb-3">
-                  {moment(weather?.location?.localtime).format("LT")}
-                </p>
+        <div className="weather-card bg-white bg-opacity-70 grid-cols-8 mx-auto  rounded-3xl p-5 lg:p-14 border">
+          <div className="flex gap-5">
+            <div className="">
+              <div className="grid grid-cols-2 justify-between">
+                <div>
+                  <p className="font-semibold text-lg">Current Weather</p>
+                  <p className="text-lg ps-0 pb-3">
+                    {moment(weather?.location?.localtime).format("LT")}
+                  </p>
+                </div>
               </div>
-
-              <div>
-                <button className="btn ">
-                  {" "}
-                  <Link href="/details" className=" flex cursor-pointer">
-                    {" "}
-                    <FaMessage className="text-2xl" />{" "}
-                    <span className="ps-2">View Full Weather Details ?</span>
-                  </Link>
-                </button>
-              </div>
-            </div>
-            <div className="flex items-center ">
-              <div>
-                <Image
-                  src={weatherIcon}
-                  height={100}
-                  width={110}
-                  alt={weatherMain}
-                />
-              </div>
-              <h2 className="text-3xl lg:text-6xl flex ps-3 pe-5 font-bold ">
-                {currentTemperatureCelsius} <small>℃</small>
-              </h2>
-              <div className="lg:ms-20">
-                <h2 className="text-xl   font-semibold uppercase ">
-                  {weatherDescription}
+              <div className="flex items-center ">
+                <div>
+                  <Image
+                    src={weatherIcon}
+                    height={100}
+                    width={110}
+                    alt={weatherMain}
+                  />
+                </div>
+                <h2 className="text-3xl lg:text-6xl flex ps-3 pe-5 font-bold ">
+                  {currentTemperatureCelsius} <small>℃</small>
                 </h2>
-                <p className="text-lg  ">
-                  Feels like {feelsLikeTemperatureCelsius} &#8451;
-                </p>
+                <div className="">
+                  <h2 className="text-xl   font-semibold uppercase ">
+                    {weatherDescription}
+                  </h2>
+                  <p className="text-lg  ">
+                    Feels like {feelsLikeTemperatureCelsius} &#8451;
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <div className="lg:flex gap-5">
               <div>
                 <h2 className="text-2xl mt-8  font-bold flex items-center gap-2 ">
                   <FaLocationDot className="w-5 h-5" /> {location}
@@ -161,6 +151,16 @@ const WeatherUpdates = () => {
                 <p className="text-xl lg:text-2xl ">
                   {moment(weather?.location?.localtime).format("MMMM Do YYYY")}
                 </p>
+                <div>
+                  <button className="btn btn-outline mt-5 text-lg text-blue-800 border-blue-800 hover:border-blue-800 hover:bg-blue-800 ">
+                    {" "}
+                    <Link href="/details" className=" flex cursor-pointer">
+                      {" "}
+                      <FaExternalLinkAlt />{" "}
+                      <span className="ps-2">Full Details ?</span>
+                    </Link>
+                  </button>
+                </div>
                 <div className="grid grid-cols-2 gap-16 lg:grid-cols-2 justify-between mt-16">
                   {/* wind speed  */}
                   <div className="text-xl  ">
@@ -210,30 +210,30 @@ const WeatherUpdates = () => {
                   </div>
                 </div>
               </div>
-              <div
-                className=" weather-related-card grid-cols-4 rounded-3xl   "
-                style={{ overflow: "hidden", zIndex: 5 }}
-              >
-                <div>
-                  {typeof window !== "undefined" && (
-                    <MapContainer
-                      center={positions}
-                      zoom={13}
-                      scrollWheelZoom={false}
-                      style={{ height: "400px", width: "600px" }}
-                    >
-                      <TileLayer
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                      />
-                      <Marker position={positions} icon={customIcon}>
-                        <Popup>
-                          A pretty CSS3 popup. <br /> Easily customizable.
-                        </Popup>
-                      </Marker>
-                    </MapContainer>
-                  )}
-                </div>
+            </div>
+            <div
+              className=" weather-related-card grid-cols-4 rounded-3xl   "
+              style={{ overflow: "hidden", zIndex: 5 }}
+            >
+              <div>
+                {typeof window !== "undefined" && (
+                  <MapContainer
+                    center={positions}
+                    zoom={13}
+                    scrollWheelZoom={false}
+                    style={{ height: "620px", width: "500px" }}
+                  >
+                    <TileLayer
+                      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <Marker position={positions} icon={customIcon}>
+                      <Popup>
+                        A pretty CSS3 popup. <br /> Easily customizable.
+                      </Popup>
+                    </Marker>
+                  </MapContainer>
+                )}
               </div>
             </div>
           </div>

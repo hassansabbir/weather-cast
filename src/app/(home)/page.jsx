@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ShowReviews from "./reviews/ShowReviews";
 import TawkComponent from "./TawkComponent";
 import ProductSection from "./featureTechnology/ProductSection";
+import OurServices from "./OurServices";
 
 const HomePage = () => {
   return (
@@ -16,8 +17,9 @@ const HomePage = () => {
       {/* <Banner /> */}
       <WeatherUpdates />
       <ToastContainer />
-      <Intelligence />
+      <OurServices />
       <ProductSection />
+      <Intelligence />
       {/* <Articles /> */}
       <ShowReviews />
       <Marq />

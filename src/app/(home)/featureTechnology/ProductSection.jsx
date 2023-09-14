@@ -2,6 +2,7 @@ import AOSInitializer from "@/AOS/AOSInitializer";
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 const ProductSection = () => {
   const [products, setProducts] = useState([]);
@@ -39,8 +40,8 @@ const ProductSection = () => {
               <div className="absolute flex flex-col items-center rounded-3xl justify-center inset-0 h-full w-full bg-white px-12 text-center [transform:rotateY(180deg)] [backface-visibility:hidden]">
                 <p className="text-[14px]">{product.shortDescription}</p>
                 <Link href={`/featureTechnology/${product?._id}`}>
-                  <p className="text-[16px] mt-5 cursor-pointer underline text-[#0078FF] font-bold">
-                    View More
+                  <p className="text-[16px] flex gap-1 items-center mt-5 cursor-pointer underline text-[#0078FF] font-bold">
+                    <FaExternalLinkAlt /> View More
                   </p>
                 </Link>
               </div>
