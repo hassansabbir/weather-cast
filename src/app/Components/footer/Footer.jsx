@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
-import Image from "next/image";
-import logo from "../../../assets/favicon.png";
+import logo from "../../../assets/marq2.jpg";
 import "./Footer.css";
 import { FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
+import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -28,7 +28,7 @@ const Footer = () => {
           </div>
           <div className="lg:flex w-full justify-center gap-20 items-center">
             <div className="h-44 w-44 flex flex-col items-center">
-              <Image className="w-20 h-20" src={logo} alt="" />
+              <Image className="w-32 h-20" src={logo} alt="" />
               <p className="text-3xl">
                 weather<span className="text-orange-400">Cast</span>
               </p>
