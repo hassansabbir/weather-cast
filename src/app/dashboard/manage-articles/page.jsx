@@ -1,5 +1,6 @@
 "use client";
 
+import articlesPage from "@/app/articles/page";
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -9,6 +10,47 @@ import Swal from "sweetalert2";
 
 const manageArticlesPage = () => {
   const [allArticles, setAllArticles] = useState([]);
+  // const [newFeedback, setNewFeedback] = useState("");
+  // console.log(newFeedback);
+
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const form = event.target;
+  //   const feedback = form.feedback.value;
+  //   setNewFeedback({ feedback: feedback });
+  //   console.log({ feedback: feedback });
+  // };
+
+  // const handleFeedback = (article) => {
+  //   fetch(`http://localhost:5000/articlesFeedback/${article._id}`, {
+  //     method: "PUT",
+  //     headers: { "content-type": "application/json" },
+  //     body: JSON.stringify(newFeedback),
+  //   })
+  //     .then((res) => {
+  //       if (!res.ok) {
+  //         throw new Error(`Request failed with status: ${res.status}`);
+  //       }
+  //       return res.json();
+  //     })
+  //     .then((data) => {
+  //       console.log(data);
+  //       if (data.message) {
+  //         Swal.fire({
+  //           title: "Success",
+  //           text: `Successfully feedback sent to ${article.authorName}`,
+  //           icon: "success",
+  //           confirmButtonText: "Done",
+  //         });
+  //         document.getElementById("my_modal_2").close();
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error:", error);
+  //       // Handle the error here, e.g., display an error message to the user.
+  //     });
+  // };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -193,28 +235,42 @@ const manageArticlesPage = () => {
                   <div>
                     {/* Open the modal using document.getElementById('ID').showModal() method */}
                     <button
+                      className="btn"
                       onClick={() =>
                         document.getElementById("my_modal_2").showModal()
                       }
-                      className="btn w-full text-2xl text-blue-600 hover:bg-blue-600 hover:text-white hover:border-blue-600 btn-outline"
                     >
-                      <MdOutlineFeedback /> Feedback
+                      open modal
                     </button>
                     <dialog id="my_modal_2" className="modal">
-                      <div className="modal-box">
-                        <h3 className="font-bold text-lg">
-                          Give Any Feedback About This Article!
-                        </h3>
-                        <textarea
-                          className="border my-10"
-                          placeholder="Feedback message"
-                          cols="30"
-                          rows="5"
-                        ></textarea>
-                        <div className="text-end">
-                          <button className="btn btn-outline">Submit</button>
+                      <form
+                        // onSubmit={handleSubmit}
+                        method="dialog"
+                        className="modal-box"
+                      >
+                        <h3 className="font-bold text-lg">Hello!</h3>
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text text-2xl font-bold">
+                              Contact:
+                            </span>
+                          </label>
+                          <input
+                            name="feedback"
+                            type="text"
+                            placeholder="phone number"
+                            className="input input-bordered"
+                          />
                         </div>
-                      </div>
+                        <div className="form-control mt-5">
+                          <button
+                            // onClick={() => handleFeedback(approvedArticle)}
+                            className="btn bg-blue-100 shadow-lg"
+                          >
+                            Update
+                          </button>
+                        </div>
+                      </form>
                       <form method="dialog" className="modal-backdrop">
                         <button>close</button>
                       </form>

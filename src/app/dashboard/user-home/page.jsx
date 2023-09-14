@@ -27,6 +27,7 @@ const DashboardHome = () => {
   } = useForm();
 
   const onsubmit = (data) => {
+    console.log(data);
     fetch(`https://weather-cast-server.vercel.app/users/${user?.email}`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
@@ -97,8 +98,8 @@ const DashboardHome = () => {
   if (!weather) {
     return (
       <div className="flex justify-center mt-20">
-        <span className="loading loading-bars loading-lg"></span>
-        <span className="loading loading-bars loading-lg"></span>
+        <span className="loading loading-bars text-blue-800 loading-lg"></span>
+        <span className="loading loading-bars text-blue-800 loading-lg"></span>
       </div>
     );
   }
@@ -117,12 +118,12 @@ const DashboardHome = () => {
   const weatherDescription = weather.weather[0].description;
 
   return (
-    <div className="my-20 ">
-      <div className="flex gap-5 items-center ">
+    <div className="my-20 px-5 lg:px-0">
+      <div className="lg:flex gap-5 items-center ">
         <img
           src={user?.photoURL}
           alt="adminImg"
-          className="w-[200px] h-[200px] rounded-full"
+          className="w-[200px] h-[200px] mx-auto rounded-full"
         />
         <div className="text-center">
           <h2 className="text-4xl mt-5 font-bold">{user?.displayName}</h2>

@@ -13,7 +13,7 @@ const DashboardLayout = ({ children }) => {
   return (
     <div>
       <Providers>
-        <div className="flex">
+        <div className="lg:flex">
           <Sidebar />
           <div className="">{children}</div>
         </div>

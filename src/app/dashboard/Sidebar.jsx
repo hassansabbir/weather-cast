@@ -2,7 +2,6 @@
 
 import { AuthContext } from "@/Providers/AuthProvider";
 
-import PrivateRoute from "@/routes/PrivetRoute";
 import axios from "axios";
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
@@ -33,9 +32,9 @@ const Sidebar = () => {
   }
 
   return (
-    <div className="drawer max-w-[500px] lg:drawer-open">
+    <div className="drawer max-w-[500px]  lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col items-center justify-center">
+      <div className="drawer-content ">
         <label
           htmlFor="my-drawer-2"
           className="btn btn-primary drawer-button lg:hidden"
@@ -46,7 +45,7 @@ const Sidebar = () => {
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
 
-        <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+        <ul className="menu p-4 w-80 min-h-full z-10 pt-20 md:pt-0 bg-base-200 text-base-content">
           {getUser?.role === "admin" ? (
             <>
               <li className="text-2xl border-b-2 ">

@@ -17,7 +17,7 @@ const RootLayout = ({ children }) => {
       <body className={inter.className}>
         <Providers>
           <Navbar />
-          <div className="pt-20"> {children}</div>
+          <div className="pt-[77px]"> {children}</div>
           <Footer />
         </Providers>
       </body>

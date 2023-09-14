@@ -1,24 +1,19 @@
 "use client";
 
-
-import Banner from "./Banner";
 import Intelligence from "./Intelligence";
 import Marq from "./Marq";
 import NewsLetter from "./NewsLetter";
-import ProductSection from "./ProductSection";
 import WeatherUpdates from "./WeatherUodates/WeatherUpdates";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ShowReviews from "./reviews/ShowReviews";
-
-import TawkComponent from './TawkComponent';
-
+import TawkComponent from "./TawkComponent";
+import ProductSection from "./featureTechnology/ProductSection";
 
 const HomePage = () => {
-
   return (
     <div>
-      <Banner />
+      {/* <Banner /> */}
       <WeatherUpdates />
       <ToastContainer />
       <Intelligence />
@@ -28,9 +23,6 @@ const HomePage = () => {
       <Marq />
       <NewsLetter />
       <TawkComponent></TawkComponent>
-
-
-
     </div>
   );
 };
