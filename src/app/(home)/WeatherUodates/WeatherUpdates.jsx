@@ -107,12 +107,15 @@ const WeatherUpdates = () => {
       return "bg-clear";
     }
   };
-  
+
   return (
-    <div className={`${getBackgroundClass()} py-20`}>
+    <div
+      id="currentLocationWeather"
+      className={`${getBackgroundClass()} py-20`}
+    >
       <div className=" max-w-[1460px] mx-auto px-5 lg:flex m-16">
         <div className="weather-card bg-white bg-opacity-70 grid-cols-8 mx-auto  rounded-3xl p-5 lg:p-14 border">
-          <div className="flex gap-5">
+          <div className="lg:flex gap-5">
             <div className="">
               <div className="grid grid-cols-2 justify-between">
                 <div>

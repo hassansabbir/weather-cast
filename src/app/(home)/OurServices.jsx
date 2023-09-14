@@ -1,3 +1,4 @@
+import AOSInitializer from "@/AOS/AOSInitializer";
 import Link from "next/link";
 import React, { useState } from "react";
 
@@ -8,9 +9,9 @@ const OurServices = () => {
     {
       label: "Real Time Weather Update",
       content: (
-        <div className="rounded-3xl flex flex-col justify-between p-10 border w-full h-[800px]">
+        <div className="rounded-3xl flex flex-col justify-between p-3 lg:p-10 border w-full lg:h-[800px]">
           <div>
-            <h2 className="text-4xl font-bold text-center">
+            <h2 className="text-xl lg:text-4xl font-bold text-center">
               Real-time Weather Updates Based <br /> on User Location:
             </h2>
             <p className="text-xl my-5 text-justify">
@@ -27,28 +28,34 @@ const OurServices = () => {
           </div>
           <div className="flex-grow"></div>
           <div className="grid grid-cols-1 lg:grid-cols-3 my-10 gap-5">
-            <div>
-              <p className="text-xl lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10">
-                Accurate and up-to-date weather information delivered in
-                real-time.
-              </p>
-            </div>
-            <div>
-              <p className="text-xl lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10">
-                A user-friendly interface for seamless location detection or
-                manual input.
-              </p>
-            </div>
-            <div>
-              <p className="text-xl lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10">
-                Comprehensive details on temperature, precipitation, humidity,
-                wind speed, and location-specific alerts.
-              </p>
-            </div>
+            <p
+              data-aos="fade-up"
+              data-aos-duration="3000"
+              className="text-xl text-center lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10"
+            >
+              Accurate and up-to-date weather information delivered in
+              real-time.
+            </p>
+            <p
+              data-aos="fade-up"
+              data-aos-duration="3000"
+              className="text-xl text-center lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10"
+            >
+              A user-friendly interface for seamless location detection or
+              manual input.
+            </p>
+            <p
+              data-aos="fade-up"
+              data-aos-duration="3000"
+              className="text-xl text-center lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10"
+            >
+              Comprehensive details on temperature, precipitation, humidity,
+              wind speed, and location-specific alerts.
+            </p>
           </div>
           <div className="text-center">
-            <Link href="">
-              <button className="btn btn-sm w-72 bg-blue-800 text-white hover:bg-blue-600">
+            <Link href="#currentLocationWeather">
+              <button className="btn w-72 bg-blue-800 text-white hover:bg-blue-600">
                 See Feature
               </button>
             </Link>
@@ -59,7 +66,7 @@ const OurServices = () => {
     {
       label: "Daily & Weekly Forecast",
       content: (
-        <div className="rounded-3xl flex flex-col justify-between p-10 border w-full h-[800px]">
+        <div className="rounded-3xl flex flex-col justify-between p-10 border w-full lg:h-[800px]">
           <div>
             <h2 className="text-4xl text-center font-bold">
               Daily and weekly forecasts, including <br /> temperature,
@@ -79,28 +86,28 @@ const OurServices = () => {
           </div>
           <div className="flex-grow"></div>
           <div className="grid grid-cols-1 lg:grid-cols-3 my-10 gap-5">
-            <div>
-              <p className="text-xl lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10">
-                Flexible units customization for temperature and other weather
-                parameters.
-              </p>
-            </div>
-            <div>
-              <p className="text-xl lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10">
-                Clear, visually appealing graphs and icons representing
-                temperature, precipitation, and wind speed.
-              </p>
-            </div>
-            <div>
-              <p className="text-xl lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10">
-                Daily forecast summaries providing at-a-glance insights into
-                anticipated weather conditions.
-              </p>
-            </div>
+            <p
+              data-aos="fade-up"
+              data-aos-duration="3000"
+              className="text-xl text-center lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10"
+            >
+              Flexible units customization for temperature and other weather
+              parameters.
+            </p>
+
+            <p className="text-xl text-center lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10">
+              Clear, visually appealing graphs and icons representing
+              temperature, precipitation, and wind speed.
+            </p>
+
+            <p className="text-xl text-center lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10">
+              Daily forecast summaries providing at-a-glance insights into
+              anticipated weather conditions.
+            </p>
           </div>
           <div className="text-center">
-            <Link href="">
-              <button className="btn btn-sm w-72 bg-blue-800 text-white hover:bg-blue-600">
+            <Link href="/details">
+              <button className="btn  w-72 bg-blue-800 text-white hover:bg-blue-600">
                 See Feature
               </button>
             </Link>
@@ -111,7 +118,7 @@ const OurServices = () => {
     {
       label: "Interactive Weather Map",
       content: (
-        <div className="rounded-3xl flex flex-col justify-between p-10 border w-full h-[800px]">
+        <div className="rounded-3xl flex flex-col justify-between p-10 border w-full lg:h-[800px]">
           <div>
             <h2 className="text-4xl text-center font-bold">
               Interactive maps displaying weather <br /> patterns and radar
@@ -131,28 +138,24 @@ const OurServices = () => {
           </div>
           <div className="flex-grow"></div>
           <div className="grid grid-cols-1 lg:grid-cols-3 my-10 gap-5">
-            <div>
-              <p className="text-xl lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10">
-                Highly interactive maps for in-depth exploration and
-                understanding.
-              </p>
-            </div>
-            <div>
-              <p className="text-xl lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10">
-                Access to real-time radar data, satellite imagery, and overlays,
-                enhancing your weather visualization experience.
-              </p>
-            </div>
-            <div>
-              <p className="text-xl lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10">
-                Helpful tooltips and pop-ups offering detailed information for
-                specific regions on the map.
-              </p>
-            </div>
+            <p className="text-xl text-center lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10">
+              Highly interactive maps for in-depth exploration and
+              understanding.
+            </p>
+
+            <p className="text-xl text-center lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10">
+              Access to real-time radar data, satellite imagery, and overlays,
+              enhancing your weather visualization experience.
+            </p>
+
+            <p className="text-xl text-center lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10">
+              Helpful tooltips and pop-ups offering detailed information for
+              specific regions on the map.
+            </p>
           </div>
           <div className="text-center">
-            <Link href="">
-              <button className="btn btn-sm w-72 bg-blue-800 text-white hover:bg-blue-600">
+            <Link href="/details">
+              <button className="btn  w-72 bg-blue-800 text-white hover:bg-blue-600">
                 See Feature
               </button>
             </Link>
@@ -163,7 +166,7 @@ const OurServices = () => {
     {
       label: "Severe Weather Alerts",
       content: (
-        <div className="rounded-3xl flex flex-col justify-between p-10 border w-full h-[800px]">
+        <div className="rounded-3xl flex flex-col justify-between p-10 border w-full lg:h-[800px]">
           <div>
             <h2 className="text-4xl text-center font-bold">
               Severe weather alerts and <br /> notifications.
@@ -182,27 +185,21 @@ const OurServices = () => {
           </div>
           <div className="flex-grow"></div>
           <div className="grid grid-cols-1 lg:grid-cols-3 my-10 gap-5">
-            <div>
-              <p className="text-xl lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10">
-                Personalized alerts based on your location and weather
-                preferences.
-              </p>
-            </div>
-            <div>
-              <p className="text-xl lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10">
-                A dedicated hub for accessing real-time alerts, safety tips, and
-                emergency resources.
-              </p>
-            </div>
-            <div>
-              <p className="text-xl lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10">
-                Peace of mind through severe weather warnings and guidance.
-              </p>
-            </div>
+            <p className="text-xl text-center lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10">
+              Personalized alerts based on your location and weather
+              preferences.
+            </p>
+            <p className="text-xl text-center lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10">
+              A dedicated hub for accessing real-time alerts, safety tips, and
+              emergency resources.
+            </p>
+            <p className="text-xl text-center lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10">
+              Peace of mind through severe weather warnings and guidance.
+            </p>
           </div>
           <div className="text-center">
-            <Link href="">
-              <button className="btn btn-sm w-72 bg-blue-800 text-white hover:bg-blue-600">
+            <Link href="/details">
+              <button className="btn  w-72 bg-blue-800 text-white hover:bg-blue-600">
                 See Feature
               </button>
             </Link>
@@ -213,7 +210,7 @@ const OurServices = () => {
     {
       label: "Historical Weather Data",
       content: (
-        <div className="rounded-3xl flex flex-col justify-between p-10 border w-full h-[800px]">
+        <div className="rounded-3xl flex flex-col justify-between p-10 border w-full lg:h-[800px]">
           <div>
             <h2 className="text-4xl text-center font-bold">
               Historical weather data for <br /> analysis and insights.
@@ -234,28 +231,22 @@ const OurServices = () => {
           </div>
           <div className="flex-grow"></div>
           <div className="grid grid-cols-1 lg:grid-cols-3 my-10 gap-5">
-            <div>
-              <p className="text-xl lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10">
-                Easy search and retrieval of historical weather information for
-                specific dates and locations.
-              </p>
-            </div>
-            <div>
-              <p className="text-xl lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10">
-                User-friendly data visualization tools for in-depth analysis of
-                past weather trends.
-              </p>
-            </div>
-            <div>
-              <p className="text-xl lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10">
-                Downloadable datasets for comprehensive research and analytical
-                exploration.
-              </p>
-            </div>
+            <p className="text-xl text-center lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10">
+              Easy search and retrieval of historical weather information for
+              specific dates and locations.
+            </p>
+            <p className="text-xl  text-center lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10">
+              User-friendly data visualization tools for in-depth analysis of
+              past weather trends.
+            </p>
+            <p className="text-xl text-center lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10">
+              Downloadable datasets for comprehensive research and analytical
+              exploration.
+            </p>
           </div>
           <div className="text-center">
-            <Link href="">
-              <button className="btn btn-sm w-72 bg-blue-800 text-white hover:bg-blue-600">
+            <Link href="/articles">
+              <button className="btn w-72 bg-blue-800 text-white hover:bg-blue-600">
                 See Feature
               </button>
             </Link>
@@ -265,21 +256,16 @@ const OurServices = () => {
     },
   ];
 
-  // 1. Real-time weather updates based on user location.
-  // 2. Daily and weekly forecasts, including temperature, precipitation, humidity, and wind speed.
-  // 3. Interactive maps displaying weather patterns and radar data.
-  // 4. Severe weather alerts and notifications.
-  // 5. Historical weather data for analysis and insights.
-
   const handleTabClick = (index) => {
     setActiveTab(index);
   };
   return (
-    <div className=" bg-slate-100 py-5">
+    <div className=" bg-slate-100 shadow-md py-5">
+      <AOSInitializer />
       <div className="max-w-[1460px] mx-auto">
         <div className="lg:flex border-l-4 ps-5 items-center my-40">
           <div className="p-4">
-            <h2 className="text-[32px] font-bold">Know About Our Services</h2>
+            <h2 className="text-4xl font-bold">Know About Our Services</h2>
             <ul className="flex my-10 flex-col gap-5">
               {tabs.map((tab, index) => (
                 <li
@@ -296,8 +282,8 @@ const OurServices = () => {
               ))}
             </ul>
           </div>
-          <div className="w-5/6 rounded-3xl p-4">
-            <div className="bg-white rounded-3xl p-4">
+          <div className="lg:w-5/6 rounded-3xl p-4">
+            <div className="bg-white  shadow-xl shadow-blue-100 rounded-3xl">
               <div className="rounded-3xl">{tabs[activeTab].content}</div>
             </div>
           </div>
