@@ -5,7 +5,7 @@ import Link from "next/link";
 import React, { useContext } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Image from "next/image";
-import logo from '../../assets/weathercastlogo.png';
+import logo from "../../assets/weathercastlogo.png";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -39,11 +39,14 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     logOut()
-      .then(() => { })
+      .then(() => {})
       .catch((error) => console.log(error));
   };
+
+  // navbar fixed z-30 text-white bg-black bg-opacity-20
+
   return (
-    <div className="fixed w-full top-0 z-10 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200">
+    <div className="fixed bg-transparent w-full top-0 z-10 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200">
       <div className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">

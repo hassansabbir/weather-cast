@@ -55,8 +55,8 @@ const WeatherUpdates = () => {
   if (!weather) {
     return (
       <div className="flex justify-center mt-20">
-        <span className="loading loading-bars loading-lg"></span>
-        <span className="loading loading-bars loading-lg"></span>
+        <span className="loading text-blue-800 loading-bars loading-lg"></span>
+        <span className="loading text-blue-800 loading-bars loading-lg"></span>
       </div>
     );
   }
@@ -108,13 +108,9 @@ const WeatherUpdates = () => {
   };
 
   return (
-    <div className={`${getBackgroundClass()} py-36`}>
-      <h2 className="text-3xl lg:text-5xl font-bold my-10 text-center">
-        Live Weather Updates
-      </h2>
-
+    <div className={`bg-rain py-20`}>
       <div className=" max-w-[1460px] mx-auto px-5 lg:flex m-16">
-        <div className="weather-card bg-white bg-opacity-40 grid-cols-8 mx-auto  rounded-3xl p-10 border lg:h-[500px] lg:w-[800px]">
+        <div className="weather-card bg-white bg-opacity-70 grid-cols-8 mx-auto  rounded-3xl p-5 lg:p-20 border  ">
           <div className="">
             <div className="grid grid-cols-2 justify-between">
               <div>
@@ -157,86 +153,89 @@ const WeatherUpdates = () => {
               </div>
             </div>
 
-            <h2 className="text-2xl mt-8  font-bold flex items-center gap-2 ">
-              <FaLocationDot className="w-5 h-5" /> {location}
-            </h2>
-            <p className="text-xl lg:text-2xl ">
-              {moment(weather?.location?.localtime).format("MMMM Do YYYY")}
-            </p>
-            <div className="grid grid-cols-2 gap-5 lg:grid-cols-4 justify-between mt-16">
-              {/* wind speed  */}
-              <div className="text-xl  ">
-                <p className="flex">
-                  {" "}
-                  <FaWind className="text-2xl " /> Wind Speed
+            <div className="lg:flex gap-5">
+              <div>
+                <h2 className="text-2xl mt-8  font-bold flex items-center gap-2 ">
+                  <FaLocationDot className="w-5 h-5" /> {location}
+                </h2>
+                <p className="text-xl lg:text-2xl ">
+                  {moment(weather?.location?.localtime).format("MMMM Do YYYY")}
                 </p>
-                <p className="ps-8 pt-1">
-                  {" "}
-                  {windSpeed} <small>m/s</small>
-                </p>
-              </div>
+                <div className="grid grid-cols-2 gap-16 lg:grid-cols-2 justify-between mt-16">
+                  {/* wind speed  */}
+                  <div className="text-xl  ">
+                    <p className="flex">
+                      {" "}
+                      <FaWind className="text-2xl " /> Wind Speed
+                    </p>
+                    <p className="ps-8 pt-1">
+                      {" "}
+                      {windSpeed} <small>m/s</small>
+                    </p>
+                  </div>
 
-              {/* Humidity */}
-              <div className="text-xl  ">
-                <p className="flex">
-                  {" "}
-                  <WiHumidity className="text-3xl " /> Humidity
-                </p>
-                <p className="ps-8 pt-1">
-                  {" "}
-                  {weather.main.humidity} <small>%</small>
-                </p>
-              </div>
+                  {/* Humidity */}
+                  <div className="text-xl  ">
+                    <p className="flex">
+                      {" "}
+                      <WiHumidity className="text-3xl " /> Humidity
+                    </p>
+                    <p className="ps-8 pt-1">
+                      {" "}
+                      {weather.main.humidity} <small>%</small>
+                    </p>
+                  </div>
 
-              {/* visibility */}
-              <div className="text-xl  ">
-                <p className="flex">
-                  {" "}
-                  <FaEye className="text-3xl me-2" /> Visibility
-                </p>
-                <p className="ps-8 pt-1">
-                  {" "}
-                  {weather.visibility / 1000} <small>Km</small>
-                </p>
-              </div>
+                  {/* visibility */}
+                  <div className="text-xl  ">
+                    <p className="flex">
+                      {" "}
+                      <FaEye className="text-3xl me-2" /> Visibility
+                    </p>
+                    <p className="ps-8 pt-1">
+                      {" "}
+                      {weather.visibility / 1000} <small>Km</small>
+                    </p>
+                  </div>
 
-              {/* pressure */}
-              <div className="text-xl   ">
-                <p className="flex">
-                  <WiRefreshAlt className="w-12 h-12" /> Pressure In
-                </p>
-                <p className="ps-8 pt-1">
-                  {" "}
-                  {weather.main.pressure} <small>hPa</small>
-                </p>
+                  {/* pressure */}
+                  <div className="text-xl   ">
+                    <p className="flex">
+                      <WiRefreshAlt className="w-12 h-12" /> Pressure In
+                    </p>
+                    <p className="ps-8 pt-1">
+                      {" "}
+                      {weather.main.pressure} <small>hPa</small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                className=" weather-related-card grid-cols-4 rounded-3xl   "
+                style={{ overflow: "hidden", zIndex: 5 }}
+              >
+                <div>
+                  {typeof window !== "undefined" && (
+                    <MapContainer
+                      center={positions}
+                      zoom={13}
+                      scrollWheelZoom={false}
+                      style={{ height: "400px", width: "600px" }}
+                    >
+                      <TileLayer
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                      />
+                      <Marker position={positions} icon={customIcon}>
+                        <Popup>
+                          A pretty CSS3 popup. <br /> Easily customizable.
+                        </Popup>
+                      </Marker>
+                    </MapContainer>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div
-          className=" weather-related-card grid-cols-4 rounded-3xl   "
-          style={{ overflow: "hidden", zIndex: 5 }}
-        >
-          <div>
-            {typeof window !== "undefined" && (
-              <MapContainer
-                center={positions}
-                zoom={13}
-                scrollWheelZoom={false}
-                style={{ height: "500px", width: "400px" }}
-              >
-                <TileLayer
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                <Marker position={positions} icon={customIcon}>
-                  <Popup>
-                    A pretty CSS3 popup. <br /> Easily customizable.
-                  </Popup>
-                </Marker>
-              </MapContainer>
-            )}
           </div>
         </div>
       </div>

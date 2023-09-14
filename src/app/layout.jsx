@@ -9,7 +9,6 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Weather Cast",
   description: "Weather Cast",
-
 };
 
 const RootLayout = ({ children }) => {
@@ -18,7 +17,7 @@ const RootLayout = ({ children }) => {
       <body className={inter.className}>
         <Providers>
           <Navbar />
-          <div className="pt-20"> {children}</div>
+          <div className="pt-[77px]"> {children}</div>
           <Footer />
         </Providers>
       </body>
