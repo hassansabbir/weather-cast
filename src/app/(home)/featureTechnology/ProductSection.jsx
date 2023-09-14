@@ -2,6 +2,7 @@ import AOSInitializer from "@/AOS/AOSInitializer";
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 const ProductSection = () => {
   const [products, setProducts] = useState([]);
@@ -17,10 +18,19 @@ const ProductSection = () => {
       <h2 className="text-4xl lg:text-5xl font-bold text-center my-10">
         Our <span className="text-blue-800">New</span> features
       </h2>
+      <p className="text-xl text-center w-11/12 mx-auto">
+        Discover the Science Behind Our Precision: Welcome to our Technology
+        page, where we unveil the innovative tools and methodologies that power
+        our accurate weather forecasts. We take pride in harnessing cutting-edge
+        technologies, data analytics, and meteorological expertise to deliver
+        real-time, location-specific weather information. Explore the technology
+        that empowers you to stay ahead of changing weather conditions and make
+        informed decisions with confidence.
+      </p>
       <div
         data-aos="fade-up"
         data-aos-duration="3000"
-        className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-28"
+        className="grid grid-cols-1 lg:grid-cols-3 gap-10 my-20"
       >
         {products.map((product) => (
           <div
@@ -39,8 +49,8 @@ const ProductSection = () => {
               <div className="absolute flex flex-col items-center rounded-3xl justify-center inset-0 h-full w-full bg-white px-12 text-center [transform:rotateY(180deg)] [backface-visibility:hidden]">
                 <p className="text-[14px]">{product.shortDescription}</p>
                 <Link href={`/featureTechnology/${product?._id}`}>
-                  <p className="text-[16px] mt-5 cursor-pointer underline text-[#0078FF] font-bold">
-                    View More
+                  <p className="text-[16px] flex gap-1 items-center mt-5 cursor-pointer underline text-[#0078FF] font-bold">
+                    <FaExternalLinkAlt /> View More
                   </p>
                 </Link>
               </div>

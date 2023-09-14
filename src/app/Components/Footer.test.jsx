@@ -2,7 +2,7 @@
 import { suite, test } from "@vitest/runner";
 import { render } from "react-dom";
 import React from "react"; // Import React
-import Footer from "./Footer";
+import Footer from "./footer/Footer";
 
 // Import jsdom and configure it
 import { JSDOM } from "jsdom";
