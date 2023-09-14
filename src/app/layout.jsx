@@ -9,7 +9,6 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Weather Cast",
   description: "Weather Cast",
-
 };
 
 const RootLayout = ({ children }) => {

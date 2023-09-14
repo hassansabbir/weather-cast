@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 .main-slider .image-layer {
-    @apply bg-no-repeat bg-cover bg-center transition-transform duration-[5000ms] ease-in-out min-h-[800px];
-  }
-  
-  .main-slider .swiper-slide-active .image-layer {
-    @apply scale-150 z-10;
-  }
-  
-  .main-slider .image-layer::before {
-    @apply absolute top-0 left-0 bottom-0 right-0 content-[''] bg-[#1c0c0664] dark:bg-[#1c0c0690] z-0;
-  }
+  @apply bg-no-repeat bg-cover bg-center transition-transform duration-[5000ms] ease-in-out min-h-[800px];
+}
+
+.main-slider .swiper-slide-active .image-layer {
+  @apply scale-150 z-10;
+}
+
+.main-slider .image-layer::before {
+  @apply absolute top-0 left-0 bottom-0 right-0 content-[''] bg-[#1c0c0664] dark:bg-[#1c0c0690] z-0;
+}
 /*   
   .main-slider .swiper-button-next,
   .main-slider .swiper-button-prev {
@@ -46,3 +46,78 @@
       top: 50%;
     }
   } */
+
+@layer base {
+  .animate-slide-right-1 {
+    animation: slide-right-1 38s linear infinite;
+  }
+
+  @keyframes slide-right-1 {
+    0% {
+      transform: translateX(-400px);
+    }
+    100% {
+      transform: translateX(1408px);
+    }
+  }
+  .animate-slide-right-2 {
+    animation: slide-right-2 48s linear infinite;
+  }
+
+  @keyframes slide-right-2 {
+    0% {
+      transform: translateX(-400px);
+    }
+    100% {
+      transform: translateX(1408px);
+    }
+  }
+  .animate-slide-right-3 {
+    animation: slide-right-3 40s linear infinite;
+  }
+
+  @keyframes slide-right-3 {
+    0% {
+      transform: translateX(-400px);
+    }
+    100% {
+      transform: translateX(1408px);
+    }
+  }
+  .animate-slide-right-4 {
+    animation: slide-right-4 56s linear infinite;
+  }
+
+  @keyframes slide-right-4 {
+    0% {
+      transform: translateX(-400px);
+    }
+    100% {
+      transform: translateX(1408px);
+    }
+  }
+  .animate-slide-right-5 {
+    animation: slide-right-5 75s linear infinite;
+  }
+
+  @keyframes slide-right-5 {
+    0% {
+      transform: translateX(-400px);
+    }
+    100% {
+      transform: translateX(1408px);
+    }
+  }
+  .animate-slide-right-6 {
+    animation: slide-right-6 95s linear infinite;
+  }
+
+  @keyframes slide-right-6 {
+    0% {
+      transform: translateX(-400px);
+    }
+    100% {
+      transform: translateX(1408px);
+    }
+  }
+}
