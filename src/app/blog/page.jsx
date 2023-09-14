@@ -82,6 +82,7 @@ const BlogPage = () => {
 
   return (
     <div className="container">
+      
       <main className="main">
         <div className="sidebar">
           <h2>Disaster Types</h2>
