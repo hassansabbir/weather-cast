@@ -418,11 +418,7 @@ const CreatePost = () => {
 
   return (
     <div className="newsfeed ">
-  <div className="lg:flex  justify-around gap-4 pl-4 max-w-7xl mx-auto" style={{
-      
-      backgroundSize: 'cover',
-      backgroundColor: 'lightsteelblue'
-    }}
+  <div className="lg:flex  justify-around gap-4 pl-4 max-w-7xl mx-auto" 
     >
       <div className="post-creator h-full w-full  lg:w-1/4 shadow-lg rounded-lg overflow-hidden text-center mt-4 bg-blue-100 lg:sticky lg:top-0 " >
         <Link href="/community/MyPost">
