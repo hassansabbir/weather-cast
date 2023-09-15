@@ -111,7 +111,7 @@ const BlogPage = () => {
                 id={`blog-title-${index}`}
                 className={`${
                   activeIndex === index
-                    ? "bg-blue-400 p-2 rounded transition-all duration-700"
+                    ? "bg-blue-300 p-2 ps-10 rounded-full transition-all duration-700"
                     : ""
                 }`}
               >

@@ -1,6 +1,5 @@
 "use client";
 
-import Intelligence from "./Intelligence";
 import Marq from "./Marq";
 import NewsLetter from "./NewsLetter";
 import WeatherUpdates from "./WeatherUodates/WeatherUpdates";
@@ -10,6 +9,7 @@ import ShowReviews from "./reviews/ShowReviews";
 import TawkComponent from "./TawkComponent";
 import ProductSection from "./featureTechnology/ProductSection";
 import OurServices from "./OurServices";
+import Intelligence from "./intelligence/Intelligence";
 
 const HomePage = () => {
   return (

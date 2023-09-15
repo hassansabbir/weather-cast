@@ -215,12 +215,13 @@ const WeatherUpdates = () => {
               </div>
             </div>
             <div
-              className=" weather-related-card grid-cols-4 rounded-3xl z-10  "
-              
+              className=" weather-related-card grid-cols-4 rounded-3xl z-5  "
+              style={{ overflow: "hidden", zIndex: 5 }}
             >
               <div>
                 {typeof window !== "undefined" && (
                   <MapContainer
+                    className="z-5"
                     center={positions}
                     zoom={13}
                     scrollWheelZoom={false}
