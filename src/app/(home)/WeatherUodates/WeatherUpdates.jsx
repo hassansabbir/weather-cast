@@ -215,8 +215,8 @@ const WeatherUpdates = () => {
               </div>
             </div>
             <div
-              className=" weather-related-card grid-cols-4 rounded-3xl   "
-              style={{ overflow: "hidden", zIndex: 5 }}
+              className=" weather-related-card grid-cols-4 rounded-3xl z-10  "
+              
             >
               <div>
                 {typeof window !== "undefined" && (
