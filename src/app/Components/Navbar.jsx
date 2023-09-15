@@ -50,7 +50,7 @@ const Navbar = () => {
   // navbar fixed z-30 text-white bg-black bg-opacity-20
 
   return (
-    <div className="fixed bg-transparent w-full top-0 z-10 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200">
+    <div className="fixed bg-transparent w-full top-0 z-20 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200">
       <div className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
@@ -72,7 +72,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-20 p-2 shadow bg-base-100 rounded-box w-52"
             >
               {navbar.map(({ path, title }) => (
                 <li className="font-semibold text-blue-800 text-lg " key={path}>
@@ -122,7 +122,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+              className="dropdown-content z-20 menu p-2 shadow bg-base-100 rounded-box w-52"
             >
               <>
                 {user?.email ? (

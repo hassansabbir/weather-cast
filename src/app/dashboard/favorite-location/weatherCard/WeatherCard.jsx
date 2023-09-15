@@ -39,7 +39,7 @@ const WeatherCard = ({ locationData }) => {
         fetchWeatherData();
       }, [locationData]);
       const handleDeleteLocation = (location) => {
-        fetch(`http://localhost:5000/favLoc/${user.email}/${location}`, {
+        fetch(`https://weather-cast-server.vercel.app/favLoc/${user.email}/${location}`, {
           method: "DELETE",
           headers: {
             "Content-type": "application/json",
@@ -83,7 +83,7 @@ const WeatherCard = ({ locationData }) => {
         <div key={index} className="mx-auto lg:mt-16">
           <div className="">
             
-            <div className="weather-card z-1 grid-cols-8 mx-auto mb-8 shadow-xl  rounded-3xl p-10 pe-0 border h-[500px] w-[800px] glass">
+            <div className="weather-card z-1 grid-cols-8 mx-auto mb-8 shadow-xl  rounded-3xl p-10 border h-40% w-full glass m">
 
               {/* delete button  */}
               <div className="relative">
@@ -136,7 +136,7 @@ const WeatherCard = ({ locationData }) => {
                     "MMMM Do YYYY"
                   )}
                 </p>
-                <div className="grid grid-cols-4 justify-between mt-16">
+                <div className="grid lg:grid-cols-4 sm:grid-cols-2  justify-between mt-16">
                   {/* wind speed  */}
                   <div className="text-xl  ">
                     <p className="flex">
