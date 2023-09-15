@@ -125,7 +125,7 @@ const ManageUsers = () => {
           Total Users: {users.length}
         </h3>
         <div className="overflow-x-auto w-full">
-          <table className="table">
+          <table className="table z-0">
             {/* head */}
             <thead>
               <tr>
