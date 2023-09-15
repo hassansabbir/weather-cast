@@ -417,13 +417,14 @@ const CreatePost = () => {
   };
 
   return (
-    <div className="newsfeed flex justify-around gap-4 pl-4 max-w-7xl mx-auto" style={{
+    <div className="newsfeed ">
+  <div className="lg:flex  justify-around gap-4 pl-4 max-w-7xl mx-auto" style={{
       
       backgroundSize: 'cover',
       backgroundColor: 'lightsteelblue'
     }}
     >
-      <div className="post-creator h-full w-1/4  md:w-1/4 shadow-lg rounded-lg overflow-hidden text-center mt-4 bg-blue-100 " style={{ position: 'sticky', top: '0' }}>
+      <div className="post-creator h-full w-full  lg:w-1/4 shadow-lg rounded-lg overflow-hidden text-center mt-4 bg-blue-100 lg:sticky lg:top-0 " >
         <Link href="/community/MyPost">
           <h2 className=" font-bold text-2xl text-blue-500 pt-2 pb-1">My Post</h2>
         </Link>
@@ -483,6 +484,8 @@ const CreatePost = () => {
         <CommunityInfo></CommunityInfo>
       </div>
     </div>
+    </div>
+  
   );
 };
 
