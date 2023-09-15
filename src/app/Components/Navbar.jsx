@@ -6,9 +6,11 @@ import React, { useContext } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Image from "next/image";
 import logo from "../../assets/android-chrome-192x192.png";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const currentRoute = usePathname();
 
   const navbar = [
     {
@@ -50,7 +52,7 @@ const Navbar = () => {
   // navbar fixed z-30 text-white bg-black bg-opacity-20
 
   return (
-    <div className="fixed bg-transparent w-full top-0 z-10 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200">
+    <div className="fixed bg-transparent w-full top-0 z-20 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200">
       <div className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
@@ -70,18 +72,33 @@ const Navbar = () => {
                 />
               </svg>
             </label>
+            {/*for mobile */}
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-20 p-2 shadow bg-base-100 rounded-box w-52"
             >
               {navbar.map(({ path, title }) => (
-                <li className="font-semibold text-blue-800 text-lg " key={path}>
+                <li
+                  key={path}
+                  className={`text-lg ${
+                    currentRoute === path ? "active" : "default"
+                  }`}
+                >
                   <Link href={path}>{title}</Link>
                 </li>
               ))}
               {user && (
-                <li className="font-semibold text-blue-800 text-lg ">
-                  <Link href="/dashboard/user-home">Dashboard</Link>
+                <li>
+                  <Link
+                    href="/dashboard/user-home"
+                    className={`text-lg ${
+                      currentRoute === "/dashboard/user-home"
+                        ? "active"
+                        : "default"
+                    }`}
+                  >
+                    Dashboard
+                  </Link>
                 </li>
               )}
             </ul>
@@ -94,15 +111,29 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="flex space-x-8">
             {navbar.map(({ path, title }) => (
-              <li className="font-semibold text-blue-800 text-lg " key={path}>
+              <li
+                key={path}
+                className={`text-lg ${
+                  currentRoute === path ? "active" : "default"
+                }`}
+              >
                 <Link href={path}>{title}</Link>
               </li>
             ))}
             {user && (
-              <li className="font-semibold text-blue-800 text-lg ">
-                <Link href="/dashboard/user-home">Dashboard</Link>
+              <li>
+                <Link
+                  href="/dashboard/user-home"
+                  className={`text-lg ${
+                    currentRoute === "/dashboard/user-home"
+                      ? "active"
+                      : "default"
+                  }`}
+                >
+                  Dashboard
+                </Link>
               </li>
             )}
           </ul>
@@ -124,7 +155,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+              className="dropdown-content z-20 menu p-2 shadow bg-base-100 rounded-box w-52"
             >
               <>
                 {user?.email ? (

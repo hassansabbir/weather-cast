@@ -146,7 +146,7 @@ const WeatherDetails = () => {
           headers: {
             "Content-type": "application/json",
           },
-          body: JSON.stringify({ favoriteLoc, setFavbtn: true }),
+          body: JSON.stringify( favoriteLoc ),
         }
       );
 
