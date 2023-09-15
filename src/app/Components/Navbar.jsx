@@ -5,7 +5,7 @@ import Link from "next/link";
 import React, { useContext } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Image from "next/image";
-import logo from "../../assets/weathercastlogo.png";
+import logo from "../../assets/android-chrome-192x192.png";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -86,10 +86,12 @@ const Navbar = () => {
               )}
             </ul>
           </div>
-          {/* <a className=" normal-case text-xl md:text-3xl text-blue-800 font-bold ">
-            weatherCast
-          </a> */}
-          <Image src={logo} />
+          <div className="flex items-center gap-3 ms-7 text-blue-800">
+            <Image className="w-14 h-14" src={logo} alt="" />
+            <p className="text-3xl hidden md:block font-bold">
+              weather<span className="text-orange-500">Cast</span>
+            </p>
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">

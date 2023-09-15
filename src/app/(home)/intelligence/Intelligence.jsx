@@ -2,12 +2,13 @@
 
 import React from "react";
 import Lottie from "lottie-react";
-import earth from "../../assets/animation_ll4ssoaf.json";
+import earth from "../../../assets/animation_ll4ssoaf.json";
 import AOSInitializer from "@/AOS/AOSInitializer";
+import "./intelligence.css";
 
 const Intelligence = () => {
   return (
-    <div className=" bg-blue-50 shadow-md py-10">
+    <div className="bg-intelligence py-10">
       <div className="max-w-[1460px] mx-auto my-28">
         <AOSInitializer></AOSInitializer>;
         <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center -space-x-16">
