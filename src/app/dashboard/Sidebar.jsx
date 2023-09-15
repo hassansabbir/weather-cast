@@ -5,6 +5,7 @@ import { AuthContext } from "@/Providers/AuthProvider";
 import PrivateRoute from "@/routes/PrivetRoute";
 import axios from "axios";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { useContext, useEffect, useState } from "react";
 import { BsFileEarmarkPost } from "react-icons/bs";
 import { FaHome, FaStar, FaUsers } from "react-icons/fa";
@@ -14,7 +15,7 @@ import { RxAvatar } from "react-icons/rx";
 const Sidebar = () => {
   const { user } = useContext(AuthContext);
   const [getUser, setGetUser] = useState([]);
-
+  const currentRoute = usePathname();
   useEffect(() => {
     fetchData();
   }, [user?.email]);
@@ -49,19 +50,31 @@ const Sidebar = () => {
         <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
           {getUser?.role === "admin" ? (
             <>
-              <li className="text-2xl border-b-2 ">
+              <li
+                className={`text-2xl border-b-2 ${
+                  currentRoute === "/dashboard/user-home" ? "active" : ""
+                }`}
+              >
                 <Link href="/dashboard/user-home">
                   {" "}
                   <RxAvatar /> Profile
                 </Link>
               </li>
-              <li className="text-2xl border-b-2 ">
+              <li
+                className={`text-2xl border-b-2 ${
+                  currentRoute === "/dashboard/manage-user" ? "active" : ""
+                }`}
+              >
                 <Link href="/dashboard/manage-user">
                   {" "}
                   <FaUsers /> Manage User
                 </Link>
               </li>
-              <li className="text-2xl border-b-2">
+              <li
+                className={`text-2xl border-b-2 ${
+                  currentRoute === "/dashboard/manage-articles" ? "active" : ""
+                }`}
+              >
                 <Link href="/dashboard/manage-articles">
                   {" "}
                   <BsFileEarmarkPost /> Manage Articles
@@ -71,18 +84,32 @@ const Sidebar = () => {
             </>
           ) : (
             <>
-              <li className="text-2xl border-b-2 ">
+              <li
+                className={`text-2xl border-b-2 ${
+                  currentRoute === "/dashboard/user-home" ? "active" : ""
+                }`}
+              >
                 <Link href="/dashboard/user-home">
                   {" "}
                   <RxAvatar /> Profile
                 </Link>
               </li>
-              <li className="text-2xl border-b-2">
+              <li
+                className={`text-2xl border-b-2 ${
+                  currentRoute === "/dashboard/favorite-location"
+                    ? "active"
+                    : ""
+                }`}
+              >
                 <Link href="/dashboard/favorite-location">
                   <FaStar /> Favorite Location
                 </Link>
               </li>
-              <li className="text-2xl border-b-2">
+              <li
+                className={`text-2xl border-b-2 ${
+                  currentRoute === "/dashboard/my-articles" ? "active" : ""
+                }`}
+              >
                 <Link href="/dashboard/my-articles">
                   <BsFileEarmarkPost /> My Articles
                 </Link>
