@@ -22,7 +22,7 @@ const AboutPage = () => {
         <div>
           <h2 className="text-5xl font-bold">About Us</h2>
           <p className="text-xl my-5">
-            Introducing WeatherCast: Your Comprehensive Weather Forecast
+            Introducing WeatherCast, Your Comprehensive Weather Forecast
             Solution. WeatherCast is a cutting-edge web application meticulously
             designed to provide you with a rich and insightful weather
             experience. Seamlessly integrating real-time data from trusted

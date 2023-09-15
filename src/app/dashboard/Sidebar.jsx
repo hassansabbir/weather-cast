@@ -2,7 +2,6 @@
 
 import { AuthContext } from "@/Providers/AuthProvider";
 
-import PrivateRoute from "@/routes/PrivetRoute";
 import axios from "axios";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -34,9 +33,9 @@ const Sidebar = () => {
   }
 
   return (
-    <div className="drawer max-w-[500px] lg:drawer-open">
+    <div className="drawer max-w-[500px]  lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col items-center justify-center">
+      <div className="drawer-content ">
         <label
           htmlFor="my-drawer-2"
           className="btn btn-primary drawer-button lg:hidden"

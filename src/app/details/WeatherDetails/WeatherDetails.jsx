@@ -64,6 +64,7 @@ const WeatherDetails = () => {
   const [unit, setUnit] = useState("metric");
   const [favbtn, setFavbtn] = useState(false);
   const [isCitySearched, setIsCitySearched] = useState(false);
+  const [favoriteLocations, setFavoriteLocations] = useState([]);
 
   useEffect(() => {
     weatherFetch(City, unit, setWeather);
@@ -97,8 +98,8 @@ const WeatherDetails = () => {
   if (!weather) {
     return (
       <div className="flex justify-center mt-20">
-        <span className="loading loading-bars loading-lg"></span>
-        <span className="loading loading-bars loading-lg"></span>
+        <span className="loading loading-bars text-blue-800 loading-lg"></span>
+        <span className="loading loading-bars text-blue-800 loading-lg"></span>
       </div>
     );
   }
@@ -119,20 +120,11 @@ const WeatherDetails = () => {
         return;
       }
 
-      // Check if the city is already a favorite
-      const favoriteLoc = { location: City, email: user?.email };
-      const response = await fetch(
-        "https://weather-cast-server.vercel.app/checkFavorite",
-        {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify(favoriteLoc),
-        }
+      const isFavoriteLocation = favoriteLocations.some(
+        (location) => location === City
       );
-
-      if (response.ok) {
+      if (isFavoriteLocation) {
+        // City is already a favorite, show an alert
         Swal.fire({
           title: "City is already a favorite",
           showClass: {
@@ -142,36 +134,37 @@ const WeatherDetails = () => {
             popup: "animate__animated animate__fadeOutUp",
           },
         });
-        // City is already a favorite, disable the button
-      } else {
-        // City is not a favorite, allow the user to mark it as a favorite
-        const addFavoriteResponse = await fetch(
-          "https://weather-cast-server.vercel.app/favLoc",
-          {
-            method: "POST",
-            headers: {
-              "Content-type": "application/json",
-            },
-            body: JSON.stringify({ favoriteLoc, setFavbtn: true }),
-          }
-        );
-
-        if (addFavoriteResponse.ok) {
-          Swal.fire({
-            title: "Location marked as favorite",
-            showClass: {
-              popup: "animate__animated animate__fadeInDown",
-            },
-            hideClass: {
-              popup: "animate__animated animate__fadeOutUp",
-            },
-          });
-          console.log("Location marked as favorite");
-          setFavbtn(true); // Disable the button after marking as favorite
-          setFavoriteLocations((prevLocations) => [...prevLocations, City]);
-        } else {
-          console.log("Failed to mark location as favorite");
+        return;
+      }
+      // Check if the city is already a favorite
+      const favoriteLoc = { location: City, email: user?.email };
+      // City is not a favorite, allow the user to mark it as a favorite
+      const addFavoriteResponse = await fetch(
+        "https://weather-cast-server.vercel.app/favLoc",
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify( favoriteLoc ),
         }
+      );
+
+      if (addFavoriteResponse.ok) {
+        Swal.fire({
+          title: "Location marked as favorite",
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        });
+        console.log("Location marked as favorite");
+        setFavbtn(true); // Disable the button after marking as favorite
+        setFavoriteLocations((prevLocations) => [...prevLocations, City]);
+      } else {
+        console.log("Failed to mark location as favorite");
       }
     } catch (error) {
       console.error("Error:", error);

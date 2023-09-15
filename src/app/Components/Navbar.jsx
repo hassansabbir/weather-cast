@@ -37,6 +37,10 @@ const Navbar = () => {
       path: "/blog",
       title: "Blog",
     },
+    {
+      path: "/community",
+      title: "Community",
+    },
   ];
 
   const handleLogOut = () => {
@@ -44,8 +48,11 @@ const Navbar = () => {
       .then(() => {})
       .catch((error) => console.log(error));
   };
+
+  // navbar fixed z-30 text-white bg-black bg-opacity-20
+
   return (
-    <div className="fixed w-full top-0 z-10 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200">
+    <div className="fixed bg-transparent w-full top-0 z-10 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200">
       <div className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
