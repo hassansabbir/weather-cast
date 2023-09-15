@@ -126,21 +126,22 @@ const BlogPage = () => {
           {selectedPost ? (
             <div className="post-details gap-1">
               <Image
+                className="w-[700px] h-[400px] mx-auto rounded-2xl my-10"
                 src={selectedPost.photo}
                 alt="Protect Yourself"
                 width={500}
                 height={300}
               />
-              <h2 className="text-5xl font-semibold mt-1 mb-1">
+              <h2 className="text-5xl px-10 my-5 font-semibold mt-1 mb-1">
                 {selectedPost.name}
               </h2>
-              <p>{selectedPost.introduction}</p>
-              <h2 className="text-xl font-semibold mt-1 mb-1">
+              <p className="px-10 my-5">{selectedPost.introduction}</p>
+              <h2 className="text-2xl px-10 font-semibold mt-1 mb-1">
                 Stay Safe During {selectedPost.name}
               </h2>
 
-              <p>{selectedPost.steps}</p>
-              <h2>Protect Yourself</h2>
+              <p className="px-10 my-5"> {selectedPost.steps}</p>
+              <h2 className="px-10 text-3xl font-bold">Protect Yourself</h2>
               <div className="image-container">
                 {selectedPost.image ? (
                   <Image

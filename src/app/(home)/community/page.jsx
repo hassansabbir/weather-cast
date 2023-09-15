@@ -8,9 +8,9 @@ import Swal from "sweetalert2";
 import { FaThumbsUp, FaComment, FaShare } from "react-icons/fa";
 import Link from "next/link";
 import { BsPencilSquare } from "react-icons/bs";
-import starPng from './../../../assets/starpng.png';
-import s from './../../../assets/Contact.jpg';
-import './MyPage.css'
+import starPng from "./../../../assets/starpng.png";
+import s from "./../../../assets/Contact.jpg";
+import "./MyPage.css";
 import CommunityInfo from "./CommunityInfo/page";
 const CommentModal = ({ comments, closeModal }) => {
   return (
@@ -172,12 +172,10 @@ export const PostCard = ({ post }) => {
 
   const handleText = (e) => {
     const inputValue = e.target.value;
-    if (inputValue.trim() !== '' && inputValue.length <= 60) {
+    if (inputValue.trim() !== "" && inputValue.length <= 60) {
       setNewComment(inputValue);
     }
   };
-  
-  
 
   return (
     <div
@@ -187,7 +185,10 @@ export const PostCard = ({ post }) => {
           "linear-gradient(90deg, rgba(175,174,238,0.022846638655462215) 82%, rgba(148,187,233,0.1741071428571429) 100%), linear-gradient(76deg, rgba(148,187,233,0.1741071428571429) 0%, rgba(175,174,238,0.022846638655462215) 82%, rgba(148,187,233,0.1741071428571429) 100%)",
       }}
     >
-      <div className="px-6 py-4" style={{ backgroundColor: 'rgba(230, 230, 250, 0.8)' }}>
+      <div
+        className="px-6 py-4"
+        style={{ backgroundColor: "rgba(230, 230, 250, 0.8)" }}
+      >
         <div className="flex items-center justify-between mt-4 ">
           <div className=" items-center justify-center">
             <div className="flex gap-2">
@@ -219,25 +220,27 @@ export const PostCard = ({ post }) => {
         </div>
         <br />
         <div>{post.image && <img src={post.image} alt="Post Image" />}</div>
-        <p className="text-gray-700 text-3xl font-mono font-semibold">{post.content}</p>
+        <p className="text-gray-700 text-3xl font-mono font-semibold">
+          {post.content}
+        </p>
 
         <div className="flex items-center justify-between mt-4 ">
           <div className="flex space-x-2">
             <button
               className={`flex items-center space-x-1 ${
-                liked ? " text-white bg-blue-500 py-2 px-4 rounded hover:bg-blue-600" : "text-white bg-gray-500 py-2 px-4 rounded hover:text-blue-600"
+                liked
+                  ? " text-white bg-blue-500 py-2 px-4 rounded hover:bg-blue-600"
+                  : "text-white bg-gray-500 py-2 px-4 rounded hover:text-blue-600"
               }`}
               onClick={handleLike}
             >
-              <FaThumbsUp
-                className={`w-4 h-4 ${liked ? "text-white" : ""}`}
-              />
+              <FaThumbsUp className={`w-4 h-4 ${liked ? "text-white" : ""}`} />
               <span>{liked ? "Liked" : "Like"}</span>
             </button>
           </div>
           <div className="flex space-x-2">
             <button
-               className="flex items-center space-x-1 bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded"
+              className="flex items-center space-x-1 bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded"
               onClick={handleCommentButtonClick}
             >
               <FaComment className="w-4 h-4" />
@@ -257,8 +260,8 @@ export const PostCard = ({ post }) => {
         </div>
 
         <div className="mt-6">
-        <p className="text-gray-500 text-sm">Comments..</p>
-         
+          <p className="text-gray-500 text-sm">Comments..</p>
+
           {Array.isArray(comments) && (
             <>
               {showAllComments ? (
@@ -267,8 +270,10 @@ export const PostCard = ({ post }) => {
                     key={index}
                     className={`text-gray-700 text-base w-15 overflow-hidden whitespace-normal max-h-24 overflow-y-auto mt-2 `}
                   >
-                     
-                    <strong className="border rounded">{comment.userName}:</strong> {comment.content} 
+                    <strong className="border rounded">
+                      {comment.userName}:
+                    </strong>{" "}
+                    {comment.content}
                     <div className="text-gray-500 text-xs">
                       {formatTimeDifference(comment.createdAt)}
                     </div>
@@ -281,7 +286,6 @@ export const PostCard = ({ post }) => {
                       key={index}
                       className={`text-gray-700 text-base w-15 overflow-hidden whitespace-normal max-h-24 overflow-y-auto mt-2`}
                     >
-                      
                       <strong>{comment.userName}:</strong> {comment.content}
                       <div className="text-gray-500 text-xs">
                         {formatTimeDifference(comment.createdAt)}
@@ -323,7 +327,6 @@ export const PostCard = ({ post }) => {
               placeholder={`Add a comment (max 60 characters)`}
               maxLength="60"
               required
-              
             />
 
             <button
@@ -418,74 +421,70 @@ const CreatePost = () => {
 
   return (
     <div className="newsfeed ">
-  <div className="lg:flex  justify-around gap-4 pl-4 max-w-7xl mx-auto" style={{
-      
-      backgroundSize: 'cover',
-      backgroundColor: 'lightsteelblue'
-    }}
-    >
-      <div className="post-creator h-full w-full  lg:w-1/4 shadow-lg rounded-lg overflow-hidden text-center mt-4 bg-blue-100 lg:sticky lg:top-0 " >
-        <Link href="/community/MyPost">
-          <h2 className=" font-bold text-2xl text-blue-500 pt-2 pb-1">My Post</h2>
-        </Link>
-        <hr />
-        <h2 className="text-3xl text-center pt-2 ">Create Your Post</h2>
-        <form onSubmit={handleSubmit(onSubmit)} className="bg-blue-100  p-6">
-          <div className="form-control justify-center">
-            <div className="flex items-center justify-between">
-              <label className="label">
-                
-               
-                <BsPencilSquare></BsPencilSquare>
-              </label>
-              <p>{newPost.length}/60</p>
-            </div>
-            <textarea
-              {...register("content", { required: true })}
-              value={newPost}
-              onChange={(e) => {
-                handlePostText(e);
-              }}
-              className="p-10 rounded-xl border"
-              placeholder={`Enter your post content (max 60 characters) ${newPost.length}/60`}
-              rows="4"
-              maxLength="60"
-            />
-            {errors.content && (
-              <span className="text-red-600">Content is required</span>
-            )}
-            <div className="form-control w-full mb-4">
-              <label className="label">
-                <span className="label-text font-semibold">Image*</span>
-              </label>
-              <input
-                type="file"
-                {...register("image", { required: true })}
-                className="file-input file-input-bordered w-full"
+      <div className="lg:flex  justify-around gap-4 pl-4 max-w-7xl mx-auto">
+        <div className="post-creator h-full w-full  lg:w-1/4 shadow-lg rounded-lg overflow-hidden text-center mt-4 bg-blue-100 lg:sticky lg:top-0 ">
+          <Link href="/community/MyPost">
+            <h2 className=" font-bold text-2xl text-blue-500 pt-2 pb-1">
+              My Post
+            </h2>
+          </Link>
+          <hr />
+          <h2 className="text-3xl text-center pt-2 ">Create Your Post</h2>
+          <form onSubmit={handleSubmit(onSubmit)} className="bg-blue-100  p-6">
+            <div className="form-control justify-center">
+              <div className="flex items-center justify-between">
+                <label className="label">
+                  <BsPencilSquare></BsPencilSquare>
+                </label>
+                <p>{newPost.length}/60</p>
+              </div>
+              <textarea
+                {...register("content", { required: true })}
+                value={newPost}
+                onChange={(e) => {
+                  handlePostText(e);
+                }}
+                className="p-10 rounded-xl border"
+                placeholder={`Enter your post content (max 60 characters) ${newPost.length}/60`}
+                rows="4"
+                maxLength="60"
               />
+              {errors.content && (
+                <span className="text-red-600">Content is required</span>
+              )}
+              <div className="form-control w-full mb-4">
+                <label className="label">
+                  <span className="label-text font-semibold">Image*</span>
+                </label>
+                <input
+                  type="file"
+                  {...register("image", { required: true })}
+                  className="file-input file-input-bordered w-full"
+                />
+              </div>
             </div>
-          </div>
-          <button className="btn bg-blue-800 hover:bg-blue-600 text-white">
-            Create Post
-          </button>
-        </form>
-      </div>
+            <button className="btn bg-blue-800 hover:bg-blue-600 text-white">
+              Create Post
+            </button>
+          </form>
+        </div>
 
-      <div className="gap-4 flex-1 overflow-y-auto" style={{ marginBottom: '20px' }}>
-      {posts.map((post, index) => (
-  <div key={post._id} className="mt-4">
-    <PostCard post={post} />
-  </div>
-))}
+        <div
+          className="gap-4 flex-1 overflow-y-auto"
+          style={{ marginBottom: "20px" }}
+        >
+          {posts.map((post, index) => (
+            <div key={post._id} className="mt-4">
+              <PostCard post={post} />
+            </div>
+          ))}
+        </div>
 
-</div>
-
-      <div className="pr-4" >
-        <CommunityInfo></CommunityInfo>
+        <div className="pr-4">
+          <CommunityInfo></CommunityInfo>
+        </div>
       </div>
     </div>
-    </div>
-  
   );
 };
 

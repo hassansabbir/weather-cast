@@ -146,7 +146,7 @@ const WeatherDetails = () => {
           headers: {
             "Content-type": "application/json",
           },
-          body: JSON.stringify( favoriteLoc ),
+          body: JSON.stringify(favoriteLoc),
         }
       );
 
@@ -672,6 +672,7 @@ const WeatherDetails = () => {
         </div>
         <div>
           <div
+            id="interactiveWeatherMap"
             className="card h-80 bg-base-100 shadow-xl mt-2 "
             style={{ overflow: "hidden", zIndex: 5 }}
           >
