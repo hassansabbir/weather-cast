@@ -14,27 +14,32 @@ const WeatherCard = ({ locationData }) => {
 
     // Map over the locationData and fetch weather data for each location
     const fetchWeatherData = async () => {
-      const dataPromises = locationData.map((item) => {
-        if (item && item.favoriteLoc && item.favoriteLoc.location) {
-          const location = item.favoriteLoc.location;
-          const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&&units=metric&appid=${apiKey}`;
-          return fetch(apiUrl)
-            .then((res) => res.json())
-            .then((data) => data)
-            .catch((error) => {
-              console.error(`Error fetching data for ${location}:`, error);
-              return null; // Return null for locations with errors
-            });
-        }
-        return null; // Return null for items without valid data
-      });
-
-      const weatherDataArray = await Promise.all(dataPromises);
-      setWeatherData(weatherDataArray.filter((data) => data !== null)); // Filter out null values
-    };
-
-    fetchWeatherData();
-  }, [locationData]);
+        const dataPromises = locationData.map((item) => {
+            if (item && item.location) {
+              const location = item.location;
+              const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&&units=metric&appid=${apiKey}`;
+              return fetch(apiUrl)
+                .then((res) => res.json())
+                .then((data) => data)
+                .catch((error) => {
+                  console.error(`Error fetching data for ${location}:`, error);
+                  return null; // Return null for locations with errors
+                });
+            }
+            return null; // Return null for items without valid data
+          });
+    
+          const weatherDataArray = await Promise.all(dataPromises);
+          setWeatherData(weatherDataArray.filter((data) => data !== null)); // Filter out null values
+        };
+    
+        fetchWeatherData();
+      }, [locationData]);
+      const handleDltbtn=()=>{
+        
+      }
+     
+   
 
   return (
     <div className="">
@@ -81,7 +86,7 @@ const WeatherCard = ({ locationData }) => {
 
                 <h2 className="text-3xl mt-8  font-bold flex items-center gap-2 ">
                   <FaLocationDot className="w-5 h-5" />{" "}
-                  {locationData[index].favoriteLoc.location}
+                  {locationData[index].location}
                 </h2>
                 <p className="text-xl lg:text-2xl ">
                   {moment(data.list?.[0]?.location?.localtime).format(
