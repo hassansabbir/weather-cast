@@ -74,9 +74,26 @@ const posts = [
 
 const BlogPage = () => {
   const [selectedPost, setSelectedPost] = useState(null);
-
+  const [activeIndex, setActiveIndex] = useState(null);
   const handlePostClick = (index) => {
     setSelectedPost(posts[index]);
+
+    if (activeIndex !== null) {
+      const previousActiveElement = document.getElementById(
+        `blog-title-${activeIndex}`
+      );
+      if (previousActiveElement) {
+        previousActiveElement.classList.remove("active-blog");
+      }
+    }
+
+    setActiveIndex(index); // Set the active index when a blog is clicked
+
+    // Apply active class to the clicked blog title
+    const activeElement = document.getElementById(`blog-title-${index}`);
+    if (activeElement) {
+      activeElement.classList.add("active-blog");
+    }
   };
 
   return (
@@ -87,12 +104,21 @@ const BlogPage = () => {
           {posts.map((post, index) => (
             <div
               key={index}
-              className="post-card"
+              className="p-2 post-card"
               onClick={() => handlePostClick(index)}
             >
-              <h2 className="text-blue-800">{post.title}</h2>
+              <div
+                id={`blog-title-${index}`}
+                className={`${
+                  activeIndex === index
+                    ? "bg-blue-400 p-2 rounded transition-all duration-700"
+                    : ""
+                }`}
+              >
+                <h2 className="text-black font-semibold">{post.title}</h2>
 
-              <p>{post.content}</p>
+                <p className="text-black">{post.content}</p>
+              </div>
             </div>
           ))}
         </div>

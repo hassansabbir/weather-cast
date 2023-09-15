@@ -6,9 +6,11 @@ import React, { useContext } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Image from "next/image";
 import logo from "../../assets/weathercastlogo.png";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const currentRoute = usePathname();
 
   const navbar = [
     {
@@ -70,18 +72,33 @@ const Navbar = () => {
                 />
               </svg>
             </label>
+            {/*for mobile */}
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               {navbar.map(({ path, title }) => (
-                <li className="font-semibold text-blue-800 text-lg " key={path}>
+                <li
+                  key={path}
+                  className={`text-lg ${
+                    currentRoute === path ? "active" : "default"
+                  }`}
+                >
                   <Link href={path}>{title}</Link>
                 </li>
               ))}
               {user && (
-                <li className="font-semibold text-blue-800 text-lg ">
-                  <Link href="/dashboard/user-home">Dashboard</Link>
+                <li>
+                  <Link
+                    href="/dashboard/user-home"
+                    className={`text-lg ${
+                      currentRoute === "/dashboard/user-home"
+                        ? "active"
+                        : "default"
+                    }`}
+                  >
+                    Dashboard
+                  </Link>
                 </li>
               )}
             </ul>
@@ -92,15 +109,29 @@ const Navbar = () => {
           <Image src={logo} />
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="flex space-x-8">
             {navbar.map(({ path, title }) => (
-              <li className="font-semibold text-blue-800 text-lg " key={path}>
+              <li
+                key={path}
+                className={`text-lg ${
+                  currentRoute === path ? "active" : "default"
+                }`}
+              >
                 <Link href={path}>{title}</Link>
               </li>
             ))}
             {user && (
-              <li className="font-semibold text-blue-800 text-lg ">
-                <Link href="/dashboard/user-home">Dashboard</Link>
+              <li>
+                <Link
+                  href="/dashboard/user-home"
+                  className={`text-lg ${
+                    currentRoute === "/dashboard/user-home"
+                      ? "active"
+                      : "default"
+                  }`}
+                >
+                  Dashboard
+                </Link>
               </li>
             )}
           </ul>
