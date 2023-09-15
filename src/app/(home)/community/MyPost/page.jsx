@@ -125,7 +125,7 @@ const MyPost = () => {
   };
 
   return (
-    <div className="my-4 mx-4">
+    <div className="my-4 mx-4" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridGap: '16px' }}>
       {myPosts.map((post) => (
         <div
           key={post._id}
@@ -139,7 +139,8 @@ const MyPost = () => {
             <p className="text-gray-600">Created At: {post.createdAt}</p>
             <p className="text-gray-600">Email: {post.authorEmail}</p>
             {post.likes && <p className="text-gray-600">Likes: {post.likes}</p>}
-            <button
+           <div className="flex gap-2">
+           <button
               onClick={() => handleDelete(post._id)}
               className="bg-red-500 text-white py-1 px-2 mt-2 rounded hover:bg-red-600"
             >
@@ -151,6 +152,7 @@ const MyPost = () => {
             >
               Update
             </button>
+           </div>
           </div>
           <div>
             <div>
