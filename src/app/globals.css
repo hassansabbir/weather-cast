@@ -47,6 +47,14 @@
     }
   } */
 
+.default {
+  @apply text-black font-semibold;
+}
+
+.active {
+  @apply font-semibold text-blue-800 border-b-2 pb-1  border-blue-600 rounded  transition-all duration-700;
+}
+
 @layer base {
   .animate-slide-right-1 {
     animation: slide-right-1 38s linear infinite;
