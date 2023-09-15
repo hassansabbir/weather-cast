@@ -83,7 +83,7 @@ const WeatherCard = ({ locationData }) => {
         <div key={index} className="mx-auto lg:mt-16">
           <div className="">
             
-            <div className="weather-card z-1 grid-cols-8 mx-auto mb-8 shadow-xl  rounded-3xl p-10 border h-40% w-full glass m">
+            <div className="weather-card z-0  grid-cols-8 mx-auto mb-8 shadow-xl  rounded-3xl p-10 border h-40% w-full glass m">
 
               {/* delete button  */}
               <div className="relative">
