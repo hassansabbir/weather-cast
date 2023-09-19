@@ -10,7 +10,7 @@ const Intelligence = () => {
   return (
     <div className="bg-intelligence py-10">
       <div className="max-w-[1460px] mx-auto my-28">
-        <AOSInitializer></AOSInitializer>;
+        <AOSInitializer></AOSInitializer>
         <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center -space-x-16">
           <div
             data-aos="fade-up"
@@ -31,24 +31,22 @@ const Intelligence = () => {
                 Weather Intelligence
               </span>
             </h1>
-            <p className="mt-5 text-justify">
+            <p className="mt-5 text-xl text-justify">
               Step into a new era of real-time weather intelligence with our
               innovative website. We bring you the latest breakthroughs in
               weather forecasting, ensuring you receive precise and
               up-to-the-minute updates that enable you to make informed
               decisions. Stay one step ahead of ever-changing weather conditions
               by harnessing cutting-edge technology, personalized insights, and
-              a wealth of comprehensive data at your fingertips. Embark on a
-              journey that will redefine your weather awareness and planning
-              experience like never before. Don't let the weather catch you off
-              guard be in control with our state-of-the-art platform.
+              a wealth of comprehensive data at your fingertips. Don't let the
+              weather catch you off guard be in control with our
+              state-of-the-art platform.
             </p>
-            <p className="mt-5 text-justify">
-              This is the future of weather forecasting, and it's available to
-              you right now. Join us on this incredible journey and witness
-              firsthand the transformation in how you interact with the weather.
-              Say goodbye to uncertainty and hello to unparalleled weather
-              intelligence welcome to the future!
+            <p className="mt-5 text-xl text-justify">
+              This is the future of weather forecasting. Join us on this
+              incredible journey and witness firsthand the transformation in how
+              you interact with the weather. Say goodbye to uncertainty and
+              hello to unparalleled weather intelligence welcome to the future!
             </p>
           </div>
         </div>

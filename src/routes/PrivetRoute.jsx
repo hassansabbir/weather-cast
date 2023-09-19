@@ -2,6 +2,7 @@ import useAuth from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
+import "./loaderStyle.css";
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -9,11 +10,7 @@ const PrivateRoute = ({ children }) => {
 
   const privetRoutAction = () => {
     if (loading) {
-      return (
-        <div className="text-center mt-72">
-          <span className="loading  loading-spinner loading-lg"></span>
-        </div>
-      );
+      return <div className="loader">Loading...</div>;
     }
     if (!user) {
       Swal.fire({

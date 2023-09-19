@@ -27,7 +27,7 @@ import PressureChart from "../PressureChart";
 
 import WindChart from "../WindChart";
 import HourlyForcast from "../HourlyForcast/HourlyForcast";
-
+import "./loaderStyle.css";
 import { FaRegClock, FaRegStar, FaStar } from "react-icons/fa";
 import { AuthContext } from "@/Providers/AuthProvider";
 
@@ -97,9 +97,8 @@ const WeatherDetails = () => {
 
   if (!weather) {
     return (
-      <div className="flex justify-center mt-20">
-        <span className="loading loading-bars text-blue-800 loading-lg"></span>
-        <span className="loading loading-bars text-blue-800 loading-lg"></span>
+      <div className="flex justify-center mt-96">
+        <div className="loader">Loading...</div>
       </div>
     );
   }
