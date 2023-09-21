@@ -3,10 +3,10 @@ import React from "react";
 
 const RecentBlog = () => {
   return (
-    <div>
+    <div className="p-5">
       <h1 className="text-center font-bold text-4xl">Recent blog Post</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 mt-4 -space-x-32 ">
-        <div className="mt-4 ">
+      <div className="lg:flex gap-20 mt-4 mb-10">
+        <div className="mt-4 w-full ">
           <Image
             src="https://i.ibb.co/61fHgFh/pexels-george-desipris-826388.jpg"
             alt=""
@@ -15,10 +15,10 @@ const RecentBlog = () => {
             className="rounded sm:order-1"
           />
           <div className="mt-3 sm:order-2">
-            <h1 className="text-xl sm:text-2xl md:text-2xl lg:text-3xl font-semibold mb-2">
+            <h1 className="text-xl lg:text-3xl font-semibold mb-2 ">
               Exploring the Majesty of Ocean Waves
             </h1>
-            <p className="text-sm sm:text-base md:text-base lg:text-lg text-justify mr-44">
+            <p className="text-sm sm:text-base md:text-base lg:text-lg text-justify ">
               Ocean waves are a symbol of the sea's untamed power and beauty.
               They inspire awe, provide recreation, and support life beneath the
               surface. As we stand on the shore, watching the waves roll in, we
@@ -28,19 +28,19 @@ const RecentBlog = () => {
           </div>
         </div>
         <div className="mt-4 space-y-14">
-          <div className="flex">
+          <div className="lg:flex gap-10">
             <Image
               src="https://i.ibb.co/BcCnfMb/pexels-sabeel-ahammed-68357.jpg"
               width={320}
               height={200}
-              className="rounded"
+              className="rounded w-full"
               alt=""
             />
-            <div className="ml-4">
+            <div className="">
               <h1 className="text-xl sm:text-2xl md:text-2xl lg:text-3xl font-semibold mb-2">
                 Rainy Day Precautions: What to Do When It's Raining
               </h1>
-              <p className="text-sm sm:text-base md:text-base lg:text-lg text-justify">
+              <p className="text-sm text-justify">
                 When it's raining, especially if it's a heavy or prolonged rain,
                 it's important to take certain precautions and adapt your
                 activities to stay safe and comfortable. Remember that light
@@ -48,19 +48,19 @@ const RecentBlog = () => {
               </p>
             </div>
           </div>
-          <div className="flex mt-4">
+          <div className="lg:flex mt-4 gap-10">
             <Image
               src="https://i.ibb.co/fH802hn/landscape-building-ruins-bare-trees-water-cloudy-sky-gloomy-day.jpg"
               width={320}
               height={200}
-              className="rounded"
+              className="rounded w-full"
               alt=""
             />
-            <div className="ml-4">
+            <div className="">
               <h1 className="text-xl sm:text-2xl md:text-2xl lg:text-3xl font-semibold mb-2">
                 Rainy Day Precautions: What to Do When It's Raining
               </h1>
-              <p className="text-sm sm:text-base md:text-base lg:text-lg text-justify">
+              <p className="text-sm text-justify">
                 When it's raining, especially if it's a heavy or prolonged rain,
                 it's important to take certain precautions and adapt your
                 activities to stay safe and comfortable. Remember that light
@@ -70,7 +70,7 @@ const RecentBlog = () => {
           </div>
         </div>
       </div>
-      <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 -space-x-32">
+      <div className="mt-4 lg:flex gap-20">
         <Image
           src="https://i.ibb.co/dbcvdBc/icelandic-geyser-panoramic-scenery-near-reykjavik-holes-erupting-creating-beautiful-fountain-with-ho.jpg"
           width={550}
@@ -79,10 +79,10 @@ const RecentBlog = () => {
           alt=""
         />
         <div className="mt-3 sm:mt-0">
-          <h1 className="text-xl sm:text-2xl md:text-2xl lg:text-3xl font-semibold mb-2">
+          <h1 className="text-xl lg:text-3xl font-semibold mb-2">
             Surviving a Drought: Essential Tips and Actions for Dry Spells
           </h1>
-          <p className="text-sm sm:text-base md:text-base lg:text-lg text-justify">
+          <p className="text-sm  text-justify">
             Droughts, periods of prolonged dryness and water scarcity, can pose
             significant challenges to communities and individuals alike.
             However, armed with the right knowledge and proactive measures, it
