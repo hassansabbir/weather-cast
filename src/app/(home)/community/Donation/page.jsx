@@ -1,10 +1,50 @@
+"use client";
+
 import React from 'react';
 import donation from '../../../../assets/donation.jpg'
 import donation2 from '../../../../assets/donation2.svg'
 import Image from 'next/image';
 import Link from 'next/link';
+import  { useContext, useState } from "react";
+import { AuthContext } from "@/Providers/AuthProvider"; 
 
 const DonationPage = () => {
+
+     const { user } = useContext(AuthContext); 
+
+  const [donationAmount, setDonationAmount] = useState(0);
+
+  const handleDonationChange = (event) => {
+    setDonationAmount(parseFloat(event.target.value));
+  };
+
+  const handleDonationSubmit = (event) => {
+    event.preventDefault();
+  
+    
+    const dataToSend = {
+      donationAmount,
+      displayName: user?.displayName || "Anonymous",
+      email: user?.email || "Unknown",
+    };
+  
+    fetch("https://weather-cast-server.vercel.app/donation", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dataToSend),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        window.location.replace(result.url)
+        console.log("Server response:", result);
+      })
+      .catch((error) => {
+        console.error("Error sending donation:", error);
+      });
+  
+    console.log(`Donation amount: $${donationAmount}`);
+    console.log(`Donated by: ${user?.displayName || "Anonymous"} (${user?.email || "Unknown"})`);
+  };
     return (
         <div className='max-w-[1460px] mx-auto'>
             <div className='flex flex-row justify-center items-center gap-1 '>
@@ -33,11 +73,29 @@ const DonationPage = () => {
                 </div>
                 <div className=' border-zinc-30 bg-orange-100 rounded-lg p-20'>
                 <div className='flex flex-col gap-10'>
-                    <input type="number" 
-                  placeholder="amount of money"
-                  className="input input-bordered p-5 "
-                  name="name"/>
-                    <button className='btn px-8 pt-6 pb-6 text-2xl bg-emerald-300'>Donate Now!</button>
+                <h3 className="text-xl font-semibold mt-4">Make a Donation</h3>
+      <form onSubmit={handleDonationSubmit}>
+        <div className="mb-4">
+          <label className="block text-gray-600">Donation Amount ($)</label>
+          <input
+            type="number"
+            step="0.01"
+            min="0"
+            value={donationAmount}
+            onChange={handleDonationChange}
+            className="border rounded-lg p-2 w-full"
+          />
+        </div>
+        <p className="text-gray-600">
+          Donated by: {user?.displayName || "Anonymous"} ({user?.email || "Unknown"})
+        </p>
+        <button
+          type="submit"
+          className="bg-blue-500 text-white rounded-lg p-2 w-full hover:bg-blue-600"
+        >
+          Donate
+        </button>
+      </form>
                 </div>
                 </div>
             </div>
