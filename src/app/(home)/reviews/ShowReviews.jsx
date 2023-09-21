@@ -27,7 +27,7 @@ const ShowReviews = () => {
   return (
     <div className="py-16 reviewSection mb-16">
       <h2 className="text-3xl md:text-5xl font-bold my-10 text-center">
-        Our Top Reviews
+        Our <span className="text-blue-800">Top</span> Reviews
       </h2>
       <Swiper
         effect={"coverflow"}

@@ -50,7 +50,7 @@ const Reviews = ({ setReviews }) => {
   return (
     <div className="flex flex-col mb-10 rounded-3xl w-8/12 mx-auto justify-center items-center">
       <h2 className="text-3xl lg:text-5xl font-bold mb-10">
-        Give your Reviews
+        Leave <span className="text-blue-800">Your</span> Review
       </h2>
       <AOSInitializer></AOSInitializer>
       <div
