@@ -72,7 +72,7 @@ const CommunityInfo = () => {
       </ul>
       <h2 className="animate-pulse bg-gradient-to-r  from-red-800 p-5 shadow-xl rounded-2xl via-blue-650 text-2xl font-bold text-center to-red-500 bg-clip-text text-transparent ">
         <Link href="/community/Donation">
-        <button>Donation Now</button>
+        <button>Donation Now!</button>
         </Link>
       </h2>
 

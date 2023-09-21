@@ -37,7 +37,7 @@ const DonationPage = () => {
                   placeholder="amount of money"
                   className="input input-bordered p-5 "
                   name="name"/>
-                    <button className='btn px-8 pt-6 pb-6 text-2xl bg-emerald-300'>Donate Now</button>
+                    <button className='btn px-8 pt-6 pb-6 text-2xl bg-emerald-300'>Donate Now!</button>
                 </div>
                 </div>
             </div>
