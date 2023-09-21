@@ -18,6 +18,7 @@ import WeatherMap from "../SimpleWeatherMap";
 import { BiCurrentLocation } from "react-icons/bi";
 import Swal from "sweetalert2";
 
+import "./loaderStyle.css";
 
 const fetchWeather = async (latitude, longitude, setWeather) => {
   const apiKey = "41a5c84ae7ccfff1bc9491b25aa4dbde";
@@ -91,12 +92,7 @@ const WeatherUpdates = () => {
   , [isSearching, searchQuery]);
 
   if (!weather) {
-    return (
-      <div className="flex justify-center mt-20">
-        <span className="loading text-blue-800 loading-bars loading-lg"></span>
-        <span className="loading text-blue-800 loading-bars loading-lg"></span>
-      </div>
-    );
+    return <div className="loader">Loading...</div>;
   }
 
   const handleSearch = (e) => {

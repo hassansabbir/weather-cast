@@ -5,17 +5,12 @@ import { AuthContext } from "@/Providers/AuthProvider";
 import { useRouter } from "next/navigation";
 import React, { useContext } from "react";
 
-
 const profilePage = () => {
   const { user, loading } = useContext(AuthContext);
   const router = useRouter();
 
   if (loading) {
-    return (
-      <div className="text-center mt-72">
-        <span className="loading  loading-spinner loading-lg"></span>
-      </div>
-    );
+    return <div className="loader">Loading...</div>;
   }
   if (!user) {
     router.push("/");
