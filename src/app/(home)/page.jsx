@@ -10,7 +10,7 @@ import TawkComponent from "./TawkComponent";
 import ProductSection from "./featureTechnology/ProductSection";
 import OurServices from "./OurServices";
 import Intelligence from "./intelligence/Intelligence";
-import WeatherMap from "./WMap";
+// import WeatherMap from "./WMap";
 
 const HomePage = () => {
   return (

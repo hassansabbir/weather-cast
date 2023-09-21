@@ -1,5 +1,11 @@
+"use client";
+
 import React, { useContext, useState } from "react";
 import { AuthContext } from "@/Providers/AuthProvider"; 
+
+
+import Link from "next/link";
+
 
 const CommunityInfo = () => {
   const communityInfoStyle = {
@@ -65,10 +71,12 @@ const CommunityInfo = () => {
         <li>Share your own knowledge and expertise.</li>
       </ul>
       <h2 className="animate-pulse bg-gradient-to-r  from-red-800 p-5 shadow-xl rounded-2xl via-blue-650 text-2xl font-bold text-center to-red-500 bg-clip-text text-transparent ">
-        Donation Feature Is Coming soon...
+        <Link href="/community/Donation">
+        <button>Donation Now</button>
+        </Link>
       </h2>
 
-      <h3 className="text-xl font-semibold mt-4">Make a Donation</h3>
+      {/* <h3 className="text-xl font-semibold mt-4">Make a Donation</h3>
       <form onSubmit={handleDonationSubmit}>
         <div className="mb-4">
           <label className="block text-gray-600">Donation Amount ($)</label>
@@ -90,7 +98,7 @@ const CommunityInfo = () => {
         >
           Donate
         </button>
-      </form>
+      </form> */}
     </div>
   );
 };
