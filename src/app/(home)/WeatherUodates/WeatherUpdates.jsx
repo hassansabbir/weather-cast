@@ -14,6 +14,10 @@ import dynamic from "next/dynamic";
 import { Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { FaExternalLinkAlt } from "react-icons/fa";
+import WeatherMap from "../SimpleWeatherMap";
+import { BiCurrentLocation } from "react-icons/bi";
+import Swal from "sweetalert2";
+
 import "./loaderStyle.css";
 
 const fetchWeather = async (latitude, longitude, setWeather) => {
@@ -21,18 +25,100 @@ const fetchWeather = async (latitude, longitude, setWeather) => {
 
   // fetch current weather api
   const CurrentWeatherResponse = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`
+    `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`
   );
   const currentWeatherData = await CurrentWeatherResponse.json();
   setWeather(currentWeatherData);
 };
 
+const fetchWeatherByCity = async (city, setWeather) => {
+  const apiKey = "41a5c84ae7ccfff1bc9491b25aa4dbde"; // Replace with your API key
+  const unit = "metric"; // You can change the unit to your desired format
+
+  try {
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`
+    );
+
+    if (response.ok) {
+      const weatherData = await response.json();
+      setWeather(weatherData);
+    } else {
+      console.error("Error fetching weather data for the city");
+      setWeather(null); // Clear the weather data in case of an error
+    }
+  } catch (error) {
+    console.error("An error occurred while fetching weather data:", error);
+    alert("An error occurred while fetching weather data. Please try again later.");
+ 
+    setWeather(null);
+  }
+};
+
 const WeatherUpdates = () => {
   const [weather, setWeather] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isSearching, setIsSearching] = useState(false);
   console.log(weather);
   const [positions, setPositions] = useState([0, 0]);
 
   useEffect(() => {
+    if (isSearching) {
+      // Fetch weather data for the searched city using searchQuery
+      fetchWeatherByCity(searchQuery, setWeather);
+    } else {
+      // Fetch weather data for the user's current location
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+  
+            // Define 'positions' array here
+            setPositions([latitude, longitude]);
+  
+            fetchWeather(latitude, longitude, setWeather);
+          },
+          (error) => {
+            console.error("Error getting user location:", error);
+          }
+        );
+      } else {
+        console.error("Geolocation is not supported by this browser.");
+      }
+    }
+  }
+   
+  , [isSearching, searchQuery]);
+
+  if (!weather) {
+    return <div className="loader">Loading...</div>;
+  }
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const query = searchQuery.trim();
+  
+    if (query === "") {
+      // Show an error alert when the search query is empty
+      Swal.fire({
+        title: "Please enter a city name.",
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutUp",
+        },
+      });
+    } else {
+      setIsSearching(true);
+      // Fetch weather data for the searched city using searchQuery
+      fetchWeatherByCity(query, setWeather);
+    }
+   
+  };
+
+  const handleCurrentLocation=()=>{
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -42,6 +128,7 @@ const WeatherUpdates = () => {
           // Define 'positions' array here
           setPositions([latitude, longitude]);
 
+          // Fetch weather data for the current location
           fetchWeather(latitude, longitude, setWeather);
         },
         (error) => {
@@ -51,11 +138,14 @@ const WeatherUpdates = () => {
     } else {
       console.error("Geolocation is not supported by this browser.");
     }
-  }, []);
-
-  if (!weather) {
-    return <div className="loader">Loading...</div>;
   }
+
+  const handleClearSearch = () => {
+    setSearchQuery("");
+    setIsSearching(false);
+    setWeather(null);
+  };
+  
 
   const MapContainer = dynamic(
     () => import("react-leaflet").then((mod) => mod.MapContainer),
@@ -75,14 +165,10 @@ const WeatherUpdates = () => {
   //  temperature , location , current date , feels like
   const weatherMain = weather?.weather[0]?.main;
   const weatherIcon = getWeatherIcon(weatherMain);
-  const currentTemperatureKelvin = weather?.main?.temp;
-  const feelsLikeTemperatureKelvin = weather?.main?.feels_like;
-  const currentTemperatureCelsius = Math.round(
-    currentTemperatureKelvin - 273.15
-  );
-  const feelsLikeTemperatureCelsius = Math.round(
-    feelsLikeTemperatureKelvin - 273.15
-  );
+  // const currentTemperatureKelvin = weather?.main?.temp;
+  // const feelsLikeTemperatureKelvin = weather?.main?.feels_like;
+  const currentTemperatureCelsius = Math.round(weather?.main?.temp);
+  const feelsLikeTemperatureCelsius = Math.round( weather?.main?.feels_like);
   const location = weather?.name;
   const weatherDescription = weather?.weather[0]?.main;
   const windSpeed = weather?.wind?.speed;
@@ -110,8 +196,41 @@ const WeatherUpdates = () => {
     >
       <div className=" max-w-[1460px] mx-auto px-5 lg:flex m-16">
         <div className="weather-card bg-white bg-opacity-70 grid-cols-8 mx-auto  rounded-3xl p-5 lg:p-14 border">
+                  {/* Search bar */}
+                  <div  className="w-7/12 flex items-center gap-5 mx-auto text-center mb-7">
+
+<div className="border mx-auto  flex justify-between p-2  border-blue-800 rounded-2xl">
+        <input
+          className="me-2 ps-5 w-full text-2xl bg-transparent border-white"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          type="text"
+          name="search"
+          placeholder="Enter city name"
+        />
+        <button onClick={handleClearSearch}>
+                <div className=" text-blue-800 font-semibold p-3 cursor-pointer rounded-full">
+                  X 
+                </div>
+              </button>
+        <button onClick={handleCurrentLocation}>
+          <div className=" bg-blue-800 text-white p-3 cursor-pointer rounded-full">
+            <BiCurrentLocation className="w-5 h-5" />
+          </div>
+        </button>
+      </div>
+
+          <button onClick={handleSearch}
+         className="btn btn-outline text-lg text-blue-800 border-blue-800 hover:border-blue-800 hover:bg-blue-800 "
+          >
+            Search
+          </button>
+
+        </div>
+               
           <div className="lg:flex gap-5">
             <div className="">
+       
               <div className="grid grid-cols-2 justify-between">
                 <div>
                   <p className="font-semibold text-lg">Current Weather</p>
@@ -211,29 +330,33 @@ const WeatherUpdates = () => {
             </div>
             <div
               className=" weather-related-card grid-cols-4 rounded-3xl z-0  "
-              style={{ overflow: "hidden", zIndex: 5 }}
+              style={{ overflow: "hidden", zIndex: 5 , "height" : "620px", "width" : "500px" }}
             >
-              <div>
-                {typeof window !== "undefined" && (
-                  <MapContainer
-                    className="z-0"
-                    center={positions}
-                    zoom={13}
-                    scrollWheelZoom={false}
-                    style={{ height: "620px", width: "500px" }}
-                  >
-                    <TileLayer
-                      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    />
-                    <Marker position={positions} icon={customIcon}>
-                      <Popup>
-                        A pretty CSS3 popup. <br /> Easily customizable.
-                      </Popup>
-                    </Marker>
-                  </MapContainer>
-                )}
-              </div>
+              {isSearching ? (
+                
+     <WeatherMap  city={searchQuery} /> 
+       ) : (
+  typeof window !== "undefined" && (
+    <MapContainer
+      className="z-0"
+      center={positions}
+      zoom={13}
+      scrollWheelZoom={false}
+      style={{ height: "620px", width: "500px" }}
+    >
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      <Marker position={positions} icon={customIcon}>
+        <Popup>
+          A pretty CSS3 popup. <br /> Easily customizable.
+        </Popup>
+      </Marker>
+    </MapContainer>
+  )
+)}
+              
             </div>
           </div>
         </div>
