@@ -1,17 +1,22 @@
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const BlogCard = ({ blog }) => {
   return (
-    <div className="mx-auto w-full max-w-sm pt-6 ">
+    <div className="mx-auto w-full max-w-sm rounded-2xl bg-blue-100">
       <div className="flex justify-center overflow-hidden ">
         <div className="w-full transform transition-transform duration-500 ease-in-out hover:scale-110">
-          <Image width={384} height={200} src={blog?.photo} alt="" />
+          <img
+            className="h-[250px] w-full rounded-t-2xl"
+            // width={384}
+            // height={200}
+            src={blog?.photo}
+            alt=""
+          />
         </div>
       </div>
 
-      <div className="bg-blue-100 p-5">
+      <div className=" p-5">
         <h2 className="text-base font-medium text-gray-800 md:text-lg">
           {blog?.name}
         </h2>

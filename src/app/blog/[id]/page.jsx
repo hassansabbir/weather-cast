@@ -17,9 +17,9 @@ const BlogDetail = ({ params }) => {
   }, []);
 
   return (
-    <div className="mt-6 bg-gray-50">
-      <div className=" px-10 py-6 mx-auto">
-        <div className="max-w-6xl px-10 py-6 mx-auto bg-gray-50">
+    <div className="p-5 mt-6 bg-gray-50">
+      <div className="mx-auto">
+        <div className="max-w-6xl mx-auto bg-gray-50">
           <img
             className="object-cover w-full shadow-sm h-full block transition duration-200 transform hover:scale-110"
             src={blog.photo}
@@ -31,12 +31,12 @@ const BlogDetail = ({ params }) => {
             </h1>
           </div>
           <div className="mt-2">
-            <h1 className="sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl font-bold text-blue-600 ">
+            <h1 className="text-2xl lg:text-4xl font-bold text-blue-600 ">
               {blog.title}
             </h1>
           </div>
 
-          <div className="max-w-4xl px-10  mx-auto text-2xl text-gray-700 mt-4 rounded bg-gray-100">
+          <div className="lg:text-2xl text-gray-700 mt-4 rounded bg-gray-100">
             <div>
               <p className="mt-2 p-8 text-justify">{blog.description}</p>
             </div>

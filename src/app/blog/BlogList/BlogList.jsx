@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import BlogCard from "../BlogCard/BlogCard";
 import noResult from "../../../assets/animation_lmrh0wcb.json";
 import Lottie from "lottie-react";
+import Pagination from "../Pagination/Pagination";
 
 const BlogList = ({ searchText }) => {
   const [blogs, setBlogs] = useState([]);
@@ -48,32 +49,17 @@ const BlogList = ({ searchText }) => {
           <Lottie animationData={noResult}></Lottie>
         </div>
       )}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10 mt-10">
         {blogs.map((blog) => (
           <BlogCard key={blog._id} blog={blog} />
         ))}
       </div>
-      {totalResults === 0 && (
-        <div className="text-center mt-10">
-          <button
-            className="mr-5 bg-blue-800 text-white font-semibold rounded px-5 py-3"
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            Previous
-          </button>
-          <span className="font-semibold">
-            {currentPage} of {totalPages}
-          </span>
-          <button
-            className="ml-5  bg-blue-800 text-white font-semibold rounded px-5 py-3"
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            Next
-          </button>
-        </div>
-      )}
+
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 };
