@@ -1,0 +1,231 @@
+[
+  {
+    "photo": "https://i.ibb.co/rkC4yqm/Tornado-Damage.jpg",
+    "name": "Tornadoes",
+    "title": "Twisting Fury: Decoding the Secrets of Tornadoes",
+    "description": "Tornadoes are powerful tropical storms. Tornadoes are violently rotating columns of air that extend from a thunderstorm to the ground. Tornadoes can break buildings, flip cars, and create deadly flying debris.",
+    "steps": [
+      "Stay away from windows, doors, and outside walls.",
+      "Do not go under an overpass or bridge. You are safer in a low, flat location.",
+      "Watch out for flying debris that can cause injury or death.",
+      "If you can not stay at home, make plans to go to a public shelter."
+    ]
+  },
+  {
+    "photo": "https://i.ibb.co/2yRn94j/tsunami.jpg",
+    "name": "Tsunamis",
+    "title": "Monsters of the Deep: Unleashing the Tsunami's Fury",
+    "description": "Tsunamis are large ocean waves typically caused by underwater earthquakes, volcanic eruptions, or landslides. When they reach the coast, they can inundate low-lying areas, causing widespread destruction.",
+
+    "steps": [
+      "Many coastal areas have tsunami warning systems in place. Pay attention to alerts on the radio, TV, or through official smartphone apps. These warnings can provide crucial time for evacuation.",
+      "Familiarize yourself with the evacuation routes and the nearest safe zones or shelters. These routes are often marked with signs or indicated on local maps.",
+      " If you're near the coast, move as far inland as possible and go uphill if available. Tsunamis can inundate low-lying areas and cause devastation near the shore."
+    ]
+  },
+  {
+    "photo": "https://i.ibb.co/80zMBdM/wildfires.jpg",
+    "name": "Wildfires Strike",
+    "title": "Infernos Unleashed: The Science of Wildfires",
+    "description": "Wildfires are a frightening and destructive force of nature. When they occur, taking swift and informed action can make all the difference in protecting lives, property, and the environment.",
+
+    "steps": [
+      "Monitor local news, radio, and weather apps for updates on wildfire conditions. Authorities often issue evacuation orders or warnings.",
+      "Assemble an emergency kit with essentials like water, non-perishable food, first-aid supplies, clothing, flashlights, and important documents. Make sure everyone in your household knows its location.",
+      "Consider installing fire-resistant roofing materials, siding, and windows. Seal gaps where embers could enter your home."
+    ]
+  },
+  {
+    "photo": "https://i.ibb.co/y8ccGZ5/hurricane.jpg",
+    "name": "Hurricanes",
+    "title": "The Wrath of Hurricanes: Nature's Fiercest Storms",
+    "description": "Hurricanes, also known as cyclones or typhoons in different parts of the world, are colossal and devastating tropical storms that originate over warm ocean waters. They are characterized by their spiraling, low-pressure centers and strong winds that can exceed 74 miles per hour (119 kilometers per hour). Hurricanes are classified into categories from 1 (least severe) to 5 (most severe) based on their sustained wind speeds. The formation of a hurricane begins with a cluster of thunderstorms over warm ocean waters. As warm, moist air rises, it creates an area of low pressure beneath it. This low-pressure area draws in more air, which then rises and cools, forming clouds and releasing heat. As this process continues and intensifies, a rotating system develops, which can ultimately transform into a hurricane.",
+    "steps": [
+      "Take refuge in a designated storm shelter or an interior room for high winds.",
+      "Do not walk, swim or drive through flood waters. Turn Around. Do not Drown! Just six inches of fast-moving water can knock you down, and one foot of moving water can sweep your vehicle away.",
+      "Go to the highest level of the building if you are trapped by flooding. Do not climb into a closed attic. You may become trapped by rising flood water.",
+      "If you live in a mandatory evacuation zone and local officials tell you to evacuate, do so immediately."
+    ]
+  },
+  {
+    "photo": "https://i.ibb.co/R7mrSPG/flood.jpg",
+    "name": "Floods",
+    "title": "Rising Waters: The Devastation of Floods",
+    "description": "Flooding is a temporary overflow of water onto land that is normally dry. Failing to evacuate flooded areas or entering flood waters can lead to injury or death. Floods may,Result from rain, snow, coastal storms, storm surges and overflows of dams and other water systems. Develop slowly or quickly. Flash floods can come with no warning. Cause outages, disrupt transportation, damage buildings and create landslides.",
+    "steps": [
+      "Do not walk, swim or drive through flood waters. Turn Around. Do not Drown!",
+      "Stay inside your car if it is trapped in rapidly moving water. Get on the roof if water is rising inside the car.",
+      "Get to the highest level if trapped in a building. Only get on the roof if necessary and once there signal for help. Do not climb into a closed attic to avoid getting trapped by rising floodwater.",
+      "Evacuate immediately, if told to evacuate. Never drive around barricades. Local responders use them to safely direct traffic out of flooded areas."
+    ]
+  },
+  {
+    "photo": "https://i.ibb.co/BrhJ5QZ/earthquake.jpg",
+    "name": "Earthquakes",
+    "title": "Shaking Ground: Understanding Earthquakes and Their Impact",
+    "description": "An earthquake is a sudden, rapid shaking of the ground caused by the shifting of rocks deep underneath the earth’s surface. Earthquakes can cause fires, tsunamis, landslides or avalanches. While they can happen anywhere without warning, areas at higher risk for earthquakes include Alaska, California, Hawaii, Oregon, Puerto Rico, Washington and the entire Mississippi River Valley.",
+    "steps": [
+      "If you are in a car, pull over and stop. Set your parking brake.",
+      "If you are in bed, turn face down and cover your head and neck with a pillow.",
+      "If you are outdoors, stay outdoors away from buildings.",
+      "If you are inside, stay and do not run outside and avoid doorways."
+    ]
+  },
+  {
+    "photo": "https://images.pexels.com/photos/5109305/pexels-photo-5109305.jpeg",
+    "name": "Volcanic Eruptions",
+    "title": "The release of molten rock, ash, and gases from a volcano.",
+    "description": "An earthquake is a sudden, rapid shaking of the ground caused by the shifting of rocks deep underneath the earth’s surface. Earthquakes can cause fires, tsunamis, landslides or avalanches. While they can happen anywhere without warning, areas at higher risk for earthquakes include Alaska, California, Hawaii, Oregon, Puerto Rico, Washington and the entire Mississippi River Valley.",
+    "steps": [
+      "If you are in a car, pull over and stop. Set your parking brake.",
+      "If you are in bed, turn face down and cover your head and neck with a pillow.",
+      "If you are outdoors, stay outdoors away from buildings.",
+      "If you are inside, stay and do not run outside and avoid doorways."
+    ]
+  },
+  {
+    "photo": "https://images.pexels.com/photos/60013/desert-drought-dehydrated-clay-soil-60013.jpeg",
+    "name": "Droughts",
+    "title": "Prolonged periods of abnormally low rainfall, leading to water shortages",
+    "description": "An earthquake is a sudden, rapid shaking of the ground caused by the shifting of rocks deep underneath the earth’s surface. Earthquakes can cause fires, tsunamis, landslides or avalanches. While they can happen anywhere without warning, areas at higher risk for earthquakes include Alaska, California, Hawaii, Oregon, Puerto Rico, Washington and the entire Mississippi River Valley.",
+    "steps": [
+      "If you are in a car, pull over and stop. Set your parking brake.",
+      "If you are in bed, turn face down and cover your head and neck with a pillow.",
+      "If you are outdoors, stay outdoors away from buildings.",
+      "If you are inside, stay and do not run outside and avoid doorways."
+    ]
+  },
+  {
+    "photo": "https://i.ibb.co/BrhJ5QZ/earthquake.jpg",
+    "name": "Landslides",
+    "title": "The downward movement of rock, soil, and debris on slopes.",
+    "description": "An earthquake is a sudden, rapid shaking of the ground caused by the shifting of rocks deep underneath the earth’s surface. Earthquakes can cause fires, tsunamis, landslides or avalanches. While they can happen anywhere without warning, areas at higher risk for earthquakes include Alaska, California, Hawaii, Oregon, Puerto Rico, Washington and the entire Mississippi River Valley.",
+    "steps": [
+      "If you are in a car, pull over and stop. Set your parking brake.",
+      "If you are in bed, turn face down and cover your head and neck with a pillow.",
+      "If you are outdoors, stay outdoors away from buildings.",
+      "If you are inside, stay and do not run outside and avoid doorways."
+    ]
+  },
+  {
+    "photo": "https://images.pexels.com/photos/4969834/pexels-photo-4969834.jpeg",
+    "name": "Blizzards",
+    "title": "Severe snowstorms with strong winds and reduced visibility.",
+    "description": "An earthquake is a sudden, rapid shaking of the ground caused by the shifting of rocks deep underneath the earth’s surface. Earthquakes can cause fires, tsunamis, landslides or avalanches. While they can happen anywhere without warning, areas at higher risk for earthquakes include Alaska, California, Hawaii, Oregon, Puerto Rico, Washington and the entire Mississippi River Valley.",
+    "steps": [
+      "If you are in a car, pull over and stop. Set your parking brake.",
+      "If you are in bed, turn face down and cover your head and neck with a pillow.",
+      "If you are outdoors, stay outdoors away from buildings.",
+      "If you are inside, stay and do not run outside and avoid doorways."
+    ]
+  },
+  {
+    "photo": "https://i.ibb.co/BrhJ5QZ/earthquake.jpg",
+    "name": "Heatwaves",
+    "title": "Extended periods of excessively hot weather.",
+    "description": "An earthquake is a sudden, rapid shaking of the ground caused by the shifting of rocks deep underneath the earth’s surface. Earthquakes can cause fires, tsunamis, landslides or avalanches. While they can happen anywhere without warning, areas at higher risk for earthquakes include Alaska, California, Hawaii, Oregon, Puerto Rico, Washington and the entire Mississippi River Valley.",
+    "steps": [
+      "If you are in a car, pull over and stop. Set your parking brake.",
+      "If you are in bed, turn face down and cover your head and neck with a pillow.",
+      "If you are outdoors, stay outdoors away from buildings.",
+      "If you are inside, stay and do not run outside and avoid doorways."
+    ]
+  },
+  {
+    "photo": "https://images.pexels.com/photos/10804398/pexels-photo-10804398.jpeg",
+    "name": "Avalanches",
+    "title": "Rapid flow of snow down a slope, often triggered by various factors.",
+    "description": "An earthquake is a sudden, rapid shaking of the ground caused by the shifting of rocks deep underneath the earth’s surface. Earthquakes can cause fires, tsunamis, landslides or avalanches. While they can happen anywhere without warning, areas at higher risk for earthquakes include Alaska, California, Hawaii, Oregon, Puerto Rico, Washington and the entire Mississippi River Valley.",
+    "steps": [
+      "If you are in a car, pull over and stop. Set your parking brake.",
+      "If you are in bed, turn face down and cover your head and neck with a pillow.",
+      "If you are outdoors, stay outdoors away from buildings.",
+      "If you are inside, stay and do not run outside and avoid doorways."
+    ]
+  },
+  {
+    "photo": "https://images.pexels.com/photos/5441748/pexels-photo-5441748.jpeg",
+    "name": "Tropical Storms",
+    "title": "Storms with strong winds and heavy rain, less intense than hurricanes.",
+    "description": "An earthquake is a sudden, rapid shaking of the ground caused by the shifting of rocks deep underneath the earth’s surface. Earthquakes can cause fires, tsunamis, landslides or avalanches. While they can happen anywhere without warning, areas at higher risk for earthquakes include Alaska, California, Hawaii, Oregon, Puerto Rico, Washington and the entire Mississippi River Valley.",
+    "steps": [
+      "If you are in a car, pull over and stop. Set your parking brake.",
+      "If you are in bed, turn face down and cover your head and neck with a pillow.",
+      "If you are outdoors, stay outdoors away from buildings.",
+      "If you are inside, stay and do not run outside and avoid doorways."
+    ]
+  },
+
+  {
+    "photo": "https://i.ibb.co/BrhJ5QZ/earthquake.jpg",
+    "name": "Hailstorms",
+    "title": "Severe storms with large, damaging hailstones.",
+    "description": "An earthquake is a sudden, rapid shaking of the ground caused by the shifting of rocks deep underneath the earth’s surface. Earthquakes can cause fires, tsunamis, landslides or avalanches. While they can happen anywhere without warning, areas at higher risk for earthquakes include Alaska, California, Hawaii, Oregon, Puerto Rico, Washington and the entire Mississippi River Valley.",
+    "steps": [
+      "If you are in a car, pull over and stop. Set your parking brake.",
+      "If you are in bed, turn face down and cover your head and neck with a pillow.",
+      "If you are outdoors, stay outdoors away from buildings.",
+      "If you are inside, stay and do not run outside and avoid doorways."
+    ]
+  },
+  {
+    "photo": "https://images.pexels.com/photos/14437805/pexels-photo-14437805.jpeg",
+    "name": "Sinkholes",
+    "title": "Sudden collapses of the ground, often caused by the dissolution of underground rock.",
+    "description": "An earthquake is a sudden, rapid shaking of the ground caused by the shifting of rocks deep underneath the earth’s surface. Earthquakes can cause fires, tsunamis, landslides or avalanches. While they can happen anywhere without warning, areas at higher risk for earthquakes include Alaska, California, Hawaii, Oregon, Puerto Rico, Washington and the entire Mississippi River Valley.",
+    "steps": [
+      "If you are in a car, pull over and stop. Set your parking brake.",
+      "If you are in bed, turn face down and cover your head and neck with a pillow.",
+      "If you are outdoors, stay outdoors away from buildings.",
+      "If you are inside, stay and do not run outside and avoid doorways."
+    ]
+  },
+  {
+    "photo": "https://i.ibb.co/BrhJ5QZ/earthquake.jpg",
+    "name": "Mudslides",
+    "title": "Rapid downhill movement of a mixture of water, rock, and soil.",
+    "description": "An earthquake is a sudden, rapid shaking of the ground caused by the shifting of rocks deep underneath the earth’s surface. Earthquakes can cause fires, tsunamis, landslides or avalanches. While they can happen anywhere without warning, areas at higher risk for earthquakes include Alaska, California, Hawaii, Oregon, Puerto Rico, Washington and the entire Mississippi River Valley.",
+    "steps": [
+      "If you are in a car, pull over and stop. Set your parking brake.",
+      "If you are in bed, turn face down and cover your head and neck with a pillow.",
+      "If you are outdoors, stay outdoors away from buildings.",
+      "If you are inside, stay and do not run outside and avoid doorways."
+    ]
+  },
+  {
+    "photo": "https://images.pexels.com/photos/18256624/pexels-photo-18256624/free-photo-of-photo-of-the-wavy-sea.jpeg",
+    "name": "Tidal Waves",
+    "title": "Unusually large ocean waves caused by various factors.",
+    "description": "An earthquake is a sudden, rapid shaking of the ground caused by the shifting of rocks deep underneath the earth’s surface. Earthquakes can cause fires, tsunamis, landslides or avalanches. While they can happen anywhere without warning, areas at higher risk for earthquakes include Alaska, California, Hawaii, Oregon, Puerto Rico, Washington and the entire Mississippi River Valley.",
+    "steps": [
+      "If you are in a car, pull over and stop. Set your parking brake.",
+      "If you are in bed, turn face down and cover your head and neck with a pillow.",
+      "If you are outdoors, stay outdoors away from buildings.",
+      "If you are inside, stay and do not run outside and avoid doorways."
+    ]
+  },
+  {
+    "photo": "https://images.pexels.com/photos/614509/pexels-photo-614509.jpeg",
+    "name": "Ice Storms",
+    "title": "Freezing rain that coats surfaces in ice, causing damage and hazards.",
+    "description": "An earthquake is a sudden, rapid shaking of the ground caused by the shifting of rocks deep underneath the earth’s surface. Earthquakes can cause fires, tsunamis, landslides or avalanches. While they can happen anywhere without warning, areas at higher risk for earthquakes include Alaska, California, Hawaii, Oregon, Puerto Rico, Washington and the entire Mississippi River Valley.",
+    "steps": [
+      "If you are in a car, pull over and stop. Set your parking brake.",
+      "If you are in bed, turn face down and cover your head and neck with a pillow.",
+      "If you are outdoors, stay outdoors away from buildings.",
+      "If you are inside, stay and do not run outside and avoid doorways."
+    ]
+  },
+  {
+    "photo": "https://i.ibb.co/BrhJ5QZ/earthquake.jpg",
+    "name": "Tornado Outbreaks",
+    "title": "Occurrence of multiple tornadoes in a short time.",
+    "description": "An earthquake is a sudden, rapid shaking of the ground caused by the shifting of rocks deep underneath the earth’s surface. Earthquakes can cause fires, tsunamis, landslides or avalanches. While they can happen anywhere without warning, areas at higher risk for earthquakes include Alaska, California, Hawaii, Oregon, Puerto Rico, Washington and the entire Mississippi River Valley.",
+    "steps": [
+      "If you are in a car, pull over and stop. Set your parking brake.",
+      "If you are in bed, turn face down and cover your head and neck with a pillow.",
+      "If you are outdoors, stay outdoors away from buildings.",
+      "If you are inside, stay and do not run outside and avoid doorways."
+    ]
+  }
+]

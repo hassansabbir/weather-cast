@@ -9,7 +9,6 @@ import React, { useEffect, useState } from "react";
 import { FaPlus, FaRegCalendarAlt } from "react-icons/fa";
 import { ImLocation } from "react-icons/im";
 
-
 const articlesPage = () => {
   const [articles, setArticles] = useState([]);
   useEffect(() => {
