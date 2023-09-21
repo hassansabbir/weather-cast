@@ -32,6 +32,7 @@ import { FaRegClock, FaRegStar, FaStar } from "react-icons/fa";
 import { AuthContext } from "@/Providers/AuthProvider";
 
 import GifBanner from "../GifBanner/GifBanner";
+// import WeatherLocation from "@/app/(home)/WeatherLocation/WeatherLocation";
 
 const weatherFetch = async (City, unit, setWeather) => {
   try {
