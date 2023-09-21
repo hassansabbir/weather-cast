@@ -46,3 +46,4 @@ yarn.lock
 /jest.setup.js
 /__mocks__/
 /src/app/(home)/WeatherUodates/WeatherUpdates.test.jsx
+/src/app/(home)/WMap.jsx

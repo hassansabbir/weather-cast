@@ -22,7 +22,7 @@ const manageArticlesPage = () => {
   // };
 
   // const handleFeedback = (article) => {
-  //   fetch(`http://localhost:5000/articlesFeedback/${article._id}`, {
+  //   fetch(`https://weather-cast-server.vercel.app/articlesFeedback/${article._id}`, {
   //     method: "PUT",
   //     headers: { "content-type": "application/json" },
   //     body: JSON.stringify(newFeedback),

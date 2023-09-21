@@ -366,6 +366,7 @@ const CreatePost = () => {
     axios
       .get(`https://weather-cast-server.vercel.app/post`)
       .then((data) => setPosts(data.data));
+      console.log(setPosts);
   };
 
   const onSubmit = async (data) => {
