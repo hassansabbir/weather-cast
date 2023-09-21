@@ -1,7 +1,11 @@
 "use client";
 
+import React, { useContext, useState } from "react";
+import { AuthContext } from "@/Providers/AuthProvider"; 
+
+
 import Link from "next/link";
-import React from "react";
+
 
 const CommunityInfo = () => {
   const communityInfoStyle = {
@@ -10,9 +14,47 @@ const CommunityInfo = () => {
     top: "0",
   };
 
+  const { user } = useContext(AuthContext); 
+
+  const [donationAmount, setDonationAmount] = useState(0);
+
+  const handleDonationChange = (event) => {
+    setDonationAmount(parseFloat(event.target.value));
+  };
+
+  const handleDonationSubmit = (event) => {
+    event.preventDefault();
+  
+    
+    const dataToSend = {
+      donationAmount,
+      displayName: user?.displayName || "Anonymous",
+      email: user?.email || "Unknown",
+    };
+  
+    fetch("https://weather-cast-server.vercel.app/donation", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dataToSend),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        window.location.replace(result.url)
+        console.log("Server response:", result);
+      })
+      .catch((error) => {
+        console.error("Error sending donation:", error);
+      });
+  
+    console.log(`Donation amount: $${donationAmount}`);
+    console.log(`Donated by: ${user?.displayName || "Anonymous"} (${user?.email || "Unknown"})`);
+  };
+  
+  
+
   return (
     <div
-      className="bg-blue-100 p-4 rounded-lg shadow-lg   mt-4"
+      className="bg-blue-100 p-4 rounded-lg shadow-lg mt-4"
       style={communityInfoStyle}
     >
       <h2 className="text-2xl font-semibold mb-2">Welcome to Our Community!</h2>
@@ -30,9 +72,33 @@ const CommunityInfo = () => {
       </ul>
       <h2 className="animate-pulse bg-gradient-to-r  from-red-800 p-5 shadow-xl rounded-2xl via-blue-650 text-2xl font-bold text-center to-red-500 bg-clip-text text-transparent ">
         <Link href="/community/Donation">
-        <button>Donation Now</button>
+        <button>Donation Now!</button>
         </Link>
       </h2>
+
+      {/* <h3 className="text-xl font-semibold mt-4">Make a Donation</h3>
+      <form onSubmit={handleDonationSubmit}>
+        <div className="mb-4">
+          <label className="block text-gray-600">Donation Amount ($)</label>
+          <input
+            type="number"
+            step="0.01"
+            min="0"
+            value={donationAmount}
+            onChange={handleDonationChange}
+            className="border rounded-lg p-2 w-full"
+          />
+        </div>
+        <p className="text-gray-600">
+          Donated by: {user?.displayName || "Anonymous"} ({user?.email || "Unknown"})
+        </p>
+        <button
+          type="submit"
+          className="bg-blue-500 text-white rounded-lg p-2 w-full hover:bg-blue-600"
+        >
+          Donate
+        </button>
+      </form> */}
     </div>
   );
 };
