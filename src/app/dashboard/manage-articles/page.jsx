@@ -127,15 +127,15 @@ const manageArticlesPage = () => {
         {pendingArticles.map((article) => (
           <div
             key={article._id}
-            className="bg-blue-50 flex gap-2 rounded-3xl items-center p-5 w-[900px]"
+            className="bg-blue-50 flex  gap-2 rounded-3xl items-center lg:me-10 sm:m-5 p-5 "
           >
             <div className="w-2/3">
               <img
-                className="w-[600px] rounded-3xl h-[300px]"
+                className="w-[550px] rounded-3xl h-[300px]"
                 src={article?.image_url}
                 alt="eventImage"
               />
-              <h2 className="text-3xl my-5 font-bold text-center">
+              <h2 className="text-3xl  my-5 font-bold text-center">
                 {article?.event}
               </h2>
               <div className="flex gap-3 my-5">
@@ -145,11 +145,12 @@ const manageArticlesPage = () => {
                   alt=""
                 />
                 <div>
-                  <h2 className="text-2xl font-bold">{article?.authorName}</h2>
-                  <h2 className="text-xl ">{article?.authorEmail}</h2>
+                  <h2 className="text-2xl  font-bold">{article?.authorName}</h2>
+                  <h2 className="lg:text-xl sm:text-lg ">{article?.authorEmail}</h2>
                 </div>
               </div>
               <p className="text-xl">{article?.description}</p>
+               
             </div>
             <div className="divider divider-horizontal my-auto h-96"></div>
             <div className="w-1/3">
@@ -169,13 +170,13 @@ const manageArticlesPage = () => {
                 <div className="my-6 space-y-3">
                   <button
                     onClick={() => handleApprove(article)}
-                    className="btn w-full text-2xl text-green-600 hover:bg-green-600 hover:text-white hover:border-green-600 btn-outline"
+                    className="btn w-full lg:text-2xl sm:text-xl text-green-600 hover:bg-green-600 hover:text-white hover:border-green-600 btn-outline"
                   >
                     <FaCheck /> Approve
                   </button>
                   <button
                     onClick={() => handleDelete(article)}
-                    className="btn w-full text-2xl text-red-600 hover:bg-red-600 hover:text-white hover:border-red-600 btn-outline"
+                    className="btn w-full lg:text-2xl sm:text-xl text-red-600 hover:bg-red-600 hover:text-white hover:border-red-600 btn-outline"
                   >
                     <FaTrashAlt /> Delete
                   </button>
@@ -186,15 +187,15 @@ const manageArticlesPage = () => {
         ))}
       </div>
       <h2 className="text-5xl font-bold my-20">All Articles</h2>
-      <div className="my-10 grid grid-cols-1 gap-10">
+      <div className="my-10 grid grid-cols-1 gap-10 ">
         {approvedArticles.map((approvedArticle) => (
           <div
             key={approvedArticle._id}
-            className="bg-blue-50 flex gap-2 rounded-3xl items-center p-5 w-[900px]"
+            className="bg-blue-50 flex  rounded-3xl items-center p-5 sm:m-5 lg:me-10 "
           >
             <div className="w-2/3">
               <img
-                className="w-[600px] rounded-3xl h-[300px]"
+                className="w-[550px] rounded-3xl h-[300px]"
                 src={approvedArticle?.image_url}
                 alt="eventImage"
               />
@@ -211,10 +212,10 @@ const manageArticlesPage = () => {
                   <h2 className="text-2xl font-bold">
                     {approvedArticle?.authorName}
                   </h2>
-                  <h2 className="text-xl ">{approvedArticle?.authorEmail}</h2>
+                  <h2 className="lg:text-xl sm:text-lg ">{approvedArticle?.authorEmail}</h2>
                 </div>
               </div>
-              <p className="text-xl">{approvedArticle?.description}</p>
+              <p className="lg:text-xl sm:text-lg">{approvedArticle?.description}</p>
             </div>
             <div className="divider divider-horizontal my-auto h-96"></div>
             <div className="w-1/3">
@@ -235,7 +236,7 @@ const manageArticlesPage = () => {
                   <div>
                     {/* Open the modal using document.getElementById('ID').showModal() method */}
                     <button
-                      className="btn w-full text-2xl text-blue-600 hover:bg-blue-600 hover:text-white hover:border-blue-600 btn-outline"
+                      className="btn w-full lg:text-2xl sm:text-xl text-blue-600 hover:bg-blue-600 hover:text-white hover:border-blue-600 btn-outline"
                       onClick={() =>
                         document.getElementById("my_modal_2").showModal()
                       }
@@ -251,7 +252,7 @@ const manageArticlesPage = () => {
                         <h3 className="font-bold text-lg">Give Feedback</h3>
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text text-2xl font-bold">
+                            <span className="label-text lg:text-2xl sm:text-xl font-bold">
                               Feedback
                             </span>
                           </label>
@@ -278,7 +279,7 @@ const manageArticlesPage = () => {
                   </div>
                   <button
                     onClick={() => handleDelete(approvedArticle)}
-                    className="btn w-full text-2xl text-red-600 hover:bg-red-600 hover:text-white hover:border-red-600 btn-outline"
+                    className="btn w-full lg:text-2xl sm:text-xl text-red-600 hover:bg-red-600 hover:text-white hover:border-red-600 btn-outline"
                   >
                     <FaTrashAlt /> Delete
                   </button>

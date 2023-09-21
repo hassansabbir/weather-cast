@@ -64,7 +64,7 @@ const BlogDetail = ({ params }) => {
                   />
                 </a>
                 <div className="relative flex flex-col items-start px-6 bg-white border border-t-0 border-gray-200 py-7 rounded-b-2xl">
-                  <div className="bg-indigo-400 absolute top-0 -mt-3 flex items-center px-3 py-1.5 leading-none w-auto inline-block rounded-full text-xs font-medium  text-white">
+                  <div className="bg-indigo-400 absolute top-0 -mt-3 flex items-center px-3 py-1.5 leading-none w-auto  rounded-full text-xs font-medium  text-white">
                     <span>Soil Pollution</span>
                   </div>
                   <h2 className="text-base text-gray-500 font-bold sm:text-lg md:text-xl">
@@ -90,7 +90,7 @@ const BlogDetail = ({ params }) => {
                   />
                 </a>
                 <div className="relative flex flex-col items-start px-6 bg-white border border-t-0 border-gray-200 py-7 rounded-b-2xl">
-                  <div className="bg-red-400 absolute top-0 -mt-3 flex items-center px-3 py-1.5 leading-none w-auto inline-block rounded-full text-xs font-medium  text-white">
+                  <div className="bg-red-400 absolute top-0 -mt-3 flex items-center px-3 py-1.5 leading-none w-auto  rounded-full text-xs font-medium  text-white">
                     <span>Wildfire</span>
                   </div>
                   <h2 className="text-base text-gray-500 font-bold sm:text-lg md:text-xl">
@@ -116,7 +116,7 @@ const BlogDetail = ({ params }) => {
                   />
                 </a>
                 <div className="relative flex flex-col items-start px-6 bg-white border border-t-0 border-gray-200 py-7 rounded-b-2xl">
-                  <div className="bg-purple-500 absolute top-0 -mt-3 flex items-center px-3 py-1.5 leading-none w-auto inline-block rounded-full text-xs font-medium text-white">
+                  <div className="bg-purple-500 absolute top-0 -mt-3 flex items-center px-3 py-1.5 leading-none w-auto  rounded-full text-xs font-medium text-white">
                     <span>Air Pollution</span>
                   </div>
                   <h2 className="text-base text-gray-500 font-bold sm:text-lg md:text-xl">

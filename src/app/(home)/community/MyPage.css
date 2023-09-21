@@ -1,0 +1,14 @@
+.newsfeed {
+    position: relative;
+    background-image: url(./../../../assets/skybg2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh; 
+  }
+
+  hr {
+    border: 2px solid rgb(79, 155, 255) ;
+    
+    
+}

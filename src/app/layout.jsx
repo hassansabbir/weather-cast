@@ -1,10 +1,10 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import Navbar from "./Components/Navbar";
 import Providers from "@/Providers";
 import Footer from "./Components/footer/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const montserrat = Montserrat({ subsets: ["latin"], weight: ["100", "300", "400", "500", "700", "900"] });
 
 export const metadata = {
   title: "Weather Cast",
@@ -14,7 +14,7 @@ export const metadata = {
 const RootLayout = ({ children }) => {
   return (
     <html lang="en" data-theme="light">
-      <body className={inter.className}>
+      <body className={montserrat.className}>
         <Providers>
           <Navbar />
           <div className="pt-[70px]"> {children}</div>

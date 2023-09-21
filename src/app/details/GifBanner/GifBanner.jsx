@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import rain from "../../../assets/rain.gif";
-import rain2 from "../../../assets/rain2.gif";
 import sun from "../../../assets/sun.gif";
 import night from "../../../assets/night.gif";
 import thunderstorm from "../../../assets/thunderstorm.gif";
@@ -46,14 +45,6 @@ const GifBanner = () => {
         <Image
           className="animate-slide-right-5"
           src={foggy}
-          height={100}
-          width={100}
-        />
-      </div>
-      <div className="absolute bottom-0">
-        <Image
-          className="animate-slide-right-6"
-          src={rain2}
           height={100}
           width={100}
         />

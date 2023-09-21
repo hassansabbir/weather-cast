@@ -16,7 +16,7 @@ const WeatherVideoComponent = () => {
 
   const fetchWeatherVideos = async () => {
     const apiKey = "AIzaSyAzZmGUYooYhG1QAqfilT2F5uRAGUxEew8";
-    const maxResults = 10;
+    const maxResults = 12;
 
     const response = await fetch(
       `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&q=weather+news&type=video&maxResults=${maxResults}&order=date&pageToken=${pageToken}&videoCaption=closedCaption`

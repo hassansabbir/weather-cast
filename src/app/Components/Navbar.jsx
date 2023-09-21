@@ -26,6 +26,10 @@ const Navbar = () => {
       title: "News",
     },
     {
+      path: "/community",
+      title: "Community",
+    },
+    {
       path: "/contact",
       title: "Contact",
     },
@@ -36,10 +40,6 @@ const Navbar = () => {
     {
       path: "/blog",
       title: "Blog",
-    },
-    {
-      path: "/community",
-      title: "Community",
     },
   ];
 
@@ -111,7 +111,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="flex space-x-8">
+          <ul className="flex space-x-5">
             {navbar.map(({ path, title }) => (
               <li
                 key={path}

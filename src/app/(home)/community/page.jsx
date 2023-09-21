@@ -7,7 +7,11 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { FaThumbsUp, FaComment, FaShare } from "react-icons/fa";
 import Link from "next/link";
-
+import { BsPencilSquare } from "react-icons/bs";
+import starPng from "./../../../assets/starpng.png";
+import s from "./../../../assets/Contact.jpg";
+import "./MyPage.css";
+import CommunityInfo from "./CommunityInfo/page";
 const CommentModal = ({ comments, closeModal }) => {
   return (
     <div className="modal">
@@ -168,7 +172,7 @@ export const PostCard = ({ post }) => {
 
   const handleText = (e) => {
     const inputValue = e.target.value;
-    if (inputValue.length <= 60) {
+    if (inputValue.trim() !== "" && inputValue.length <= 60) {
       setNewComment(inputValue);
     }
   };
@@ -181,24 +185,25 @@ export const PostCard = ({ post }) => {
           "linear-gradient(90deg, rgba(175,174,238,0.022846638655462215) 82%, rgba(148,187,233,0.1741071428571429) 100%), linear-gradient(76deg, rgba(148,187,233,0.1741071428571429) 0%, rgba(175,174,238,0.022846638655462215) 82%, rgba(148,187,233,0.1741071428571429) 100%)",
       }}
     >
-      <div className="px-6 py-4 ">
+      <div
+        className="px-6 py-4"
+        style={{ backgroundColor: "rgba(230, 230, 250, 0.8)" }}
+      >
         <div className="flex items-center justify-between mt-4 ">
           <div className=" items-center justify-center">
-            <div className="flex">
+            <div className="flex gap-2">
               <div className="avatar">
                 <div className="w-10 rounded-full ">
                   <img src={post.authorPhoto} />
                 </div>
               </div>
               <div>
-              <h2 className="hidden md:block">{post.authorName}</h2>
-              <div className="text-gray-500 text-xs">
-              {formatTimeDifference(post.createdAt)}
-            </div>
+                <h2 className="hidden md:block">{post.authorName}</h2>
+                <div className="text-gray-500 text-xs">
+                  {formatTimeDifference(post.createdAt)}
+                </div>
               </div>
             </div>
-
-            
           </div>
           <div className="flex items-center justify-between mt-4 gap-4">
             <div>
@@ -213,28 +218,29 @@ export const PostCard = ({ post }) => {
             </div>
           </div>
         </div>
-        <div>
-          
-          {post.image && <img src={post.image} alt="Post Image" />}
-         
-        </div>
-        <p className="text-gray-700 text-base">{post.content}</p>
+        <br />
+        <div>{post.image && <img src={post.image} alt="Post Image" />}</div>
+        <p className="text-gray-700 text-3xl font-mono font-semibold">
+          {post.content}
+        </p>
 
         <div className="flex items-center justify-between mt-4 ">
           <div className="flex space-x-2">
             <button
-              className="flex items-center space-x-1"
+              className={`flex items-center space-x-1 ${
+                liked
+                  ? " text-white bg-blue-500 py-2 px-4 rounded hover:bg-blue-600"
+                  : "text-white bg-gray-500 py-2 px-4 rounded hover:text-blue-600"
+              }`}
               onClick={handleLike}
             >
-              <FaThumbsUp
-                className={`w-4 h-4 ${liked ? "text-blue-500" : ""}`}
-              />
+              <FaThumbsUp className={`w-4 h-4 ${liked ? "text-white" : ""}`} />
               <span>{liked ? "Liked" : "Like"}</span>
             </button>
           </div>
           <div className="flex space-x-2">
             <button
-              className="flex items-center space-x-1"
+              className="flex items-center space-x-1 bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded"
               onClick={handleCommentButtonClick}
             >
               <FaComment className="w-4 h-4" />
@@ -245,7 +251,7 @@ export const PostCard = ({ post }) => {
           <div>
             <button
               onClick={handleShare}
-              className="flex items-center space-x-1"
+              className="flex items-center space-x-1 bg-red-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
             >
               <FaShare className="w-4 h-4" />
               <span>Share</span>
@@ -253,16 +259,21 @@ export const PostCard = ({ post }) => {
           </div>
         </div>
 
-        <div className="mt-4">
+        <div className="mt-6">
+          <p className="text-gray-500 text-sm">Comments..</p>
+
           {Array.isArray(comments) && (
             <>
               {showAllComments ? (
                 comments.map((comment, index) => (
                   <div
                     key={index}
-                    className={`text-gray-700 text-base w-15 overflow-hidden whitespace-normal max-h-24 overflow-y-auto`}
+                    className={`text-gray-700 text-base w-15 overflow-hidden whitespace-normal max-h-24 overflow-y-auto mt-2 `}
                   >
-                    <strong>{comment.userName}:</strong> {comment.content}
+                    <strong className="border rounded">
+                      {comment.userName}:
+                    </strong>{" "}
+                    {comment.content}
                     <div className="text-gray-500 text-xs">
                       {formatTimeDifference(comment.createdAt)}
                     </div>
@@ -273,7 +284,7 @@ export const PostCard = ({ post }) => {
                   {comments.slice(0, 2).map((comment, index) => (
                     <div
                       key={index}
-                      className={`text-gray-700 text-base w-15 overflow-hidden whitespace-normal max-h-24 overflow-y-auto`}
+                      className={`text-gray-700 text-base w-15 overflow-hidden whitespace-normal max-h-24 overflow-y-auto mt-2`}
                     >
                       <strong>{comment.userName}:</strong> {comment.content}
                       <div className="text-gray-500 text-xs">
@@ -315,6 +326,7 @@ export const PostCard = ({ post }) => {
               className="w-full p-2 border rounded"
               placeholder={`Add a comment (max 60 characters)`}
               maxLength="60"
+              required
             />
 
             <button
@@ -351,7 +363,9 @@ const CreatePost = () => {
   }, []);
 
   const fetchPosts = () => {
-    axios.get(`https://weather-cast-server.vercel.app/post`).then((data) => setPosts(data.data));
+    axios
+      .get(`https://weather-cast-server.vercel.app/post`)
+      .then((data) => setPosts(data.data));
   };
 
   const onSubmit = async (data) => {
@@ -364,27 +378,16 @@ const CreatePost = () => {
         authorPhoto: user.photoURL,
       };
 
-      // Get the selected image file
       const imageFile = data.image[0];
-
-      // Create a FormData object to send the image
       const formData = new FormData();
       formData.append("image", imageFile);
 
-      // Replace 'YOUR_IMG_API_KEY' with your actual ImgBB API key
-      const imgApiKey = "bb1d8afb0107bc10333e2bdf348466ea";
-
-      // Define the ImgBB upload URL
+      const imgApiKey = process.env.NEXT_PUBLIC_imgApiKey;
       const imgUploadUrl = `https://api.imgbb.com/1/upload?key=${imgApiKey}`;
-
-      // Make a POST request to upload the image
       const imgResponse = await axios.post(imgUploadUrl, formData);
 
       if (imgResponse.data.success) {
-        // If the image upload is successful, add the image URL to the post
         post.image = imgResponse.data.data.display_url;
-
-        // Send a POST request to create the post with the image
         const postResponse = await axios.post(
           "https://weather-cast-server.vercel.app/post",
           post
@@ -393,7 +396,7 @@ const CreatePost = () => {
         if (postResponse.data.insertedId) {
           console.log("New Post Added");
           reset();
-          fetchPosts(); // Fetch the updated list of posts
+          fetchPosts();
         } else {
           console.error("Error creating post:", postResponse.data.message);
         }
@@ -406,7 +409,6 @@ const CreatePost = () => {
       }
     } catch (error) {
       console.error("Error:", error);
-      // Handle the error as needed
     }
   };
 
@@ -418,53 +420,69 @@ const CreatePost = () => {
   };
 
   return (
-    <div className="newsfeed flex gap-2">
-      <div className="post-creator h-full w-1/4 bg-blue-50 shadow-lg rounded-lg overflow-hidden text-center">
-        <Link href="/community/MyPost">
-          <h2 className=" font-bold text-2xl text-blue-500">My Post</h2>
-        </Link>
-        <h2 className="text-5xl my-10 text-center">Create Your Post</h2>
-        <form onSubmit={handleSubmit(onSubmit)} className="bg-slate-100 p-6">
-          <div className="form-control  items-center justify-center">
-            <label className="label">
-              <span className="label-text text-2xl font-bold">Content</span>
-            </label>
-            <p>{newPost.length}/60</p>
-            <textarea
-              {...register("content", { required: true })}
-              value={newPost}
-              onChange={(e) => {
-                handlePostText(e);
-              }}
-              className="p-10 rounded-xl border"
-              placeholder={`Enter your post content (max 60 characters) ${newPost.length}/60`}
-              rows="4"
-              maxLength="60"
-            />
-            {errors.content && (
-              <span className="text-red-600">Content is required</span>
-            )}
-            <div className="form-control w-full mb-4">
-              <label className="label">
-                <span className="label-text font-semibold">Image*</span>
-              </label>
-              <input
-                type="file"
-                {...register("image", { required: true })}
-                className="file-input file-input-bordered w-full"
+    <div className="newsfeed ">
+      <div className="lg:flex  justify-around gap-4 pl-4 max-w-7xl mx-auto">
+        <div className="post-creator h-full w-full  lg:w-1/4 shadow-lg rounded-lg overflow-hidden text-center mt-4 bg-blue-100 lg:sticky lg:top-0 ">
+          <Link href="/community/MyPost">
+            <h2 className=" font-bold text-2xl text-blue-500 pt-2 pb-1">
+              My Post
+            </h2>
+          </Link>
+          <hr />
+          <h2 className="text-3xl text-center pt-2 ">Create Your Post</h2>
+          <form onSubmit={handleSubmit(onSubmit)} className="bg-blue-100  p-6">
+            <div className="form-control justify-center">
+              <div className="flex items-center justify-between">
+                <label className="label">
+                  <BsPencilSquare></BsPencilSquare>
+                </label>
+                <p>{newPost.length}/60</p>
+              </div>
+              <textarea
+                {...register("content", { required: true })}
+                value={newPost}
+                onChange={(e) => {
+                  handlePostText(e);
+                }}
+                className="p-10 rounded-xl border"
+                placeholder={`Enter your post content (max 60 characters) ${newPost.length}/60`}
+                rows="4"
+                maxLength="60"
               />
+              {errors.content && (
+                <span className="text-red-600">Content is required</span>
+              )}
+              <div className="form-control w-full mb-4">
+                <label className="label">
+                  <span className="label-text font-semibold">Image*</span>
+                </label>
+                <input
+                  type="file"
+                  {...register("image", { required: true })}
+                  className="file-input file-input-bordered w-full"
+                />
+              </div>
             </div>
-          </div>
-          <button className="btn bg-blue-800 hover:bg-blue-600 text-white">
-            Create Post
-          </button>
-        </form>
-      </div>
+            <button className="btn bg-blue-800 hover:bg-blue-600 text-white">
+              Create Post
+            </button>
+          </form>
+        </div>
 
-      <div className="gap-4 flex-1 overflow-y-auto">
-        {posts.map((post, index) => (
-          <PostCard key={index} post={post} />
-        ))}
+        <div
+          className="gap-4 flex-1 overflow-y-auto"
+          style={{ marginBottom: "20px" }}
+        >
+          {posts.map((post, index) => (
+            <div key={post._id} className="mt-4">
+              <PostCard post={post} />
+            </div>
+          ))}
+        </div>
+
+        <div className="pr-4">
+          <CommunityInfo></CommunityInfo>
+        </div>
       </div>
     </div>
   );

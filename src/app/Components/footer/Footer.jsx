@@ -6,6 +6,8 @@ import { FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import Image from "next/image";
 
 const Footer = () => {
+  // const date = new Date();
+  // const year = date.getFullYear();
   return (
     <div>
       <div>

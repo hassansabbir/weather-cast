@@ -27,11 +27,12 @@ import PressureChart from "../PressureChart";
 
 import WindChart from "../WindChart";
 import HourlyForcast from "../HourlyForcast/HourlyForcast";
-
+import "./loaderStyle.css";
 import { FaRegClock, FaRegStar, FaStar } from "react-icons/fa";
 import { AuthContext } from "@/Providers/AuthProvider";
 
 import GifBanner from "../GifBanner/GifBanner";
+// import WeatherLocation from "@/app/(home)/WeatherLocation/WeatherLocation";
 
 const weatherFetch = async (City, unit, setWeather) => {
   try {
@@ -97,9 +98,8 @@ const WeatherDetails = () => {
 
   if (!weather) {
     return (
-      <div className="flex justify-center mt-20">
-        <span className="loading loading-bars text-blue-800 loading-lg"></span>
-        <span className="loading loading-bars text-blue-800 loading-lg"></span>
+      <div className="flex justify-center mt-96">
+        <div className="loader">Loading...</div>
       </div>
     );
   }
@@ -146,7 +146,7 @@ const WeatherDetails = () => {
           headers: {
             "Content-type": "application/json",
           },
-          body: JSON.stringify( favoriteLoc ),
+          body: JSON.stringify(favoriteLoc),
         }
       );
 
@@ -672,6 +672,7 @@ const WeatherDetails = () => {
         </div>
         <div>
           <div
+            id="interactiveWeatherMap"
             className="card h-80 bg-base-100 shadow-xl mt-2 "
             style={{ overflow: "hidden", zIndex: 5 }}
           >
