@@ -5,7 +5,7 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
-const AddArticles = () => {
+const addAArticles = () => {
   const { user } = useContext(AuthContext);
   const {
     register,
@@ -203,4 +203,4 @@ const AddArticles = () => {
   );
 };
 
-export default AddArticles;
+export default addAArticles;
