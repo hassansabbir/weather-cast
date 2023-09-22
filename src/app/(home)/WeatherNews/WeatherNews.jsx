@@ -158,8 +158,8 @@ const  WNews = () => {
       <h1 className="text-4xl font-bold text-center mb-8">
         <span className="text-blue-800"></span>
       </h1>
-      <div className="flex justify-around gap-6">
-        <div className="w-2/3">
+      <div className="lg:flex  justify-around gap-6">
+        <div className="lg:w-2/3">
           <h2 className="text-2xl text-center font-bold mb-4 text-blue-800">
             News Headlines
           </h2>
@@ -182,7 +182,7 @@ const  WNews = () => {
           </ul>
         </div>
 
-        <div className="w-1/3 ">
+        <div className="lg:w-1/3 ">
           <h2 className="text-2xl font-bold mb-4 text-blue-800 text-center">
             Latest News
           </h2>

@@ -125,7 +125,12 @@ const MyPost = () => {
   };
 
   return (
+
+    <div>
+
+    <p className="text-center mt-4">Total Posts: {myPosts.length}</p>
     <div className="my-4 mx-4" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridGap: '16px' }}>
+      
       {myPosts.map((post) => (
         <div
           key={post._id}
@@ -196,6 +201,8 @@ const MyPost = () => {
           </div>
         </div>
       ))}
+    </div>
+    
     </div>
   );
 };
