@@ -10,7 +10,6 @@ import Link from "next/link";
 import { getWeatherIcon } from "@/utils/getWeatherIcon";
 import { TileLayer } from "react-leaflet/TileLayer";
 import dynamic from "next/dynamic";
-// import { MapContainer } from 'react-leaflet/MapContainer'
 import { Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { FaExternalLinkAlt } from "react-icons/fa";
@@ -39,15 +38,22 @@ const fetchWeatherByCity = async (city, setWeather) => {
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`
     );
-
-    if (response.ok) {
-      const weatherData = await response.json();
-      setWeather(weatherData);
-    } else {
-      console.error("Error fetching weather data for the city");
-      setWeather(null); // Clear the weather data in case of an error
+    if (!response.ok) {
+      Swal.fire({
+        title: "City not found. Please enter a valid city name.",
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutUp",
+        },
+      });
+      return;
     }
-  } catch (error) {
+    const weatherData = await response.json();
+      setWeather(weatherData);
+  }
+   catch (error) {
     console.error("An error occurred while fetching weather data:", error);
     alert("An error occurred while fetching weather data. Please try again later.");
  
@@ -110,7 +116,9 @@ const WeatherUpdates = () => {
           popup: "animate__animated animate__fadeOutUp",
         },
       });
-    } else {
+      
+    }  
+     else {
       setIsSearching(true);
       // Fetch weather data for the searched city using searchQuery
       fetchWeatherByCity(query, setWeather);
@@ -124,12 +132,16 @@ const WeatherUpdates = () => {
         (position) => {
           const latitude = position.coords.latitude;
           const longitude = position.coords.longitude;
-
+  
           // Define 'positions' array here
           setPositions([latitude, longitude]);
-
+  
           // Fetch weather data for the current location
           fetchWeather(latitude, longitude, setWeather);
+  
+          // Clear the search query and set isSearching to false
+          setSearchQuery("");
+          setIsSearching(false);
         },
         (error) => {
           console.error("Error getting user location:", error);
