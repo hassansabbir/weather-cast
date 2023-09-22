@@ -348,26 +348,10 @@ const WeatherUpdates = () => {
                 
      <WeatherMap  city={searchQuery} /> 
        ) : (
-  typeof window !== "undefined" && (
-    <MapContainer
-      className="z-0"
-      center={positions}
-      zoom={13}
-      scrollWheelZoom={false}
-      style={{ height: "620px", width: "500px" }}
-    >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Marker position={positions} icon={customIcon}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker>
-    </MapContainer>
-  )
-)}
+        typeof window !== "undefined" && (
+          <WeatherMap latitude={positions[0]} longitude={positions[1]} />
+        )
+      )}
               
             </div>
           </div>

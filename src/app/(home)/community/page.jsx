@@ -12,6 +12,8 @@ import starPng from "./../../../assets/starpng.png";
 import s from "./../../../assets/Contact.jpg";
 import "./MyPage.css";
 import CommunityInfo from "./CommunityInfo/page";
+
+
 const CommentModal = ({ comments, closeModal }) => {
   return (
     <div className="modal">
@@ -179,17 +181,17 @@ export const PostCard = ({ post }) => {
 
   return (
     <div
-      className=" shadow-lg rounded-lg overflow-hidden  gap-5 mb-2 max-w-2xl"
+      className=" shadow-lg rounded-lg overflow-hidden  gap-5 mb-2 max-w-2xl  "
       style={{
         background:
           "linear-gradient(90deg, rgba(175,174,238,0.022846638655462215) 82%, rgba(148,187,233,0.1741071428571429) 100%), linear-gradient(76deg, rgba(148,187,233,0.1741071428571429) 0%, rgba(175,174,238,0.022846638655462215) 82%, rgba(148,187,233,0.1741071428571429) 100%)",
       }}
     >
       <div
-        className="px-6 py-4"
+        className="px-6 py-4 rCardBg"
         style={{ backgroundColor: "rgba(230, 230, 250, 0.8)" }}
       >
-        <div className="flex items-center justify-between mt-4 ">
+        <div className="flex items-center justify-between ">
           <div className=" items-center justify-center">
             <div className="flex gap-2">
               <div className="avatar">
@@ -342,6 +344,8 @@ export const PostCard = ({ post }) => {
   );
 };
 
+
+
 const CreatePost = () => {
   const { user } = useContext(AuthContext);
   const {
@@ -355,8 +359,7 @@ const CreatePost = () => {
 
   const [newPost, setNewPost] = useState("");
 
-  const img_hosting_token = "bb1d8afb0107bc10333e2bdf348466ea";
-  const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
+
 
   useEffect(() => {
     fetchPosts();
@@ -420,18 +423,80 @@ const CreatePost = () => {
     }
   };
 
+
+  const [myPosts, setMyPosts] = useState([]);
+
+  const fetchData = () => {
+    if (user?.email) {
+      axios
+        .get(`https://weather-cast-server.vercel.app/post/${user.email}`)
+        .then((response) => {
+          console.log(response);
+          
+          const postsWithAuthorAndComments = response.data.map((post) => ({
+            ...post,
+            authorEmail: post.authorEmail,
+            comments: post.comments,
+            like: post.likes,
+            createdAt: post.createdAt,
+          }));
+          setMyPosts(postsWithAuthorAndComments);
+        })
+        .catch((error) => {
+          console.error("Error fetching posts:", error);
+        });
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [user?.email]);
+
+  if (!myPosts) {
+    return <p>Loading posts...</p>;
+  }
+
+
+
   return (
     <div className="newsfeed ">
+
       <div className="lg:flex  justify-around gap-4 pl-4 max-w-7xl mx-auto">
-        <div className="post-creator h-full w-full  lg:w-1/4 shadow-lg rounded-lg overflow-hidden text-center mt-4 bg-blue-100 lg:sticky lg:top-0 ">
-          <Link href="/community/MyPost">
-            <h2 className=" font-bold text-2xl text-blue-500 pt-2 pb-1">
-              My Post
-            </h2>
-          </Link>
-          <hr />
-          <h2 className="text-3xl text-center pt-2 ">Create Your Post</h2>
-          <form onSubmit={handleSubmit(onSubmit)} className="bg-blue-100  p-6">
+        <div className="post-creator h-full w-full  lg:w-1/4 shadow-lg rounded-lg overflow-hidden text-center mt-4  lg:sticky lg:top-0  bg-white">
+         
+
+          <div className="PImage pt-5">
+  <img
+    src={user?.photoURL}
+    alt="adminImg"
+    className="w-32 h-32 mx-auto rounded-full" 
+  />
+
+  <h4>{user?.displayName}</h4>
+  <h4>{user?.email}</h4>
+</div>
+
+
+<div className="flex justify-between items-center mt-4   rounded-lg p-4">
+  <div className="text-center pr-4 border-r border-black">
+    <h2 className="text-sm font-bold">{myPosts.length}</h2>
+    <p className="text-sm font-bold">Posts</p>
+  </div>
+  <h2>My Posts</h2>
+  <div className="pl-4 border-l border-black">
+  <Link href="/community/MyPost">
+    <div className="text-center">
+      <h2 className="text-sm font-bold">See</h2>
+      <p className="text-sm font-bold">All</p>
+    </div>
+  </Link>
+  </div>
+</div>
+
+
+          
+         
+          <form onSubmit={handleSubmit(onSubmit)} className="  h2-6">
             <div className="form-control justify-center">
               <div className="flex items-center justify-between">
                 <label className="label">
@@ -445,7 +510,7 @@ const CreatePost = () => {
                 onChange={(e) => {
                   handlePostText(e);
                 }}
-                className="p-10 rounded-xl border"
+                className="p-10 rounded-xl border rCardBg "
                 placeholder={`Enter your post content (max 60 characters) ${newPost.length}/60`}
                 rows="4"
                 maxLength="60"
@@ -460,14 +525,17 @@ const CreatePost = () => {
                 <input
                   type="file"
                   {...register("image", { required: true })}
-                  className="file-input file-input-bordered w-full"
+                  className="file-input file-input-bordered w-full mb-3 button-64"
                 />
-              </div>
-            </div>
-            <button className="btn bg-blue-800 hover:bg-blue-600 text-white">
+                <button className="button-85">
               Create Post
             </button>
+              </div>
+              
+            </div>
+            
           </form>
+        
         </div>
 
         <div

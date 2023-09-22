@@ -12,12 +12,14 @@ import OurServices from "./OurServices";
 import Intelligence from "./intelligence/Intelligence";
 // import WeatherMap from "./WMap";
 
+
 const HomePage = () => {
   return (
     <div>
       {/* <Banner /> */}
       <WeatherUpdates />
       {/* <WeatherMap></WeatherMap> */}
+   
       <ToastContainer />
       <OurServices />
       <ProductSection />

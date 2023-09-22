@@ -65,18 +65,20 @@ const DonationPage = () => {
             <div className='flex justify-center items-center gap-6 my-16 bg-stone-800'>
                 <div>
                 <p className='text-5xl my-6 text-slate-50'>Would You like to <span className=' text-yellow-500 font-semibold'>Help</span>  <br /> <span className=' text-amber-500 font-semibold'>people</span>  Across the Globe?</p>
-                <h3 className=' text-xl text-slate-50'> Data from January 1 through November 30, 2018</h3>
+                
                 <div className='flex  items-center my-8 gap-3 '>
                     <Image alt='' src={donation2}></Image>
                     <h3 className=' text-slate-50 text-xl'>If you want to change the <br /> world, one wish at a time,<span className=' text-lime-400 font-bold'> help <br /> kids</span></h3>
                 </div>
                 </div>
-                <div className=' border-zinc-30 bg-orange-100 rounded-lg p-20'>
-                <div className='flex flex-col gap-10'>
-                <h3 className="text-xl font-semibold mt-4">Make a Donation</h3>
+                
+                <div className=' border-zinc-30  rounded-lg p-20'>
+                 
+                <div className='flex flex-col gap-10 '>
+                <h3 className="text-xl font-semibold mt-4 text-white text-center">Make a Donation</h3>
       <form onSubmit={handleDonationSubmit}>
         <div className="mb-4">
-          <label className="block text-gray-600">Donation Amount ($)</label>
+          <label className="block text-white">Donation Amount ($)</label>
           <input
             type="number"
             step="0.01"
@@ -86,7 +88,7 @@ const DonationPage = () => {
             className="border rounded-lg p-2 w-full"
           />
         </div>
-        <p className="text-gray-600">
+        <p className="text-white">
           Donated by: {user?.displayName || "Anonymous"} ({user?.email || "Unknown"})
         </p>
         <button

@@ -1,10 +1,21 @@
-"use client";
-
-import React, { useContext, useState } from "react";
-import { AuthContext } from "@/Providers/AuthProvider"; 
-
-
 import Link from "next/link";
+import "./CommunityInfo.css";
+import React from 'react';
+
+// import React, { useRef, useState } from 'react';
+// // Import Swiper React components
+// import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+// import 'swiper/css';
+// import 'swiper/css/pagination';
+// import 'swiper/css/navigation';
+
+// // Import required modules
+// import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+
+// import Img1 from "./../../../../assets/donationbg.png"
+
 
 
 const CommunityInfo = () => {
@@ -14,91 +25,77 @@ const CommunityInfo = () => {
     top: "0",
   };
 
-  const { user } = useContext(AuthContext); 
+  // const progressCircle = useRef(null);
+  // const progressContent = useRef(null);
 
-  const [donationAmount, setDonationAmount] = useState(0);
-
-  const handleDonationChange = (event) => {
-    setDonationAmount(parseFloat(event.target.value));
-  };
-
-  const handleDonationSubmit = (event) => {
-    event.preventDefault();
-  
-    
-    const dataToSend = {
-      donationAmount,
-      displayName: user?.displayName || "Anonymous",
-      email: user?.email || "Unknown",
-    };
-  
-    fetch("https://weather-cast-server.vercel.app/donation", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(dataToSend),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        window.location.replace(result.url)
-        console.log("Server response:", result);
-      })
-      .catch((error) => {
-        console.error("Error sending donation:", error);
-      });
-  
-    console.log(`Donation amount: $${donationAmount}`);
-    console.log(`Donated by: ${user?.displayName || "Anonymous"} (${user?.email || "Unknown"})`);
-  };
-  
-  
+  // const onAutoplayTimeLeft = (s, time, progress) => {
+  //   progressCircle.current.style.setProperty('--progress', 1 - progress);
+  //   progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
+  // };
 
   return (
     <div
-      className="bg-blue-100 p-4 rounded-lg shadow-lg mt-4"
+      className="bg-blue-100 p-4 rounded-lg shadow-lg mt-4 rCardBg"
       style={communityInfoStyle}
     >
       <h2 className="text-2xl font-semibold mb-2">Welcome to Our Community!</h2>
-      <p className="text-gray-600">
-        Our community is a place where you can share your thoughts, ideas, and
-        experiences with others. Whether you want to discuss a topic, ask for
-        help, or simply connect with like-minded people, you've come to the
-        right place.
-      </p>
+      
       <p className="text-gray-600">Benefits of Joining Our Community:</p>
       <ul className="list-disc pl-6 text-gray-600">
         <li>Gain knowledge and insights from others.</li>
         <li>Get answers to your questions.</li>
         <li>Share your own knowledge and expertise.</li>
       </ul>
-      <h2 className="animate-pulse bg-gradient-to-r  from-red-800 p-5 shadow-xl rounded-2xl via-blue-650 text-2xl font-bold text-center to-red-500 bg-clip-text text-transparent ">
+      <h2 className="animate-pulse bg-gradient-to-r from-red-800 p-5 shadow-xl rounded-2xl via-blue-650 text-2xl font-bold text-center to-red-500 bg-clip-text text-transparent">
         <Link href="/community/Donation">
-        <button>Donation Now!</button>
+          <button>Donation Now!</button>
         </Link>
       </h2>
 
-      {/* <h3 className="text-xl font-semibold mt-4">Make a Donation</h3>
-      <form onSubmit={handleDonationSubmit}>
-        <div className="mb-4">
-          <label className="block text-gray-600">Donation Amount ($)</label>
-          <input
-            type="number"
-            step="0.01"
-            min="0"
-            value={donationAmount}
-            onChange={handleDonationChange}
-            className="border rounded-lg p-2 w-full"
-          />
-        </div>
-        <p className="text-gray-600">
-          Donated by: {user?.displayName || "Anonymous"} ({user?.email || "Unknown"})
-        </p>
-        <button
-          type="submit"
-          className="bg-blue-500 text-white rounded-lg p-2 w-full hover:bg-blue-600"
+      {/* Donation Purpose Section */}
+      <div className="mt-4 DonationBg text-white bg-opacity-70 bg-black p-4 rounded-lg shadow-lg font-semibold text-xl">
+  
+  <p>
+    Your donation plays a crucial role in supporting our community. Here's how your contribution helps:
+  </p>
+  <ul className="list-disc pl-6">
+    <li>Supporting community events and activities.</li>
+    <li>Improving the platform and user experience.</li>
+    <li>Providing resources for community members in need.</li>
+  </ul>
+</div>
+
+      {/* <div className="swiper-container">
+        <Swiper
+          spaceBetween={30}
+          centeredSlides={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          modules={[Autoplay, Pagination, Navigation]}
+          onAutoplayTimeLeft={onAutoplayTimeLeft}
+          className="mySwiper"
         >
-          Donate
-        </button>
-      </form> */}
+          <SwiperSlide >
+           <img src={Img1} alt="" />
+          </SwiperSlide>
+          <SwiperSlide>Slide 2</SwiperSlide>
+          <SwiperSlide>Slide 3</SwiperSlide>
+          <SwiperSlide>Slide 4</SwiperSlide>
+          
+          <div className="autoplay-progress" slot="container-end">
+            <svg viewBox="0 0 48 48" ref={progressCircle}>
+              <circle cx="24" cy="24" r="20"></circle>
+            </svg>
+            <span ref={progressContent}></span>
+          </div>
+        </Swiper>
+      </div> */}
     </div>
   );
 };
