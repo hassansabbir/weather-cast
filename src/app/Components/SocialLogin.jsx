@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
-import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import {
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+} from "firebase/auth";
 import app from "@/Firebase/Firebase.config";
 import { useRouter } from "next/navigation";
 
@@ -60,19 +65,23 @@ const SocialLogin = () => {
 
   return (
     <>
-      <div className="divider">OR</div>
-      <div className="space-y-5">
+      <h2 className="text-xl my-2 text-center">Login With Social Media</h2>
+      <div className="flex gap-3 justify-center mt-5">
         <button
           onClick={handleGoogleSignIn}
           type="button"
-          className="btn btn-outline text-xl hover:border-none hover:bg-sky-400 w-full"
+          className="btn btn-outline text-xl rounded-full hover:border-none hover:bg-sky-400 w-5/12"
         >
-          <FcGoogle className="h-7 w-7" /> Login With Google
+          <FcGoogle className="h-7 w-7" />
         </button>
-        <button className="btn btn-outline w-full text-xl" onClick={handleGithubSignIn}>
-          <FaGithub className="h-7 w-7" /> Login With GitHub
+        <button
+          className="btn btn-outline w-5/12 rounded-full text-xl"
+          onClick={handleGithubSignIn}
+        >
+          <FaGithub className="h-7 w-7" />
         </button>
       </div>
+      <div className="divider">OR</div>
     </>
   );
 };

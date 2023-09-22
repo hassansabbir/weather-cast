@@ -8,7 +8,8 @@ import { AuthContext } from "@/Providers/AuthProvider";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-
+import loginCard from "../../assets/loginCard.jpg";
+import Image from "next/image";
 
 const LogInPage = () => {
   const { signIn } = useContext(AuthContext);
@@ -40,76 +41,75 @@ const LogInPage = () => {
 
   return (
     <div className="login-page">
-      <div className="hero ">
-        <div className="hero-content flex-col  rounded-3xl">
-          <div className="text-center">
-            <h1 className="text-5xl font-bold  font-description">
-              Welcome to WeatherCast
-            </h1>
-            <h1 className="text-5xl font-bold font-description">Login Now!</h1>
-            <p className="py-6 text-2xl lg:w-9/12 mx-auto  font-description">
-              Welcome to our weather forecast web application! Log in to access
-              personalized weather updates, and real-time alerts. Stay informed
-              about weather conditions in your area and explore historical data.
-              Join us in this journey of learning and exploring the world of web
-              development while staying ahead of the weather.
-            </p>
-          </div>
-          <div className="card flex-shrink-0 w-full mb-20 max-w-xl shadow-2xl ">
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              className="card-body bg-white bg-opacity-70 rounded-3xl"
-            >
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text text-xl font-bold">Email</span>
-                </label>
-                <input
-                  {...register("email", { required: true })}
-                  type="text"
-                  placeholder="email"
-                  className="input input-bordered"
-                  name="email"
-                />
-                {errors.email && (
-                  <span className="text-red-600">email is required</span>
-                )}
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text text-xl font-bold">Password</span>
-                </label>
-                <input
-                  {...register("password", { required: true })}
-                  type="password"
-                  placeholder="password"
-                  className="input input-bordered"
-                  name="password"
-                />
-                {errors.password && (
-                  <span className="text-red-600">Password is required</span>
-                )}
+      <div className="lg:flex justify-center p-5 lg:p-32 items-center">
+        <div className="bg-blue-50 p-10 h-[730px] lg:w-[500px] shadow-2xl rounded-l-3xl">
+          <h2 className="text-4xl text-center font-bold">
+            Login to your Account
+          </h2>
+          <SocialLogin />
+          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text text-xl font-bold">Email</span>
+              </label>
+              <input
+                {...register("email", { required: true })}
+                type="text"
+                placeholder="email"
+                className="input input-bordered"
+                name="email"
+              />
+              {errors.email && (
+                <span className="text-red-600">email is required</span>
+              )}
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text text-xl font-bold">Password</span>
+              </label>
+              <input
+                {...register("password", { required: true })}
+                type="password"
+                placeholder="password"
+                className="input input-bordered"
+                name="password"
+              />
+              {errors.password && (
+                <span className="text-red-600">Password is required</span>
+              )}
 
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label>
-              </div>
-              <div className="form-control mt-6">
-                <button className="btn btn-outline text-xl bg-transparent border-black">
-                  Login
-                </button>
-              </div>
-              <SocialLogin />
-              <p className="text-center text-xl">
-                New To weatherCast?{" "}
-                <Link href="/signUp" className="underline font-bold">
-                  Register Now
-                </Link>
-              </p>
-            </form>
-          </div>
+              <label className="label">
+                <a href="#" className="label-text-alt link link-hover">
+                  Forgot password?
+                </a>
+              </label>
+            </div>
+            <div className="form-control mt-6">
+              <button className="btn btn-outline text-xl bg-transparent border-black">
+                Login
+              </button>
+            </div>
+            <div className="divider"></div>
+            <p className="text-center text-xl">
+              New To weatherCast?
+              <br />
+              <Link href="/signUp" className="underline rounded-3xl font-bold">
+                Register Now
+              </Link>
+            </p>
+          </form>
+        </div>
+        <div className="welcomeCard h-[730px] lg:w-[500px] shadow-2xl rounded-r-3xl p-10">
+          <h1 className="text-5xl font-bold text-center">
+            Welcome to weatherCast
+          </h1>
+          <p className="text-xl mt-5 text-justify ">
+            Welcome to our weather forecast web application! Log in to access
+            personalized weather updates, and real-time alerts. Stay informed
+            about weather conditions in your area and explore historical data.
+            Join us in this journey of learning and exploring the world of web
+            development while staying ahead of the weather.
+          </p>
         </div>
       </div>
     </div>
