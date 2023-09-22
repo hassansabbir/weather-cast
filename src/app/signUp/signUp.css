@@ -1,5 +1,12 @@
 .sign-up-page{
-  background-image: url(../../assets/noaa-VRf6c6h9lRg-unsplash\ \(1\).jpg);
+  background-image: url(../../assets/signUpBg.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.signUpCard{
+  background-image: url(../../assets/signUpCard.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

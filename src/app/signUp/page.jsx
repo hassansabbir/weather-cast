@@ -9,7 +9,6 @@ import { AuthContext } from "@/Providers/AuthProvider";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
-
 const SignUpPage = () => {
   const { createUser, updateUserProfile, logOut } = useContext(AuthContext);
   const router = useRouter();
@@ -72,147 +71,141 @@ const SignUpPage = () => {
 
   return (
     <div className="sign-up-page">
-      <div className="hero">
-        <div className="hero-content flex-col my-20 mr-auto">
-          <div className="text-center text-white">
-            <h1 className="text-5xl font-bold font-description">
+      <div className="lg:flex justify-center p-5 lg:p-32 items-center">
+        <div className="signUpCard p-10 pt-20 text-white rounded-l-3xl shadow-2xl h-[750px] lg:w-[500px]">
+          <div className="">
+            <h1 className="text-5xl font-bold text-center">
               Welcome to weatherCast
             </h1>
-            <h1 className="text-5xl font-bold font-description">
-              Sign up Now!
-            </h1>
-            <p className="py-6 text-2xl lg:w-9/12 mx-auto font-description">
+            <p className="text-xl mt-5 text-justify ">
               Join our weather forecast community! Sign up to enjoy personalized
               weather insights, and instant alerts. Be part of a platform where
               learning and exploring web development meet the excitement of
-              staying informed about weather conditions. Start your journey with
-              us today!
+              staying informed about weather conditions. Sign up and start your
+              journey with us today!
             </p>
           </div>
-          <div className="card flex-shrink-0 w-full max-w-xl shadow-2xl ">
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              className="card-body bg-white bg-opacity-70 rounded-3xl"
-            >
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text text-2xl font-bold">Name</span>
-                </label>
-                <input
-                  {...register("name", { required: true })}
-                  type="text"
-                  placeholder="name"
-                  className="input input-bordered"
-                  name="name"
-                />
-                {errors.name && (
-                  <span className="text-red-600">Name is required</span>
-                )}
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text text-2xl font-bold">
-                    Photo Url
-                  </span>
-                </label>
-                <input
-                  {...register("photoUrl", { required: true })}
-                  type="text"
-                  placeholder="photo url"
-                  className="input input-bordered"
-                />
-                {errors.photoUrl && (
-                  <span className="text-red-600">PhotoUrl is required</span>
-                )}
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text text-2xl font-bold">Email</span>
-                </label>
-                <input
-                  {...register("email", { required: true })}
-                  type="text"
-                  placeholder="email"
-                  className="input input-bordered"
-                  name="email"
-                />
-                {errors.email && (
-                  <span className="text-red-600">Email is required</span>
-                )}
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text text-2xl font-bold">
-                    Password
-                  </span>
-                </label>
-                <input
-                  {...register("password", {
-                    required: true,
-                    minLength: 6,
-                    maxLength: 20,
-                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
-                  })}
-                  type="password"
-                  placeholder="password"
-                  className="input input-bordered"
-                  name="password"
-                />
-                {errors.password?.type === "required" && (
-                  <p className="text-red-600">Password is required</p>
-                )}
-                {errors.password?.type === "minLength" && (
-                  <p className="text-red-600">
-                    Password must be at least 6 characters
-                  </p>
-                )}
-                {errors.password?.type === "maxLength" && (
-                  <p className="text-red-600">
-                    Password must be under 20 characters
-                  </p>
-                )}
-                {errors.password?.type === "pattern" && (
-                  <p className="text-red-600">
-                    Password must have one uppercase one lowercase one number
-                    and one special character
-                  </p>
-                )}
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text text-2xl font-bold">
-                    Confirm Password
-                  </span>
-                </label>
-                <input
-                  {...register("confirmPassword", {
-                    required: true,
-                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
-                  })}
-                  type="password"
-                  placeholder="confirm password"
-                  className="input input-bordered"
-                />
-                {errors.confirmPassword?.type === "pattern" && (
-                  <p className="text-red-600">
-                    password must be one of the following
-                  </p>
-                )}
-              </div>
-              <div className="form-control mt-6">
-                <button className="btn btn-outline text-xl bg-transparent border-black">
-                  Sign Up
-                </button>
-              </div>
-              <SocialLogin />
-              <p className="text-center text-2xl">
-                Already Have An Account?{" "}
-                <Link href="/logIn" className="underline font-bold">
-                  Login Now
-                </Link>
-              </p>
-            </form>
-          </div>
+        </div>
+        <div className="bg-blue-50 p-10 h-[750px] lg:w-[500px] shadow-2xl rounded-r-3xl">
+          <h1 className="text-4xl font-bold text-center mb-5">Sign up Now!</h1>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="card-body rounded-3xl"
+          >
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text text-lg font-bold">Name</span>
+              </label>
+              <input
+                {...register("name", { required: true })}
+                type="text"
+                placeholder="name"
+                className="input input-bordered h-8"
+                name="name"
+              />
+              {errors.name && (
+                <span className="text-red-600">Name is required</span>
+              )}
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text text-lg font-bold">Photo Url</span>
+              </label>
+              <input
+                {...register("photoUrl", { required: true })}
+                type="text"
+                placeholder="photo url"
+                className="input input-bordered  h-8"
+              />
+              {errors.photoUrl && (
+                <span className="text-red-600">PhotoUrl is required</span>
+              )}
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text text-lg font-bold">Email</span>
+              </label>
+              <input
+                {...register("email", { required: true })}
+                type="text"
+                placeholder="email"
+                className="input input-bordered h-8"
+                name="email"
+              />
+              {errors.email && (
+                <span className="text-red-600">Email is required</span>
+              )}
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text text-lg font-bold">Password</span>
+              </label>
+              <input
+                {...register("password", {
+                  required: true,
+                  minLength: 6,
+                  maxLength: 20,
+                  pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                })}
+                type="password"
+                placeholder="password"
+                className="input input-bordered h-8"
+                name="password"
+              />
+              {errors.password?.type === "required" && (
+                <p className="text-red-600">Password is required</p>
+              )}
+              {errors.password?.type === "minLength" && (
+                <p className="text-red-600">
+                  Password must be at least 6 characters
+                </p>
+              )}
+              {errors.password?.type === "maxLength" && (
+                <p className="text-red-600">
+                  Password must be under 20 characters
+                </p>
+              )}
+              {errors.password?.type === "pattern" && (
+                <p className="text-red-600">
+                  Password must have one uppercase one lowercase one number and
+                  one special character
+                </p>
+              )}
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text text-lg font-bold">
+                  Confirm Password
+                </span>
+              </label>
+              <input
+                {...register("confirmPassword", {
+                  required: true,
+                  pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                })}
+                type="password"
+                placeholder="confirm password"
+                className="input input-bordered h-8"
+              />
+              {errors.confirmPassword?.type === "pattern" && (
+                <p className="text-red-600">
+                  password must be one of the following
+                </p>
+              )}
+            </div>
+            <div className="form-control mt-6">
+              <button className="btn btn-sm btn-outline h-8 text-lg bg-transparent border-black">
+                Sign Up
+              </button>
+            </div>
+            <div className="divider"></div>
+            <p className="text-center text-lg">
+              Already Have An Account?{" "}
+              <Link href="/logIn" className="underline font-bold">
+                Login Now
+              </Link>
+            </p>
+          </form>
         </div>
       </div>
     </div>
