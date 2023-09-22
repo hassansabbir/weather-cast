@@ -5,7 +5,7 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
-const addAArticles = () => {
+const AddArticles = () => {
   const { user } = useContext(AuthContext);
   const {
     register,
@@ -19,7 +19,7 @@ const addAArticles = () => {
 
     const addNewArticles = {
       event: data.event,
-      image_url: data.image_url,
+      image_url: data.file[0].name,
       authorName: data.authorName,
       authorEmail: data.authorEmail,
       authorImage: user?.photoURL,
@@ -152,7 +152,7 @@ const addAArticles = () => {
             <label className="label">
               <span className="label-text text-2xl font-bold">Image</span>
             </label>
-            <input
+            {/* <input
               {...register("image_url", { required: true })}
               type="text"
               placeholder="image url"
@@ -160,7 +160,8 @@ const addAArticles = () => {
             />
             {errors.image_url && (
               <span className="text-red-600">Name is required</span>
-            )}
+            )} */}
+            <input type="file" {...register("file")} />
           </div>
           <div className="form-control">
             <label className="label">
@@ -202,4 +203,4 @@ const addAArticles = () => {
   );
 };
 
-export default addAArticles;
+export default AddArticles;
