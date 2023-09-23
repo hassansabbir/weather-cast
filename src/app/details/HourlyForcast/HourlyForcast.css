@@ -1,32 +1,16 @@
-/* .react-tabs__tab {
-  background-color: #f0f0f0;
-  color: #333;
-  border: 1px solid #ccc;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-.react-tabs__tab--selected {
-  background-color: #1072dc;
-  color: #fff;
-  border: 1px solid #007bff;
-} */
-
-/* HourlyForcast.css */
-
 .custom-tab-list {
-  display: flex; /* Make the tab buttons display in a row */
-  gap: 10px; /* Add some gap between the tab buttons */
+  display: flex; 
+  gap: 10px; 
 }
 
 .custom-tab-list .react-tabs__tab {
-  border-radius: 20px; /* Adjust the border-radius to make the buttons rounded */
-  background-color: #e0e0e0; /* Set a background color */
-  padding: 10px 20px; /* Add some padding to make the buttons larger */
-  cursor: pointer; /* Change the cursor to indicate interactivity */
+  border-radius: 20px; 
+  background-color: #e0e0e0; 
+  padding: 10px 20px; 
+  cursor: pointer; 
 }
 
 .custom-tab-list .react-tabs__tab--selected {
-  background-color: #007bff; /* Change the background color for the selected tab */
-  color: #fff; /* Change the text color for the selected tab */
+  background-color: #007bff; 
+  color: #fff;
 }

@@ -57,7 +57,7 @@ const Sidebar = () => {
       <div className="drawer-side z-15">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
 
-        <ul className="menu p-4 w-80  min-h-full pt-10 bg-slate-100 text-base-content">
+        <ul className="menu p-4 lg:w-80  min-h-full pt-10 bg-slate-100 text-base-content">
           {getUser?.role === "admin" ? (
             <>
               <li
@@ -66,7 +66,6 @@ const Sidebar = () => {
                 }`}
               >
                 <Link href="/dashboard/user-home">
-                  
                   <RxAvatar /> Profile
                 </Link>
               </li>
@@ -76,7 +75,6 @@ const Sidebar = () => {
                 }`}
               >
                 <Link href="/dashboard/manage-user">
-                  
                   <FaUsers /> Manage User
                 </Link>
               </li>
@@ -86,7 +84,6 @@ const Sidebar = () => {
                 }`}
               >
                 <Link href="/dashboard/manage-articles">
-                  
                   <BsFileEarmarkPost /> Manage Articles
                 </Link>
               </li>
@@ -100,7 +97,6 @@ const Sidebar = () => {
                 }`}
               >
                 <Link href="/dashboard/user-home">
-                  
                   <RxAvatar /> Profile
                 </Link>
               </li>
@@ -124,7 +120,7 @@ const Sidebar = () => {
                   <BsFileEarmarkPost /> My Articles
                 </Link>
               </li>
-             
+
               <li
                 className={`text-2xl my-5 rounded-3xl shadow-blue-200 shadow-lg border-b-2 ${
                   currentRoute === "/community/Payment" ? "active" : ""
@@ -138,19 +134,16 @@ const Sidebar = () => {
           )}
           <li className="text-2xl mt-auto my-5 rounded-3xl shadow-blue-200 shadow-lg border-b-2">
             <Link href="/contact">
-              
               <FaPhone /> Contact Us
             </Link>
           </li>
           <li className="text-2xl my-5 rounded-3xl shadow-blue-200 shadow-lg border-b-2">
             <Link href="/community">
-              
               <FaUsers /> Community
             </Link>
           </li>
           <li className="text-2xl my-5 rounded-3xl shadow-blue-200 shadow-lg border-b-2 ">
             <Link href="/">
-            
               <GiReturnArrow /> Go to Home
             </Link>
           </li>
