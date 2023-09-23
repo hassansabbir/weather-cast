@@ -46,7 +46,7 @@ const Sidebar = () => {
   return (
     <div className="drawer max-w-[500px]  lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content ">
+      <div className="drawer-content flex justify-center items-center pt-4">
         <label
           htmlFor="my-drawer-2"
           className="btn btn-primary drawer-button lg:hidden"
@@ -54,10 +54,10 @@ const Sidebar = () => {
           Open drawer
         </label>
       </div>
-      <div className="drawer-side z-20">
+      <div className="drawer-side z-15">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
 
-        <ul className="menu p-4 w-80 min-h-full pt-10 bg-slate-100 text-base-content">
+        <ul className="menu p-4 w-80  min-h-full pt-10 bg-slate-100 text-base-content">
           {getUser?.role === "admin" ? (
             <>
               <li
@@ -66,7 +66,7 @@ const Sidebar = () => {
                 }`}
               >
                 <Link href="/dashboard/user-home">
-                  {" "}
+                  
                   <RxAvatar /> Profile
                 </Link>
               </li>
@@ -76,7 +76,7 @@ const Sidebar = () => {
                 }`}
               >
                 <Link href="/dashboard/manage-user">
-                  {" "}
+                  
                   <FaUsers /> Manage User
                 </Link>
               </li>
@@ -86,11 +86,11 @@ const Sidebar = () => {
                 }`}
               >
                 <Link href="/dashboard/manage-articles">
-                  {" "}
+                  
                   <BsFileEarmarkPost /> Manage Articles
                 </Link>
               </li>
-              <div className="divider"></div>{" "}
+              <div className="divider"></div>
             </>
           ) : (
             <>
@@ -100,7 +100,7 @@ const Sidebar = () => {
                 }`}
               >
                 <Link href="/dashboard/user-home">
-                  {" "}
+                  
                   <RxAvatar /> Profile
                 </Link>
               </li>
@@ -124,28 +124,37 @@ const Sidebar = () => {
                   <BsFileEarmarkPost /> My Articles
                 </Link>
               </li>
-              <div className="divider"></div>{" "}
+             
+              <li
+                className={`text-2xl my-5 rounded-3xl shadow-blue-200 shadow-lg border-b-2 ${
+                  currentRoute === "/community/Payment" ? "active" : ""
+                }`}
+              >
+                <Link href="/community/Payment">
+                  <BsFileEarmarkPost /> Payment
+                </Link>
+              </li>
             </>
           )}
           <li className="text-2xl mt-auto my-5 rounded-3xl shadow-blue-200 shadow-lg border-b-2">
             <Link href="/contact">
-              {" "}
+              
               <FaPhone /> Contact Us
             </Link>
           </li>
           <li className="text-2xl my-5 rounded-3xl shadow-blue-200 shadow-lg border-b-2">
             <Link href="/community">
-              {" "}
+              
               <FaUsers /> Community
             </Link>
           </li>
           <li className="text-2xl my-5 rounded-3xl shadow-blue-200 shadow-lg border-b-2 ">
             <Link href="/">
-              {" "}
+            
               <GiReturnArrow /> Go to Home
             </Link>
           </li>
-          <div className="divider"></div>{" "}
+          <div className="divider"></div>
           <li className="text-2xl my-5  mb-32 rounded-3xl shadow-blue-200 shadow-lg border-b-2">
             <button onClick={handleLogOut}>
               <RiLogoutCircleLine /> Log Out
