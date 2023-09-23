@@ -4,7 +4,6 @@ import "./signUp.css";
 import Link from "next/link";
 import Swal from "sweetalert2";
 import React, { useContext } from "react";
-import SocialLogin from "../Components/SocialLogin";
 import { AuthContext } from "@/Providers/AuthProvider";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";

@@ -8,16 +8,10 @@ import Image from "next/image";
 import logo from "../../assets/android-chrome-192x192.png";
 import { usePathname } from "next/navigation";
 
-
-
-
-
-
-
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const currentRoute = usePathname();
- 
+
   const navbar = [
     {
       path: "/",
@@ -47,7 +41,6 @@ const Navbar = () => {
       path: "/blog",
       title: "Blog",
     },
-   
   ];
 
   const handleLogOut = () => {
@@ -124,7 +117,10 @@ const Navbar = () => {
 
               {user?.email ? (
                 <li>
-                  <h2 className="text-base font-semibold" onClick={handleLogOut}>
+                  <h2
+                    className="text-base font-semibold"
+                    onClick={handleLogOut}
+                  >
                     Logout
                   </h2>
                 </li>
@@ -145,7 +141,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="flex space-x-5">
+          <ul className="flex items-center space-x-5">
             {navbar.map(({ path, title }) => (
               <li
                 key={path}
@@ -157,52 +153,46 @@ const Navbar = () => {
               </li>
             ))}
             {user && (
-                <li>
-                  <Link
-                    href="/dashboard/user-home"
-                    className={`text-base ${
-                      currentRoute === "/dashboard/user-home"
-                        ? "active"
-                        : "default"
-                    }`}
-                  >
-                    Dashboard
-                  </Link>
-                </li>
-              )}
+              <li>
+                <Link
+                  href="/dashboard/user-home"
+                  className={`text-lg ${
+                    currentRoute === "/dashboard/user-home"
+                      ? "active"
+                      : "default"
+                  }`}
+                >
+                  Dashboard
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
         <div className="navbar-end space-x-3">
           {user ? (
             <div className="flex  items-center border-4 rounded-full  p-1 ">
               <div className="flex  items-center border-r-2 pr-2 ">
-              <h2 className="hidden md:block pr-2">{user?.displayName}</h2>
-              <div className="avatar">
-                <div className="w-10 rounded-full">
-                  <img src={user?.photoURL} alt={user?.displayName} />
+                <h2 className="hidden md:block pr-2">{user?.displayName}</h2>
+                <div className="avatar">
+                  <div className="w-10 rounded-full">
+                    <img src={user?.photoURL} alt={user?.displayName} />
+                  </div>
                 </div>
               </div>
-       
+              <div className="flex  items-center  ps-2 p-1">
+                <button onClick={handleLogOut}>Logout</button>
+              </div>
             </div>
-            <div className="flex  items-center  ps-2 p-1">
-           
-              <button onClick={handleLogOut}>Logout</button>
-            
-          </div>
-            </div>
-          ): (
-          <div className="flex  items-center border-4 rounded-full  p-1">
+          ) : (
+            <div className="flex  items-center border-4 rounded-full  p-1">
               <Link className="w-full" href="/logIn">
-              <button>Login</button>
-            </Link>
-          </div>
+                <button>Login</button>
+              </Link>
+            </div>
           )}
-
-         
-          </div>
         </div>
       </div>
-   
+    </div>
   );
 };
 

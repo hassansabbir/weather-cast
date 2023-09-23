@@ -8,8 +8,6 @@ import { AuthContext } from "@/Providers/AuthProvider";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import loginCard from "../../assets/loginCard.jpg";
-import Image from "next/image";
 
 const LogInPage = () => {
   const { signIn } = useContext(AuthContext);
