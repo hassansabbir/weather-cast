@@ -5,10 +5,21 @@ import Image from "next/image";
 import contactUs from "../../assets/contactus.gif";
 // import emailjs from "@emailjs/browser";
 import emailjs from "emailjs-com";
-import Head from "next/head";
 // import { Inter } from "next/fonts/google"; // Updated import
 // import styles from "@/styles/Contact.module.css";
 import { Inter } from "next/font/google";
+
+
+const images = [
+  '/images/Contact.jpg',
+  '/images/Contact2.jpg',
+  '/images/contactus2.gif',
+  '/images/contactus2.gif',
+  '/images/contactus.gif',
+  '/images/Contact.jpg',
+  '/images/Contact2.jpg',
+  '/images/contactus.gif'
+];
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -17,6 +28,22 @@ const Contact = () => {
 
   const form = useRef(null);
   // const [client, setClient] = useState(false);
+  const [imgIndex, setImgIndex] = useState(0);
+  const [imgUrl, setImgUrl] = useState(images[0]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setImgIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  useEffect(() => {
+    setImgUrl(images[imgIndex]);
+  }, [imgIndex]);
 
   const sendEmail = (event) => {
     event.preventDefault();
@@ -52,8 +79,8 @@ const Contact = () => {
         <div className="hero min-h-[500px] bg-base-200">
           <div className="hero-content flex-col lg:flex-row-reverse">
             <Image
-              className="w-[500px] h-[500px] rounded-full"
-              src={contactUs}
+              width={500} height={500} className="rounded-full"
+              src={imgUrl}
               alt="contact"
             />
             <div className="shadow-md rounded-lg bg-[#F2F2F2]">
