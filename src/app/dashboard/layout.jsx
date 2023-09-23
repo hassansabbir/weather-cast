@@ -15,7 +15,7 @@ const DashboardLayout = ({ children }) => {
       <Providers>
         <div className="lg:flex">
           <Sidebar />
-          <div className="pt-[50px]">{children}</div>
+          <div className="">{children}</div>
         </div>
       </Providers>
     </div>

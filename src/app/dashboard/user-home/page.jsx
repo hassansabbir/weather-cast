@@ -119,11 +119,11 @@ const DashboardHome = () => {
 
   return (
     <div className="my-20 px-5 lg:px-0">
-      <div className="lg:flex gap-5 items-center ">
+      <div className="lg:flex  items-center ">
         <img
           src={user?.photoURL}
           alt="adminImg"
-          className="w-[200px] h-[200px] mx-auto rounded-full"
+          className="w-[150px] h-[150px] mx-auto rounded-full"
         />
         <div className="text-center">
           <h2 className="text-4xl mt-5 font-bold">{user?.displayName}</h2>

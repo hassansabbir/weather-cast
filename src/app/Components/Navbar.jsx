@@ -8,10 +8,16 @@ import Image from "next/image";
 import logo from "../../assets/android-chrome-192x192.png";
 import { usePathname } from "next/navigation";
 
+
+
+
+
+
+
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const currentRoute = usePathname();
-
+ 
   const navbar = [
     {
       path: "/",
@@ -41,6 +47,7 @@ const Navbar = () => {
       path: "/blog",
       title: "Blog",
     },
+   
   ];
 
   const handleLogOut = () => {
@@ -52,8 +59,8 @@ const Navbar = () => {
   // navbar fixed z-30 text-white bg-black bg-opacity-20
 
   return (
-    <div className="fixed bg-transparent w-full top-0 z-20 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200">
-      <div className="navbar bg-base-100">
+    <div className="fixed bg-transparent w-full top-0 z-20 bg-blue backdrop-filter backdrop-blur-3xl  border-b border-gray-200 ">
+      <div className="navbar ">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -91,13 +98,40 @@ const Navbar = () => {
                 <li>
                   <Link
                     href="/dashboard/user-home"
-                    className={`text-lg ${
+                    className={`text-base ${
                       currentRoute === "/dashboard/user-home"
                         ? "active"
                         : "default"
                     }`}
                   >
                     Dashboard
+                  </Link>
+                </li>
+              )}
+
+              {user && (
+                <li>
+                  <Link
+                    href="/profile"
+                    className={`text-base ${
+                      currentRoute === "/profile" ? "active" : "default"
+                    }`}
+                  >
+                    Profile
+                  </Link>
+                </li>
+              )}
+
+              {user?.email ? (
+                <li>
+                  <h2 className="text-base font-semibold" onClick={handleLogOut}>
+                    Logout
+                  </h2>
+                </li>
+              ) : (
+                <li>
+                  <Link className="w-full" href="/logIn">
+                    <h2 className="w-full text-base font-semibold">Login</h2>
                   </Link>
                 </li>
               )}
@@ -123,64 +157,52 @@ const Navbar = () => {
               </li>
             ))}
             {user && (
-              <li>
-                <Link
-                  href="/dashboard/user-home"
-                  className={`text-lg ${
-                    currentRoute === "/dashboard/user-home"
-                      ? "active"
-                      : "default"
-                  }`}
-                >
-                  Dashboard
-                </Link>
-              </li>
-            )}
+                <li>
+                  <Link
+                    href="/dashboard/user-home"
+                    className={`text-base ${
+                      currentRoute === "/dashboard/user-home"
+                        ? "active"
+                        : "default"
+                    }`}
+                  >
+                    Dashboard
+                  </Link>
+                </li>
+              )}
           </ul>
         </div>
         <div className="navbar-end space-x-3">
-          {user && (
-            <div className="flex gap-3 items-center border-4 rounded-full ps-5 p-1">
-              <h2 className="hidden md:block ">{user?.displayName}</h2>
+          {user ? (
+            <div className="flex  items-center border-4 rounded-full  p-1 ">
+              <div className="flex  items-center border-r-2 pr-2 ">
+              <h2 className="hidden md:block pr-2">{user?.displayName}</h2>
               <div className="avatar">
-                <div className="w-10 rounded-full ">
-                  <img src={user?.photoURL} />
+                <div className="w-10 rounded-full">
+                  <img src={user?.photoURL} alt={user?.displayName} />
                 </div>
               </div>
+       
             </div>
+            <div className="flex  items-center  ps-2 p-1">
+           
+              <button onClick={handleLogOut}>Logout</button>
+            
+          </div>
+            </div>
+          ): (
+          <div className="flex  items-center border-4 rounded-full  p-1">
+              <Link className="w-full" href="/logIn">
+              <button>Login</button>
+            </Link>
+          </div>
           )}
-          <div className="dropdown dropdown-bottom dropdown-end">
-            <label tabIndex={0} className="btn m-1">
-              <GiHamburgerMenu className="w-7 h-7" />
-            </label>
-            <ul
-              tabIndex={0}
-              className="dropdown-content z-20 menu p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <>
-                {user?.email ? (
-                  <li>
-                    <h2 onClick={handleLogOut}>Logout</h2>
-                  </li>
-                ) : (
-                  <>
-                    <li>
-                      <Link className="w-full" href="/logIn">
-                        <h2 className="w-full">Login</h2>
-                      </Link>
-                    </li>
-                  </>
-                )}
-              </>
 
-              <li>
-                <Link href="/profile">Profile</Link>
-              </li>
-            </ul>
+         
           </div>
         </div>
       </div>
-    </div>
+   
   );
 };
 
