@@ -1,6 +1,7 @@
 .bg-intelligence{
-  background-image: url("../../../assets/simpleBg.jpg");
+  background-image: url("../../../assets/space.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  height: 50%;
 }
