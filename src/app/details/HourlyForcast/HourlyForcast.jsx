@@ -3,7 +3,7 @@ import { BsSpeedometer } from "react-icons/bs";
 import { FaTemperatureHigh } from "react-icons/fa";
 import { FaTemperatureEmpty } from "react-icons/fa6";
 import { MdOutlineVisibility } from "react-icons/md";
-import { WiCloudyGusts, WiHumidity } from "react-icons/wi";
+import { WiHumidity } from "react-icons/wi";
 import React from "react";
 import moment from "moment";
 import { getWeatherIcon } from "@/utils/getWeatherIcon";

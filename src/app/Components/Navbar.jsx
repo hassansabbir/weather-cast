@@ -170,16 +170,16 @@ const Navbar = () => {
         </div>
         <div className="navbar-end space-x-3">
           {user ? (
-            <div className="flex  items-center border-4 rounded-full  p-1 ">
-              <div className="flex  items-center border-r-2 pr-2 ">
-                <h2 className="hidden md:block pr-2">{user?.displayName}</h2>
+            <div className="flex items-center border-4 rounded-full p-1 ">
+              <div className="flex items-center border-r-2 pr-2 ">
+                <h2 className="hidden md:block px-2">{user?.displayName}</h2>
                 <div className="avatar">
                   <div className="w-10 rounded-full">
                     <img src={user?.photoURL} alt={user?.displayName} />
                   </div>
                 </div>
               </div>
-              <div className="flex  items-center  ps-2 p-1">
+              <div className="flex items-center ps-2 p-1">
                 <button onClick={handleLogOut}>Logout</button>
               </div>
             </div>
