@@ -1,0 +1,7 @@
+.bg-services{
+    background-image: url("../../assets/earth.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 50%;
+  }

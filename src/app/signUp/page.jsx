@@ -3,15 +3,18 @@
 import "./signUp.css";
 import Link from "next/link";
 import Swal from "sweetalert2";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import SocialLogin from "../Components/SocialLogin";
 import { AuthContext } from "@/Providers/AuthProvider";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 const SignUpPage = () => {
   const { createUser, updateUserProfile, logOut } = useContext(AuthContext);
   const router = useRouter();
+
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const {
     register,
@@ -20,54 +23,117 @@ const SignUpPage = () => {
     reset,
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-    createUser(data.email, data.password).then((result) => {
-      const loggedUser = result.user;
-      console.log(loggedUser);
+  const handleImageChange = (event) => {
+    
+    const file = event.target.files[0];
+    setSelectedImage(file);
+  };
 
-      updateUserProfile(data.name, data.photoUrl)
-        .then(() => {
-          const savedUserInfo = {
-            name: data.name,
-            image: data.photoUrl,
-            email: data.email,
-            role: "visitor",
-          };
-          fetch(`https://weather-cast-server.vercel.app/users`, {
-            method: "POST",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify(savedUserInfo),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              if (data.insertedId) {
-                console.log("user profile updated");
-                reset();
-                Swal.fire({
-                  title: "User created successfully. Please login now.",
-                  showClass: {
-                    popup: "animate__animated animate__fadeInDown",
-                  },
-                  hideClass: {
-                    popup: "animate__animated animate__fadeOutUp",
-                  },
-                });
-                logOut()
+  const onSubmit = async (data) => {
+    createUser(data.email, data.password)
+      .then((result) => {
+        const loggedUser = result.user;
+
+      
+        if (!selectedImage) {
+          Swal.fire({
+            icon: "error",
+            title: "No image file selected for upload",
+          });
+          return; 
+        }
+
+       
+        try {
+          const imgApiKey = process.env.NEXT_PUBLIC_imgApiKey;
+          const imgUploadUrl = `https://api.imgbb.com/1/upload?key=${imgApiKey}`;
+          const formData = new FormData();
+          formData.append("image", selectedImage);
+
+         
+          axios
+            .post(imgUploadUrl, formData)
+            .then((imgResponse) => {
+              if (imgResponse.data.success) {
+              
+                const photoUrl = imgResponse.data.data.display_url;
+
+                updateUserProfile(data.name, photoUrl)
                   .then(() => {
-                    router.push("/logIn");
+                    const savedUserInfo = {
+                      name: data.name,
+                      email: data.email,
+                      role: "visitor",
+                      image: photoUrl, 
+                    };
+
+               
+                    fetch(`https://weather-cast-server.vercel.app/users`, {
+                      method: "POST",
+                      headers: { "content-type": "application/json" },
+                      body: JSON.stringify(savedUserInfo),
+                    })
+                      .then((res) => res.json())
+                      .then((data) => {
+                        if (data.insertedId) {
+                          console.log("user profile updated");
+                          reset();
+                          Swal.fire({
+                            title: "User created successfully. Please login now.",
+                            showClass: {
+                              popup: "animate__animated animate__fadeInDown",
+                            },
+                            hideClass: {
+                              popup: "animate__animated animate__fadeOutUp",
+                            },
+                          });
+                          logOut()
+                            .then(() => {
+                              router.push("/logIn");
+                            })
+                            .catch((err) => {
+                              console.log(err);
+                            });
+                        }
+                      })
+                      .catch((err) => {
+                        console.error("Error sending user data:", err);
+                      });
                   })
                   .catch((err) => {
-                    console.log(err);
+                    console.error("Error updating user profile:", err);
                   });
+              } else {
+                console.error("Error uploading image:", imgResponse.data.message);
+                Swal.fire({
+                  icon: "error",
+                  title: "An error occurred while uploading the image",
+                });
+                return; 
               }
+            })
+            .catch((error) => {
+              console.error("Error uploading image:", error);
+              Swal.fire({
+                icon: "error",
+                title: "An error occurred while uploading the image",
+              });
+              return; 
             });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    });
+        } catch (error) {
+          console.error("Error uploading image:", error);
+          Swal.fire({
+            icon: "error",
+            title: "An error occurred while uploading the image",
+          });
+          return; 
+        }
+      })
+      .catch((error) => {
+        console.error("Error creating user:", error);
+      });
   };
+  
 
   return (
     <div className="sign-up-page">
@@ -108,19 +174,20 @@ const SignUpPage = () => {
               )}
             </div>
             <div className="form-control">
-              <label className="label">
-                <span className="label-text text-lg font-bold">Photo Url</span>
-              </label>
-              <input
-                {...register("photoUrl", { required: true })}
-                type="text"
-                placeholder="photo url"
-                className="input input-bordered  h-8"
-              />
-              {errors.photoUrl && (
-                <span className="text-red-600">PhotoUrl is required</span>
-              )}
-            </div>
+          <label className="label">
+            <span className="label-text text-lg font-bold">Profile Image</span>
+          </label>
+          <input
+            type="file"
+            {...register("photoUrl", { required: true })}
+            onChange={handleImageChange}
+            accept="image/*"
+            className="file-input file-input-bordered  h-10"
+          />
+          {errors.photoUrl && (
+            <span className="text-red-600">Profile Image is required</span>
+          )}
+        </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text text-lg font-bold">Email</span>

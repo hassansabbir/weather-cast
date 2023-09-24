@@ -58,6 +58,10 @@ const Navbar = () => {
 
   // navbar fixed z-30 text-white bg-black bg-opacity-20
 
+  const shadowWhiteStyle = {
+    textShadow: ".5px .5px 0px white",
+  };
+
   return (
     <div className="fixed bg-transparent w-full top-0 z-20 bg-blue backdrop-filter backdrop-blur-3xl  border-b border-gray-200 ">
       <div className="navbar ">
@@ -153,20 +157,20 @@ const Navbar = () => {
                   currentRoute === path ? "active" : "default"
                 }`}
               >
-                <Link href={path}>{title}</Link>
+                <Link href={path}><span style={shadowWhiteStyle}>{title}</span></Link>
               </li>
             ))}
             {user && (
                 <li>
                   <Link
                     href="/dashboard/user-home"
-                    className={`text-base ${
+                    className={`text-lg ${
                       currentRoute === "/dashboard/user-home"
                         ? "active"
                         : "default"
                     }`}
                   >
-                    Dashboard
+                    <span style={shadowWhiteStyle}>Dashboard</span> 
                   </Link>
                 </li>
               )}
@@ -176,9 +180,9 @@ const Navbar = () => {
           {user ? (
             <div className="flex  items-center border-4 rounded-full  p-1 ">
               <div className="flex  items-center border-r-2 pr-2 ">
-              <h2 className="hidden md:block pr-2">{user?.displayName}</h2>
+              <h2 className="hidden md:block pr-2" style={shadowWhiteStyle}>{user?.displayName}</h2>
               <div className="avatar">
-                <div className="w-10 rounded-full">
+                <div className="w-10 rounded-full" >
                   <img src={user?.photoURL} alt={user?.displayName} />
                 </div>
               </div>
@@ -186,14 +190,14 @@ const Navbar = () => {
             </div>
             <div className="flex  items-center  ps-2 p-1">
            
-              <button onClick={handleLogOut}>Logout</button>
+              <button onClick={handleLogOut} className="font-semibold" style={shadowWhiteStyle}>Logout</button>
             
           </div>
             </div>
           ): (
-          <div className="flex  items-center border-4 rounded-full  p-1">
+          <div className="flex  items-center border-4 rounded-full  p-1" style={shadowWhiteStyle}>
               <Link className="w-full" href="/logIn">
-              <button>Login</button>
+              <button className="font-semibold"  style={shadowWhiteStyle} >Login</button>
             </Link>
           </div>
           )}

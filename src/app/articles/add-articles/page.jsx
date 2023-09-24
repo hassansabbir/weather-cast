@@ -1,6 +1,7 @@
 "use client";
 
 import { AuthContext } from "@/Providers/AuthProvider";
+import axios from "axios";
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
@@ -14,43 +15,95 @@ const addAArticles = () => {
     reset,
   } = useForm();
 
-  const onsubmit = (data) => {
-    console.log(data);
+  const onsubmit = async (data) => {
+    try {
+      // Check if a file has been selected
+      if (!data.image || data.image.length === 0) {
+        Swal.fire({
+          icon: "error",
+          title: "No file selected for upload",
+        });
+        return; // Prevent form submission
+      }
 
-    const addNewArticles = {
-      event: data.event,
-      image_url: data.file[0].name,
-      authorName: data.authorName,
-      authorEmail: data.authorEmail,
-      authorImage: user?.photoURL,
-      location: data.location,
-      date: data.date,
-      description: data.description,
-      detailedDescription: data.detailedDescription,
-      status: "pending",
-    };
-    fetch(`https://weather-cast-server.vercel.app/articles`, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(addNewArticles),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.insertedId) {
-          console.log("New Article Added");
-          reset();
+      const imageFile = data.image[0];
+      const formData = new FormData();
+      formData.append("image", imageFile);
+
+      const imgApiKey = process.env.NEXT_PUBLIC_imgApiKey;
+      const imgUploadUrl = `https://api.imgbb.com/1/upload?key=${imgApiKey}`;
+      const imgResponse = await axios.post(imgUploadUrl, formData);
+
+      if (imgResponse.data.success) {
+        const addNewArticles = {
+          event: data.event,
+          image_url: imgResponse.data.data.display_url,
+          authorName: data.authorName,
+          authorEmail: data.authorEmail,
+          authorImage: user?.photoURL,
+          location: data.location,
+          date: data.date,
+          description: data.description,
+          detailedDescription: data.detailedDescription,
+          status: "pending",
+        };
+
+        const articleResponse = await fetch("https://weather-cast-server.vercel.app/articles", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(addNewArticles),
+        });
+
+        if (articleResponse.status === 404) {
+          console.error("Resource not found (404)");
           Swal.fire({
-            title: "New Article Added",
-            showClass: {
-              popup: "animate__animated animate__fadeInDown",
-            },
-            hideClass: {
-              popup: "animate__animated animate__fadeOutUp",
-            },
+            icon: "error",
+            title: "Resource not found (404)",
+          });
+          return;
+        }
+
+        const articleData = await articleResponse.json();
+
+        if (articleResponse.status === 200) {
+          if (articleData.insertedId) {
+            console.log("New Article Added");
+            reset();
+            Swal.fire({
+              title: "New Article Added",
+              showClass: {
+                popup: "animate__animated animate__fadeInDown",
+              },
+              hideClass: {
+                popup: "animate__animated animate__fadeOutUp",
+              },
+            });
+          } else {
+            console.error("Error creating article:", articleData.message);
+            Swal.fire({
+              icon: "error",
+              title: "Error creating article",
+              text: articleData.message,
+            });
+          }
+        } else {
+          console.error("Unexpected response:", articleResponse.status);
+          Swal.fire({
+            icon: "error",
+            title: "Unexpected response",
+            text: `Received status code: ${articleResponse.status}`,
           });
         }
-        reset();
-      });
+      } else {
+        console.error("Error uploading image:", imgResponse.data.message);
+        Swal.fire({
+          icon: "error",
+          title: "An error occurred while uploading the image",
+        });
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   return (
@@ -68,6 +121,8 @@ const addAArticles = () => {
           onSubmit={handleSubmit(onsubmit)}
           className="my-20 py-10 px-32 bg-slate-100"
         >
+       
+
           <div className=" lg:flex gap-5">
             <div className="form-control w-1/2">
               <label className="label">
@@ -100,7 +155,7 @@ const addAArticles = () => {
                 defaultValue={user?.email}
               />
               {errors.authorEmail && (
-                <span className="text-red-600">Name is required</span>
+                <span className="text-red-600">Email is required</span>
               )}
             </div>
           </div>
@@ -116,7 +171,7 @@ const addAArticles = () => {
                 className="input input-bordered"
               />
               {errors.location && (
-                <span className="text-red-600">Name is required</span>
+                <span className="text-red-600">Location is required</span>
               )}
             </div>
             <div className="form-control w-1/2">
@@ -130,7 +185,7 @@ const addAArticles = () => {
                 className="input input-bordered"
               />
               {errors.date && (
-                <span className="text-red-600">Name is required</span>
+                <span className="text-red-600">Date is required</span>
               )}
             </div>
           </div>
@@ -145,23 +200,22 @@ const addAArticles = () => {
               className="input input-bordered"
             />
             {errors.event && (
-              <span className="text-red-600">Name is required</span>
+              <span className="text-red-600">Title is required</span>
             )}
           </div>
+
           <div className="form-control">
             <label className="label">
               <span className="label-text text-2xl font-bold">Image</span>
             </label>
-            {/* <input
-              {...register("image_url", { required: true })}
-              type="text"
-              placeholder="image url"
-              className="input input-bordered"
+            <input
+              type="file"
+              {...register("image", { required: true })}
+              className="file-input file-input-bordered w-full mb-3 button-64"
             />
-            {errors.image_url && (
-              <span className="text-red-600">Name is required</span>
-            )} */}
-            <input type="file" {...register("file")} />
+            {errors.image && (
+              <span className="text-red-600">Image is required</span>
+            )}
           </div>
           <div className="form-control">
             <label className="label">
@@ -174,7 +228,7 @@ const addAArticles = () => {
               className="input input-bordered"
             />
             {errors.description && (
-              <span className="text-red-600">Name is required</span>
+              <span className="text-red-600">Summary is required</span>
             )}
           </div>
           <div className="form-control">
@@ -189,7 +243,7 @@ const addAArticles = () => {
               rows="7"
             />
             {errors.detailedDescription && (
-              <span className="text-red-600">Name is required</span>
+              <span className="text-red-600">Description is required</span>
             )}
           </div>
           <div className="text-end mt-10">
