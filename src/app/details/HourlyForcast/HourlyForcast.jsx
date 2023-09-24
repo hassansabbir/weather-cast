@@ -102,9 +102,11 @@ const HourlyForcast = ({ weather }) => {
         5-Day Weather Forecast
       </p>
       <Tabs>
-        <TabList className="ms-20 my-10 font-bold custom-tab-list">
-          {tabHeaders}
-        </TabList>
+        <div className="overflow-x-auto">
+          <TabList className="ms-20 my-10 flex-wrap font-bold custom-tab-list">
+            {tabHeaders}
+          </TabList>
+        </div>
         {tabContents}
       </Tabs>
     </div>

@@ -76,7 +76,7 @@ const ShowReviews = () => {
                 </div>
                 <div className="flex flex-col items-center mt-10">
                   <FaQuoteLeft className="w-6 h-6" />
-                  <p className="text-lg md:text-xl h-28 my-10">
+                  <p className="text-lg w-full break-words overflow-hidden md:text-xl h-36 my-10">
                     {review.feedback}
                   </p>
                 </div>

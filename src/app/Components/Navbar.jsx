@@ -8,16 +8,10 @@ import Image from "next/image";
 import logo from "../../assets/android-chrome-192x192.png";
 import { usePathname } from "next/navigation";
 
-
-
-
-
-
-
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const currentRoute = usePathname();
- 
+
   const navbar = [
     {
       path: "/",
@@ -47,7 +41,6 @@ const Navbar = () => {
       path: "/blog",
       title: "Blog",
     },
-   
   ];
 
   const handleLogOut = () => {
@@ -128,7 +121,10 @@ const Navbar = () => {
 
               {user?.email ? (
                 <li>
-                  <h2 className="text-base font-semibold" onClick={handleLogOut}>
+                  <h2
+                    className="text-base font-semibold"
+                    onClick={handleLogOut}
+                  >
                     Logout
                   </h2>
                 </li>
@@ -149,7 +145,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="flex space-x-5">
+          <ul className="flex items-center space-x-5">
             {navbar.map(({ path, title }) => (
               <li
                 key={path}
@@ -186,7 +182,9 @@ const Navbar = () => {
                   <img src={user?.photoURL} alt={user?.displayName} />
                 </div>
               </div>
-       
+              <div className="flex  items-center  ps-2 p-1">
+                <button onClick={handleLogOut}>Logout</button>
+              </div>
             </div>
             <div className="flex  items-center  ps-2 p-1">
            
@@ -201,12 +199,9 @@ const Navbar = () => {
             </Link>
           </div>
           )}
-
-         
-          </div>
         </div>
       </div>
-   
+    </div>
   );
 };
 
