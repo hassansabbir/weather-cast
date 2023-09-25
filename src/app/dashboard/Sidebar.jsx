@@ -54,7 +54,7 @@ const Sidebar = () => {
           Open drawer
         </label>
       </div>
-      <div className="drawer-side z-15">
+      <div className="drawer-side z-20">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
 
         <ul className="menu p-4 lg:w-80  min-h-full pt-10 bg-slate-100 text-base-content">
