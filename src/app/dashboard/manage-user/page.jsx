@@ -8,20 +8,42 @@ import { TbTrashXFilled } from "react-icons/tb";
 import { GiShieldDisabled } from "react-icons/gi";
 import Swal from "sweetalert2";
 import PrivateRoute from "@/routes/PrivetRoute";
-
-
+import Pagination from "../dashboard-pagination/page";
 
 const ManageUsers = () => {
   const [users, setUsers] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalUsers, setTotalUsers] = useState(0);
+  const [startUserIndex, setStartUserIndex] = useState(1);
+  const itemsPerPage = 10;
+
   useEffect(() => {
     fetchUsers();
-  }, []);
+  }, [currentPage]);
 
   const fetchUsers = () => {
     axios
-      .get(`https://weather-cast-server.vercel.app/users`)
-      .then((data) => setUsers(data.data));
+      .get(
+        `https://weather-cast-server.vercel.app/users?page=${currentPage}&perPage=${itemsPerPage}`
+      )
+      .then((data) => {
+        setTotalUsers(totalUsers);
+        setUsers(data.data);
+      })
+
+      .catch((error) => {
+        console.error("Error fetching users:", error);
+      });
   };
+
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+    const newStartIndex = (newPage - 1) * itemsPerPage + 1;
+    setStartUserIndex(newStartIndex);
+  };
+
+  // Calculate the total number of pages
+  const totalPages = Math.ceil(40 / itemsPerPage);
 
   const handleMakeAdmin = (user) => {
     fetch(`https://weather-cast-server.vercel.app/users/admin/${user._id}`, {
@@ -117,12 +139,12 @@ const ManageUsers = () => {
 
   return (
     <PrivateRoute>
-      <div className="w-full mt-10">
+      <div className="w-full mt-10 ">
         <h2 className="text-5xl text-center font-description">
           Manage All The Users
         </h2>
         <h3 className="text-2xl text-center my-10">
-          Total Users: {users.length}
+          Total Users: {totalUsers}
         </h3>
         <div className="overflow-x-auto w-full">
           <table className="table z-0">
@@ -139,7 +161,7 @@ const ManageUsers = () => {
             <tbody>
               {users.map((user, index) => (
                 <tr key={user._id}>
-                  <td>{index + 1}</td>
+                  <td>{startUserIndex + index}</td>
                   <td>
                     <div className="flex items-center space-x-3">
                       <div className="avatar">
@@ -230,6 +252,11 @@ const ManageUsers = () => {
             </tbody>
           </table>
         </div>
+        <Pagination
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+          totalPages={totalPages}
+        ></Pagination>
       </div>
     </PrivateRoute>
   );
