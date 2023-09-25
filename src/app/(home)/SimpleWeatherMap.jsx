@@ -67,7 +67,7 @@ function WeatherMap({ city }) {
         <MapContainer
           center={[23.8103, 90.4125]}
           zoom={10}
-          style={{ width: "800px", height: "600px" }}
+          style={{ width: "800px", height: "600px", zIndex: 0 }}
           onClick={handleMapClick}
         >
           <TileLayer

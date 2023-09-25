@@ -31,3 +31,11 @@ body {
   display: block;
   width: 100%;
 }
+
+
+@media (max-width: 768px) {
+  .swiper-slide {
+    width: 80%;
+    height: auto;
+  }
+}

@@ -35,40 +35,44 @@ const Footer = () => {
                 weather<span className="text-orange-400">Cast</span>
               </p>
             </div>
-            <div className="flex flex-col gap-2">
-              <p className="text-lg font-bold">Services</p>
-              <a className="link link-hover">Branding</a>
-              <a className="link link-hover">Design</a>
-              <a className="link link-hover">Advertisement</a>
+            <div className="flex gap-14 items-center">
+              <div className="flex flex-col gap-2">
+                <p className="text-lg font-bold">Services</p>
+                <a className="link link-hover">Branding</a>
+                <a className="link link-hover">Design</a>
+                <a className="link link-hover">Advertisement</a>
+              </div>
+              <div className="flex flex-col gap-2">
+                <p className="text-lg font-bold">Company</p>
+                <Link href="/about">
+                  <h3 className="link link-hover">About us</h3>
+                </Link>
+                <Link href="/contact">
+                  <h3 className="link link-hover">Contact</h3>
+                </Link>
+                <a className="link link-hover">Jobs</a>
+              </div>
             </div>
-            <div className="flex flex-col gap-2">
-              <p className="text-lg font-bold">Company</p>
-              <Link href="/about">
-                <h3 className="link link-hover">About us</h3>
-              </Link>
-              <Link href="/contact">
-                <h3 className="link link-hover">Contact</h3>
-              </Link>
-              <a className="link link-hover">Jobs</a>
-            </div>
-            <div className="flex flex-col gap-2">
-              <p className="text-lg font-bold">Legal</p>
-              <a className="link link-hover">Terms of use</a>
-              <a className="link link-hover">Privacy policy</a>
-              <a className="link link-hover">Cookie policy</a>
-            </div>
-            <div className="flex flex-col gap-2">
-              <p className="text-lg font-bold">follow us</p>
-              <div className="flex gap-2">
-                <a className="link link-hover">
-                  <FaLinkedin className="w-7 h-7" />
-                </a>
-                <a className="link link-hover">
-                  <FaTwitter className="w-7 h-7" />
-                </a>
-                <a className="link link-hover">
-                  <FaInstagram className="w-7 h-7" />
-                </a>
+            <div className="flex gap-14 items-center">
+              <div className="flex flex-col gap-2">
+                <p className="text-lg font-bold">Legal</p>
+                <a className="link link-hover">Terms of use</a>
+                <a className="link link-hover">Privacy policy</a>
+                <a className="link link-hover">Cookie policy</a>
+              </div>
+              <div className="flex flex-col gap-2">
+                <p className="text-lg font-bold">follow us</p>
+                <div className="flex gap-2">
+                  <a className="link link-hover">
+                    <FaLinkedin className="w-7 h-7" />
+                  </a>
+                  <a className="link link-hover">
+                    <FaTwitter className="w-7 h-7" />
+                  </a>
+                  <a className="link link-hover">
+                    <FaInstagram className="w-7 h-7" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>

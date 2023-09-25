@@ -1,7 +1,6 @@
-.bg-intelligence{
-  background-image: url("../../../assets/space.jpg");
+.bg-servicesCard{
+  background-image: url("../../assets/serbices-card-bg.jpg");
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
-  height: 50%;
 }

@@ -105,20 +105,6 @@ const Navbar = () => {
                   </Link>
                 </li>
               )}
-
-              {user && (
-                <li>
-                  <Link
-                    href="/profile"
-                    className={`text-base ${
-                      currentRoute === "/profile" ? "active" : "default"
-                    }`}
-                  >
-                    Profile
-                  </Link>
-                </li>
-              )}
-
               {user?.email ? (
                 <li>
                   <h2
@@ -153,49 +139,55 @@ const Navbar = () => {
                   currentRoute === path ? "active" : "default"
                 }`}
               >
-                <Link href={path}><span style={shadowWhiteStyle}>{title}</span></Link>
+                <Link href={path}>
+                  <span style={shadowWhiteStyle}>{title}</span>
+                </Link>
               </li>
             ))}
             {user && (
-                <li>
-                  <Link
-                    href="/dashboard/user-home"
-                    className={`text-lg ${
-                      currentRoute === "/dashboard/user-home"
-                        ? "active"
-                        : "default"
-                    }`}
-                  >
-                    <span style={shadowWhiteStyle}>Dashboard</span> 
-                  </Link>
-                </li>
-              )}
+              <li>
+                <Link
+                  href="/dashboard/user-home"
+                  className={`text-lg ${
+                    currentRoute === "/dashboard/user-home"
+                      ? "active"
+                      : "default"
+                  }`}
+                >
+                  <span style={shadowWhiteStyle}>Dashboard</span>
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
         <div className="navbar-end space-x-3">
           {user ? (
             <div className="flex  items-center border-4 rounded-full  p-1 ">
-              <div className="flex  items-center border-r-2 pr-2 ">
-              <h2 className="hidden md:block pr-2" style={shadowWhiteStyle}>{user?.displayName}</h2>
-              <div className="avatar">
-                <div className="w-10 rounded-full" >
-                  <img src={user?.photoURL} alt={user?.displayName} />
+              <div className="flex items-center px-2 ">
+                <h2 className="hidden md:block pr-2" style={shadowWhiteStyle}>
+                  {user?.displayName}
+                </h2>
+                <div className="avatar">
+                  <div className="w-10 rounded-full">
+                    <img src={user?.photoURL} alt={user?.displayName} />
+                  </div>
+                </div>
+                <div className="flex items-center ps-2 p-1">
+                  <button onClick={handleLogOut}>Logout</button>
                 </div>
               </div>
-              
             </div>
-            <div className="flex  items-center  ps-2 p-1">
-           
-              <button onClick={handleLogOut} className="font-semibold" style={shadowWhiteStyle}>Logout</button>
-            
-          </div>
-            </div>
-          ): (
-          <div className="flex  items-center border-4 rounded-full  p-1" style={shadowWhiteStyle}>
+          ) : (
+            <div
+              className="flex items-center rounded-full  p-1"
+              style={shadowWhiteStyle}
+            >
               <Link className="w-full" href="/logIn">
-              <button className="font-semibold"  style={shadowWhiteStyle} >Login</button>
-            </Link>
-          </div>
+                <button className="font-semibold" style={shadowWhiteStyle}>
+                  Login
+                </button>
+              </Link>
+            </div>
           )}
         </div>
       </div>

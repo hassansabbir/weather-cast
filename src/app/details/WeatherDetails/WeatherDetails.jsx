@@ -24,7 +24,7 @@ import WeatherMap from "@/app/(home)/SimpleWeatherMap";
 import WeatherAlert from "@/app/(home)/WeatherUodates/WeatherAlert";
 import HumidityChart from "../HumidityChart";
 import PressureChart from "../PressureChart";
-
+import "./WeatherDetails.css";
 import WindChart from "../WindChart";
 import HourlyForcast from "../HourlyForcast/HourlyForcast";
 import "./loaderStyle.css";
@@ -254,437 +254,444 @@ const WeatherDetails = () => {
   return (
     <PrivateRoute>
       <GifBanner></GifBanner>
-      <div className="max-w-[1460px] pt-10 mx-auto">
-        {/* searchbar  */}
-        <div className="w-full mx-auto text-center">
-          <input
-            value={City}
-            onChange={(e) => setCity(e.target.value)}
-            placeholder="Enter city name"
-            className="border w-1/3 py-4 pl-5 rounded-2xl  "
-            type="search"
-            name=""
-            id=""
-          />
+      <div className="bg-clear">
+        <div className="bg-white bg-opacity-50">
+          <div className="max-w-[1460px] pt-10 mx-auto">
+            {/* searchbar  */}
+            <div className="w-full mx-auto text-center">
+              <input
+                value={City}
+                onChange={(e) => setCity(e.target.value)}
+                placeholder="Enter city name"
+                className="border w-1/3 py-4 pl-5 rounded-2xl  "
+                type="search"
+                name=""
+                id=""
+              />
 
-          <button
-            onClick={handleSearch}
-            className="btn btn-neutral text-white bg-blue-800 ms-4"
-          >
-            Search
-          </button>
-        </div>
+              <button
+                onClick={handleSearch}
+                className="btn btn-neutral text-white bg-blue-800 ms-4"
+              >
+                Search
+              </button>
+            </div>
 
-        <div className="mx-auto text-center">
-          <button
-            className={`btn btn-circle btn-outline font-bold m-8 ${
-              unit === "metric" ? "active" : ""
-            }`}
-            onClick={() => handleUnitChange("metric")}
-          >
-            °C
-          </button>
-          <button
-            className={`btn btn-circle btn-outline font-bold ${
-              unit === "imperial" ? "active" : ""
-            }`}
-            onClick={() => handleUnitChange("imperial")}
-          >
-            °F
-          </button>
-          {/* <WeatherLocation></WeatherLocation>  */}
-        </div>
+            <div className="mx-auto text-center">
+              <button
+                className={`btn btn-circle btn-outline font-bold m-8 ${
+                  unit === "metric" ? "active" : ""
+                }`}
+                onClick={() => handleUnitChange("metric")}
+              >
+                °C
+              </button>
+              <button
+                className={`btn btn-circle btn-outline font-bold ${
+                  unit === "imperial" ? "active" : ""
+                }`}
+                onClick={() => handleUnitChange("imperial")}
+              >
+                °F
+              </button>
+              {/* <WeatherLocation></WeatherLocation>  */}
+            </div>
 
-        <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 m-10">
-          <div className="col-span-1 me-7">
-            <div className="card md:w-5/6 bg-base-100 shadow-xl">
-              <div className="card-body">
-                <p>Now</p>
+            <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 m-10">
+              <div className="col-span-1 me-7">
+                <div className="card md:w-5/6 shadow-xl glass">
+                  <div className="card-body">
+                    <p>Now</p>
 
-                <div className="flex gap-3">
-                  <h2 className="card-title text-5xl">
-                    {" "}
-                    {Math.round(currentTemperature)}{" "}
-                    <small>{unit === "metric" ? "°C" : "°F"}</small>{" "}
-                  </h2>
-                  <Image
-                    src={weatherIcon}
-                    height={100}
-                    width={120}
-                    alt={weatherMain}
-                  />
+                    <div className="flex gap-3">
+                      <h2 className="card-title text-5xl">
+                        {" "}
+                        {Math.round(currentTemperature)}{" "}
+                        <small>{unit === "metric" ? "°C" : "°F"}</small>{" "}
+                      </h2>
+                      <Image
+                        src={weatherIcon}
+                        height={100}
+                        width={120}
+                        alt={weatherMain}
+                      />
+                    </div>
+                    <p className="border-b-2 pb-2 text-2xl font-semibold">
+                      {currentWeather?.weather[0]?.description}
+                    </p>
+                    <h2 className=" flex gap-1">
+                      {" "}
+                      <FaCalendar /> {currentDate.toDateString()}
+                    </h2>
+                    <div className="flex justify-between">
+                      <p className=" flex gap-1">
+                        {" "}
+                        <FaLocationDot /> {location}
+                      </p>
+
+                      <button
+                        onClick={handleFavBtn}
+                        className={`text-yellow-600 ${
+                          favbtn ? "disabled" : ""
+                        }`}
+                        disabled={favbtn}
+                      >
+                        {favbtn ? (
+                          <FaStar className="text-2xl" />
+                        ) : (
+                          <FaRegStar className="text-2xl" />
+                        )}
+                      </button>
+                    </div>
+
+                    <p></p>
+                  </div>
                 </div>
-                <p className="border-b-2 pb-2 text-2xl font-semibold">
-                  {currentWeather?.weather[0]?.description}
+
+                <p className="m-10 ms-3 text-2xl font-semibold text-blue-700 ">
+                  5 Days Forecast
                 </p>
-                <h2 className=" flex gap-1">
-                  {" "}
-                  <FaCalendar /> {currentDate.toDateString()}
-                </h2>
-                <div className="flex justify-between">
-                  <p className=" flex gap-1">
-                    {" "}
-                    <FaLocationDot /> {location}
-                  </p>
 
-                  <button
-                    onClick={handleFavBtn}
-                    className={`text-yellow-600 ${favbtn ? "disabled" : ""}`}
-                    disabled={favbtn}
-                  >
-                    {favbtn ? (
-                      <FaStar className="text-2xl" />
-                    ) : (
-                      <FaRegStar className="text-2xl" />
-                    )}
-                  </button>
-                </div>
-
-                <p></p>
-              </div>
-            </div>
-
-            <p className="m-10 ms-3 text-2xl font-semibold text-blue-700 ">
-              5 Days Forecast
-            </p>
-
-            <div className="card md:w-5/6 bg-base-100 shadow-xl">
-              <div className="card-body">
-                {/* 1st day  */}
-                <div className="flex gap-4 ">
-                  <p>
-                    <Image
-                      src={weatherIcon}
-                      height={50}
-                      width={50}
-                      alt={weatherMain}
-                    />
-                  </p>
-                  <h2 className="  text-xl">
-                    {" "}
-                    {Math.round(currentTemperature)}
-                    <small>{unit === "metric" ? "°C" : "°F"}</small>{" "}
-                  </h2>
-                  <h2 className=" "> {currentDate.toDateString()}</h2>
-                </div>
-
-                {/* 2nd day */}
-                <div className="flex gap-4">
-                  <p>
-                    <Image
-                      src={weatherIcon8}
-                      height={50}
-                      width={50}
-                      alt={weatherMain8}
-                    />
-                  </p>
-                  <h2 className=" text-xl">
-                    {" "}
-                    {Math.round(currentTemperature8)}{" "}
-                    <small>{unit === "metric" ? "°C" : "°F"}</small>{" "}
-                  </h2>
-                  <h2 className=" "> {currentDate8.toDateString()}</h2>
-                </div>
-                {/* 3rd day  */}
-                <div className="flex gap-4">
-                  <p>
-                    <Image
-                      src={weatherIcon16}
-                      height={50}
-                      width={50}
-                      alt={weatherMain16}
-                    />
-                  </p>
-                  <h2 className=" text-xl">
-                    {" "}
-                    {Math.round(currentTemperature16)}{" "}
-                    <small>{unit === "metric" ? "°C" : "°F"}</small>{" "}
-                  </h2>
-                  <h2 className=" "> {currentDate16.toDateString()}</h2>
-                </div>
-                {/* 4th day  */}
-                <div className="flex gap-4">
-                  <p>
-                    <Image
-                      src={weatherIcon24}
-                      height={50}
-                      width={50}
-                      alt={weatherMain24}
-                    />
-                  </p>
-                  <h2 className=" text-xl">
-                    {" "}
-                    {Math.round(currentTemperature24)}
-                    <small>{unit === "metric" ? "°C" : "°F"}</small>{" "}
-                  </h2>
-                  <h2 className=" "> {currentDate24.toDateString()}</h2>
-                </div>
-                {/* 5th day  */}
-                <div className="flex gap-4">
-                  <p>
-                    <Image
-                      src={weatherIcon32}
-                      height={50}
-                      width={50}
-                      alt={weatherMain32}
-                    />
-                  </p>
-                  <h2 className=" text-xl">
-                    {" "}
-                    {Math.round(currentTemperature32)}{" "}
-                    <small>{unit === "metric" ? "°C" : "°F"}</small>{" "}
-                  </h2>
-                  <h2 className=""> {currentDate32.toDateString()}</h2>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* highlights  */}
-          <div className="col-span-2 ">
-            <h3 className="font-bold text-2xl m-9 ms-3 text-blue-700">
-              Today Highlights
-            </h3>
-            <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-4">
-              <div className="card  bg-base-100 shadow-xl">
-                <div className="card-body">
-                  <h2 className="font-semibold">Wind Quality Index</h2>
-                  <div className="flex gap-2">
-                    <p>
-                      <MdAir className="text-3xl my-auto" />{" "}
-                    </p>
-                    <p className="text-xl">
-                      {" "}
-                      <small>Direction</small> <br /> {windDirection}
-                    </p>
-                    <p className="text-xl">
-                      {" "}
-                      <small>Speed</small> <br /> {currentWeather.wind.speed}{" "}
-                      <small>m/s</small>
-                    </p>
-                    <p className="text-xl">
-                      {" "}
-                      <small>Gust</small> <br /> {currentWeather.wind.gust}{" "}
-                      <small>m/s</small>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="card  bg-base-100 shadow-xl ">
-                <div className="card-body">
-                  <h2 className="font-semibold">Sunrise & Sunset</h2>
-                  <div className="flex gap-12">
-                    <div className="flex gap-2">
+                <div className="card md:w-5/6 glass shadow-xl">
+                  <div className="card-body">
+                    {/* 1st day  */}
+                    <div className="flex gap-4 ">
                       <p>
-                        <MdSunny className="text-3xl mt-5" />{" "}
+                        <Image
+                          src={weatherIcon}
+                          height={50}
+                          width={50}
+                          alt={weatherMain}
+                        />
                       </p>
-                      <p className="text-xl">
+                      <h2 className="  text-xl">
                         {" "}
-                        <small>Sunrise</small> <br />{" "}
-                        {sunriseTime.toLocaleTimeString("en-US", options)}{" "}
-                      </p>
+                        {Math.round(currentTemperature)}
+                        <small>{unit === "metric" ? "°C" : "°F"}</small>{" "}
+                      </h2>
+                      <h2 className=" "> {currentDate.toDateString()}</h2>
                     </div>
-                    <div className="flex gap-2 ">
-                      <p className="ms-10">
-                        <FaMoon className="text-3xl mt-5" />{" "}
+
+                    {/* 2nd day */}
+                    <div className="flex gap-4">
+                      <p>
+                        <Image
+                          src={weatherIcon8}
+                          height={50}
+                          width={50}
+                          alt={weatherMain8}
+                        />
                       </p>
-                      <p className="text-xl">
+                      <h2 className=" text-xl">
                         {" "}
-                        <small>Sunset</small> <br />{" "}
-                        {sunsetTime.toLocaleTimeString("en-US", options)}{" "}
+                        {Math.round(currentTemperature8)}{" "}
+                        <small>{unit === "metric" ? "°C" : "°F"}</small>{" "}
+                      </h2>
+                      <h2 className=" "> {currentDate8.toDateString()}</h2>
+                    </div>
+                    {/* 3rd day  */}
+                    <div className="flex gap-4">
+                      <p>
+                        <Image
+                          src={weatherIcon16}
+                          height={50}
+                          width={50}
+                          alt={weatherMain16}
+                        />
                       </p>
+                      <h2 className=" text-xl">
+                        {" "}
+                        {Math.round(currentTemperature16)}{" "}
+                        <small>{unit === "metric" ? "°C" : "°F"}</small>{" "}
+                      </h2>
+                      <h2 className=" "> {currentDate16.toDateString()}</h2>
+                    </div>
+                    {/* 4th day  */}
+                    <div className="flex gap-4">
+                      <p>
+                        <Image
+                          src={weatherIcon24}
+                          height={50}
+                          width={50}
+                          alt={weatherMain24}
+                        />
+                      </p>
+                      <h2 className=" text-xl">
+                        {" "}
+                        {Math.round(currentTemperature24)}
+                        <small>{unit === "metric" ? "°C" : "°F"}</small>{" "}
+                      </h2>
+                      <h2 className=" "> {currentDate24.toDateString()}</h2>
+                    </div>
+                    {/* 5th day  */}
+                    <div className="flex gap-4">
+                      <p>
+                        <Image
+                          src={weatherIcon32}
+                          height={50}
+                          width={50}
+                          alt={weatherMain32}
+                        />
+                      </p>
+                      <h2 className=" text-xl">
+                        {" "}
+                        {Math.round(currentTemperature32)}{" "}
+                        <small>{unit === "metric" ? "°C" : "°F"}</small>{" "}
+                      </h2>
+                      <h2 className=""> {currentDate32.toDateString()}</h2>
                     </div>
                   </div>
                 </div>
+              </div>
+              {/* highlights  */}
+              <div className="col-span-2 ">
+                <h3 className="font-bold text-2xl m-9 ms-3 text-blue-700">
+                  Today Highlights
+                </h3>
+                <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-4">
+                  <div className="card  bg-base-100 shadow-xl">
+                    <div className="card-body">
+                      <h2 className="font-semibold">Wind Quality Index</h2>
+                      <div className="flex gap-2">
+                        <p>
+                          <MdAir className="text-3xl my-auto" />{" "}
+                        </p>
+                        <p className="text-xl">
+                          {" "}
+                          <small>Direction</small> <br /> {windDirection}
+                        </p>
+                        <p className="text-xl">
+                          {" "}
+                          <small>Speed</small> <br />{" "}
+                          {currentWeather.wind.speed} <small>m/s</small>
+                        </p>
+                        <p className="text-xl">
+                          {" "}
+                          <small>Gust</small> <br /> {currentWeather.wind.gust}{" "}
+                          <small>m/s</small>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="card  bg-base-100 shadow-xl ">
+                    <div className="card-body">
+                      <h2 className="font-semibold">Sunrise & Sunset</h2>
+                      <div className="flex gap-12">
+                        <div className="flex gap-2">
+                          <p>
+                            <MdSunny className="text-3xl mt-5" />{" "}
+                          </p>
+                          <p className="text-xl">
+                            {" "}
+                            <small>Sunrise</small> <br />{" "}
+                            {sunriseTime.toLocaleTimeString("en-US", options)}{" "}
+                          </p>
+                        </div>
+                        <div className="flex gap-2 ">
+                          <p className="ms-10">
+                            <FaMoon className="text-3xl mt-5" />{" "}
+                          </p>
+                          <p className="text-xl">
+                            {" "}
+                            <small>Sunset</small> <br />{" "}
+                            {sunsetTime.toLocaleTimeString("en-US", options)}{" "}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid sm:grid-cols-2 lg:grid-cols-4 mt-7 gap-5">
+                  <div className="card  bg-base-100 shadow-xl">
+                    <div className="card-body">
+                      <p>Humidity</p>
+                      <div className="flex gap-6">
+                        <p>
+                          <WiHumidity className="text-4xl" />
+                        </p>
+                        <p className="text-2xl">
+                          {currentWeather.main.humidity} <small>%</small>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="card  bg-base-100 shadow-xl">
+                    <div className="card-body">
+                      <p>Pressure</p>
+                      <div className="flex gap-6">
+                        <p>
+                          <WiSandstorm className="text-4xl" />
+                        </p>
+                        <p className="text-2xl">
+                          {currentWeather.main.pressure} <small>hPa</small>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="card  bg-base-100 shadow-xl">
+                    <div className="card-body">
+                      <p>Visibility</p>
+                      <div className="flex gap-6">
+                        <p>
+                          <FaEye className="text-3xl" />
+                        </p>
+                        <p className="text-2xl">
+                          {currentWeather.visibility / 1000} <small>km</small>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="card  bg-base-100 shadow-xl">
+                    <div className="card-body">
+                      <p>Feels Like</p>
+                      <div className="flex gap-6">
+                        <p>
+                          <FaTemperatureHalf className="text-3xl" />
+                        </p>
+                        <p className="text-2xl">
+                          {Math.round(feelsLikeTemperature)}{" "}
+                          <small>{unit === "metric" ? "°C" : "°F"}</small>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <h3 className="font-bold text-2xl m-10 ms-3 text-blue-700">
+                  Today at
+                </h3>
+
+                <Tabs>
+                  <TabList>
+                    <Tab>
+                      {" "}
+                      <li className="flex">
+                        <FaTemperatureFull className="text-3xl p-1" />{" "}
+                        Temperature
+                      </li>{" "}
+                    </Tab>
+                    <Tab>
+                      <li className="flex">
+                        <WiHumidity className="text-3xl p-1" /> Humidity
+                      </li>
+                    </Tab>
+                    <Tab>
+                      <li className="flex">
+                        <WiSandstorm className="text-3xl" />
+                        Pressure
+                      </li>
+                    </Tab>
+                    <Tab>
+                      <li className="flex">
+                        <MdAir className="text-3xl p-1" />
+                        Wind
+                      </li>
+                    </Tab>
+                    <Tab>
+                      <li className="flex">
+                        <FaRegClock className="text-3xl p-1" /> Hourly
+                      </li>
+                    </Tab>
+                  </TabList>
+
+                  <TabPanel>
+                    <div>
+                      <WeatherCharts
+                        weather={weather}
+                        currentWeather={currentWeather}
+                        currentWeather1={currentWeather1}
+                        currentWeather2={currentWeather2}
+                        currentWeather3={currentWeather3}
+                        currentWeather4={currentWeather4}
+                        currentWeather5={currentWeather5}
+                        currentWeather6={currentWeather6}
+                        currentWeather7={currentWeather7}
+                        currentTemperature1={currentTemperature1}
+                        unit={unit}
+                      />
+                    </div>
+                  </TabPanel>
+
+                  <TabPanel>
+                    <div>
+                      <HumidityChart
+                        weather={weather}
+                        currentWeather={currentWeather}
+                        currentWeather1={currentWeather1}
+                        currentWeather2={currentWeather2}
+                        currentWeather3={currentWeather3}
+                        currentWeather4={currentWeather4}
+                        currentWeather5={currentWeather5}
+                        currentWeather6={currentWeather6}
+                        currentWeather7={currentWeather7}
+                        currentTemperature1={currentTemperature1}
+                      />
+                    </div>
+                  </TabPanel>
+
+                  <TabPanel>
+                    <div>
+                      <PressureChart
+                        weather={weather}
+                        currentWeather={currentWeather}
+                        currentWeather1={currentWeather1}
+                        currentWeather2={currentWeather2}
+                        currentWeather3={currentWeather3}
+                        currentWeather4={currentWeather4}
+                        currentWeather5={currentWeather5}
+                        currentWeather6={currentWeather6}
+                        currentWeather7={currentWeather7}
+                        currentTemperature1={currentTemperature1}
+                      />
+                    </div>
+                  </TabPanel>
+
+                  <TabPanel>
+                    <div>
+                      <WindChart
+                        weather={weather}
+                        currentWeather={currentWeather}
+                        currentWeather1={currentWeather1}
+                        currentWeather2={currentWeather2}
+                        currentWeather3={currentWeather3}
+                        currentWeather4={currentWeather4}
+                        currentWeather5={currentWeather5}
+                        currentWeather6={currentWeather6}
+                        currentWeather7={currentWeather7}
+                        currentTemperature1={currentTemperature1}
+                      />
+                    </div>
+                  </TabPanel>
+
+                  <TabPanel>
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 lg:mt-5 gap-2">
+                      <ThreeHourWeather weather={weather} unit={unit} />
+                    </div>
+                  </TabPanel>
+                </Tabs>
               </div>
             </div>
-
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 mt-7 gap-5">
-              <div className="card  bg-base-100 shadow-xl">
-                <div className="card-body">
-                  <p>Humidity</p>
-                  <div className="flex gap-6">
-                    <p>
-                      <WiHumidity className="text-4xl" />
-                    </p>
-                    <p className="text-2xl">
-                      {currentWeather.main.humidity} <small>%</small>
-                    </p>
-                  </div>
-                </div>
+            <div>
+              <div
+                id="interactiveWeatherMap"
+                className="card h-80 bg-base-100 shadow-xl mt-2 "
+                style={{ overflow: "hidden", zIndex: 5 }}
+              >
+                <WeatherMap city={City} />
               </div>
-
-              <div className="card  bg-base-100 shadow-xl">
-                <div className="card-body">
-                  <p>Pressure</p>
-                  <div className="flex gap-6">
-                    <p>
-                      <WiSandstorm className="text-4xl" />
-                    </p>
-                    <p className="text-2xl">
-                      {currentWeather.main.pressure} <small>hPa</small>
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="card  bg-base-100 shadow-xl">
-                <div className="card-body">
-                  <p>Visibility</p>
-                  <div className="flex gap-6">
-                    <p>
-                      <FaEye className="text-3xl" />
-                    </p>
-                    <p className="text-2xl">
-                      {currentWeather.visibility / 1000} <small>km</small>
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="card  bg-base-100 shadow-xl">
-                <div className="card-body">
-                  <p>Feels Like</p>
-                  <div className="flex gap-6">
-                    <p>
-                      <FaTemperatureHalf className="text-3xl" />
-                    </p>
-                    <p className="text-2xl">
-                      {Math.round(feelsLikeTemperature)}{" "}
-                      <small>{unit === "metric" ? "°C" : "°F"}</small>
-                    </p>
-                  </div>
-                </div>
+              <div className="card h-20 lg:w-7/12 bg-base-100 shadow-xl mt-2 text-center flex justify-center mx-auto">
+                <WeatherAlert weather={currentWeather} />
               </div>
             </div>
-
-            <h3 className="font-bold text-2xl m-10 ms-3 text-blue-700">
-              Today at
-            </h3>
-
-            <Tabs>
-              <TabList>
-                <Tab>
-                  {" "}
-                  <li className="flex">
-                    <FaTemperatureFull className="text-3xl p-1" /> Temperature
-                  </li>{" "}
-                </Tab>
-                <Tab>
-                  <li className="flex">
-                    <WiHumidity className="text-3xl p-1" /> Humidity
-                  </li>
-                </Tab>
-                <Tab>
-                  <li className="flex">
-                    <WiSandstorm className="text-3xl" />
-                    Pressure
-                  </li>
-                </Tab>
-                <Tab>
-                  <li className="flex">
-                    <MdAir className="text-3xl p-1" />
-                    Wind
-                  </li>
-                </Tab>
-                <Tab>
-                  <li className="flex">
-                    <FaRegClock className="text-3xl p-1" /> Hourly
-                  </li>
-                </Tab>
-              </TabList>
-
-              <TabPanel>
-                <div>
-                  <WeatherCharts
-                    weather={weather}
-                    currentWeather={currentWeather}
-                    currentWeather1={currentWeather1}
-                    currentWeather2={currentWeather2}
-                    currentWeather3={currentWeather3}
-                    currentWeather4={currentWeather4}
-                    currentWeather5={currentWeather5}
-                    currentWeather6={currentWeather6}
-                    currentWeather7={currentWeather7}
-                    currentTemperature1={currentTemperature1}
-                    unit={unit}
-                  />
-                </div>
-              </TabPanel>
-
-              <TabPanel>
-                <div>
-                  <HumidityChart
-                    weather={weather}
-                    currentWeather={currentWeather}
-                    currentWeather1={currentWeather1}
-                    currentWeather2={currentWeather2}
-                    currentWeather3={currentWeather3}
-                    currentWeather4={currentWeather4}
-                    currentWeather5={currentWeather5}
-                    currentWeather6={currentWeather6}
-                    currentWeather7={currentWeather7}
-                    currentTemperature1={currentTemperature1}
-                  />
-                </div>
-              </TabPanel>
-
-              <TabPanel>
-                <div>
-                  <PressureChart
-                    weather={weather}
-                    currentWeather={currentWeather}
-                    currentWeather1={currentWeather1}
-                    currentWeather2={currentWeather2}
-                    currentWeather3={currentWeather3}
-                    currentWeather4={currentWeather4}
-                    currentWeather5={currentWeather5}
-                    currentWeather6={currentWeather6}
-                    currentWeather7={currentWeather7}
-                    currentTemperature1={currentTemperature1}
-                  />
-                </div>
-              </TabPanel>
-
-              <TabPanel>
-                <div>
-                  <WindChart
-                    weather={weather}
-                    currentWeather={currentWeather}
-                    currentWeather1={currentWeather1}
-                    currentWeather2={currentWeather2}
-                    currentWeather3={currentWeather3}
-                    currentWeather4={currentWeather4}
-                    currentWeather5={currentWeather5}
-                    currentWeather6={currentWeather6}
-                    currentWeather7={currentWeather7}
-                    currentTemperature1={currentTemperature1}
-                  />
-                </div>
-              </TabPanel>
-
-              <TabPanel>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 lg:mt-5 gap-2">
-                  <ThreeHourWeather weather={weather} unit={unit} />
-                </div>
-              </TabPanel>
-            </Tabs>
+            <div>
+              <HourlyForcast weather={weather}></HourlyForcast>
+              {/* <HourlyForcast weather={weather}></HourlyForcast> */}
+            </div>
           </div>
-        </div>
-        <div>
-          <div
-            id="interactiveWeatherMap"
-            className="card h-80 bg-base-100 shadow-xl mt-2 "
-            style={{ overflow: "hidden", zIndex: 5 }}
-          >
-            <WeatherMap city={City} />
-          </div>
-          <div className="card h-20 lg:w-7/12 bg-base-100 shadow-xl mt-2 text-center flex justify-center mx-auto">
-            <WeatherAlert weather={currentWeather} />
-          </div>
-        </div>
-        <div>
-          <HourlyForcast weather={weather}></HourlyForcast>
-          {/* <HourlyForcast weather={weather}></HourlyForcast> */}
         </div>
       </div>
     </PrivateRoute>

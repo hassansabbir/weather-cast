@@ -121,15 +121,15 @@ const manageArticlesPage = () => {
   };
 
   return (
-    <div>
+    <div className="p-5">
       <h2 className="text-5xl font-bold">All Pending Articles</h2>
       <div className="my-10 grid grid-cols-1 gap-10">
         {pendingArticles.map((article) => (
           <div
             key={article._id}
-            className="bg-blue-50 flex  gap-2 rounded-3xl items-center lg:me-10 sm:m-5 p-5 "
+            className="bg-blue-50 lg:flex  gap-2 rounded-3xl items-center lg:me-10 sm:m-5 p-5 "
           >
-            <div className="w-2/3">
+            <div className="lg:w-2/3">
               <img
                 className="w-[550px] rounded-3xl h-[300px]"
                 src={article?.image_url}
@@ -146,14 +146,18 @@ const manageArticlesPage = () => {
                 />
                 <div>
                   <h2 className="text-2xl  font-bold">{article?.authorName}</h2>
-                  <h2 className="lg:text-xl sm:text-lg ">{article?.authorEmail}</h2>
+                  <h2 className="lg:text-xl sm:text-lg ">
+                    {article?.authorEmail}
+                  </h2>
                 </div>
               </div>
               <p className="text-xl">{article?.description}</p>
-               
             </div>
-            <div className="divider divider-horizontal my-auto h-96"></div>
-            <div className="w-1/3">
+            <div className="hidden lg:block">
+              {" "}
+              <p className="divider  divider-horizontal my-auto h-96"></p>
+            </div>
+            <div className="lg:w-1/3">
               <div className="my-5 w-full">
                 <Link href={`/articles/${article?._id}`}>
                   <button className="btn bg-blue-800 w-full hover:bg-blue-600 text-white">
@@ -191,9 +195,9 @@ const manageArticlesPage = () => {
         {approvedArticles.map((approvedArticle) => (
           <div
             key={approvedArticle._id}
-            className="bg-blue-50 flex  rounded-3xl items-center p-5 sm:m-5 lg:me-10 "
+            className="bg-blue-50 lg:flex  rounded-3xl items-center p-5 sm:m-5 lg:me-10 "
           >
-            <div className="w-2/3">
+            <div className="lg:w-2/3">
               <img
                 className="w-[550px] rounded-3xl h-[300px]"
                 src={approvedArticle?.image_url}
@@ -212,13 +216,20 @@ const manageArticlesPage = () => {
                   <h2 className="text-2xl font-bold">
                     {approvedArticle?.authorName}
                   </h2>
-                  <h2 className="lg:text-xl sm:text-lg ">{approvedArticle?.authorEmail}</h2>
+                  <h2 className="lg:text-xl sm:text-lg ">
+                    {approvedArticle?.authorEmail}
+                  </h2>
                 </div>
               </div>
-              <p className="lg:text-xl sm:text-lg">{approvedArticle?.description}</p>
+              <p className="lg:text-xl sm:text-lg">
+                {approvedArticle?.description}
+              </p>
             </div>
-            <div className="divider divider-horizontal my-auto h-96"></div>
-            <div className="w-1/3">
+            <div className="hidden lg:block">
+              {" "}
+              <p className="divider  divider-horizontal my-auto h-96"></p>
+            </div>
+            <div className="lg:w-1/3">
               <div className="my-5 w-full">
                 <Link href={`/articles/${approvedArticle?._id}`}>
                   <button className="btn bg-blue-800 w-full hover:bg-blue-600 text-white">
@@ -233,50 +244,6 @@ const manageArticlesPage = () => {
                   will show on the Articles section{" "}
                 </p>
                 <div className="my-6 space-y-3">
-                  <div>
-                    {/* Open the modal using document.getElementById('ID').showModal() method */}
-                    <button
-                      className="btn w-full lg:text-2xl sm:text-xl text-blue-600 hover:bg-blue-600 hover:text-white hover:border-blue-600 btn-outline"
-                      onClick={() =>
-                        document.getElementById("my_modal_2").showModal()
-                      }
-                    >
-                      <MdOutlineFeedback /> Feedback
-                    </button>
-                    <dialog id="my_modal_2" className="modal">
-                      <form
-                        // onSubmit={handleSubmit}
-                        method="dialog"
-                        className="modal-box"
-                      >
-                        <h3 className="font-bold text-lg">Give Feedback</h3>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text lg:text-2xl sm:text-xl font-bold">
-                              Feedback
-                            </span>
-                          </label>
-                          <input
-                            name="feedback"
-                            type="text"
-                            placeholder="type here"
-                            className="input input-bordered"
-                          />
-                        </div>
-                        <div className="form-control mt-5">
-                          <button
-                            // onClick={() => handleFeedback(approvedArticle)}
-                            className="btn bg-blue-100 shadow-lg"
-                          >
-                            Update
-                          </button>
-                        </div>
-                      </form>
-                      <form method="dialog" className="modal-backdrop">
-                        <button>close</button>
-                      </form>
-                    </dialog>
-                  </div>
                   <button
                     onClick={() => handleDelete(approvedArticle)}
                     className="btn w-full lg:text-2xl sm:text-xl text-red-600 hover:bg-red-600 hover:text-white hover:border-red-600 btn-outline"

@@ -31,7 +31,7 @@ const myArticlesPage = () => {
 
   return (
     <div>
-      <h2 className="text-5xl my-10 font-bold">
+      <h2 className="text-5xl my-10 px-5 font-bold">
         My Articles: {myArticles?.length}
       </h2>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 p-10 ">

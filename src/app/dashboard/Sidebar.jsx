@@ -44,7 +44,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="drawer max-w-[500px]  lg:drawer-open">
+    <div className="drawer max-w-[500px] lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex justify-center items-center pt-4">
         <label
@@ -54,14 +54,14 @@ const Sidebar = () => {
           Open drawer
         </label>
       </div>
-      <div className="drawer-side z-20">
+      <div className="drawer-side z-10">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
 
-        <ul className="menu p-4 lg:w-80  min-h-full pt-10 bg-slate-100 text-base-content">
+        <ul className="menu p-4 lg:w-80  min-h-full pt-20 bg-slate-100 text-base-content">
           {getUser?.role === "admin" ? (
             <>
               <li
-                className={`text-2xl my-5 rounded-3xl shadow-blue-200 shadow-lg border-b-2 ${
+                className={`text-xl my-2 rounded-3xl shadow-blue-200 shadow-lg border-b-2 ${
                   currentRoute === "/dashboard/user-home" ? "active" : ""
                 }`}
               >
@@ -70,7 +70,7 @@ const Sidebar = () => {
                 </Link>
               </li>
               <li
-                className={`text-2xl my-5 rounded-3xl shadow-blue-200 shadow-lg border-b-2 ${
+                className={`text-xl my-2 rounded-3xl shadow-blue-200 shadow-lg border-b-2 ${
                   currentRoute === "/dashboard/manage-user" ? "active" : ""
                 }`}
               >
@@ -79,7 +79,7 @@ const Sidebar = () => {
                 </Link>
               </li>
               <li
-                className={`text-2xl my-5 rounded-3xl shadow-blue-200 shadow-lg border-b-2 ${
+                className={`text-xl my-2 rounded-3xl shadow-blue-200 shadow-lg border-b-2 ${
                   currentRoute === "/dashboard/manage-articles" ? "active" : ""
                 }`}
               >
@@ -92,7 +92,7 @@ const Sidebar = () => {
           ) : (
             <>
               <li
-                className={`text-2xl my-5 rounded-3xl shadow-blue-200 shadow-lg border-b-2 ${
+                className={`text-xl my-2 rounded-3xl shadow-blue-200 shadow-lg border-b-2 ${
                   currentRoute === "/dashboard/user-home" ? "active" : ""
                 }`}
               >
@@ -101,7 +101,7 @@ const Sidebar = () => {
                 </Link>
               </li>
               <li
-                className={`text-2xl my-5 rounded-3xl shadow-blue-200 shadow-lg border-b-2 ${
+                className={`text-xl my-2 rounded-3xl shadow-blue-200 shadow-lg border-b-2 ${
                   currentRoute === "/dashboard/favorite-location"
                     ? "active"
                     : ""
@@ -112,7 +112,7 @@ const Sidebar = () => {
                 </Link>
               </li>
               <li
-                className={`text-2xl my-5 rounded-3xl shadow-blue-200 shadow-lg border-b-2 ${
+                className={`text-xl my-2 rounded-3xl shadow-blue-200 shadow-lg border-b-2 ${
                   currentRoute === "/dashboard/my-articles" ? "active" : ""
                 }`}
               >
@@ -122,7 +122,7 @@ const Sidebar = () => {
               </li>
 
               <li
-                className={`text-2xl my-5 rounded-3xl shadow-blue-200 shadow-lg border-b-2 ${
+                className={`text-xl my-2 rounded-3xl shadow-blue-200 shadow-lg border-b-2 ${
                   currentRoute === "/community/Payment" ? "active" : ""
                 }`}
               >
@@ -132,23 +132,23 @@ const Sidebar = () => {
               </li>
             </>
           )}
-          <li className="text-2xl mt-auto my-5 rounded-3xl shadow-blue-200 shadow-lg border-b-2">
+          <li className="text-xl mt-auto my-2 rounded-3xl shadow-blue-200 shadow-lg border-b-2">
             <Link href="/contact">
               <FaPhone /> Contact Us
             </Link>
           </li>
-          <li className="text-2xl my-5 rounded-3xl shadow-blue-200 shadow-lg border-b-2">
+          <li className="text-xl my-2 rounded-3xl shadow-blue-200 shadow-lg border-b-2">
             <Link href="/community">
               <FaUsers /> Community
             </Link>
           </li>
-          <li className="text-2xl my-5 rounded-3xl shadow-blue-200 shadow-lg border-b-2 ">
+          <li className="text-xl my-2 rounded-3xl shadow-blue-200 shadow-lg border-b-2 ">
             <Link href="/">
               <GiReturnArrow /> Go to Home
             </Link>
           </li>
           <div className="divider"></div>
-          <li className="text-2xl my-5  mb-32 rounded-3xl shadow-blue-200 shadow-lg border-b-2">
+          <li className="text-xl my-2  mb-32 rounded-3xl shadow-blue-200 shadow-lg border-b-2">
             <button onClick={handleLogOut}>
               <RiLogoutCircleLine /> Log Out
             </button>
