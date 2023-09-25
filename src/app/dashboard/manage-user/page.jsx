@@ -24,7 +24,7 @@ const ManageUsers = () => {
   const fetchUsers = () => {
     axios
       .get(
-        `http://localhost:5000/users?page=${currentPage}&perPage=${itemsPerPage}`
+        `https://weather-cast-server.vercel.app/users?page=${currentPage}&perPage=${itemsPerPage}`
       )
       .then((data) => {
         setTotalUsers(totalUsers);
