@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import rain from "../../../assets/rain.gif";
+import rain from "../../../assets/rain2.gif";
 import sun from "../../../assets/sun.gif";
 import night from "../../../assets/night.gif";
 import thunderstorm from "../../../assets/thunderstorm.gif";
