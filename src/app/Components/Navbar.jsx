@@ -56,7 +56,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed bg-transparent w-full top-0 z-20 bg-blue backdrop-filter backdrop-blur-3xl  border-b border-gray-200 ">
+    <div className="fixed bg-transparent w-full top-0 z-20 bg-blue backdrop-filter backdrop-blur-3xl  border-b border-gray-200">
       <div className="navbar ">
         <div className="navbar-start">
           <div className="dropdown">
@@ -177,7 +177,7 @@ const Navbar = () => {
         <div className="navbar-end space-x-3">
           {user ? (
             <div className="flex  items-center border-4 rounded-full  p-1 ">
-              <div className="flex  items-center border-r-2 pr-2 ">
+              <div className="flex items-center px-2 ">
                 <h2 className="hidden md:block pr-2" style={shadowWhiteStyle}>
                   {user?.displayName}
                 </h2>
@@ -190,19 +190,10 @@ const Navbar = () => {
                   <button onClick={handleLogOut}>Logout</button>
                 </div>
               </div>
-              <div className="flex  items-center  ps-2 p-1">
-                <button
-                  onClick={handleLogOut}
-                  className="font-semibold"
-                  style={shadowWhiteStyle}
-                >
-                  Logout
-                </button>
-              </div>
             </div>
           ) : (
             <div
-              className="flex  items-center border-4 rounded-full  p-1"
+              className="flex items-center rounded-full  p-1"
               style={shadowWhiteStyle}
             >
               <Link className="w-full" href="/logIn">

@@ -53,7 +53,7 @@ const CommunityInfo = () => {
       </h2>
 
       {/* Donation Purpose Section */}
-      <div className="mt-4 DonationBg text-white bg-opacity-70 bg-black p-4 rounded-lg shadow-lg font-semibold text-xl">
+      <div className="mt-4 DonationBg text-black  p-4 rounded-lg shadow-lg font-semibold text-xl " >
   
   <p>
     Your donation plays a crucial role in supporting our community. Here's how your contribution helps:

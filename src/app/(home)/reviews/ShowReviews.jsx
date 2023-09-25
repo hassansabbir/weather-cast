@@ -59,7 +59,7 @@ const ShowReviews = () => {
                 <div className="flex flex-col items-center justify-center">
                   <div className="rounded-full md:w-20">
                     <img
-                      className="rounded-full"
+                      className="rounded-full w-40 h-40 lg:w-56 lg:h-20"
                       src={review.photoUrl}
                       alt="profileImg"
                     />

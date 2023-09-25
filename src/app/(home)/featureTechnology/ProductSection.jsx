@@ -55,14 +55,14 @@ const ProductSection = () => {
                   backgroundImage: `url(${product.image})`,
                   border: "2px solid red !important",
                   backdropFilter: "blur(10px)",
-                  background: "rgba(0, 0, 255, 0.5)",
+                  background: "rgba(0, 0, 128, 0.8)",
                 }}
               >
-                <p className="text-[16px] text-shadow-lg font-semibold text-white">
+                <p className="text-[16px] text-shadow-lg  text-white">
                   {product.shortDescription}
                 </p>
                 <Link href={`/featureTechnology/${product?._id}`}>
-                  <p className="text-[16px] flex gap-1 items-center mt-5 cursor-pointer underline text-black font-bold">
+                  <p className="text-[16px] flex gap-1 items-center mt-5 cursor-pointer underline text-white font-bold">
                     <FaExternalLinkAlt /> View More
                   </p>
                 </Link>

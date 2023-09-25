@@ -166,9 +166,21 @@ const PaymentSuccess = () => {
     return pdfUrl;
   };
 
+
+  const countSuccessfulPayments = () => {
+    if (!payments || payments.length === 0) {
+      return 0; // No payments or data available
+    }
+
+    // Filter payments with a successful paidStatus
+    const successfulPayments = payments.filter((payment) => payment.paidStatus === true);
+
+    return successfulPayments.length;
+  };
+
   return (
-    <div className="bg-white shadow-md rounded-lg p-4">
-      <h1 className="text-2xl font-semibold mb-4 text-center">Payments</h1>
+    <div className="bg-white shadow-md rounded-lg p-4 ">
+      <h1 className="text-2xl font-semibold mb-4 text-center">Successful Payments: {countSuccessfulPayments()}</h1>
       <table className="w-full border-collapse">
         <thead>
           <tr>

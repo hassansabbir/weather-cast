@@ -126,9 +126,9 @@ const MyPost = () => {
 
   return (
 
-    <div>
+    <div >
 
-    <p className="text-center mt-4">Total Posts: {myPosts.length}</p>
+    <p className="text-2xl font-semibold mb-4 text-center mt-4">Total Posts: {myPosts.length}</p>
     <div className="my-4 mx-4" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridGap: '16px' }}>
       
       {myPosts.map((post) => (
