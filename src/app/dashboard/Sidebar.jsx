@@ -44,7 +44,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="drawer max-w-[500px]  lg:drawer-open">
+    <div className="drawer max-w-[500px] lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex justify-center items-center pt-4">
         <label
@@ -54,7 +54,7 @@ const Sidebar = () => {
           Open drawer
         </label>
       </div>
-      <div className="drawer-side z-20">
+      <div className="drawer-side z-10">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
 
         <ul className="menu p-4 lg:w-80  min-h-full pt-20 bg-slate-100 text-base-content">

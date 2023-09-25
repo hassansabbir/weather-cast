@@ -12,14 +12,24 @@ import Pagination from "../dashboard-pagination/page";
 
 const ManageUsers = () => {
   const [users, setUsers] = useState([]);
+  const [allUsers, setAllUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalUsers, setTotalUsers] = useState(0);
   const [startUserIndex, setStartUserIndex] = useState(1);
   const itemsPerPage = 10;
 
   useEffect(() => {
+    fetchTotalUsers();
     fetchUsers();
   }, [currentPage]);
+
+  const fetchTotalUsers = () => {
+    axios
+      .get(`https://weather-cast-server.vercel.app/allUsers`)
+      .then((data) => {
+        setAllUsers(data.data);
+      });
+  };
 
   const fetchUsers = () => {
     axios
@@ -144,7 +154,7 @@ const ManageUsers = () => {
           Manage All The Users
         </h2>
         <h3 className="text-2xl text-center my-10">
-          Total Users: {totalUsers}
+          Total Users: {allUsers?.length}
         </h3>
         <div className="overflow-x-auto w-full">
           <table className="table z-0">

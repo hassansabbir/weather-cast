@@ -105,20 +105,6 @@ const Navbar = () => {
                   </Link>
                 </li>
               )}
-
-              {user && (
-                <li>
-                  <Link
-                    href="/profile"
-                    className={`text-base ${
-                      currentRoute === "/profile" ? "active" : "default"
-                    }`}
-                  >
-                    Profile
-                  </Link>
-                </li>
-              )}
-
               {user?.email ? (
                 <li>
                   <h2
