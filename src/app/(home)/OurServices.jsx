@@ -2,10 +2,6 @@ import AOSInitializer from "@/AOS/AOSInitializer";
 import Link from "next/link";
 import React, { useState } from "react";
 
-import './OurServices.css'
-
-
-
 const OurServices = () => {
   const [activeTab, setActiveTab] = useState(0);
 
@@ -13,78 +9,70 @@ const OurServices = () => {
     {
       label: "Real Time Weather Update",
       content: (
-        <div className="rounded-3xl flex flex-col justify-between p-3 lg:p-10 border w-full lg:h-[800px] bg-services relative">
- 
-
-
-  <div>
-    <h2 className="text-xl lg:text-4xl font-bold text-center text-white">
-      Real-time Weather Updates Based <br /> on User Location:
-    </h2>
-    <p className="text-xl font-semibold my-5 text-justify text-white" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
-      Immerse yourself in a world of weather precision with our
-      real-time weather updates, precisely tailored to your current
-      location. We believe that being aware of the immediate weather
-      conditions is paramount, and our cutting-edge technology ensures
-      you're always in the loop. Whether it's a quick glance at the
-      temperature or comprehensive data on precipitation, humidity, wind
-      speed, and localized alerts, you'll have all the information you
-      need at your fingertips, empowering you to plan your day with
-      confidence.
-    </p>
-  </div>
-  
-  <div className="flex-grow"></div>
-  
-  <div className="grid grid-cols-1 lg:grid-cols-3 my-10 gap-5">
-  
-    <p
-      data-aos="fade-up"
-      data-aos-duration="3000"
-      className="text-xl text-center lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10"
-    >
-      Accurate and up-to-date weather information delivered in
-      real-time.
-    </p>
-    <p
-      data-aos="fade-up"
-      data-aos-duration="3000"
-      className="text-xl text-center lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10"
-    >
-      A user-friendly interface for seamless location detection or
-      manual input.
-    </p>
-    <p
-      data-aos="fade-up"
-      data-aos-duration="3000"
-      className="text-xl text-center lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10"
-    >
-      Comprehensive details on temperature, precipitation, humidity,
-      wind speed, and location-specific alerts.
-    </p>
-  </div>
-  
-  <div className="text-center">
-    <Link href="#currentLocationWeather">
-      <button className="btn w-72 bg-blue-800 text-white hover:bg-blue-600">
-        See Feature
-      </button>
-    </Link>
-  </div>
-</div>
-
+        <div className="rounded-3xl flex flex-col justify-between p-3 lg:p-10 border w-full lg:h-[800px]">
+          <div>
+            <h2 className="text-xl lg:text-4xl font-bold text-center">
+              Real-time Weather Updates Based <br /> on User Location:
+            </h2>
+            <p className="text-xl my-5 text-justify">
+              Immerse yourself in a world of weather precision with our
+              real-time weather updates, precisely tailored to your current
+              location. We believe that being aware of the immediate weather
+              conditions is paramount, and our cutting-edge technology ensures
+              you're always in the loop. Whether it's a quick glance at the
+              temperature or comprehensive data on precipitation, humidity, wind
+              speed, and localized alerts, you'll have all the information you
+              need at your fingertips, empowering you to plan your day with
+              confidence.
+            </p>
+          </div>
+          <div className="flex-grow"></div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 my-10 gap-5">
+            <p
+              data-aos="fade-up"
+              data-aos-duration="3000"
+              className="text-xl text-center lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10"
+            >
+              Accurate and up-to-date weather information delivered in
+              real-time.
+            </p>
+            <p
+              data-aos="fade-up"
+              data-aos-duration="3000"
+              className="text-xl text-center lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10"
+            >
+              A user-friendly interface for seamless location detection or
+              manual input.
+            </p>
+            <p
+              data-aos="fade-up"
+              data-aos-duration="3000"
+              className="text-xl text-center lg:h-64 bg-slate-100 rounded-3xl shadow-lg hover:shadow-blue-200 p-10"
+            >
+              Comprehensive details on temperature, precipitation, humidity,
+              wind speed, and location-specific alerts.
+            </p>
+          </div>
+          <div className="text-center">
+            <Link href="#currentLocationWeather">
+              <button className="btn w-72 bg-blue-800 text-white hover:bg-blue-600">
+                See Feature
+              </button>
+            </Link>
+          </div>
+        </div>
       ),
     },
     {
       label: "Daily & Weekly Forecast",
       content: (
-        <div className="rounded-3xl flex flex-col justify-between p-10 border w-full lg:h-[800px]  bg-services relative">
+        <div className="rounded-3xl flex flex-col justify-between p-10 border w-full lg:h-[800px]">
           <div>
-            <h2 className="text-4xl text-center font-bold text-white">
+            <h2 className="text-4xl text-center font-bold">
               Daily and weekly forecasts, including <br /> temperature,
               precipitation, humidity, <br /> and wind speed.
             </h2>
-            <p className="text-xl font-semibold my-5 text-justify text-white " style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
+            <p className="text-xl my-5 text-justify">
               Embark on a journey of informed decision-making with our detailed
               daily and weekly forecasts. We understand that your plans and
               activities often hinge on the weather, which is why we provide
@@ -130,13 +118,13 @@ const OurServices = () => {
     {
       label: "Interactive Weather Map",
       content: (
-        <div className="rounded-3xl flex flex-col justify-between p-10 border w-full lg:h-[800px]  bg-services relative">
+        <div className="rounded-3xl flex flex-col justify-between p-10 border w-full lg:h-[800px]">
           <div>
-            <h2 className="text-4xl text-center font-bold text-white">
+            <h2 className="text-4xl text-center font-bold">
               Interactive maps displaying weather <br /> patterns and radar
               data.
             </h2>
-            <p className="text-xl font-semibold my-5 text-justify text-white " style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
+            <p className="text-xl my-5 text-justify">
               Delve into the intricacies of weather patterns and radar data with
               our immersive interactive maps. We believe that visualizing
               weather conditions should be an experience, and our maps offer
@@ -178,12 +166,12 @@ const OurServices = () => {
     {
       label: "Severe Weather Alerts",
       content: (
-        <div className="rounded-3xl flex flex-col justify-between p-10 border w-full lg:h-[800px]  bg-services relative">
+        <div className="rounded-3xl flex flex-col justify-between p-10 border w-full lg:h-[800px]">
           <div>
-            <h2 className="text-4xl text-center font-bold text-white">
+            <h2 className="text-4xl text-center font-bold">
               Severe weather alerts and <br /> notifications.
             </h2>
-            <p className="text-xl font-semibold my-5 text-justify text-white " style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
+            <p className="text-xl my-5 text-justify">
               Safety is at the forefront of our priorities. Stay protected and
               well-informed with our timely severe weather alerts and
               notifications. Our belief in proactive safety led us to create a
@@ -222,12 +210,12 @@ const OurServices = () => {
     {
       label: "Historical Weather Data",
       content: (
-        <div className="rounded-3xl flex flex-col justify-between p-10 border w-full lg:h-[800px]  bg-services relative">
+        <div className="rounded-3xl flex flex-col justify-between p-10 border w-full lg:h-[800px]">
           <div>
-            <h2 className="text-4xl text-center font-bold text-white">
+            <h2 className="text-4xl text-center font-bold">
               Historical weather data for <br /> analysis and insights.
             </h2>
-            <p className="text-xl font-semibold my-5 text-justify text-white " style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
+            <p className="text-xl my-5 text-justify">
               Step back in time and unlock a treasure trove of historical
               weather data that's not only fascinating but also incredibly
               useful. Whether you're conducting research, planning for the
@@ -272,7 +260,7 @@ const OurServices = () => {
     setActiveTab(index);
   };
   return (
-    <div className=" bg-slate-100 shadow-md py-5 " >
+    <div className=" bg-slate-100 shadow-md py-5">
       <AOSInitializer />
       <div className="max-w-[1460px] mx-auto">
         <div className="lg:flex border-l-4 ps-5 items-center my-40">

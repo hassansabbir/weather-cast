@@ -55,7 +55,7 @@ const ProductSection = () => {
                   backgroundImage: `url(${product.image})`,
                   border: "2px solid red !important",
                   backdropFilter: "blur(10px)",
-                  background: "rgba(0, 0, 255, 0.5)",
+                  background: "rgba(0, 0, 128, 0.8)",
                 }}
               >
                 <p className="text-[16px] text-shadow-lg font-semibold text-white">

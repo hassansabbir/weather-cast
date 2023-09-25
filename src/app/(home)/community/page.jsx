@@ -462,10 +462,10 @@ const CreatePost = () => {
     <div className="newsfeed ">
 
       <div className="lg:flex  justify-around gap-4 pl-4 max-w-7xl mx-auto">
-        <div className="post-creator h-full w-full  lg:w-1/4 shadow-lg rounded-lg overflow-hidden text-center mt-4  lg:sticky lg:top-0  bg-white">
+        <div className="post-creator h-full w-full  lg:w-1/4 shadow-lg rounded-lg overflow-hidden text-center mt-4  lg:sticky lg:top-0  bg-white fixed p-3 pb-12">
          
 
-          <div className="PImage pt-5">
+          <div className="PImage pt-8 py-5">
   <img
     src={user?.photoURL}
     alt="adminImg"
@@ -477,7 +477,7 @@ const CreatePost = () => {
 </div>
 
 
-<div className="flex justify-between items-center mt-4   rounded-lg p-4">
+<div className="flex justify-between items-center mt-4 pb-5  rounded-lg p-4">
   <div className="text-center pr-4 border-r border-black">
     <h2 className="text-sm font-bold">{myPosts.length}</h2>
     <p className="text-sm font-bold">Posts</p>
@@ -494,9 +494,7 @@ const CreatePost = () => {
 </div>
 
 
-          
-         
-          <form onSubmit={handleSubmit(onSubmit)} className="  h2-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="  h2-6 py-3">
             <div className="form-control justify-center">
               <div className="flex items-center justify-between">
                 <label className="label">
@@ -518,15 +516,16 @@ const CreatePost = () => {
               {errors.content && (
                 <span className="text-red-600">Content is required</span>
               )}
-              <div className="form-control w-full mb-4">
+              <div className="form-control w-full py-3 mb-4">
                 <label className="label">
                   <span className="label-text font-semibold">Image*</span>
                 </label>
                 <input
                   type="file"
                   {...register("image", { required: true })}
-                  className="file-input file-input-bordered w-full mb-3 button-64"
+                  className="file-input file-input-bordered w-full mb-5 button-64"
                 />
+                
                 <button className="button-85">
               Create Post
             </button>
@@ -549,7 +548,7 @@ const CreatePost = () => {
           ))}
         </div>
 
-        <div className="pr-4">
+        <div className="pr-4 ">
           <CommunityInfo></CommunityInfo>
         </div>
       </div>
