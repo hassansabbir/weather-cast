@@ -1,14 +1,13 @@
-import { getWeatherIcon } from '@/utils/getWeatherIcon';
-import moment from 'moment';
-import Image from 'next/image';
-import React from 'react';
+import { getWeatherIcon } from "@/utils/getWeatherIcon";
+import moment from "moment";
+import Image from "next/image";
+import React from "react";
 
-const ThreeHourWeather = ({weather , unit}) => {
-  
-    return (
-        <>
-                {weather.list.slice(0, 8).map((currentWeather, index) => (
-        <div className="card bg-base-100 shadow-xl" key={index}>
+const ThreeHourWeather = ({ weather, unit }) => {
+  return (
+    <>
+      {weather.list.slice(0, 8).map((currentWeather, index) => (
+        <div className="card glass shadow-xl" key={index}>
           <div className="card-body text-center">
             <p className="text-center font-semibold text-xl">
               {moment(currentWeather.dt_txt).format("h A")}
@@ -29,8 +28,8 @@ const ThreeHourWeather = ({weather , unit}) => {
           </div>
         </div>
       ))}
-        </>
-    );
+    </>
+  );
 };
 
 export default ThreeHourWeather;

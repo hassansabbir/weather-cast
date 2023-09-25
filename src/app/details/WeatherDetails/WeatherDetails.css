@@ -5,25 +5,25 @@
   background-repeat: no-repeat;
 }
 .bg-cloud{
-  background-image: url("../../../assets/cloudWeather.gif");
+  background-image: url("../../../assets/black-rain-abstract-dark-power.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 .bg-rain{
-  background-image: url("../../../assets/Rainning.gif");
+  background-image: url("../../../assets/water-drops-glass.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 .bg-thunder{
-  background-image: url("../../../assets/thunder-thunderstorm.gif");
+  background-image: url("../../../assets/thunderrr.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 .bg-drizzle{
-  background-image: url("../../../assets/drizzleWeather.gif");
+  background-image: url("../../../assets/water-drops-glass.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

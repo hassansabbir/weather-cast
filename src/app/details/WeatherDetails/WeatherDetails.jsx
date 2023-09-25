@@ -31,7 +31,6 @@ import "./loaderStyle.css";
 import { FaRegClock, FaRegStar, FaStar } from "react-icons/fa";
 import { AuthContext } from "@/Providers/AuthProvider";
 
-import GifBanner from "../GifBanner/GifBanner";
 // import WeatherLocation from "@/app/(home)/WeatherLocation/WeatherLocation";
 
 const weatherFetch = async (City, unit, setWeather) => {
@@ -251,10 +250,33 @@ const WeatherDetails = () => {
   const currentDate32 = new Date(currentWeather32.dt_txt);
   const currentTemperature32 = currentWeather32.main.temp;
 
+  const getBackgroundClass = () => {
+    if (currentWeather?.weather[0]?.description.toLowerCase() === "clear") {
+      return "bg-clear";
+    } else if (
+      currentWeather?.weather[0]?.description.toLowerCase() === "clouds"
+    ) {
+      return "bg-cloud";
+    } else if (
+      currentWeather?.weather[0]?.description.toLowerCase() === "rain"
+    ) {
+      return "bg-rain";
+    } else if (
+      currentWeather?.weather[0]?.description.toLowerCase() === "thunderstorm"
+    ) {
+      return "bg-thunder";
+    } else if (
+      currentWeather?.weather[0]?.description.toLowerCase() === "drizzle"
+    ) {
+      return "bg-drizzle";
+    } else {
+      return "bg-clear";
+    }
+  };
+
   return (
     <PrivateRoute>
-      <GifBanner></GifBanner>
-      <div className="bg-clear">
+      <div className={`${getBackgroundClass()}`}>
         <div className="bg-white bg-opacity-50">
           <div className="max-w-[1460px] pt-10 mx-auto">
             {/* searchbar  */}
@@ -279,7 +301,7 @@ const WeatherDetails = () => {
 
             <div className="mx-auto text-center">
               <button
-                className={`btn btn-circle btn-outline font-bold m-8 ${
+                className={`btn btn-circle btn-outline bg-white font-bold m-8 ${
                   unit === "metric" ? "active" : ""
                 }`}
                 onClick={() => handleUnitChange("metric")}
@@ -287,7 +309,7 @@ const WeatherDetails = () => {
                 °C
               </button>
               <button
-                className={`btn btn-circle btn-outline font-bold ${
+                className={`btn btn-circle bg-white btn-outline font-bold ${
                   unit === "imperial" ? "active" : ""
                 }`}
                 onClick={() => handleUnitChange("imperial")}
@@ -449,7 +471,7 @@ const WeatherDetails = () => {
                   Today Highlights
                 </h3>
                 <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-4">
-                  <div className="card  bg-base-100 shadow-xl">
+                  <div className="card glass shadow-xl">
                     <div className="card-body">
                       <h2 className="font-semibold">Wind Quality Index</h2>
                       <div className="flex gap-2">
@@ -473,7 +495,7 @@ const WeatherDetails = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="card  bg-base-100 shadow-xl ">
+                  <div className="card glass shadow-xl ">
                     <div className="card-body">
                       <h2 className="font-semibold">Sunrise & Sunset</h2>
                       <div className="flex gap-12">
@@ -503,7 +525,7 @@ const WeatherDetails = () => {
                 </div>
 
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 mt-7 gap-5">
-                  <div className="card  bg-base-100 shadow-xl">
+                  <div className="card glass shadow-xl">
                     <div className="card-body">
                       <p>Humidity</p>
                       <div className="flex gap-6">
@@ -517,7 +539,7 @@ const WeatherDetails = () => {
                     </div>
                   </div>
 
-                  <div className="card  bg-base-100 shadow-xl">
+                  <div className="card glass shadow-xl">
                     <div className="card-body">
                       <p>Pressure</p>
                       <div className="flex gap-6">
@@ -531,7 +553,7 @@ const WeatherDetails = () => {
                     </div>
                   </div>
 
-                  <div className="card  bg-base-100 shadow-xl">
+                  <div className="card glass shadow-xl">
                     <div className="card-body">
                       <p>Visibility</p>
                       <div className="flex gap-6">
@@ -545,7 +567,7 @@ const WeatherDetails = () => {
                     </div>
                   </div>
 
-                  <div className="card  bg-base-100 shadow-xl">
+                  <div className="card glass shadow-xl">
                     <div className="card-body">
                       <p>Feels Like</p>
                       <div className="flex gap-6">
@@ -678,7 +700,7 @@ const WeatherDetails = () => {
             <div>
               <div
                 id="interactiveWeatherMap"
-                className="card h-80 bg-base-100 shadow-xl mt-2 "
+                className="card h-80 bg-base-100 w-7/12 mx-auto shadow-xl mt-2 "
                 style={{ overflow: "hidden", zIndex: 5 }}
               >
                 <WeatherMap city={City} />
