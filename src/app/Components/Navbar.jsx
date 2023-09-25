@@ -56,7 +56,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed bg-transparent w-full top-0 z-20 bg-blue backdrop-filter backdrop-blur-3xl  border-b border-gray-200 ">
+    <div className="fixed bg-transparent w-full top-0 z-20 bg-blue backdrop-filter backdrop-blur-3xl  border-b border-gray-200">
       <div className="navbar ">
         <div className="navbar-start">
           <div className="dropdown">
@@ -182,9 +182,7 @@ const Navbar = () => {
                   <img src={user?.photoURL} alt={user?.displayName} />
                 </div>
               </div>
-              <div className="flex  items-center  ps-2 p-1">
-                <button onClick={handleLogOut}>Logout</button>
-              </div>
+              
             </div>
             <div className="flex  items-center  ps-2 p-1">
            
